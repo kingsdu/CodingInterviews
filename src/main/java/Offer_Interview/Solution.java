@@ -175,4 +175,137 @@ public class Solution {
         System.out.println(treeNode.val);
     }
 
+
+
+    /**
+     * 第5题：
+     * 用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
+     * */
+
+
+    static Stack<Integer> stack1 = new Stack<Integer>();
+    static Stack<Integer> stack2 = new Stack<Integer>();
+
+
+    /**
+     * stack1用来存值
+     * @param node
+     */
+    public static void push(int node) {
+        stack1.push(node);
+    }
+
+    /**
+     * stack2用来出值
+     * 若stack2为空，则直接将Stack1中的值入到Stack2中，若不为空，则出栈。
+     *
+     * 另外这里要注意peek（）、pop之间的不同
+     * @return
+     */
+    public static int pop() {
+        if(stack1.isEmpty() && stack2.isEmpty()){
+            throw new RuntimeException("Queue is Empty");
+        }
+
+        if(stack2.isEmpty()){
+            while(!stack1.isEmpty()){
+                stack2.push(stack1.pop());
+            }
+        }
+
+        return stack2.pop();
+    }
+
+
+    /**
+     * 第6题：
+     * 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
+     * 输入一个非减排序的数组的一个旋转，输出旋转数组的最小元素。
+     * 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。
+     * NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。
+     * */
+
+
+    /**
+     *
+     * 题目的要求是确定最小元素的位置
+     * 所以可以用二分法来思考
+     * 1 情况一：最小数字在mid的右边，类似[3,4,5,6,0,1,2]数组
+     * 2 情况二：最小数字在mid的左边，或者就是array[mid]。因为右边必然都是递增的。类似[2,2,3,4,5,6,6]数组
+     * 3 情况三：最小数字不好判断在mid左边还是右边,这时只好一个一个试。类似 [1,0,1,1,1] 或者[1,1,1,0,1]数组
+     *
+     * 如果待查询的范围最后只剩两个数，那么mid 一定会指向下标靠前的数字
+     * 比如 array = [4,6]
+     * array[low] = 4 ;array[mid] = 4 ; array[high] = 6 ;
+     * 如果high = mid - 1，就会产生错误， 因此high = mid
+     * 但情形(1)中low = mid + 1就不会错误
+     *
+     * @param array
+     * @return
+     */
+    public static int minNumberInRotateArray_2(int [] array){
+        int low = 0;
+        int high = array.length-1;
+        while (low < high){
+            int middle = low + (high - low)/2;
+            if(array[middle] < array[high]){
+                low = middle + 1;
+            }else if(array[middle] == array[high]){
+                high = high-1;
+            }else {
+                high = middle;
+            }
+        }
+        return array[low];
+    }
+
+
+    /**
+     * 查找二分法
+     */
+    public static int binarySearch(int[] array,int key,int low,int high){
+        if(low>high || key<array[low] || key>array[high]){
+            return -1;
+        }
+        int middle = (low + high)/2;
+        if(middle > array[key]){
+            return binarySearch(array,key,middle+1,high);
+        }else if(middle < array[key]){
+            return binarySearch(array,key,low,middle-1);
+        }else {
+            return middle;
+        }
+    }
+
+    /**
+     * 遍历，比大小，但这个应该不是题目要求的意思
+     * @param array
+     * @return
+     */
+    public int minNumberInRotateArray_1(int [] array) {
+        if(array.length == 0){
+            return 0;
+        }
+
+        int min = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if(array[i]<=0){
+                return 0;
+            }else{
+                if(min>array[i]){
+                    min = array[i];
+                }
+            }
+        }
+        return min;
+    }
+
+
+
+
+
+
+
+
+
 }

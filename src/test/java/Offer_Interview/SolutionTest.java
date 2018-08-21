@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
-
 public class SolutionTest {
 
     private long startTime = 0;
@@ -90,6 +88,27 @@ public class SolutionTest {
         TreeNode treeNode = Solution.reConstructBinaryTree(pre,in);
         Solution.preOrderTraversal(treeNode);
     }
+
+    @Test
+    public void achieveQueue(){
+        Solution.push(1);
+        Solution.push(2);
+        Solution.push(3);
+        Solution.push(4);
+
+        if(Solution.stack2.isEmpty()){
+            System.out.println(Solution.pop());
+            while(!Solution.stack2.isEmpty()){
+                System.out.println(Solution.pop());
+            }
+        }else{
+            while(!Solution.stack2.isEmpty()){
+                System.out.println(Solution.pop());
+            }
+        }
+
+    }
+
 
 
 }
