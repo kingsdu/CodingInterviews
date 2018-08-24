@@ -14,7 +14,7 @@ public class Crawl_GTZYB extends BreadthCrawler {
         super(crawlPath, autoParse);
         this.addSeed("http://www.mlr.gov.cn/xwdt/jrxw/index_6.htm");
         this.addRegex("http://www.mlr.gov.cn/xwdt/jrxw/201.*.htm");
-    }
+    }                 //http://www.mlr.gov.cn/xwdt/jrxw/201807/t20180706_2024046.htm
 
     @Override
     public void visit(Page page, CrawlDatums crawlDatums) {

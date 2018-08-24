@@ -83,6 +83,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/lennart/cpdetector -->
+        <dependency>
+            <groupId>lennart</groupId>
+            <artifactId>cpdetector</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
 
     </dependencies>
 
