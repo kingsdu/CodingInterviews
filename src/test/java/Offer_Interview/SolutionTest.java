@@ -89,6 +89,7 @@ public class SolutionTest {
         Solution.preOrderTraversal(treeNode);
     }
 
+
     @Test
     public void achieveQueue(){
         Solution.push(1);
@@ -107,6 +108,44 @@ public class SolutionTest {
             }
         }
 
+    }
+
+
+    /**
+     * 旋转数组的最小数字
+     */
+    @Test
+    public void minNumberInRotateArray_2Test(){
+        int[] array = new int[]{3,4,5,1,2};
+        int result = Solution.minNumberInRotateArray_2(array);
+        System.out.println(result);
+    }
+
+
+    /**
+     * 斐波拉契数列
+     */
+    @Test
+    public void FibonacciTest(){
+        int fibonacci = Solution.Fibonacci(11);
+        System.out.println("fibonacci "+fibonacci);
+    }
+
+
+    /**
+     * 读懂题目很重要
+     */
+    @Test
+    public void JumpFloorTest(){
+        System.out.println(Solution.JumpFloor(10));
+    }
+
+    /**
+     * 读懂题目很重要,数学很重要
+     */
+    @Test
+    public void JumpFloorII(){
+        System.out.println(Solution.JumpFloorII(10));
     }
 
 

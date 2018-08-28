@@ -230,9 +230,9 @@ public class Solution {
      *
      * 题目的要求是确定最小元素的位置
      * 所以可以用二分法来思考
-     * 1 情况一：最小数字在mid的右边，类似[3,4,5,6,0,1,2]数组
-     * 2 情况二：最小数字在mid的左边，或者就是array[mid]。因为右边必然都是递增的。类似[2,2,3,4,5,6,6]数组
-     * 3 情况三：最小数字不好判断在mid左边还是右边,这时只好一个一个试。类似 [1,0,1,1,1] 或者[1,1,1,0,1]数组
+     * 1 情况一：最小数字在mid的右边，类似[3,4,5,6,0,1,2]数组，low = mid + 1
+     * 2 情况二：最小数字在mid的左边，或者就是array[mid]。因为右边必然都是递增的。类似[2,2,3,4,5,6,6]数组，high = high - 1
+     * 3 情况三：最小数字不好判断在mid左边还是右边,这时只好一个一个试。类似 [1,0,1,1,1] 或者[1,1,1,0,1]数组，high = mid
      *
      * 如果待查询的范围最后只剩两个数，那么mid 一定会指向下标靠前的数字
      * 比如 array = [4,6]
@@ -248,7 +248,7 @@ public class Solution {
         int high = array.length-1;
         while (low < high){
             int middle = low + (high - low)/2;
-            if(array[middle] < array[high]){
+            if(array[middle] > array[high]){
                 low = middle + 1;
             }else if(array[middle] == array[high]){
                 high = high-1;
@@ -301,11 +301,95 @@ public class Solution {
     }
 
 
+    /**
+     * 现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。
+     * n<=39
+     * @param n
+     * @return
+     */
+    public static int Fibonacci(int n) {
+        if(n < 0){
+            return -1;
+        }else if(n==0 || n==1){
+            return n;
+        }
+        return Fibonacci(n-1)+Fibonacci(n-2);
+    }
 
 
+    /**
+     * 一只青蛙一次可以跳上1级台阶，也可以跳上2级。
+     * 求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）
+     *
+     * 求解思路：本题,前提只有一次 1阶或者2阶的跳法。
+     * a.如果两种跳法，1阶或者2阶，那么假定第一次跳的是一阶，那么剩下的是n-1个台阶，跳法是f(n-1);
+     * b.假定第一次跳的是2阶，那么剩下的是n-2个台阶，跳法是f(n-2);
+     * c.由a\b假设可以得出总跳法为: f(n) = f(n-1) + f(n-2);
+     * d.然后通过实际的情况可以得出：只有一阶的时候 f(1) = 1 ,只有两阶的时候可以有 f(2) = 2;
+     * e.可以发现最终得出的是一个斐波那契数列
+     */
+    public static int JumpFloor(int target) {
+        if(target<=0){
+            return -1;
+        }else if(target == 1){
+            return 1;
+        }else if(target == 2){
+            return 2;
+        }else{
+            return  JumpFloor(target-1)+JumpFloor(target-2);
+        }
+    }
 
 
+    /**
+     * 一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。
+     * 求该青蛙跳上一个n级的台阶总共有多少种跳法。
+     * @param target
+     * @return
+     *
+     * n = 1时，只有1种跳法，f(1) = 1;
+     * n = 2时，会有两个跳得方式，一次1阶或者2阶，这回归到了问题（1） ，f(2) = f(2-1) + f(2-2) ;
+     * n = 3时，会有三种跳得方式，1阶、2阶、3阶，
+     * n = n时， f(n) = f(n-1)+f(n-2)+...+f(n-(n-1)) + f(n-n) => f(0) + f(1) + f(2) + f(3) + ... + f(n-1)
+     * f(n-1) = f(0) + f(1)+f(2)+f(3) + ... + f((n-1)-1) = f(0) + f(1) + f(2) + f(3) + ... + f(n-2)
+     * f(n) = f(0) + f(1) + f(2) + f(3) + ... + f(n-2) + f(n-1) = f(n-1) + f(n-1)
+     * 可以得出：f(n) = 2*f(n-1)
+     */
+    public static int JumpFloorII(int target){
+        if(target <= 0){
+            return -1;
+        }else if(target == 1){
+            return 1;
+        }else {
+            return 2 * JumpFloorII(target - 1);
+        }
+    }
 
 
-
+    /**
+     * 我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。
+     * 请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，
+     * 总共有多少种方法？
+     * @param target
+     * @return
+     * 依旧是斐波那契数列
+     * 2*n的大矩形，和n个2*1的小矩形
+     * 其中target*2为大矩阵的大小
+     * 1 target <= 0 大矩形为<= 2*0,直接return 1；
+     * 2 target = 1大矩形为2*1，只有一种摆放方法，return1；
+     * 3 target = 2 大矩形为2*2，有两种摆放方法，return2；
+     * 4 target = n 分为两步考虑：第一次摆放一块 2*1 的小矩阵，则摆放方法总共为f(target - 1)
+     *
+     * 第一次摆放一块1*2的小矩阵，则摆放方法总共为f(target-2)
+     * 因为，摆放了一块1*2的小矩阵（用√√表示），对应下方的1*2（用××表示）摆放方法就确定了，所以为f(targte-2)
+     */
+    public static int RectCover(int target) {
+        if (target < 1) {
+            return 0;
+        } else if (target == 1 || target == 2) {
+            return target;
+        } else {
+            return RectCover(target-1) + RectCover(target-2);
+        }
+    }
 }
