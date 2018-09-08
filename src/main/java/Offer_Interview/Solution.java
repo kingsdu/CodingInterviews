@@ -181,8 +181,6 @@ public class Solution {
      * 第5题：
      * 用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
      * */
-
-
     static Stack<Integer> stack1 = new Stack<Integer>();
     static Stack<Integer> stack2 = new Stack<Integer>();
 
@@ -391,5 +389,16 @@ public class Solution {
         } else {
             return RectCover(target-1) + RectCover(target-2);
         }
+    }
+
+
+    /**
+     * 输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
+     * @param n
+     * @return
+     */
+    public static int NumberOf1(int n){
+
+        return 0;
     }
 }
