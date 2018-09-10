@@ -16,6 +16,11 @@ public class SortMethodsTest {
 
     @Test
     public void insertSort() {
+        int[] a = {7,6,9,8,4,3};
+        SortMethods.insertSort(a);
+        for(int i:a){
+            System.out.println(i);
+        }
     }
 
     @Test
@@ -26,14 +31,23 @@ public class SortMethodsTest {
         System.out.println(i);
     }
 
+
     @Test
-    public void faseSortTest(){
-        int[] a = {7,6,9,8,4,3};
-        int start = 0;
-        int end = a.length-1;
-        SortMethods.fastSort(a,start,end);
-        for(int i = 0; i<a.length; i++){
-            System.out.println(a[i]);
+    public void quickSort(){
+        int[] arr = {7,6,9,8,4,3};
+        SortMethods.quickSort(arr,0,arr.length-1);
+        for (int i :
+                arr) {
+            System.out.print(i);
+        }
+    }
+
+    @Test
+    public void mergeSort_sort(){
+        int[] arr = {7,6,9,8,4,3};
+        SortMethods.mergeSort_sort(arr,0,arr.length-1,new int[arr.length]);
+        for(int i : arr){
+            System.out.print(i+" ");
         }
     }
 }

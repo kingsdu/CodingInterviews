@@ -1,5 +1,6 @@
 package Offer_Interview;
 
+import DataStruct.Practice;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -149,5 +150,11 @@ public class SolutionTest {
     }
 
 
+    @Test
+    public void binarySearch(){
+        int [] arr = new int[]{1,6,8,9,13};
+        int i1 = Solution.binarySearch(arr, 6, 0, arr.length-1);
+        System.out.println(arr[i1]);
+    }
 
 }

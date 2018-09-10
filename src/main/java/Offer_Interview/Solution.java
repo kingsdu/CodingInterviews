@@ -266,10 +266,10 @@ public class Solution {
             return -1;
         }
         int middle = (low + high)/2;
-        if(middle > array[key]){
+        if(array[middle] > key){
+            return binarySearch(array,key,low,middle);
+        }else if(array[middle] < key){
             return binarySearch(array,key,middle+1,high);
-        }else if(middle < array[key]){
-            return binarySearch(array,key,low,middle-1);
         }else {
             return middle;
         }
