@@ -83,6 +83,29 @@ public class SortMethods {
 
 
     /**
+     * 二分查找
+     */
+    public static int binarySearch(int []array,int low,int high,int value){
+        if(low>high || value<array[low] || value>array[high]){
+            return -1;
+        }
+        int mid = (low+high)/2;
+
+        while (true){
+            if(array[mid] == value){
+                return mid;
+            }else{
+                if(array[mid] > value){
+                    return binarySearch(array,low,mid,value);
+                }else {
+                    return binarySearch(array,mid+1,high,value);
+                }
+            }
+        }
+    }
+
+
+    /**
      * 希尔排序：缩小增量排序，跳跃分割的策略
      * O(NlogN)
      * 排序效率依赖于依赖于增量序列的选取。

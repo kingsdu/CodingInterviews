@@ -11,7 +11,7 @@ public class OutPutResource implements Runnable {
     public void run() {
         while (true) {
             synchronized (r) {
-                System.out.println(r.name + "::::::::::::::" + r.sex);
+                System.out.println(r.name + r.sex);
             }
         }
     }

@@ -16,6 +16,7 @@ public class GeneralArray {
         this.nElem = 0;
     }
 
+
     public boolean find(int searchNum){
         int i;
         for(i=0;i<nElem;i++){
@@ -25,6 +26,7 @@ public class GeneralArray {
         }
         return false;
     }
+
 
     public boolean insert(int value){
         if(nElem == size){

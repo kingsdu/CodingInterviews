@@ -37,8 +37,9 @@ public class Heap {
         if (array == null || array.length <= 1) {
             return;
         }
-        buildMaxHeap(array);
+        buildMaxHeap(array);//构造最大堆，root是最大数
 
+        //提供
         for (int i = array.length - 1; i >= 1; i--) {
             exchangeElements(array, 0, i);
             maxHeap(array, i, 0);
@@ -53,7 +54,7 @@ public class Heap {
         }
 
         int half = array.length / 2;
-        for (int i = half; i >= 0; i--) {
+        for (int i = half; i <=array.length; i++) {
             maxHeap(array, array.length, i);
         }
     }
