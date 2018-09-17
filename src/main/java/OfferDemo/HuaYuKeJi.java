@@ -12,22 +12,18 @@ public class HuaYuKeJi {
 
 
     /**
+     * 对n个学生成绩排序，输入输出如下：
+     * score = {4,5,4,2}, 输出数组 = {2,1,2,4}
+     * */
+
+    /**
      * 程序有几处写的很不好。
      * 1 数组的复制属于多余操作
      * 2 判断当前数和下一个数不同的方法过于繁琐
      * 3 使用了Map数据结构，可能有更简单的方法
      * 4 花费时间太久，近一个小时
      * 5 中间调试了很多次，程序的写出借助了debug的帮助
-     * @param args
      */
-    public static void main(String[] args) {
-        HuaYuKeJi practice = new HuaYuKeJi();
-        int []score = new int[]{4,5,4,2,4};
-        int []temp = score.clone();
-//        int []temp = Arrays.copyOf(score,score.length);
-        Map<Integer, Integer> map = practice.rankingScore(temp);
-        practice.getRank(score,map);
-    }
 
     /**
      * 思路：
@@ -117,4 +113,28 @@ public class HuaYuKeJi {
     }
 
 
+    /**
+     * 输出金字塔图案
+     */
+    public void printPartern(int n){
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j < n - i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j < 2 * i - 1; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        for (int i = n-1; i >= 1; i--) {
+            for (int j = 0; j < n - i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j < 2 * i - 1; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
 }

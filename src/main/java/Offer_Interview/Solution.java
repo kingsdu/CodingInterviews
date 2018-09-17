@@ -138,7 +138,6 @@ public class Solution {
      * 前序遍历{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}
      */
     private static TreeNode reConstructBinaryTree(int[] pre, int startPre, int endPre, int[] in, int startIn, int endIn) {
-
         if (startPre > endPre || startIn > endIn)
             return null;
         TreeNode root = new TreeNode(pre[startPre]);
