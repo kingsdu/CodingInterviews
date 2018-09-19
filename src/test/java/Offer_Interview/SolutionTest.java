@@ -157,4 +157,19 @@ public class SolutionTest {
         System.out.println(arr[i1]);
     }
 
+
+    @Test
+    public void calChuAndYu(){
+        System.out.println(1%2);
+        System.out.println(0%2);
+        System.out.println(1/2);
+        System.out.println(0/2);
+    }
+
+    @Test
+    public void calYuAndHuo(){
+        System.out.println(1&0);
+        System.out.println(1&1);
+        System.out.println(0&0);
+    }
 }

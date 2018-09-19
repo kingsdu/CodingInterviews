@@ -402,7 +402,21 @@ public class Solution {
      * @return
      */
     public static int NumberOf1(int n){
+        int count = 0;
+        if(n<0){
+            while (n!=0){
+                int i = n % 2;
+                n/=2;
+                if(i == 1){
+                    count++;
+                }
+            }
+        }else if(n>0){
 
+        }
         return 0;
     }
+
+
+
 }
