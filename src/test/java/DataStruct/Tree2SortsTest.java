@@ -1,8 +1,7 @@
 package DataStruct;
 
+import DataStructBook.Tree2Sorts;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class Tree2SortsTest {
 

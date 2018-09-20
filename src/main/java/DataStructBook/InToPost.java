@@ -127,11 +127,11 @@ public class InToPost {
                 }
                 switch (ch) {
                     case '+':
-                        int num = stackXChar.pop() - '0' + stackXChar.pop() - '0';
+                        int num = (stackXChar.pop() - '0') + (stackXChar.pop() - '0');
                         stackXChar.push((char) (num + '0'));
                         break;
                     case '-':
-                        num = stackXChar.pop() - '0' - stackXChar.pop() - '0';
+                        num = (stackXChar.pop() - '0') - (stackXChar.pop() - '0');
                         stackXChar.push((char) (num + '0'));
                         break;
                     case '*':
@@ -139,7 +139,7 @@ public class InToPost {
                         stackXChar.push((char) (num + '0'));
                         break;
                     case '/':
-                        num = stackXChar.pop() - '0' / stackXChar.pop() - '0';
+                        num = (stackXChar.pop() - '0') / (stackXChar.pop() - '0');
                         stackXChar.push((char) (num + '0'));
                         break;
                 }
@@ -147,6 +147,7 @@ public class InToPost {
         }
         return stackXChar.peek() - '0';
     }
+
 
 
 

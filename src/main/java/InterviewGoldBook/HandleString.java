@@ -16,7 +16,6 @@ public class HandleString {
      * str1 = "123"  str2 = "321"  返回ture
      * str1 = "123"  str2 = "2331" 返回false
      *
-     *
      * 方法思路和知识点
      * 1 tcCharArray方法的使用
      * 2 256长度的数组
