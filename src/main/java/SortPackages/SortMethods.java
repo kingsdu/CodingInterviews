@@ -106,6 +106,28 @@ public class SortMethods {
 
 
     /**
+     * 非递归方式
+     */
+    public static int binarySearch(int[] array,int value){
+        int low = 0;
+        int heigh = array.length-1;
+
+        while (low < heigh){
+            int mid = (low + heigh) / 2;
+            if(array[mid] == value){
+                return mid;
+            }else{
+                if(array[mid] < value){
+                    low = mid + 1;
+                }else {
+                    heigh = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
      * 希尔排序：缩小增量排序，跳跃分割的策略
      * O(NlogN)
      * 排序效率依赖于依赖于增量序列的选取。
@@ -187,6 +209,7 @@ public class SortMethods {
 
 
     /**
+     *
      * 归并排序
      *
      * 归并排序分为两个部分：
@@ -202,7 +225,7 @@ public class SortMethods {
             return;
         }
 
-        if(start<end){
+        if(start < end){
             int mid = (start+end)/2;
             mergeSort_sort(arr,start,mid,temp);//左边归并排序，使得左子序列有序
             mergeSort_sort(arr,mid+1,end,temp);
