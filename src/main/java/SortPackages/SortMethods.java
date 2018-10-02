@@ -112,7 +112,7 @@ public class SortMethods {
         int low = 0;
         int heigh = array.length-1;
 
-        while (low < heigh){
+        while (low <= heigh){
             int mid = (low + heigh) / 2;
             if(array[mid] == value){
                 return mid;

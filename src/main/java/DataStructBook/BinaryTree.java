@@ -40,7 +40,7 @@ public class BinaryTree {
 
 
     /**
-     * 插入
+     * 插入(从根节点插入)
      * @param value
      * @return
      */
@@ -73,7 +73,7 @@ public class BinaryTree {
                 } else {
                     error = "having same value in binary tree";
                 }
-            } // end of while
+            }
         }
         return error;
     }
