@@ -1,5 +1,7 @@
 package DataStructBook;
 
+import DataStruct.BinTree;
+
 import java.util.Stack;
 
 /**
@@ -200,15 +202,7 @@ public class BinaryTree {
     }
 
 
-    public int getMinValue() {
-        BinTreeNode current = root;
-        while (true) {
-            if (current.leftChild == null)
-                return current.value;
 
-            current = current.leftChild;
-        }
-    }
 
 
 
