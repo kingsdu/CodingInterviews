@@ -40,7 +40,6 @@ public class GenerticAdvanced {
             System.out.println(iterator1.next().getCategory());
         }
 
-
         TreeSet set2 = new TreeSet(new SuperComparator());
 
         set2.add(new Dog("wangcaiq1"));

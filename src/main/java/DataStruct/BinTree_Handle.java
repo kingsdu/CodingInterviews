@@ -186,6 +186,8 @@ public class BinTree_Handle {
 
 
     /**
+     * 获取后继节点
+     * 比delNode大的最小一个节点
      * @param delNode
      * @return
      */
@@ -207,5 +209,31 @@ public class BinTree_Handle {
         return successor;
     }
 
+
+    /**
+     * 中序遍历
+     */
+    public void inOrderTraverse(BinTree node) {
+        if(node == null){
+            return;
+        }
+        inOrderTraverse(node.leftNode);
+        node.display();
+        inOrderTraverse(node.rightNode);
+    }
+
+
+
+    /**
+     * 先序遍历
+     */
+    public void preOrderTraverse(BinTree node) {
+        if(node == null){
+            return;
+        }
+        node.display();
+        inOrderTraverse(node.leftNode);
+        inOrderTraverse(node.rightNode);
+    }
 
 }

@@ -15,7 +15,6 @@ public class Stack_MinElement {
         stack_min = new Stack<Integer>();
     }
 
-
     public void push(int value){
         if(stack_min.isEmpty()){
             stack_min.push(value);

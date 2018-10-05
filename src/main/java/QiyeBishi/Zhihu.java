@@ -1,6 +1,6 @@
 package QiyeBishi;
 
-public class Zhuihu {
+public class Zhihu {
     public boolean isInnerIP(String ipAddress){/*判断是否是内网IP*/
         boolean isInnerIp = false;//默认给定IP不是内网IP
         long ipNum = getIpNum(ipAddress);
@@ -39,7 +39,7 @@ public class Zhuihu {
     }
 
     public static void main(String[] args) {
-        if (new Zhuihu().isInnerIP("22.8.129.60")) {//172.16.0.119
+        if (new Zhihu().isInnerIP("22.8.129.60")) {//172.16.0.119
             System.out.println("该IP地址为内网IP！");
         } else {
             System.out.println("该IP地址为外网IP！");

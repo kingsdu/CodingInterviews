@@ -7,11 +7,9 @@ public class NumSum {
 
 
     public static void main(String[] args) {
-        String str = "A1CD2E33";
+        String str = "A-1B--2C--D6E";
         System.out.println(NumSum.calStringSum(str));
     }
-
-
 
 
     /**

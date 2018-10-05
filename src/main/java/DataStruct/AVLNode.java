@@ -1,4 +1,4 @@
-package DataStructBook;
+package DataStruct;
 
 /**
  * 平衡二叉搜索树(AVL树)节点

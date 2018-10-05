@@ -3,7 +3,6 @@ import java.util.*;
 
 public class Yunmanman {
 
-
     public static void main(String[] args) {
         int n = 2,m = 5;
         int[] taoEnergy = new int[]{5,6,10,20,30};

@@ -1,6 +1,8 @@
-package DataStructBook;
+package DataStruct;
 
-public class AVLTree <T extends Comparable> implements Tree<T>{
+import DataStructBook.Tree;
+
+public class AVLTree <T extends Comparable> implements Tree<T> {
 
 
     /** The tree root. */

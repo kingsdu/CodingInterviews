@@ -13,5 +13,7 @@ public class BinTree {
         this.val = val;
     }
 
-
+    public void display() {
+        System.out.print(this.val + "\t");
+    }
 }
