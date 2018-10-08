@@ -18,6 +18,4 @@ public class ChildTest {
         System.out.println(((Parent)c).a+""+((Parent)c).b);
     }
 
-
-
 }

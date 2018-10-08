@@ -7,9 +7,8 @@ public class Heap {
 
 
     /**
-     *
      * 堆排序的思想：
-     *
+     * <p>
      * 已构建最小根堆为例
      * 1 根据buildMaxHeap，遍历整个堆，将堆中的最大数放入到root节点
      * 2 将root中保存的当前堆中的最大值，和堆最后位置的数据进行交换，最大数被交换到最后
@@ -17,10 +16,11 @@ public class Heap {
      * 4 在将其和堆最后位置 - 1 的数交换，次大的数被交换到倒数第二位
      * 。。。。。。。 循环
      * 直到程序结束，堆就是最小堆
+     *
      * @param args
      */
     public static void main(String[] args) {
-        int[] array = { 9, 3, 2, 8, 1, -2, -3 };
+        int[] array = {9, 3, 2, 8, 1, -2, -3};
 
         System.out.println("Before heap:");
         printArray(array);
@@ -32,7 +32,6 @@ public class Heap {
     }
 
 
-
     public static void heapSort(int[] array) {
         if (array == null || array.length <= 1) {
             return;
@@ -40,12 +39,11 @@ public class Heap {
         buildMaxHeap(array);//构造最大堆，root是最大数
 
         //提供
-        for (int i = array.length - 1; i >= 1; i--) {
+        for (int i = array.length - 1; i > 0; i--) {
             exchangeElements(array, 0, i);
             maxHeap(array, i, 0);
         }
     }
-
 
 
     private static void buildMaxHeap(int[] array) {
@@ -53,8 +51,8 @@ public class Heap {
             return;
         }
 
-        int half = array.length / 2;
-        for (int i = half; i <=array.length; i++) {
+        int half = array.length / 2 -1 ;
+        for (int i = half; i >= 0 ; i--) {
             maxHeap(array, array.length, i);
         }
     }

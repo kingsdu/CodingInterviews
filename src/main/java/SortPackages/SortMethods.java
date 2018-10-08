@@ -127,6 +127,30 @@ public class SortMethods {
         return -1;
     }
 
+
+    /**
+     *
+     * 第一层：控制gap
+     * 第二层：自增
+     * 第三层：交换，--
+     *
+     * @param array
+     */
+    public void shellSort(int []array){
+        for (int gap = array.length/2; gap > 0; gap/=2) {
+            for (int i = gap; i < array.length; i++) {
+                int j = i;
+                while (j-gap >=0 && array[j] < array[j-gap]){
+                    int temp = array[j];
+                    array[j] = array[j-gap];
+                    array[j-gap] = temp;
+                    j-=gap;
+                }
+            }
+        }
+    }
+
+
     /**
      * 希尔排序：缩小增量排序，跳跃分割的策略
      * O(NlogN)
@@ -145,7 +169,7 @@ public class SortMethods {
          * 第一层：切分，控制增量间隔
          */
         for (int increment = data.length / 2; increment > 0; increment /= 2) {
-            //二层，基于增量的向前递进，遍历外岑，用于循环比较
+            //二层，基于增量的向前递进，遍历外层，用于循环比较
             for (int i = increment; i < data.length; i++) {
                 temp = data[i];
                 //三层，基于增量进行比较，遍历内层

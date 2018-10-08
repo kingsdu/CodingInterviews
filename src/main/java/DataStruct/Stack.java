@@ -13,6 +13,10 @@ public class Stack {
     }
 
 
+    public int size() {
+        return top + 1;
+    }
+
     /**
      * 增
      */
@@ -74,7 +78,6 @@ public class Stack {
     public boolean isFull(){
         return top == maxSize - 1;
     }
-
 
 
     public void displayStack(){
