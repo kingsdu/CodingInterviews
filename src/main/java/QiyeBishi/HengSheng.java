@@ -51,6 +51,14 @@ public class HengSheng {
         }
     }
 
+
+
+
+    /**
+     * 过滤掉0，提高效率
+     * @param array
+     * @return
+     */
     public static boolean isNull(int[] array) {
         int i = 0;
         while (i < array.length && array[i] == 0) {

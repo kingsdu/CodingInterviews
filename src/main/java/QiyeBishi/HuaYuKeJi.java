@@ -117,9 +117,12 @@ public class HuaYuKeJi {
      */
     public void printPartern(int n){
         for (int i = 1; i <= n; i++) {
+            //空格的数量分别为2,1,0所以此处总结出的规律为n-i
             for (int j = 0; j < n - i; j++) {
                 System.out.print(" ");
             }
+            //根据*的个数呈1,3,5,7,9的递增，
+            // 所以总结出：2 * i + 1
             for (int j = 0; j < 2 * i - 1; j++) {
                 System.out.print("*");
             }
