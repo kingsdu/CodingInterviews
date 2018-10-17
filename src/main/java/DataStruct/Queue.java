@@ -1,5 +1,7 @@
 package DataStruct;
 
+import java.util.concurrent.ArrayBlockingQueue;
+
 public class Queue {
 
     private int[] queueArray;
@@ -22,6 +24,7 @@ public class Queue {
      * @return
      */
     public void insert(int val){
+        //队列满
         if(rear == maxSize-1){
             rear = -1;
         }

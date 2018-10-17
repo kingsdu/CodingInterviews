@@ -11,4 +11,9 @@ public class ListNode {
     public ListNode(int data){
         this.data = data;
     }
+
+    public void displayLink(){
+        System.out.println(data);
+    }
+
 }
