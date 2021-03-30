@@ -15,12 +15,10 @@ public class MainMethods {
         //生成随机数组
 //        int rows = 31500,cols = 31400;
 //        int[][] arrayListGet = sl.ArrayList_get(rows, cols);
-
         //遍历法
 //        int target = 111;
 ////        int [][] arrayTar = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
 //        System.out.println(sl.Find_1(target,arrayListGet));
-
         //位置法
 //        int target = 111;
 ////        int [][] arrayTar = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
