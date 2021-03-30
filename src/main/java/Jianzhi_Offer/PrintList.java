@@ -11,6 +11,8 @@ import java.util.ArrayList;
  */
 public class PrintList {
 
+    ArrayList<Integer> resList = new ArrayList<>();
+
     /**
      *
      * 递归法
@@ -19,9 +21,8 @@ public class PrintList {
      */
     public ArrayList<Integer> printListFromTailToHead_1(ListNode.Node node){
         ListNode.Node curNode = node;
-        ArrayList<Integer> resList = new ArrayList<>();
 
-        if(curNode.next != null){
+        if(curNode != null){
             this.printListFromTailToHead_1(curNode.next);
             resList.add(curNode.val);
         }
