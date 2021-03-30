@@ -25,7 +25,7 @@ public class MainMethods {
 ////        int [][] arrayTar = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
 //        System.out.println(sl.Find_2(target,arrayListGet));
 
-        //字符串替换
+        /** 字符串替换*/
 //        String str = "We Are Happy";
 //        ReplaceSpace rse = new ReplaceSpace();
 //        System.out.println(rse.replace_2(str));
