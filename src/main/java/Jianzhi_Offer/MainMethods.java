@@ -44,7 +44,7 @@ public class MainMethods {
 
         System.out.println();
 
-        ArrayList<Integer> resList = printList.printListFromTailToHead_1(curNode);
+        ArrayList<Integer> resList = printList.printListFormToHead_3(curNode);
 
         for (Integer number :
                 resList) {

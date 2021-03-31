@@ -84,6 +84,26 @@ public class Solution {
         return array_a;
     }
 
+
+    public boolean getNumber(int target,int [][] arrayTar){
+        int i,j;
+        i = arrayTar.length-1;
+        j = 0;
+
+        while(i>=0 && j<arrayTar[0].length){
+            if(arrayTar[i][j] < target){
+                j++;
+            }
+            else if(arrayTar[i][j] > target){
+                i--;
+            }
+            else {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 
 

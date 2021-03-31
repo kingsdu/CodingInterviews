@@ -61,15 +61,42 @@ public class ReplaceSpace {
      * @return
      */
     public String replace_3(String str){
-
         if(str.length() == 0 || str == ""){
             return "";
         }
-
-
         return str.replaceAll("\\s","%20");
     }
 
+
+
+    /****
+     *
+     * 复习区
+     * 请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。
+     * "We Are Happy"
+     * "We%20Are%20Happy"
+     *
+     * */
+
+
+    public String getString_1(String inputStr){
+        StringBuilder sbr = new StringBuilder();
+        int index = 0;
+        for (int i = 0; i < inputStr.length(); i++) {
+            if(inputStr.charAt(i) == ' '){
+                sbr.append(inputStr.substring(index,i));
+                sbr.append("%20");
+                index = i+1;
+            }
+        }
+
+        if(index < inputStr.length()){
+            sbr.append(inputStr.substring(index));
+        }
+
+        return "";
+
+    }
 
 
 
@@ -80,6 +107,6 @@ public class ReplaceSpace {
  * （1）程序要自己反复思考
  * （2）正则表达式需要学习
  * （3）Stringbuffer和StringBuilder的区别
- *
+ *  (4) 写程序要注意判空操作
  *
  */
