@@ -12,7 +12,6 @@ import java.util.Stack;
 public class CreateBinaryTree
 {
 
-
     public static void main(String[] args)
     {
         BinTreeNode[] nodes = new BinTreeNode[10];
