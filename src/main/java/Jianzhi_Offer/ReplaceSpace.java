@@ -9,29 +9,30 @@ package Jianzhi_Offer;
  */
 public class ReplaceSpace {
 
-
     /**
      * 判断字符存在，找到对应位置截取
+     *
      * @param str
      * @return
      */
-    public String replace_1(String str){
-        if(str == null || str.length() == 0){
+    public String replace_1(String str) {
+        if (str == null || str.length() == 0) {
             return "";
         }
 
         StringBuffer sbf = new StringBuffer();
         int index = 0;
-        for (int i = 0; i < str.length(); i++) {
+        for (int i = 0; i < str.length(); i++)
+        {
             char c = str.charAt(i);
             //char[] chars = str.toCharArray();
-            if(c == ' '){
-                sbf.append(str.substring(index,i));
+            if (c == ' ') {
+                sbf.append(str.substring(index, i));
                 sbf.append("%20");
-                index = i+1;
+                index = i + 1;
             }
         }
-        if(index < str.length()){
+        if (index < str.length()) {
             sbf.append(str.substring(index));
         }
         return sbf.toString();
@@ -39,34 +40,35 @@ public class ReplaceSpace {
 
     /**
      * 通过字符串函数转换
+     *
      * @param str
      * @return
      */
-    public String replace_2(String str){
+    public String replace_2(String str) {
 
-        if(str.length() == 0 || str == ""){
+        if (str.length() == 0 || str == "") {
             return "";
         }
 
         StringBuffer sbf = new StringBuffer();
-        for (char c:
+        for (char c :
                 str.toCharArray()) {
-            sbf.append(c==' '?"%20":c);
+            sbf.append(c == ' ' ? "%20" : c);
         }
         return sbf.toString();
     }
 
     /**
      * 正则表达式匹配
+     *
      * @return
      */
-    public String replace_3(String str){
-        if(str.length() == 0 || str == ""){
+    public String replace_3(String str) {
+        if (str.length() == 0 || str == "") {
             return "";
         }
-        return str.replaceAll("\\s","%20");
+        return str.replaceAll("\\s", "%20");
     }
-
 
 
     /****
@@ -79,18 +81,18 @@ public class ReplaceSpace {
      * */
 
 
-    public String getString_1(String inputStr){
+    public String getString_1(String inputStr) {
         StringBuilder sbr = new StringBuilder();
         int index = 0;
         for (int i = 0; i < inputStr.length(); i++) {
-            if(inputStr.charAt(i) == ' '){
-                sbr.append(inputStr.substring(index,i));
+            if (inputStr.charAt(i) == ' ') {
+                sbr.append(inputStr.substring(index, i));
                 sbr.append("%20");
-                index = i+1;
+                index = i + 1;
             }
         }
 
-        if(index < inputStr.length()){
+        if (index < inputStr.length()) {
             sbr.append(inputStr.substring(index));
         }
 
@@ -99,14 +101,11 @@ public class ReplaceSpace {
     }
 
 
-
 }
 
 /**
- *
  * （1）程序要自己反复思考
  * （2）正则表达式需要学习
  * （3）Stringbuffer和StringBuilder的区别
- *  (4) 写程序要注意判空操作
- *
+ * (4) 写程序要注意判空操作
  */

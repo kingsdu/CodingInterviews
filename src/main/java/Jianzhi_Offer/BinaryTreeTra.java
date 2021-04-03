@@ -19,18 +19,18 @@ import java.util.Arrays;
 public class BinaryTreeTra {
 
     public BinTreeNode reConstructBinaryTree(int[] pre,int[] in)
-    {
-        if (pre.length == 0 || in.length == 0) {
-            return null;
-        }
-        BinTreeNode root = new BinTreeNode(pre[0]);
-        // 在中序中找到前序的根
-        for (int i = 0; i < in.length; i++) {
-            if (in[i] == pre[0]) {
-                // 左子树，注意 copyOfRange 函数，左闭右开
-                root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, 1, i + 1), Arrays.copyOfRange(in, 0, i));
-                // 右子树，注意 copyOfRange 函数，左闭右开
-                root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, i + 1, pre.length), Arrays.copyOfRange(in, i + 1, in.length));
+                {
+                    if (pre.length == 0 || in.length == 0) {
+                        return null;
+                    }
+                    BinTreeNode root = new BinTreeNode(pre[0]);
+                    // 在中序中找到前序的根
+                    for (int i = 0; i < in.length; i++) {
+                        if (in[i] == pre[0]) {
+                            // 左子树，注意 copyOfRange 函数，左闭右开
+                            root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, 1, i + 1), Arrays.copyOfRange(in, 0, i));
+                            // 右子树，注意 copyOfRange 函数，左闭右开
+                            root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, i + 1, pre.length), Arrays.copyOfRange(in, i + 1, in.length));
                 break;
             }
         }
@@ -81,3 +81,11 @@ public class BinaryTreeTra {
     }
 
 }
+
+
+/***
+ *
+ * 1、copyOfRange(X,from,to)，from下标是包含,to的下标是排他。(from,to];
+ * 2、写程序重点是搞清楚算法逻辑；
+ *
+ */
