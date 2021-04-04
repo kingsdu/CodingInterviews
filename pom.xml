@@ -75,6 +75,13 @@
             <version>3.7</version>
         </dependency>
 
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/lennart/cpdetector &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>lennart</groupId>-->
+<!--            <artifactId>cpdetector</artifactId>-->
+<!--            <version>1.0.4</version>-->
+<!--        </dependency>-->
+
         <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/sqljdbc4 -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
@@ -82,14 +89,6 @@
             <version>4.0</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/lennart/cpdetector -->
-        <dependency>
-            <groupId>lennart</groupId>
-            <artifactId>cpdetector</artifactId>
-            <version>1.0.4</version>
-        </dependency>
-
 
     </dependencies>
 
