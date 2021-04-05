@@ -82,13 +82,12 @@
 <!--            <version>1.0.4</version>-->
 <!--        </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/sqljdbc4 -->
-        <dependency>
+       <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>sqljdbc4</artifactId>
             <version>4.0</version>
-            <scope>test</scope>
         </dependency>
+
 
     </dependencies>
 
