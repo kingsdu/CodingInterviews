@@ -1,4 +1,4 @@
-package HSP;
+package HSP.Day01;
 
 /**
  *
