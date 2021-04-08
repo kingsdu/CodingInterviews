@@ -2,7 +2,8 @@ package HSP.Day02;
 
 import java.util.Scanner;
 
-
+//https://www.cnblogs.com/ysocean/p/7921930.html
+//
 public class Day02
 {
 
