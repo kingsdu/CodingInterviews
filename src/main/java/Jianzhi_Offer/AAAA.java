@@ -6,7 +6,8 @@ import java.util.ArrayList;
 /**
  * 所有方法主类
  */
-public class MainMethods {
+public class AAAA
+{
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();

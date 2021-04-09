@@ -16,7 +16,7 @@ public class Power
     public double Power_1(double base, int exponent)
     {
         double result = 1.0;
-        ;
+        
         if (base == 0) return 0.0;
         if (exponent == 0) return 1;
         
