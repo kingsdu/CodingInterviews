@@ -206,6 +206,7 @@ public class CreateBinaryTree
         {
             while (root != null)
             {
+                //区别，先存根节点，在遍历左边是否有节点
                 list.add(root.val);
                 stack.push(root);
                 root = root.left;
@@ -232,6 +233,7 @@ public class CreateBinaryTree
         {
             if (root != null)
             {
+                //区别，先看左边是否有节点
                 stack.push(root);
                 root = root.left;
             } else
