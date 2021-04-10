@@ -5,7 +5,7 @@ public class Day03
     
     public static void main(String[] args)
     {
-        LinkedListHSP ls = new LinkedListHSP();
+        SingleLinkedListHSP ls = new SingleLinkedListHSP();
         ls.addFirst(1);
         ls.addNode(2);
         ls.addNodeIndex(3,3);
@@ -19,5 +19,6 @@ public class Day03
         ls.removeNodeElement(6);
         ls.printLinkedList();
         System.out.println(ls.containsElement(5) ? "有":"没有");
+        System.out.println(ls.getNodeIndex(2));
     }
 }

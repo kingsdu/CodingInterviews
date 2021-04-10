@@ -8,13 +8,15 @@ package HSP.Day03;
  * 2、单向链表插入、删除数据较快，直接找到位置，修改链表的位置即可。
  * 3、单向链表操作的一些技巧
  * （1）插入时最好定位到链表插入位置的前一个节点:插入节点.next = 前一个节点.next ; 前一个节点.next = 插入节点 ;(注意先后顺序)
+ *  (2)删除时要保持删除位的前置位
+ *  (3)链表的起始位是1
  */
-public class LinkedListHSP
+public class SingleLinkedListHSP
 {
     public NodeHSP head;
     public int size;
     
-    public LinkedListHSP()
+    public SingleLinkedListHSP()
     {
         this.head = null;
         this.size = 0;
