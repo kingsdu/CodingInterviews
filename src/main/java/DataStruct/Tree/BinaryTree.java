@@ -570,9 +570,10 @@ public class BinaryTree
                 }
             }
         }
-        //Tree引用的逻辑是怎样的？为什么改变任意一个赋值变量的值最后都会改变root的值？
+        
+        //切断最深节点和其上级节点之间的联系
         if (preLeft != null)
-        {
+        {//Tree引用的逻辑是怎样的？为什么改变任意一个赋值变量的值最后都会改变root的值？
             preLeft.left = null;
         } else if (preRight != null)
         {
