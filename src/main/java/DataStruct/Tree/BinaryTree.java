@@ -186,6 +186,7 @@ public class BinaryTree
         {
             while (root != null)
             {
+                //直接处理根节点，在遍历子树之前处理
                 list.add(root.val);
                 stack.push(root);
                 root = root.left;
@@ -215,6 +216,7 @@ public class BinaryTree
                 root = root.left;
             } else
             {
+                //移动到左节点后在处理
                 BinaryTreeNode tempNode = stack.pop();
                 list.add(tempNode.val);
                 root = tempNode.right;
