@@ -1,5 +1,7 @@
 package Jianzhi_Offer;
 
+import java.util.ArrayList;
+
 /**
  *
  * 单链表数据结构
@@ -16,6 +18,31 @@ public class ListNode {
         public Node(int val){
             this.val = val;
             this.next = null;
+        }
+    }
+    
+    
+    public static void main(String[] args)
+    {
+        /** 反向打印链表*/
+        ListNode node = new ListNode();
+        ListNode.Node curNode;
+        PrintList printList = new PrintList();
+    
+        node.addNodeOrder(1);
+        node.addNodeOrder(2);
+        node.addNodeOrder(3);
+        curNode = node.head;
+    
+        node.printListNode();
+    
+        System.out.println();
+    
+        ArrayList<Integer> resList = printList.printListFormToHead_3(curNode);
+    
+        for (Integer number :
+                resList) {
+            System.out.print(number+" ");
         }
     }
 

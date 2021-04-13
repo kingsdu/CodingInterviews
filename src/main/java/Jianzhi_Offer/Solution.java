@@ -9,67 +9,78 @@ import java.util.Random;
  *
  */
 
-public class Solution {
-
+public class Solution
+{
+    
     /**
      * 数组遍历法则
+     *
      * @param target
      * @param array
      * @return
      */
-    public boolean Find_1(int target,int [][] array){
+    public boolean Find_1(int target, int[][] array)
+    {
         boolean flag = false;
-
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                if(array[i][j] == target){
+        
+        for (int i = 0; i < array.length; i++)
+        {
+            for (int j = 0; j < array[i].length; j++)
+            {
+                if (array[i][j] == target)
+                {
                     flag = true;
                     break;
                 }
             }
         }
-
+        
         return flag;
     }
-
-
+    
+    
     /**
-     *
      * 位置判断法
      *
      * @param target
      * @param array
      * @return
      */
-    public boolean Find_2(int target,int [][] array){
+    public boolean Find_2(int target, int[][] array)
+    {
         int rows = array.length;
         int cols = array[0].length;
-        int i=rows-1,j=0;
-
-        while(i>=0 && j<cols){
-            if(array[i][j]>target)
+        int i = rows - 1, j = 0;
+        
+        while (i >= 0 && j < cols)
+        {
+            if (array[i][j] > target)
                 i--;
-            else if(array[i][j]<target)
+            else if (array[i][j] < target)
                 j++;
             else
                 return true;
         }
         return false;
     }
-
-
+    
+    
     /**
      * 生成指定行列的数组
+     *
      * @param cols
      * @param rows
      * @return
      */
-    public int [][] ArrayList_get(int rows,int cols){
-        int [][] array_a = new int[rows][cols];
+    public int[][] ArrayList_get(int rows, int cols)
+    {
+        int[][] array_a = new int[rows][cols];
         Random ran = new Random();
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+        
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
                 array_a[i][j] = ran.nextInt(100);
             }
         }
@@ -80,35 +91,47 @@ public class Solution {
 //            }
 //            System.out.println();
 //        }
-
+        
         return array_a;
     }
-
-
-    public boolean getNumber(int target,int [][] arrayTar){
-        int i,j;
-        i = arrayTar.length-1;
+    
+    
+    public boolean getNumber(int target, int[][] arrayTar)
+    {
+        int i, j;
+        i = arrayTar.length - 1;
         j = 0;
-
-        while(i>=0 && j<arrayTar[0].length){
-            if(arrayTar[i][j] < target){
+        
+        while (i >= 0 && j < arrayTar[0].length)
+        {
+            if (arrayTar[i][j] < target)
+            {
                 j++;
-            }
-            else if(arrayTar[i][j] > target){
+            } else if (arrayTar[i][j] > target)
+            {
                 i--;
-            }
-            else {
+            } else
+            {
                 return true;
             }
         }
         return false;
     }
-
+    
+    
+    public static void main(String[] args)
+    {
+        Solution sl = new Solution();
+        //遍历法
+        int target = 111;
+        int[][] arrayTar = {{1, 2, 8, 9}, {2, 4, 9, 12}, {4, 7, 10, 13}, {6, 8, 11, 15}};
+        System.out.println(sl.Find_1(target, arrayTar));
+        System.out.println(sl.Find_2(target, arrayTar));
+    }
 }
 
 
 /**
- *
  * 结论：
  * （1）遍历法是根据数组左下角和右上角的数字间的规律进行比较的，要注意循环的条件控制以及数组的边界控制。
  * （2）遍历法和位置法都是逐个在比较，两者的效率相差不大。
