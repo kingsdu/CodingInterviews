@@ -3,8 +3,9 @@ package Java_SE.String;
 public class StringMain {
 
     public static void main(String[] args) {
-        StringDel sdl = new StringDel();
-        sdl.delStrEqual_1();
+        int a = 1,b=2;
+        int c = a/b;
+        System.out.println(c);
     }
 
 }

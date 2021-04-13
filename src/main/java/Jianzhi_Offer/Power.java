@@ -59,7 +59,7 @@ public class Power
         double result = power_2Call(base, exponent / 2);
         if (exponent%2==1)
         {
-            return result * result * base;
+            return result * result * base;//无论什么exponent最后都会进个方法
         } else
         {
             return result * result;
@@ -83,12 +83,12 @@ public class Power
     public static void main(String[] args)
     {
         Power power = new Power();
-        int base = 2, exponent = 3;
-        double a = Math.pow(base, exponent);
-        double b = power.Power_1(base, exponent);
+        int base = 2, exponent = 4;
+//        double a = Math.pow(base, exponent);
+//        double b = power.Power_1(base, exponent);
         double c = power.power_2(base,exponent);
-        System.out.println(a);
-        System.out.println(b);
+//        System.out.println(a);
+//        System.out.println(b);
         System.out.println(c);
     }
     
