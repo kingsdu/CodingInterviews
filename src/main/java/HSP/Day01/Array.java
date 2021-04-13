@@ -11,7 +11,7 @@ package HSP.Day01;
  *  具体见印象笔记
  *
  */
-public class Day01
+public class Array
 {
 
     /**

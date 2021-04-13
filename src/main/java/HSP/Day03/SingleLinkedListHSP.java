@@ -1,19 +1,13 @@
 package HSP.Day03;
 
 /**
- * 链表结构
- * <p>
- * 代码体验：
- * 1、单向链表获取数据较慢，需要逐个链表的遍历比对
- * 2、单向链表插入、删除数据较快，直接找到位置，修改链表的位置即可。
- * 3、单向链表操作的一些技巧
- * （1）插入时最好定位到链表插入位置的前一个节点:插入节点.next = 前一个节点.next ; 前一个节点.next = 插入节点 ;(注意先后顺序)
- *  (2)删除时要保持删除位的前置位
- *  (3)链表的起始位是1
+ * 链表：单链表
+ *
+ * 实现基本操作：增删改查
  */
 public class SingleLinkedListHSP
 {
-    public NodeHSP head;
+    public SingleNode head;
     public int size;
     
     public SingleLinkedListHSP()
@@ -38,14 +32,14 @@ public class SingleLinkedListHSP
      */
     public void addNode(int value)
     {
-        NodeHSP newNode = new NodeHSP(value);
+        SingleNode newNode = new SingleNode(value);
         
         if (isEmpty())
         {
             addFirst(value);
             return;
         }
-        NodeHSP curNode = head;
+        SingleNode curNode = head;
         while (curNode.next != null)
         {
             curNode = curNode.next;
@@ -66,7 +60,7 @@ public class SingleLinkedListHSP
             return;
         }
         
-        head = new NodeHSP(value);
+        head = new SingleNode(value);
         size++;
     }
     
@@ -76,7 +70,7 @@ public class SingleLinkedListHSP
      */
     public void addNodeReverse(int value)
     {
-        NodeHSP newNode = new NodeHSP(value);
+        SingleNode newNode = new SingleNode(value);
         if (isEmpty())
         {
             addFirst(value);
@@ -108,14 +102,14 @@ public class SingleLinkedListHSP
             return;
         }
         
-        NodeHSP curNode = this.head;
+        SingleNode curNode = this.head;
         //链表从1开始计数
         while ((index > 1) && (curNode.next.next != null))
         {
             index--;
             curNode = curNode.next;
         }
-        NodeHSP newNode = new NodeHSP(value);
+        SingleNode newNode = new SingleNode(value);
         newNode.next = curNode.next;
         curNode.next = newNode;
         this.size++;
@@ -133,7 +127,7 @@ public class SingleLinkedListHSP
         {
             throw new IllegalArgumentException("链表为空");
         }
-        NodeHSP curNode = head;
+        SingleNode curNode = head;
         while (curNode.next != null)
         {
             curNode = curNode.next;
@@ -163,7 +157,7 @@ public class SingleLinkedListHSP
             return getLastNode();
         }
         
-        NodeHSP curNode = head;
+        SingleNode curNode = head;
         while ((index > 1) && (curNode.next != null))
         {
             curNode = curNode.next;
@@ -185,7 +179,7 @@ public class SingleLinkedListHSP
             throw new IllegalArgumentException("链表为空");
         }
         
-        NodeHSP curNode = head;
+        SingleNode curNode = head;
         while (curNode.next.next != null)
         {
             curNode = curNode.next;
@@ -220,7 +214,7 @@ public class SingleLinkedListHSP
             return;
         }
         
-        NodeHSP curNode = head;
+        SingleNode curNode = head;
         index--;//保证curNode的前置位
         while ((index > 1) && (curNode.next.next != null))
         {
@@ -244,7 +238,7 @@ public class SingleLinkedListHSP
             throw new IllegalArgumentException("链表为空");
         }
         
-        NodeHSP curNode = head;
+        SingleNode curNode = head;
         //第一个元素特殊处理
         if (curNode.val == nodeElement)
         {
@@ -289,7 +283,7 @@ public class SingleLinkedListHSP
             editLastNode(nodeValue);
         }
         
-        NodeHSP curNode = head;
+        SingleNode curNode = head;
         while ((index > 1) && (curNode.next != null))
         {
             index--;
@@ -309,7 +303,7 @@ public class SingleLinkedListHSP
             throw new IllegalArgumentException("链表为空");
         }
         
-        NodeHSP curNode = this.head;
+        SingleNode curNode = this.head;
         while (curNode.next != null)
         {
             curNode = curNode.next;
@@ -330,7 +324,7 @@ public class SingleLinkedListHSP
             throw new IllegalArgumentException("链表为空");
         }
         
-        NodeHSP curNode = head;
+        SingleNode curNode = head;
         
         if(curNode.val == value){
             return true;
@@ -354,7 +348,7 @@ public class SingleLinkedListHSP
         {
             throw new IllegalArgumentException("链表为空");
         }
-        NodeHSP curNode = head;
+        SingleNode curNode = head;
         while (curNode != null)
         {
             System.out.println(curNode.val + " ");

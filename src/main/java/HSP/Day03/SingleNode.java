@@ -1,11 +1,17 @@
 package HSP.Day03;
 
-public class NodeHSP
+/**
+ *
+ *
+ *
+ *
+ */
+public class SingleNode
 {
     public int val;
-    public NodeHSP next;
+    public SingleNode next;
     
-    public NodeHSP(int val){
+    public SingleNode(int val){
         this.val = val;
         this.next = null;
     }
