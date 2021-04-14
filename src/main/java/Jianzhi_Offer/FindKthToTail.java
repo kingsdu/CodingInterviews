@@ -22,7 +22,8 @@ public class FindKthToTail
         addNodeOrder(5);
         addNodeOrder(6);
         printListNode(head);
-//        ListNode listNode = FindKthToTail_1(head, 2);
+        ListNode listNode1 = FindKthToTail_1(head, 2);
+        printListNode(listNode1);
         System.out.println();
         ListNode listNode2 = FindKthToTail_2(head, 2);
         printListNode(listNode2);
