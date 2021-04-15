@@ -9,7 +9,7 @@ import java.util.Random;
  *
  */
 
-public class Solution
+public class FindArray
 {
     
     /**
@@ -121,7 +121,7 @@ public class Solution
     
     public static void main(String[] args)
     {
-        Solution sl = new Solution();
+        FindArray sl = new FindArray();
         //遍历法
         int target = 111;
         int[][] arrayTar = {{1, 2, 8, 9}, {2, 4, 9, 12}, {4, 7, 10, 13}, {6, 8, 11, 15}};
