@@ -26,10 +26,8 @@ public class MyStack
         myStack.push(2);
         myStack.push(3);
         System.out.println(myStack.peek());
-        while (!myStack.isEmpty())
-        {
-            System.out.println(myStack.pop());
-        }
+        System.out.println(myStack.pop());
+        System.out.println(myStack.pop());
     }
     
     
@@ -70,5 +68,44 @@ public class MyStack
             return;
         }
         stackObj[++index] = val;
+    }
+    
+    public int priority(int oper)
+    {
+        if(oper == '*' || oper == '/'){
+            return 1;
+        }else if(oper == '+' || oper == '-'){
+            return 0;
+        }else {
+            return -1;
+        }
+    }
+    
+    public boolean isOper(char val)
+    {
+        return val == '+' || val == '-' || val == '*' || val == '/';
+    }
+    
+    public int cal(int num1, int num2, int oper)
+    {
+        int res = 0;
+        switch (oper)
+        {
+            case '+':
+                res = num1 + num2;
+                break;
+            case '-':
+                res = num2 - num1;
+                break;
+            case '*':
+                res = num1 * num2;
+                break;
+            case '/':
+                res = num2 / num1;
+                break;
+            default:
+                break;
+        }
+        return res;
     }
 }
