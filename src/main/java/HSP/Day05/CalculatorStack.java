@@ -18,7 +18,6 @@ public class CalculatorStack
         System.out.println(i);
     }
     
-    
     /**
      * 计算expression
      *
