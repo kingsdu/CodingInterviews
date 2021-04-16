@@ -24,7 +24,8 @@ public class StackArray
         st.push(3);
         System.out.println(st.peek());
         
-        while (!st.isEmpty()){
+        while (!st.isEmpty())
+        {
             System.out.println(st.pop());
         }
     }

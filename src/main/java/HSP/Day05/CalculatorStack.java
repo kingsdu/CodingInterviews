@@ -3,8 +3,8 @@ package HSP.Day05;
 /**
  * 栈实现综合计算器
  * <p>
- * 输入：7*2*2-5+1-5+3-4
- * 计算结果
+ * 输入:7*2*2-5+1-5+3-4
+ * 输出:计算结果
  */
 public class CalculatorStack
 {
@@ -53,7 +53,7 @@ public class CalculatorStack
                 }
             } else
             {
-                keepNum += ch;
+                keepNum += ch;//考虑多位数问题
                 
                 if (index == expression.length() - 1)
                 {

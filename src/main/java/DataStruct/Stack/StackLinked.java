@@ -5,19 +5,16 @@ package DataStruct.Stack;
  * 链表实现栈结构
  * 栈：先入后出，后入先出
  * <p>
- *
+ * <p>
  * 思路：主要是在写入节点时，每写入一次，head指向新加入的节点
  * 优点：
  * 1、栈规模的增加和减小都很简洁
  * 2、每个操作都是常数时间开销
  * 3、每个操作都需要使用额外的空间和时间来处理指针
- *
- *
  */
 public class StackLinked
 {
     public static LinkNode head;
-    
     
     public static void main(String[] args)
     {
@@ -25,11 +22,11 @@ public class StackLinked
         sl.push(1);
         sl.push(2);
         System.out.println(sl.peek().val);
-        while (!sl.isEmpty()){
+        while (!sl.isEmpty())
+        {
             System.out.println(sl.pop().val);
         }
     }
-    
     
     public boolean isEmpty()
     {
@@ -38,9 +35,11 @@ public class StackLinked
     
     public void push(int val)
     {
-        if(head == null){
+        if (head == null)
+        {
             head = new LinkNode(val);
-        }else{
+        } else
+        {
             LinkNode newNode = new LinkNode(val);
             newNode.next = head;
             head = newNode;
@@ -48,10 +47,13 @@ public class StackLinked
     }
     
     
-    public LinkNode pop(){
-        if(head == null){
+    public LinkNode pop()
+    {
+        if (head == null)
+        {
             return null;
-        }else{
+        } else
+        {
             LinkNode node = StackLinked.head;
             head = head.next;
             return node;
@@ -59,10 +61,13 @@ public class StackLinked
     }
     
     
-    public LinkNode peek(){
-        if(head == null){
+    public LinkNode peek()
+    {
+        if (head == null)
+        {
             return null;
-        }else{
+        } else
+        {
             return head;
         }
     }
