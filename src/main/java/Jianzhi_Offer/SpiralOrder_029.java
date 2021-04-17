@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *
  * 输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
  * <p>
  * 输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
@@ -11,6 +12,7 @@ import java.util.List;
  * <p>
  * 输入：matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
  * 输出：[1,2,3,4,8,12,11,10,9,5,6,7]
+ *
  */
 public class SpiralOrder_029
 {
@@ -36,7 +38,7 @@ public class SpiralOrder_029
 //            System.out.println(i);
 //        }
     }
-    
+
     
     /**
      * 第一版，没想清楚，写的太复杂，也不对。
@@ -240,8 +242,17 @@ public class SpiralOrder_029
     
     
     /**
+     * 我的思路方向是对的，但是细节控制有问题。
      *
-     * 参考答案，我的思路是对的，但是细节控制有问题
+     * 参考答案，从左上开始，每次赋值完成，就下标向内移动，逐渐缩小矩形范围。
+     * 顺序如下：
+     *
+     * 1、从Up-->Right。  [Up][Left-->Right]     Up++
+     * 2、从Up-->Down。   [Up-->Down][Right]     Right--
+     * 3、从Right-->Left。[Right][Right-->Left]  Down--
+     * 4、从Down-->Up。   [Up-->Down][Left]      Left++
+     *
+     * 循环结束：if(Up>Down) || (Left>Right)
      *
      * @param matrix
      * @return

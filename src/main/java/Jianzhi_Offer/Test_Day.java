@@ -11,21 +11,15 @@ public class Test_Day
     
     public static void main(String[] args)
     {
-//        Test_Day test_day = new Test_Day();
-//        ListNode listNode = new ListNode();
-//        listNode.addNodeOrder(1);
-//        listNode.addNodeOrder(2);
-//        listNode.addNodeOrder(3);
-//        listNode.printListNode();
-//        test_day.printListFromTailToHead(listNode.head);
         
-        int[] a = {1, 2, 3, 4};
-        int[] b = new int[4];
-        System.arraycopy(a,0,b,0,3);
+        int[] a = {1,2,3};
+        int[] b;
+        b = a;
+    
         for (int x :
                 b)
         {
-            System.out.println(x);
+            System.out.print(x+" ");
         }
     }
     
