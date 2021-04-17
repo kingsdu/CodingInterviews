@@ -11,7 +11,6 @@ import java.util.Stack;
 public class PolandNotation
 {
     
-    
     public static void main(String[] args)
     {
         List<String> strExpression = new ArrayList<>();
@@ -24,7 +23,6 @@ public class PolandNotation
         int result = calExpression(strings);
         System.out.println(result);
     }
-    
     
     /**
      * 转后缀表达式
