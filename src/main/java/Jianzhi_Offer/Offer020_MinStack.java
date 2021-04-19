@@ -20,11 +20,11 @@ import java.util.Stack;
  * 各函数的调用总次数不超过 20000 次
  *
  */
-public class Offer030_MinStack
+public class Offer020_MinStack
 {
     Stack<Integer> normal, minval;
     
-    public Offer030_MinStack() {
+    public Offer020_MinStack() {
         normal = new Stack<>();
         minval = new Stack<>();
     }
@@ -32,6 +32,8 @@ public class Offer030_MinStack
     /**
      *
      * >= 很细节，防止了重复最小元素出栈为空
+     *
+     * push 的操作次数比push_1少
      * @param x
      */
     public void push(int x) {
@@ -43,7 +45,7 @@ public class Offer030_MinStack
     
     
     /**
-     *
+     * 无论如何，向minval中push当前一个最小的值。
      * 有最小push最小
      * 没最小push的minval.peek()
      *

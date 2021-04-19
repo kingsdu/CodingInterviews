@@ -9,7 +9,7 @@ import java.util.Stack;
  * 队列：先进先出
  * 堆：队列优先，先进先出
  */
-public class QueueByStack
+public class Offer005_QueueByStack
 {
 
     Stack<Integer> stackIn = new Stack<Integer>();
@@ -41,7 +41,7 @@ public class QueueByStack
 
     public static void main(String[] args)
     {
-        QueueByStack queueByStack = new QueueByStack();
+        Offer005_QueueByStack queueByStack = new Offer005_QueueByStack();
         queueByStack.push_1(1);
         queueByStack.push_1(2);
         System.out.println(queueByStack.pop_1());

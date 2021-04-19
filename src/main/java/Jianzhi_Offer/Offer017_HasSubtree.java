@@ -9,7 +9,7 @@ package Jianzhi_Offer;
  * 输入：A = [3,4,5,1,2], B = [4,1]
  * 输出：true
  */
-public class HasSubtree
+public class Offer017_HasSubtree
 {
     
     public static void main(String[] args)

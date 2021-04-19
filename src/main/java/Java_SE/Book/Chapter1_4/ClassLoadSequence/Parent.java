@@ -1,6 +1,4 @@
-package Java_SE.Inherit.demo01;
-
-import org.w3c.dom.ls.LSOutput;
+package Java_SE.Book.Chapter1_4.ClassLoadSequence;
 
 public class Parent
 {

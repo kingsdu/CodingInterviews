@@ -93,7 +93,7 @@ public class BinaryTree
         while (i < size || !queue.isEmpty())
         {
             BinaryTreeNode curNode = queue.poll();
-            
+            //判断当前节点为空则继续出栈
             while (curNode == null)
             {
                 curNode = queue.poll();

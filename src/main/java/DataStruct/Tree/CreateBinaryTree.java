@@ -1,4 +1,4 @@
-package Jianzhi_Offer;
+package DataStruct.Tree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -285,4 +285,15 @@ public class CreateBinaryTree
         return list;
     }
     
+    
+    
+    public static class BinTreeNode {
+        BinTreeNode left;
+        BinTreeNode right;
+        int val;
+        BinTreeNode(int val){
+            this.val = val;
+        }
+        
+    }
 }

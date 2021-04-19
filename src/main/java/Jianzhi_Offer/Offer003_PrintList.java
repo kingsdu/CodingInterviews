@@ -1,5 +1,7 @@
 package Jianzhi_Offer;
 
+import DataStruct.LinkedList.ListNode;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -10,7 +12,8 @@ import java.util.Stack;
  * [58,24,0,67]
  *
  */
-public class PrintList {
+public class Offer003_PrintList
+{
 
     ArrayList<Integer> resList = new ArrayList<>();
 
@@ -20,11 +23,10 @@ public class PrintList {
      * @param node
      * @return
      */
-    public ArrayList<Integer> printListFromTailToHead_1(ListNode.Node node){
-        ListNode.Node curNode = node;
+    public ArrayList<Integer> printListFromTailToHead_1(Node node){
+        Node curNode = node;
 
         if(curNode != null){
-
             this.printListFromTailToHead_1(curNode.next);
             resList.add(curNode.val);
         }
@@ -39,7 +41,7 @@ public class PrintList {
      * @param node
      * @return
      */
-    public ArrayList<Integer> printListFormToHead_2(ListNode.Node node){
+    public ArrayList<Integer> printListFormToHead_2(Node node){
         Stack<Integer> stackInt = new Stack<>();
 
         while (node != null){
@@ -63,10 +65,10 @@ public class PrintList {
      * @param node
      * @return
      */
-    public ArrayList<Integer> printListFormToHead_3(ListNode.Node node){
+    public ArrayList<Integer> printListFormToHead_3(Node node){
 
-        ListNode.Node pre = null;
-        ListNode.Node next= null;
+        Node pre = null;
+        Node next= null;
 
         /**
          *
@@ -88,7 +90,16 @@ public class PrintList {
 
         return resList;
     }
-
-
+    
+    
+    public class Node{
+        int val;
+        Node next = null;
+        
+        public Node(int val){
+            this.val = val;
+            this.next = null;
+        }
+    }
 
 }

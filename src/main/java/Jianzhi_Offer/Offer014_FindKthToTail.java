@@ -8,7 +8,7 @@ package Jianzhi_Offer;
  * <p>
  * {5}
  */
-public class FindKthToTail
+public class Offer014_FindKthToTail
 {
     
     public static ListNode head;

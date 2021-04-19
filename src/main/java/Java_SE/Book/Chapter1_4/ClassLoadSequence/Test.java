@@ -1,4 +1,4 @@
-package Java_SE.Inherit.demo01;
+package Java_SE.Book.Chapter1_4.ClassLoadSequence;
 
 public class Test
 {

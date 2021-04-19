@@ -22,12 +22,12 @@ import java.util.Stack;
  * 输出：true
  *
  */
-public class Offer031_ValidateStackSequences
+public class Offer021_ValidateStackSequences
 {
     
     public static void main(String[] args)
     {
-        Offer031_ValidateStackSequences of = new Offer031_ValidateStackSequences();
+        Offer021_ValidateStackSequences of = new Offer021_ValidateStackSequences();
         int[] pushed = {1, 2, 3, 4, 5};
         int[] popped = {3, 5, 4, 2, 1};
         
@@ -42,7 +42,8 @@ public class Offer031_ValidateStackSequences
      * 2、poped+1，继续通过步骤1的移动判断下标的元素。
      *
      *
-     * 代码写的太过繁琐，牛客网报错程序太复杂
+     * 代码写的太过繁琐，牛客网报错程序太复杂.
+     * 这就是我编程时特别容易陷入的误区：没理解算法的实质，就在那里推演，越推演，越复杂。
      *
      * @param pushed
      * @param popped
@@ -151,7 +152,6 @@ public class Offer031_ValidateStackSequences
                 index++;
             }
         }
-        
         return stack.isEmpty();
     }
 }

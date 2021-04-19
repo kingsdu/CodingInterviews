@@ -7,13 +7,13 @@ package Jianzhi_Offer;
  * 求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。
  *
  */
-public class JumpFloor
+public class Offer008_JumpFloor
 {
 
 
     public static void main(String[] args)
     {
-        JumpFloor jumpFloor = new JumpFloor();
+        Offer008_JumpFloor jumpFloor = new Offer008_JumpFloor();
         System.out.println(jumpFloor.jumpWOW(4));
     }
 

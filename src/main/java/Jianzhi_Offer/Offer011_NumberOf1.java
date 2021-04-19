@@ -11,7 +11,7 @@ package Jianzhi_Offer;
  * 1、该数32位二进制是什么意思？怎么转化？
  * 答案：其实没意思，就是表示一个二进制数，前面用0表示，一共32位
  */
-public class NumberOf1
+public class Offer011_NumberOf1
 {
     /**
      * 大神巧妙的思路：
@@ -133,7 +133,7 @@ public class NumberOf1
 
     public static void main(String[] args)
     {
-        NumberOf1 numberOf1 = new NumberOf1();
+        Offer011_NumberOf1 numberOf1 = new Offer011_NumberOf1();
         System.out.println(numberOf1.numberOf1_1(-100));
         System.out.println(numberOf1.numberOf1_2(-100));
     }

@@ -7,14 +7,14 @@ package Jianzhi_Offer;
  * "We%20Are%20Happy"
  *
  */
-public class ReplaceSpace
+public class Offer002_ReplaceSpace
 {
     
     
     public static void main(String[] args)
     {
         String str = "We Are Happy";
-        ReplaceSpace rse = new ReplaceSpace();
+        Offer002_ReplaceSpace rse = new Offer002_ReplaceSpace();
         System.out.println(rse.replace_2(str));
     }
     

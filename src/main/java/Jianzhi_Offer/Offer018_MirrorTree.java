@@ -8,7 +8,7 @@ import java.util.Stack;
  * 输入：root = [4,2,7,1,3,6,9]
  * 输出：[4,7,2,9,6,3,1]
  */
-public class MirrorTree
+public class Offer018_MirrorTree
 {
     //记录调用次数:结果outMirrorTree_1 和 outMirrorTree_3 都递归调用了15次
     private static int index = 0;

@@ -10,7 +10,7 @@ package Jianzhi_Offer;
  * 思路
  * 1、负数：一个数的负次方即为这个数的正次方的倒数。
  */
-public class Power
+public class Offer012_Power
 {
     
     public double Power_1(double base, int exponent)
@@ -82,7 +82,7 @@ public class Power
     
     public static void main(String[] args)
     {
-        Power power = new Power();
+        Offer012_Power power = new Offer012_Power();
         int base = 2, exponent = 4;
 //        double a = Math.pow(base, exponent);
 //        double b = power.Power_1(base, exponent);

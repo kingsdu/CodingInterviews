@@ -16,7 +16,21 @@ import java.util.Arrays;
  * 5、对子树分别使用同样的方法分解
  *
  */
-public class BinaryTreeTra {
+public class Offer004_ReConstructBinaryTree
+{
+    
+    public static void main(String[] args)
+    {
+        Offer004_ReConstructBinaryTree binaryTreeTra = new Offer004_ReConstructBinaryTree();
+        int[] pre = {1,2,4,7,3,5,6,8},in = {4,7,2,1,5,3,8,6};
+        BinTreeNode binTreeNode = binaryTreeTra.reConstructBinaryTree(pre, in);
+        binaryTreeTra.preOrder(binTreeNode);
+        System.out.println();
+        binaryTreeTra.midOrder(binTreeNode);
+        System.out.println();
+        binaryTreeTra.tailOrder(binTreeNode);
+    }
+    
 
     public BinTreeNode reConstructBinaryTree(int[] pre,int[] in)
                 {
@@ -68,18 +82,21 @@ public class BinaryTreeTra {
         }
     }
 
-    public static void main(String[] args)
-    {
-        BinaryTreeTra binaryTreeTra = new BinaryTreeTra();
-        int[] pre = {1,2,4,7,3,5,6,8},in = {4,7,2,1,5,3,8,6};
-        BinTreeNode binTreeNode = binaryTreeTra.reConstructBinaryTree(pre, in);
-        binaryTreeTra.preOrder(binTreeNode);
-        System.out.println();
-        binaryTreeTra.midOrder(binTreeNode);
-        System.out.println();
-        binaryTreeTra.tailOrder(binTreeNode);
-    }
 
+    
+    
+    public class BinTreeNode {
+        
+        BinTreeNode left;
+        BinTreeNode right;
+        int val;
+        BinTreeNode(int val){
+            this.val = val;
+        }
+        
+    }
+    
+    
 }
 
 

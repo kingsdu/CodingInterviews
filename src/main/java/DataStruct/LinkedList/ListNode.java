@@ -1,4 +1,4 @@
-package Jianzhi_Offer;
+package DataStruct.LinkedList;
 
 import java.util.ArrayList;
 
@@ -24,26 +24,6 @@ public class ListNode {
     
     public static void main(String[] args)
     {
-        /** 反向打印链表*/
-        ListNode node = new ListNode();
-        ListNode.Node curNode;
-        PrintList printList = new PrintList();
-    
-        node.addNodeOrder(1);
-        node.addNodeOrder(2);
-        node.addNodeOrder(3);
-        curNode = node.head;
-    
-        node.printListNode();
-    
-        System.out.println();
-    
-        ArrayList<Integer> resList = printList.printListFormToHead_3(curNode);
-    
-        for (Integer number :
-                resList) {
-            System.out.print(number+" ");
-        }
     }
 
     /**
@@ -85,8 +65,7 @@ public class ListNode {
         newNode.next = head;
         head = newNode;
     }
-
-
+    
 
     public void printListNode(){
         Node curNode = head;

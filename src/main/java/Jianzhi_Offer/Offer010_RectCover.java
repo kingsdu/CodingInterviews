@@ -13,12 +13,12 @@ package Jianzhi_Offer;
  * ......
  * 在n=n时，（1）若第n级横着覆盖，用了1级，剩下n=n-1;（2）若第n级竖着覆盖，用了2级，剩下n=n-2;
  */
-public class RectCover
+public class Offer010_RectCover
 {
 
     public static void main(String[] args)
     {
-        RectCover rectCover = new RectCover();
+        Offer010_RectCover rectCover = new Offer010_RectCover();
         System.out.println(rectCover.rectCoverMethod(4));
     }
 

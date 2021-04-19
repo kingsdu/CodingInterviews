@@ -9,7 +9,7 @@ package Jianzhi_Offer;
  * 输入 [3,4,5,1,2]
  * 输出 1
  */
-public class RotateArray
+public class Offer006_RotateArray
 {
 
     /**
@@ -86,7 +86,7 @@ public class RotateArray
 
     public static void main(String[] args)
     {
-        RotateArray rotateArray = new RotateArray();
+        Offer006_RotateArray rotateArray = new Offer006_RotateArray();
 //        int[] arrays = {3, 4, 5, 1, 2};
         int[] arrays = {1, 2, 0, 1, 2};
 //        System.out.println(rotateArray.findMinNum_1(arrays));

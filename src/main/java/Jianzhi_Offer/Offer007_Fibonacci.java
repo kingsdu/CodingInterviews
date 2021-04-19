@@ -12,13 +12,13 @@ import java.util.ArrayList;
  * 斐波那契数列：这个数列从第3项开始，每一项都等于前两项之和。
  * An = An-1 + An-2
  */
-public class Fibonacci
+public class Offer007_Fibonacci
 {
 
 
     public static void main(String[] args)
     {
-        Fibonacci fibonacci = new Fibonacci();
+        Offer007_Fibonacci fibonacci = new Offer007_Fibonacci();
         System.out.println(fibonacci.FibonaciiNum_3(-4));
     }
 
