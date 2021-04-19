@@ -59,10 +59,7 @@ public class Offer022_PrintFromTopToBottom
         }
         return aList;
     }
-    
-    
-    
-    
+  
     
     public static class TreeNode {
         int val = 0;
