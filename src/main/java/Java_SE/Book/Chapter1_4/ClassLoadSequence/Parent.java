@@ -3,6 +3,7 @@ package Java_SE.Book.Chapter1_4.ClassLoadSequence;
 public class Parent
 {
    
+    private String name = "abc";
     static Member smember = new Member("Parent的静态成员");
     
     static
@@ -22,5 +23,8 @@ public class Parent
         System.out.println("Parent的非静态代码块");
     }
     
+    public void add(){
+        System.out.println("aaa");
+    }
     
 }

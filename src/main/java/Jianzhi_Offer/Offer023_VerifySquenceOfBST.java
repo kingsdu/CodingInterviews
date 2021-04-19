@@ -99,10 +99,12 @@ public class Offer023_VerifySquenceOfBST
         Stack<Integer> stack = new Stack<>();
         int root = Integer.MAX_VALUE;
         for (int i = sequence.length - 1; i >= 0; i--)
-        {
+        {   //直到不满足性质1，则不是
             if (sequence[i] > root) return false;
+            //满足性质2
             while (!stack.isEmpty() && stack.peek() > sequence[i])
                 root = stack.pop();
+            
             stack.push(sequence[i]);
         }
         return true;

@@ -17,6 +17,7 @@ public class Test
     public static void main(String[] args)
     {
         SubClass subClass = new SubClass();
+        subClass.add();
         System.out.println("----------------------------------------------------------");
         SubClass subClass1 = new SubClass();
     }
