@@ -1,5 +1,6 @@
 package Java_SE.Book.Chapter5.InnerClass;
 
+
 public class A03Outer
 {
     private class A03InnerA extends A03ParentA

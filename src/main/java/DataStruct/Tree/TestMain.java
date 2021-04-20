@@ -1,7 +1,5 @@
 package DataStruct.Tree;
 
-import java.util.LinkedList;
-
 public class TestMain
 {
     
@@ -22,8 +20,8 @@ public class TestMain
 //        bit.printResList(integers);
 //        bit.HighOfTree(rootNode);
         Integer[] nodes = {0,1,2,null,null,null,3,4};
-        BinaryTreeNode[] root = bit.CreateBinaryTree(nodes);
-        bit.deleteTreeNode(root[0],new BinaryTreeNode(2));
+        TreeNode[] root = bit.CreateBinaryTree(nodes);
+        bit.deleteTreeNode(root[0],new TreeNode(2));
     }
     
 }

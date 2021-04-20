@@ -1,5 +1,9 @@
 package Java_SE.Book.Chapter5.InnerClass;
-
+/**
+ *
+ * 内部类实现多继承
+ *
+ */
 public class A03Test
 {
     public static void main(String[] args)

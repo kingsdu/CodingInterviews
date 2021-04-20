@@ -32,12 +32,12 @@ public class BinaryTree
      *
      * @return
      */
-    public BinaryTreeNode[] CreateBinaryTree(int size)
+    public TreeNode[] CreateBinaryTree(int size)
     {
-        BinaryTreeNode[] root = new BinaryTreeNode[size];
+        TreeNode[] root = new TreeNode[size];
         for (int i = 0; i < size; i++)
         {
-            root[i] = new BinaryTreeNode(i);
+            root[i] = new TreeNode(i);
         }
         
         for (int i = 0; i < size; i++)
@@ -69,10 +69,10 @@ public class BinaryTree
      * @param array
      * @return
      */
-    public BinaryTreeNode[] CreateBinaryTree(Integer[] array)
+    public TreeNode[] CreateBinaryTree(Integer[] array)
     {
         int size = array.length;
-        BinaryTreeNode[] root = new BinaryTreeNode[size];
+        TreeNode[] root = new TreeNode[size];
         for (int i = 0; i < array.length; i++)
         {
             if (array[i] == null)
@@ -80,10 +80,10 @@ public class BinaryTree
                 root[i] = null;
             } else
             {
-                root[i] = new BinaryTreeNode(array[i]);
+                root[i] = new TreeNode(array[i]);
             }
         }
-        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         if (root.length == 0)
         {
             return null;
@@ -92,7 +92,7 @@ public class BinaryTree
         int i = 1;
         while (i < size || !queue.isEmpty())
         {
-            BinaryTreeNode curNode = queue.poll();
+            TreeNode curNode = queue.poll();
             //判断当前节点为空则继续出栈
             while (curNode == null)
             {
@@ -133,7 +133,7 @@ public class BinaryTree
      * @param root
      * @return
      */
-    public void preOrderTreeRec(BinaryTreeNode root)
+    public void preOrderTreeRec(TreeNode root)
     {
         if (root != null)
         {
@@ -147,7 +147,7 @@ public class BinaryTree
     /**
      * @param root
      */
-    public void inOrderTreeRec(BinaryTreeNode root)
+    public void inOrderTreeRec(TreeNode root)
     {
         if (root != null)
         {
@@ -160,7 +160,7 @@ public class BinaryTree
     /**
      * @param root
      */
-    public void postOrderTreeRec(BinaryTreeNode root)
+    public void postOrderTreeRec(TreeNode root)
     {
         if (root != null)
         {
@@ -177,10 +177,10 @@ public class BinaryTree
      * @param root
      * @return
      */
-    public List<Integer> preOrderTreeNonRec(BinaryTreeNode root)
+    public List<Integer> preOrderTreeNonRec(TreeNode root)
     {
         List<Integer> list = new ArrayList<>();
-        Stack<BinaryTreeNode> stack = new Stack();
+        Stack<TreeNode> stack = new Stack();
         
         while (!stack.isEmpty() || root != null)
         {
@@ -203,10 +203,10 @@ public class BinaryTree
      * @param root
      * @return
      */
-    public List<Integer> inOrderTreeNonRec(BinaryTreeNode root)
+    public List<Integer> inOrderTreeNonRec(TreeNode root)
     {
         List<Integer> list = new ArrayList<>();
-        Stack<BinaryTreeNode> stack = new Stack();
+        Stack<TreeNode> stack = new Stack();
         
         while (!stack.isEmpty() || root != null)
         {
@@ -217,7 +217,7 @@ public class BinaryTree
             } else
             {
                 //移动到左节点后在处理
-                BinaryTreeNode tempNode = stack.pop();
+                TreeNode tempNode = stack.pop();
                 list.add(tempNode.val);
                 root = tempNode.right;
             }
@@ -233,15 +233,15 @@ public class BinaryTree
      * @param root
      * @return
      */
-    public LinkedList<Integer> postOrderTreeNonRec(BinaryTreeNode root)
+    public LinkedList<Integer> postOrderTreeNonRec(TreeNode root)
     {
         LinkedList<Integer> linkedList = new LinkedList<>();
-        Stack<BinaryTreeNode> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         
         while (!stack.isEmpty())
         {
-            BinaryTreeNode tempNode = stack.pop();
+            TreeNode tempNode = stack.pop();
             linkedList.addFirst(tempNode.val);
             
             if (tempNode.left != null)
@@ -263,16 +263,16 @@ public class BinaryTree
      * @param root
      * @return
      */
-    public LinkedList<Integer> levelOrderTree(BinaryTreeNode root)
+    public LinkedList<Integer> levelOrderTree(TreeNode root)
     {
         if (root == null) return null;
         LinkedList<Integer> linkedList = new LinkedList<>();
-        ConcurrentLinkedQueue<BinaryTreeNode> queue = new ConcurrentLinkedQueue();
+        ConcurrentLinkedQueue<TreeNode> queue = new ConcurrentLinkedQueue();
         queue.add(root);
         
         while (!queue.isEmpty())
         {
-            BinaryTreeNode tempNode = queue.poll();
+            TreeNode tempNode = queue.poll();
             linkedList.add(tempNode.val);
             
             if (tempNode.left != null)
@@ -339,11 +339,11 @@ public class BinaryTree
      * @param root
      * @param newNode
      */
-    public BinaryTreeNode addTreeNode(BinaryTreeNode root, BinaryTreeNode newNode)
+    public TreeNode addTreeNode(TreeNode root, TreeNode newNode)
     {
-        ConcurrentLinkedQueue<BinaryTreeNode> queue = new ConcurrentLinkedQueue();
+        ConcurrentLinkedQueue<TreeNode> queue = new ConcurrentLinkedQueue();
         queue.add(root);
-        BinaryTreeNode tempNode = null;
+        TreeNode tempNode = null;
         while (!queue.isEmpty())
         {
             tempNode = queue.poll();
@@ -379,7 +379,7 @@ public class BinaryTree
      *
      * @param root
      */
-    public void deleteTree(BinaryTreeNode root)
+    public void deleteTree(TreeNode root)
     {
         if (root == null)
         {
@@ -398,11 +398,11 @@ public class BinaryTree
      * (2) 删除节点有一个子节点时
      * (3) 删除节点有左右子节点时
      */
-    public BinaryTreeNode deleteTreeNode(BinaryTreeNode root, BinaryTreeNode delNode)
+    public TreeNode deleteTreeNode(TreeNode root, TreeNode delNode)
     {
         if (root == null) return null;
-        Queue<BinaryTreeNode> queue = new LinkedList<>();
-        BinaryTreeNode tempNode = null, childLeft = null, childRight = null, deepestNode;
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode tempNode = null, childLeft = null, childRight = null, deepestNode;
         boolean left = false, right = false;
         queue.offer(root);
         
@@ -508,7 +508,7 @@ public class BinaryTree
      * <p>
      * 递归法求高度，左右两侧分开递归，递归至最下层节点，在逐层合并。
      */
-    public int HighOfTree(BinaryTreeNode root)
+    public int HighOfTree(TreeNode root)
     {
         int leftHeight, rightHeight;
         if (root == null)
@@ -539,11 +539,11 @@ public class BinaryTree
      *
      * @return
      */
-    public BinaryTreeNode getDeepestTreeNode(BinaryTreeNode root)
+    public TreeNode getDeepestTreeNode(TreeNode root)
     {
         if (root == null) return null;
-        Queue<BinaryTreeNode> queue = new LinkedList<>();
-        BinaryTreeNode tempNode = null, preLeft = null, preRight = null;
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode tempNode = null, preLeft = null, preRight = null;
         queue.offer(root);
         
         while (!queue.isEmpty())
