@@ -1,10 +1,10 @@
 package JavaSE.BLS.Array;
 
 /**
- *
  * 关键点 ：
  * 1、一个int 有 4个字节byte 每个字节有8位bit  ==  1byte = 8bit。所以ToHex_1中最多循环8次
  * 2、ToHex_2中，当传入的数为0后，就不需要在继续循环了。
+ * 3、&15 ， 15 = 1111 ；任何数和1111 & 都是原数字。
  */
 public class HexTest
 {
@@ -14,9 +14,7 @@ public class HexTest
     {
         int num = 26;
         HexTest hexTest = new HexTest();
-        String s = hexTest.ToHex_3(num);
-        System.out.println(Short.MAX_VALUE);
-        System.out.println(Integer.MAX_VALUE);
+        String s = hexTest.ToHex_4(num);
         System.out.println(s);
     }
     
@@ -53,9 +51,7 @@ public class HexTest
     
     
     /**
-     *
      * 1、for 变为 while
-     *
      *
      * @param number
      * @return
@@ -85,7 +81,6 @@ public class HexTest
     
     
     /**
-     *
      * 去掉空格
      *
      * @param number
@@ -102,7 +97,7 @@ public class HexTest
             if (temp > 9)
             {   // 0-9 a  b  c  d  e  f
                 // 0-9 10 11 12 13 14 15
-                res[--index] = (char) (temp - 10 + 'a');
+                res[--index] = (char) (temp - 10 + 'A');
             } else
             {   //int 转 char == int + '0';
                 // char 转 int == int - '0'
@@ -112,6 +107,28 @@ public class HexTest
         }
         return "0x" + toString(res, index);
     }
+    
+    
+    /**
+     *
+     * 查表法
+     *
+     * @param number
+     * @return
+     */
+    public String ToHex_4(int number)
+    {
+        char[] dic = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+        char[] arr = new char[8];
+        int index = arr.length;
+        while (number != 0){
+            int tmp = number & 15;
+            arr[--index] = dic[tmp];
+            number = number >>> 4;
+        }
+        return "0x"+toString(arr,index);
+    }
+    
     
     public String toString(char[] arr, int index)
     {
