@@ -18,6 +18,7 @@ public class Test
     {
         SubClass subClass = new SubClass();
         subClass.add();
+        
         System.out.println("----------------------------------------------------------");
         SubClass subClass1 = new SubClass();
     }

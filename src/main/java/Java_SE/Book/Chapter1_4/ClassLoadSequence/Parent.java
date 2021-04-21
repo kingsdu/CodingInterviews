@@ -23,8 +23,8 @@ public class Parent
         System.out.println("Parent的非静态代码块");
     }
     
-    public void add(){
-        System.out.println("aaa");
-    }
     
+    public void add(){
+        System.out.println(name);
+    }
 }

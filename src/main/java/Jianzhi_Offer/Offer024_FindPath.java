@@ -23,6 +23,25 @@ public class Offer024_FindPath
     }
     
     
+    ArrayList<ArrayList<Integer>> reslist = new ArrayList<>();
+    ArrayList<Integer> tmpList = new ArrayList<>();
+    public ArrayList<ArrayList<Integer>> FindPath_4(TreeNode root, int target){
+        if(root == null || root.val > target){
+            return null;
+        }
+        
+        tmpList.add(root.val);
+        target-=root.val;
+        if(target == 0 && root.left == null && root.right == null){
+            reslist.add(new ArrayList<Integer>(tmpList));
+        }
+        FindPath_4(root.left,target);
+        FindPath_4(root.right,target);
+        tmpList.remove(tmpList.size()-1);
+        return reslist;
+    }
+    
+    
     /**
      *
      * 我的思路

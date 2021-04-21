@@ -18,5 +18,9 @@ public class SubClass extends Parent
     {
         System.out.println("SbuClass非静态码块");
     }
-
+    
+    
+    public void add(){
+        System.out.println("aaa");
+    }
 }
