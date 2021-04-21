@@ -29,6 +29,12 @@ public class Offer020_MinStack
         minval = new Stack<>();
     }
     
+    
+    public static void main(String[] args)
+    {
+
+    }
+    
     /**
      *
      * >= 很细节，防止了重复最小元素出栈为空

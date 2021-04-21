@@ -1,7 +1,5 @@
 package Jianzhi_Offer;
 
-import DataStruct.LinkedList.ListNode;
-
 import java.util.ArrayList;
 import java.util.Stack;
 

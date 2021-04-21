@@ -7,6 +7,8 @@ import java.util.Map;
 /**
  * 输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针random指向一个随机节点），
  * 请对此链表进行深拷贝，并返回拷贝后的头结点。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）
+ *
+ * 经典
  */
 public class Offer025_CopyRandomList
 {
@@ -116,7 +118,7 @@ public class Offer025_CopyRandomList
             return null;
         }
         RandomListNode curNode = pHead;
-        //1. 复制各节点，并构建拼接链表：将当前节点复制一份，到后面
+        //1. 复制各节点，并构建拼接链表（next是稳定的指向，可以这样做）：将当前节点复制一份，到后面
         while (curNode!=null){
             RandomListNode tmp = new RandomListNode(curNode.label);
             tmp.next = curNode.next;
@@ -124,7 +126,7 @@ public class Offer025_CopyRandomList
             curNode = tmp.next;
         }
         curNode = pHead;
-        //2. 构建各新节点的 random 指向：因为存在2个节点，所以赋值的 和 被赋值的都要向后一个
+        //2. 构建各新节点的 random 指向（random是随机的，所以需要在处理一遍）：因为存在2个节点，所以赋值的 和 被赋值的都要向后一个
         while (curNode != null){
             if(curNode.random != null){
                 curNode.next.random = curNode.random.next;
