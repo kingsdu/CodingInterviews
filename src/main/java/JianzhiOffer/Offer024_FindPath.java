@@ -25,25 +25,28 @@ public class Offer024_FindPath
     
     ArrayList<ArrayList<Integer>> reslist = new ArrayList<>();
     ArrayList<Integer> tmpList = new ArrayList<>();
-    public ArrayList<ArrayList<Integer>> FindPath_4(TreeNode root, int target){
-        if(root == null || root.val > target){
+    
+    public ArrayList<ArrayList<Integer>> FindPath_4(TreeNode root, int target)
+    {
+        if (root == null || root.val > target)
+        {
             return null;
         }
         
         tmpList.add(root.val);
-        target-=root.val;
-        if(target == 0 && root.left == null && root.right == null){
+        target -= root.val;
+        if (target == 0 && root.left == null && root.right == null)
+        {
             reslist.add(new ArrayList<Integer>(tmpList));
         }
-        FindPath_4(root.left,target);
-        FindPath_4(root.right,target);
-        tmpList.remove(tmpList.size()-1);
+        FindPath_4(root.left, target);
+        FindPath_4(root.right, target);
+        tmpList.remove(tmpList.size() - 1);
         return reslist;
     }
     
     
     /**
-     *
      * 我的思路
      * 开始想的非递归，结果做不出来
      *
@@ -98,13 +101,12 @@ public class Offer024_FindPath
     
     
     /**
-     *
      * 非递归方式比递归的方式，提前出栈了一次，导致效果不对。
-     *     4
-     *   5  6
+     * 4
+     * 5  6
      * 递归可以 564
      * 非递归   546
-     *
+     * <p>
      * 所以这个方法暂时没想到好的解决方法
      *
      * @param root
@@ -143,9 +145,7 @@ public class Offer024_FindPath
     
     
     /**
-     *
      * 大神的方法
-     *
      */
     ArrayList<ArrayList<Integer>> list = new ArrayList<>();
     ArrayList<Integer> path = new ArrayList<>();
@@ -158,12 +158,13 @@ public class Offer024_FindPath
         }
         path.add(root.val);
         target -= root.val;
-        if(target == 0 && root.left == null && root.right == null){
-            list.add(new ArrayList<> (path));//此处必须新建，否则因为作用域，所以加入的都是N个最后一个path
+        if (target == 0 && root.left == null && root.right == null)
+        {
+            list.add(new ArrayList<>(path));//此处必须新建，否则因为作用域，所以加入的都是N个最后一个path
         }
-        FindPath_3(root.left,target);
-        FindPath_3(root.right,target);
-        path.remove(path.size()-1);
+        FindPath_3(root.left, target);
+        FindPath_3(root.right, target);
+        path.remove(path.size() - 1);
         return list;
     }
     

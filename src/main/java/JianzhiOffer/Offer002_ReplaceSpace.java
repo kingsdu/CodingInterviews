@@ -6,6 +6,9 @@ package JianzhiOffer;
  * "We Are Happy"
  * "We%20Are%20Happy"
  *
+ * 考点：1、String 到 char的转换
+ *
+ * Stringbuffer和StringBuilder的区别
  */
 public class Offer002_ReplaceSpace
 {
@@ -125,9 +128,4 @@ public class Offer002_ReplaceSpace
     
 }
 
-/**
- * （1）程序要自己反复思考
- * （2）正则表达式需要学习
- * （3）Stringbuffer和StringBuilder的区别
- * (4) 写程序要注意判空操作
- */
+

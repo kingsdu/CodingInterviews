@@ -9,12 +9,31 @@ import java.util.Stack;
  * {67,0,24,58}
  * [58,24,0,67]
  *
+ * 1、递归法：node != null 递归，递归到最后回溯时逐个将数字存到数组
+ * 2、Stack类实现：存、取
+ * 3、每插入新元素时，改变链表元素的前后指向
+ *
  */
 public class Offer003_PrintList
 {
 
     ArrayList<Integer> resList = new ArrayList<>();
-
+    
+    public static void main(String[] args)
+    {
+        Node node1 = new Node(67);
+        Node node2 = new Node(0);
+        Node node3 = new Node(24);
+        Node node4 = new Node(58);
+        
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        
+        Offer003_PrintList op = new Offer003_PrintList();
+        op.printListFormToHead_3(node1);
+    }
+    
     /**
      *
      * 递归法
@@ -70,9 +89,11 @@ public class Offer003_PrintList
 
         /**
          *
-         * 1存储正序的node.next
-         * 2改变node指向
-         * 3交换node和pre的顺序
+         * 1 存储node.next，因为后面会改变node的指向，存起来保证node能正序向后
+         * 2 改变node的指向，实现从逆序
+         * 3 将改变后的node作为下一个节点的pre
+         * 4 node 向后移动一位
+         *
          */
         while (node!=null){
             next = node.next;
@@ -90,7 +111,7 @@ public class Offer003_PrintList
     }
     
     
-    public class Node{
+    public static class Node{
         int val;
         Node next = null;
         

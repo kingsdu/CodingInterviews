@@ -135,8 +135,8 @@ public class Offer025_CopyRandomList
         }
         
         curNode = pHead.next;
-        RandomListNode pre = pHead,res = pHead.next;
-        //3. 拆分两链表
+        RandomListNode pre = pHead,res = pHead.next;//res指向复制出的节点的头
+       //3. 拆分两链表
         while (pre.next!=null){
             pre.next = pre.next.next;
             curNode.next = curNode.next.next;

@@ -6,7 +6,7 @@ package JavaSE.BLS.Array;
  */
 public class FinalTrans
 {
-    
+    //查表法
     public final char[] dic = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
     
     
