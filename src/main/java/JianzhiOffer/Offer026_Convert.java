@@ -7,7 +7,9 @@ package JianzhiOffer;
  *
  * 性质：二叉搜索树的中序遍历为递增序列 。
  *
- *
+ * 1、二叉搜索树的中序遍历为递增序列 。
+ * 2、构建相邻节点的引用关系时，设前驱节点为pre 和 当前节点为 cur，应该构建 pre.right = cur 和 cur.left = pre
+ * 3、设头节点为 head、尾节点为 pre，应该构建 head.left = pre 和 pre.left = head;
  *
  */
 
@@ -54,9 +56,6 @@ public class Offer026_Convert
     
     /**
      * DFS----Depth First Search
-     * 1、二叉搜索树的中序遍历为递增序列 。
-     * 2、构建相邻节点的引用关系时，设前驱节点为pre 和 当前节点为 cur，应该构建 pre.right = cur 和 cur.left = pre
-     * 3、设头节点为 head、尾节点为 pre，应该构建 head.left = pre 和 pre.left = head;
      *
      * @param cur
      */

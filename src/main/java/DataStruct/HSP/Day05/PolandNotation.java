@@ -7,6 +7,18 @@ import java.util.Stack;
 /**
  * 波兰表达式:前缀表达式:3*(2+5)-9 == -*+2539
  * 逆波兰表达式:后缀表达式:3*(2+5)-9 == 9325+*-
+ * <p>
+ *
+ * 思路：
+ * 转化表达式部分
+ * 1、新建一个ArrayList存数字和符号的结果，一个Stack存符号
+ * 2、关键1：对于Stack中的符号，判断如新入栈的符号的优先级 <= 栈顶元素，则表明栈顶元素的优先级更大，则可以先将其入到ArrayList中。
+ * 3、关键2: 括号部分，匹配到左括号，则优先加入stack，再对括号中的符号做2中相同的优先级比较操作。
+ * 当匹配到右括号时（表面括号内的符号已然有序），将剩下的符号出栈至ArrayList中
+ * 4、将符号栈中剩余的元素直接出栈至ArrayList中
+ * <p>
+ * 计算部分：
+ * 1、从左至右存入栈中，遇到符号就直接计算。
  */
 public class PolandNotation
 {
@@ -14,7 +26,7 @@ public class PolandNotation
     public static void main(String[] args)
     {
         List<String> strExpression = new ArrayList<>();
-        String exp = "3*3+6*(2*5-2+3)-9-1*2";
+        String exp = "3*(2*5-2+3)-9-1*2";
         for (int i = 0; i < exp.length(); i++)
         {
             strExpression.add(String.valueOf(exp.charAt(i)));
@@ -24,9 +36,10 @@ public class PolandNotation
         System.out.println(result);
     }
     
+    
     /**
      * 转后缀表达式
-     *
+     * <p>
      * 思路:看注释
      *
      * @param expression
@@ -73,22 +86,24 @@ public class PolandNotation
     
     
     /**
-     *
      * 计算后缀表达式
      * 自己写的
      *
      * @param expression
      * @return
      */
-    public static int calExpression(List<String> expression){
+    public static int calExpression(List<String> expression)
+    {
         Stack<Integer> resStack = new Stack<>();
-    
+        
         for (String item :
                 expression)
         {
-            if (item.matches("\\d+")){
+            if (item.matches("\\d+"))
+            {
                 resStack.push(Integer.valueOf(item));
-            }else {
+            } else
+            {
                 int num1 = resStack.pop();
                 int num2 = resStack.pop();
                 String op = item;
@@ -101,6 +116,43 @@ public class PolandNotation
     }
     
     
+    public static List<String> toInfixExpressionList1(List<String> expression)
+    {
+        Stack<String> ope = new Stack<>();
+        List<String> resList = new ArrayList<>();
+        
+        for (String item :
+                expression)
+        {
+            if (item.matches("\\d+"))
+            {
+                resList.add(item);
+            } else if (item.equals("("))
+            {
+                ope.push(item);
+            } else if (item.equals(")"))
+            {
+                while (!ope.peek().equals("("))
+                {
+                    resList.add(ope.pop());
+                }
+                ope.pop();
+            } else
+            {
+                while (!ope.isEmpty() && priority(item) <= priority(ope.peek()))
+                {
+                    resList.add(item);
+                }
+                ope.push(item);
+            }
+        }
+        
+        while (!ope.isEmpty()){
+            resList.add(ope.pop());
+        }
+        
+        return resList;
+    }
     
     /**
      * 操作符 返回对应优先级
@@ -124,7 +176,6 @@ public class PolandNotation
     
     
     /**
-     *
      * 计算
      *
      * @param num1
@@ -132,9 +183,11 @@ public class PolandNotation
      * @param ope
      * @return
      */
-    public static int calNum(int num1,int num2,String ope){
+    public static int calNum(int num1, int num2, String ope)
+    {
         int result = 0;
-        switch (ope){
+        switch (ope)
+        {
             case "+":
                 result = num1 + num2;
                 break;
