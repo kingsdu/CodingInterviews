@@ -4,11 +4,13 @@ public class Parent
 {
    
     private String name = "abc";
+    private static String str = "父类静态变量";
     static Member smember = new Member("Parent的静态成员");
     
     static
     {
         System.out.println("Parent的静态代码块");
+        System.out.println(str);
     }
     
     public Parent()
