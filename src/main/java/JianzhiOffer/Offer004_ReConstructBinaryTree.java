@@ -22,7 +22,7 @@ public class Offer004_ReConstructBinaryTree
     public static void main(String[] args)
     {
         Offer004_ReConstructBinaryTree binaryTreeTra = new Offer004_ReConstructBinaryTree();
-        int[] pre = {1,2,4,7,3,5,6,8},in = {4,7,2,1,5,3,8,6};
+        int[] pre = {1, 2, 4, 7, 3, 5, 6, 8}, in = {4, 7, 2, 1, 5, 3, 8, 6};
         BinTreeNode binTreeNode = binaryTreeTra.reConstructBinaryTree(pre, in);
         binaryTreeTra.preOrder(binTreeNode);
         System.out.println();
@@ -31,71 +31,73 @@ public class Offer004_ReConstructBinaryTree
         binaryTreeTra.tailOrder(binTreeNode);
     }
     
-
-    public BinTreeNode reConstructBinaryTree(int[] pre,int[] in)
-                {
-                    if (pre.length == 0 || in.length == 0) {
-                        return null;
-                    }
-                    BinTreeNode root = new BinTreeNode(pre[0]);
-                    // 在中序中找到前序的根
-                    for (int i = 0; i < in.length; i++) {
-                        if (in[i] == pre[0]) {
-                            // 左子树，注意 copyOfRange 函数，左闭右开
-                            root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, 1, i + 1), Arrays.copyOfRange(in, 0, i));
-                            // 右子树，注意 copyOfRange 函数，左闭右开
-                            root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, i + 1, pre.length), Arrays.copyOfRange(in, i + 1, in.length));
+    
+    public BinTreeNode reConstructBinaryTree(int[] pre, int[] in)
+    {
+        if (pre.length == 0 || in.length == 0)
+        {
+            return null;
+        }
+        BinTreeNode root = new BinTreeNode(pre[0]);
+        // 在中序中找到前序的根
+        for (int i = 0; i < in.length; i++)
+        {
+            if (in[i] == pre[0])
+            {
+                // 左子树，注意 copyOfRange 函数，左闭右开
+                root.left = reConstructBinaryTree(Arrays.copyOfRange(pre, 1, i + 1), Arrays.copyOfRange(in, 0, i));
+                // 右子树，注意 copyOfRange 函数，左闭右开
+                root.right = reConstructBinaryTree(Arrays.copyOfRange(pre, i + 1, pre.length), Arrays.copyOfRange(in, i + 1, in.length));
                 break;
             }
         }
         return root;
     }
-
-
+    
+    
     public void preOrder(BinTreeNode node)
     {
-        if(node != null)
+        if (node != null)
         {
             System.out.print(node.val + " ");
             preOrder(node.left);
             preOrder(node.right);
         }
     }
-
+    
     public void midOrder(BinTreeNode node)
     {
-        if(node != null)
+        if (node != null)
         {
             midOrder(node.left);
             System.out.print(node.val + " ");
             midOrder(node.right);
         }
     }
-
+    
     public void tailOrder(BinTreeNode node)
     {
-        if(node != null)
+        if (node != null)
         {
             tailOrder(node.left);
             tailOrder(node.right);
             System.out.print(node.val + " ");
         }
     }
-
-
     
     
-    public class BinTreeNode {
+    public class BinTreeNode
+    {
         
         BinTreeNode left;
         BinTreeNode right;
         int val;
-        BinTreeNode(int val){
+        
+        BinTreeNode(int val)
+        {
             this.val = val;
         }
-        
     }
-    
     
 }
 

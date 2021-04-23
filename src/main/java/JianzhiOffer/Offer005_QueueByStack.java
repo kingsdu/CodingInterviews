@@ -8,6 +8,11 @@ import java.util.Stack;
  * 栈：先进后出
  * 队列：先进先出
  * 堆：队列优先，先进先出
+ *
+ *
+ * 思路：
+ * 1、一个栈作为入栈stackIn，一个作为出栈stackOut
+ * 2、push时，直接将元素入栈至stackIn，pop时，先将stackIn的元素出栈至stackOut，在出栈stackOut
  */
 public class Offer005_QueueByStack
 {
