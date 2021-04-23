@@ -1,4 +1,4 @@
-package JavaSE.Book.Inherit;
+package JavaSE.BLS.Inherit;
 
 public class Parent {
 

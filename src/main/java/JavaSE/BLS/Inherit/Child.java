@@ -1,6 +1,7 @@
-package JavaSE.Book.Inherit;
+package JavaSE.BLS.Inherit;
 
-public class Child extends Parent{
+public class Child extends Parent
+{
 
     public int a = 2;
     public static int b = 2;
