@@ -1,4 +1,4 @@
-package JavaSE.BLS.Abstract;
+package JavaSE.BLS.Interface.Abstract;
 
 import java.io.*;
 

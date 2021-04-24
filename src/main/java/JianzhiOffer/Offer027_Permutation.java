@@ -8,18 +8,8 @@ import java.util.*;
  * 输入一个字符串(长度不超过9(可能有字符重复),字符只包括大小写字母),按字典序打印出该字符串中字符的所有排列。
  * <p>
  * 例如输入字符串abc,则按字典序打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。
- * b c
- * a
- * c b
- * a c
- * b
- * c a
- * a b
- * c
- * b a
  * <p>
  * 思路
- * <p>
  * <p>
  * 1、从第一位开始需要找到所有可能的字符串，对于abc，就需要用a和a，a和b，a和c相互交换。
  * 2、当第一位a，确定后，对于后面只有bc两种，再对bc相互交换。
@@ -34,7 +24,7 @@ public class Offer027_Permutation
     
     public static void main(String[] args)
     {
-        String str = "abc";
+        String str = "abcd";
         Offer027_Permutation of = new Offer027_Permutation();
         String[] permutation = of.permutation(str);
         for (String s:

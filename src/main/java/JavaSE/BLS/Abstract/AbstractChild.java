@@ -1,8 +1,5 @@
 package JavaSE.BLS.Abstract;
 
-import java.io.FilterReader;
-import java.io.Reader;
-
 public class AbstractChild extends AbstractClass{
     
     
