@@ -1,4 +1,4 @@
-package JavaSE.BLS.Polymorph;
+package JavaSE.BLS.Polymorph.Animal;
 
 public abstract class Animal
 {
