@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 
-public class demo02
+public class HashSetFilter
 {
     
     enum Num {ONE, THREE, TWO}
@@ -26,7 +26,6 @@ public class demo02
         
  
     }
-    
     
      public static native int meo();
 }

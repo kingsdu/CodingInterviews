@@ -12,13 +12,13 @@ import java.util.stream.IntStream;
  * 输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]
  * 输出: 2
  */
-public class Offer028MajorityElement
+public class Offer028_MajorityElement
 {
     
     public static void main(String[] args)
     {
         int[] nums = {1, 4, 3, 6, 5, 2, 2, 2, 2, 2, 2};
-        Offer028MajorityElement of = new Offer028MajorityElement();
+        Offer028_MajorityElement of = new Offer028_MajorityElement();
         int i = of.majorityElement_2(nums);
         System.out.println(i);
     }

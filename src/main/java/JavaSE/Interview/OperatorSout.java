@@ -1,6 +1,6 @@
 package JavaSE.Interview;
 
-public class demo01
+public class OperatorSout
 {
     
     public static void main(String[] args)
