@@ -18,6 +18,7 @@ import java.util.*;
  * 1、用快速排序搞笑求解
  * 2、用大根堆和小根堆排序
  * 3、二叉搜索树解决 TopK 问题
+ * 4、数据范围有限时直接计数排序：
  */
 public class Offer029_GetLeastNumbers
 {
