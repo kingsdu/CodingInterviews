@@ -62,7 +62,7 @@ public class Offer029_GetLeastNumbers
     
     
     /**
-     * 快速排序实现
+     * 快速排序实现（快速排序的活学活用）
      * 直接通过快排切分排好第 K 小的数（下标为 K-1），那么它左边的数就是比它小的另外 K-1 个数～
      *
      * @param input
@@ -91,7 +91,7 @@ public class Offer029_GetLeastNumbers
         // 否则根据下标j与k的大小关系来决定继续切分左段还是右段。
         return j > k ? quickSearch(nums, lo, j - 1, k) : quickSearch(nums, j + 1, hi, k);
     }
-    
+    //int[] nums = {4, 5, 1, 6, 2, 7, 3, 8};
     // 快排切分，返回下标j，使得比nums[j]小的数都在j的左边，比nums[j]大的数都在j的右边。
     private int partition(int[] nums, int lo, int hi)
     {
