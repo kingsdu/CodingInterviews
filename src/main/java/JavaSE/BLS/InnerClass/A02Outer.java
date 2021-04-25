@@ -1,4 +1,4 @@
-package JavaSE.Book.InnerClass;
+package JavaSE.BLS.InnerClass;
 
 public class A02Outer
 {
@@ -10,8 +10,7 @@ public class A02Outer
     }
     
     public void fun()
-    {  //2
-        //this表示当前对象
+    {   //2
         A02Inner in = new A02Inner(this); //3
         in.print();                 //5
     }

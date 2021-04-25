@@ -1,4 +1,4 @@
-package JavaSE.Book.InnerClass;
+package JavaSE.BLS.InnerClass;
 
 
 public class A03Outer
