@@ -14,6 +14,7 @@ public class Offer30_MaxSubArray
     
     public static void main(String[] args)
     {
+        Object o = new Object();
         /**
          *
          * 输入一个整型数组，数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。
