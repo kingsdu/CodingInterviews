@@ -4,7 +4,7 @@ package JianzhiOffer;
  *
  * 动态规划系列，有3个题目都是动态规划相关的
  *
- * 核心是选与不选！
+ * 核心是之前做的工作不再重复做，思路就是选与不选！
  *
  * https://www.bilibili.com/video/BV12W411v7rd/?spm_id_from=333.788.recommend_more_video.-1
  */
@@ -153,6 +153,13 @@ public class Offer30_MaxSubArray
         }
     }
     
+    /**
+     *
+     * 明显的动态规划的思想的体现
+     *
+     * @param arr
+     * @return
+     */
     private int noRecSelect_2(int[] arr)
     {
         int[] opt = new int[arr.length];

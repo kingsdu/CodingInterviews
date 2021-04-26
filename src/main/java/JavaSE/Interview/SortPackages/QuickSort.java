@@ -47,7 +47,7 @@ public class QuickSort
         while (i != j)
         {
             //从右边开始是因为pivot在左边
-            while (arr[j] >= base && i < j)
+            while (arr[j] >= base && i < j)//快速排序，移动位置行为，表示该元素符合要求，停止下标则表示该元素不符合要求该交换位置
             {
                 j--;
             }
