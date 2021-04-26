@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread;
+package JavaSE.BLS.Thread.ProducerConsumer;
 
 /**
  * 生产者和消费者的例子来说明多线程通讯存在的问题

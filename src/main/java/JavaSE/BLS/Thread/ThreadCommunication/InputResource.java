@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread;
+package JavaSE.BLS.Thread.ThreadCommunication;
 
 public class InputResource implements Runnable {
 

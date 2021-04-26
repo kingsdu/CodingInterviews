@@ -1,9 +1,14 @@
-package JavaSE.BLS.Thread;
+package JavaSE.BLS.Thread.CreateThread;
 
 /**
- * 继承Thread，覆写run方法
+ *
+ *
+ * 创建线程的方法1：继承Thread，覆写run方法
+ *
+ *
+ *
  */
-public class CreateThread_1 extends Thread{
+public class CreateThread_Method1 extends Thread{
 
     private static int ticket = 100;
 

@@ -11,6 +11,15 @@ import java.util.Arrays;
  * <p>
  * 输入: [3,30,34,5,9]
  * 输出: "3033459"
+ *
+ * 主要思想：
+ * 若拼接字符串 x + y > y + xx+y>y+x ，则 xx “大于” yy ；
+ * 反之，若 x + y < y + xx+y<y+x ，则 xx “小于” yy ；
+ *
+ * 代码思想：
+ * 1、排序（快速排序）
+ * 2、合并
+ *
  */
 public class Offer32_MinNumber
 {
@@ -137,8 +146,14 @@ public class Offer32_MinNumber
         
         while (true)
         {
-            while ((arr[j] + base).compareTo(base + arr[j]) >= 0 && i < j){j--;}
-            while ((arr[i] + base).compareTo(base + arr[i]) <= 0 && i < j){i++;}
+            while ((arr[j] + base).compareTo(base + arr[j]) >= 0 && i < j)
+            {
+                j--;
+            }
+            while ((arr[i] + base).compareTo(base + arr[i]) <= 0 && i < j)
+            {
+                i++;
+            }
             
             if (i >= j)
             {
@@ -153,6 +168,25 @@ public class Offer32_MinNumber
         arr[left] = arr[i];
         arr[i] = base;
         return i;
+    }
+    
+    
+    /**
+     * 使用Java排序
+     *
+     * @param nums
+     * @return
+     */
+    public String minNumber_3(int[] nums)
+    {
+        String[] strs = new String[nums.length];
+        for (int i = 0; i < nums.length; i++)
+            strs[i] = String.valueOf(nums[i]);
+        Arrays.sort(strs, (x, y) -> (x + y).compareTo(y + x));
+        StringBuilder res = new StringBuilder();
+        for (String s : strs)
+            res.append(s);
+        return res.toString();
     }
     
 }

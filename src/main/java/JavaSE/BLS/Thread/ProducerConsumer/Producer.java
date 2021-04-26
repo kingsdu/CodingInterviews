@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread;
+package JavaSE.BLS.Thread.ProducerConsumer;
 
 public class Producer implements Runnable{
 

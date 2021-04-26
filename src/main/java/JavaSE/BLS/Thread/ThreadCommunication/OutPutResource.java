@@ -1,4 +1,6 @@
-package JavaSE.BLS.Thread;
+package JavaSE.BLS.Thread.ThreadCommunication;
+
+import JavaSE.BLS.Thread.ThreadCommunication.Resource;
 
 public class OutPutResource implements Runnable {
 
