@@ -11,6 +11,11 @@ package JianzhiOffer;
  * <p>
  * 输入：n = 13
  * 输出：6
+ *
+ *
+ * 思路：该题是找数学上的规律
+ * 我自己用到的方法是，找出每个位子上1的个数，然后遍历累加。
+ *
  */
 public class Offer031_CountDigitOne
 {

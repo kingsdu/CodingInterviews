@@ -8,7 +8,7 @@ package JianzhiOffer;
  *
  * https://www.bilibili.com/video/BV12W411v7rd/?spm_id_from=333.788.recommend_more_video.-1
  */
-public class Offer30_MaxSubArray
+public class Offer030_MaxSubArray
 {
     
     

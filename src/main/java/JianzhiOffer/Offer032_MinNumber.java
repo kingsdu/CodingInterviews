@@ -11,28 +11,28 @@ import java.util.Arrays;
  * <p>
  * 输入: [3,30,34,5,9]
  * 输出: "3033459"
- *
+ * <p>
  * 主要思想：
  * 若拼接字符串 x + y > y + xx+y>y+x ，则 xx “大于” yy ；
  * 反之，若 x + y < y + xx+y<y+x ，则 xx “小于” yy ；
- *
+ * <p>
  * 代码思想：
  * 1、排序（快速排序）
  * 2、合并
- *
  */
-public class Offer32_MinNumber
+public class Offer032_MinNumber
 {
     
     public static void main(String[] args)
     {
         int[] nums = {3, 30, 34, 5, 9};
-        Offer32_MinNumber of = new Offer32_MinNumber();
+        Offer032_MinNumber of = new Offer032_MinNumber();
         String s = of.minNumber_2(nums);
         System.out.println(s);
     }
     
     /**
+     *
      * 自己想的思路（题目理解错了）
      * 1、所有数字排序
      * 2、第一个数字如果是0，则和后面第一个非0的数字交换位置
