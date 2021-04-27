@@ -23,6 +23,9 @@ public class ShiftOperator
         ShiftOperator sp = new ShiftOperator();
         sp.printPositiveNum(10);
         sp.printNegativeNum(-10);
+        //可以输出 0 和 1 在计算机中的二进制表示：
+        System.out.println(Integer.toBinaryString(0));
+        System.out.println(Integer.toBinaryString(-1));
     }
     
     /**

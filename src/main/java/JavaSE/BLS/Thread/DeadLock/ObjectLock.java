@@ -2,6 +2,6 @@ package JavaSE.BLS.Thread.DeadLock;
 
 public class ObjectLock {
 
-    static Object locka = new Object();
-    static Object lockb = new Object();
+    static byte[] locka = new byte[1];
+    static byte[] lockb = new byte[1];
 }

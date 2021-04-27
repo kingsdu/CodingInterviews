@@ -1,11 +1,10 @@
 package JianzhiOffer;
 
 /**
- *
- * 动态规划系列，有3个题目都是动态规划相关的
- *
- * 核心是之前做的工作不再重复做，思路就是选与不选！
- *
+ * 这个题目进行了拓展，一共有3个题目都是动态规划相关的。
+ * <p>
+ * 动态规划核心是之前做的工作不再重复做，思路就是选与不选！
+ * <p>
  * https://www.bilibili.com/video/BV12W411v7rd/?spm_id_from=333.788.recommend_more_video.-1
  */
 public class Offer030_MaxSubArray
@@ -14,7 +13,6 @@ public class Offer030_MaxSubArray
     
     public static void main(String[] args)
     {
-        Object o = new Object();
         /**
          *
          * 输入一个整型数组，数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。
@@ -24,18 +22,17 @@ public class Offer030_MaxSubArray
          * 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
          *
          */
-//        int[] nums = {2, 8, 1, 5, 9};
-//        Offer30_MaxSubArray o = new Offer30_MaxSubArray();
-//        int i = o.maxSubArray_2(nums);
-//        System.out.println(i);
+        int[] arr1 = {2, 8, 1, 5, 9};
+        Offer030_MaxSubArray o = new Offer030_MaxSubArray();
+        int i = o.maxSubArray_2(arr1);
+        System.out.println(i);
         
         /**
          * 题目2：选出不相邻的数字序列中最大的序列。
          * */
-//        int[] arr = {1, 2, 4, 1, 7, 8, 3};
-//        Offer30_MaxSubArray o = new Offer30_MaxSubArray();
-//        int s = o.maxSubArrayNoSeries(arr, false);
-//        System.out.println(s);
+        int[] arr2 = {1, 2, 4, 1, 7, 8, 3};
+        int s = o.maxSubArrayNoSeries(arr2, false);
+        System.out.println(s);
         
         /**
          *
@@ -48,11 +45,10 @@ public class Offer030_MaxSubArray
          * int x = 13
          * 输出 ： false
          */
-//        int[] arr = {3, 34, 4, 12, 5, 2};
-//        Offer30_MaxSubArray o = new Offer30_MaxSubArray();
-//        int x = 13;
-//        boolean b = o.recSubset_3(arr, arr.length - 1, x);
-//        System.out.println(b == true ? "true" : "false");
+        int[] arr3 = {3, 34, 4, 12, 5, 2};
+        int x = 13;
+        boolean b = o.recSubset_3(arr3, arr3.length - 1, x);
+        System.out.println(b == true ? "true" : "false");
     }
     
     
@@ -143,6 +139,14 @@ public class Offer030_MaxSubArray
     }
     
     
+    /**
+     *
+     * 递归：首先要考虑递归部分主体，再考虑递归出口。
+     *
+     * @param arr
+     * @param i
+     * @return
+     */
     private int recSelect_2(int[] arr, int i)
     {
         if (i == 0) return arr[0];
@@ -156,6 +160,8 @@ public class Offer030_MaxSubArray
     /**
      *
      * 明显的动态规划的思想的体现
+     *
+     * 一步一步的向上做选择
      *
      * @param arr
      * @return

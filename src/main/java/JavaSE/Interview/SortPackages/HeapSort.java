@@ -28,6 +28,17 @@ public class HeapSort
         }
     }
     
+    
+    /**
+     *
+     * 1 先堆化一次
+     * 2 交换最后一个节点和第一个节点
+     * 3 剪枝
+     * 4 重新堆化
+     *
+     * @param tree
+     * @param n
+     */
     public void heapSort(int[] tree, int n)
     {
         //堆化
@@ -36,7 +47,8 @@ public class HeapSort
         for (int i = n - 1; i >= 0; i--)
         {
             swap(tree,i,0);
-            heapify(tree,i,0);
+            //重写堆化
+            heapify(tree,i,0);//剪枝后，需要从最后一位开始
         }
     }
     
@@ -54,7 +66,7 @@ public class HeapSort
         int parent = (lastNode - 1) / 2;
         for (int i = parent; i >= 0; i--)
         {
-            heapify(tree, n, i);
+            heapify(tree, n, i);//第一次堆化，从最后一个节点的父节点开始
         }
     }
     

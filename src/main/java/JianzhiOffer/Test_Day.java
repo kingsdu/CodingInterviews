@@ -1,10 +1,5 @@
 package JianzhiOffer;
 
-
-import DataStruct.HSP.Day01.Array;
-
-import java.util.Arrays;
-
 /**
  * 每日一练，自己写算法
  */
@@ -14,54 +9,82 @@ public class Test_Day
     public static void main(String[] args)
     {
         int[] nums = {4, 5, 1, 6, 2, 7, 3, 8};
-        int k = 4;
         Test_Day t = new Test_Day();
-        int[] ints = t.recQuickSort(nums, 0, nums.length - 1, k - 1);
-        for (int x :
-                ints)
+        t.heapSort(nums);
+    }
+    
+    
+    /**
+     *
+     */
+    public void heapSort(int[] arr)
+    {
+        if (arr == null || arr.length == 0) return;
+        
+        int n = arr.length;
+        buildHeap(arr, n);
+        
+        for (int i = n - 1; i >= 0; i--)
         {
-            System.out.print(x + " ");
+            swap(arr, i, 0);
+            heapify(arr, i, 0);//剪枝后需要从最后一位开始
         }
+        
     }
     
-    public int[] recQuickSort(int[] arr, int left, int right,int k)
+    
+    /**
+     * 第一次，对所有的数据进行排序
+     *
+     * @param arr
+     * @param n
+     */
+    public void buildHeap(int[] arr, int n)
     {
-        if(arr.length == 0 || k == 0){
-            return new int[0];
+        int last = n - 1;
+        int lastParent = (last - 1) >> 1;
+        for (int i = lastParent; i >= 0; i--)
+        {
+            heapify(arr, n, i);//从底到头的堆化
         }
-        
-        int j = partitionIt(arr,left,right);
-        if(j == k){
-            return Arrays.copyOf(arr,j+1);
-        }
-        return j > k ? recQuickSort(arr,left,j-1,k) : recQuickSort(arr,j+1,right,k);
     }
     
-    public int partitionIt(int[] arr, int left, int right)
+    
+    public void heapify(int[] arr, int n, int i)
     {
-        int i = left,j = right+1;
-        int base = arr[left];
-        
-        while (i != j){
-            while (++i <= right && base < arr[i]);
-            while (--j >= left && base > arr[j]);
-            
-            if(i>=j){
-                break;
-            }
-            
-            int tmp = arr[j];
-            arr[j] = arr[i];
-            arr[i] = tmp;
+        if (n < i)
+        {
+            return;
         }
         
-        arr[left] = arr[j];
-        arr[j] = base;
+        int child1 = i * 2 + 1;
+        int child2 = i * 2 + 2;
+        int max = i;
         
-        return j;
+        if (arr[max] < arr[child1] && child1 < n)
+        {
+            max = child1;
+        }
+        
+        if (arr[max] < arr[child2] && child2 < n)
+        {
+            max = child2;
+        }
+        
+        if (max != i)
+        {
+            swap(arr, max, i);
+            heapify(arr, n, max);
+        }
     }
     
-
+    
+    public void swap(int[] arr, int i, int j)
+    {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
     
     
 }

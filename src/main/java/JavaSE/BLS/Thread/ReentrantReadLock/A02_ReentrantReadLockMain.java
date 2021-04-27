@@ -29,10 +29,11 @@ public class A02_ReentrantReadLockMain
             value = map.get(id);
             
             if (value == null)
-            {
+            {   //当没有数据时，解读锁
                 rwl.readLock().unlock();
                 try
                 {
+                    //开写锁
                     rwl.writeLock().lock();
                     if (value == null)
                     {
