@@ -7,6 +7,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * 简单：哈希排序
+ *
  * 在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。
  *
  * 剑指Offer 中的要求：不是找出元素，是找出对应下标

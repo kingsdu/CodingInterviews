@@ -11,13 +11,13 @@ public class MergeSort
     public static void main(String[] args)
     {
         MergeSort m = new MergeSort();
-        int[] nums = {6,3,5,4,2,1};
+        int[] nums = {6, 3, 5, 4, 2, 1};
         int[] temp = new int[nums.length];
-        m.merge_2(nums,0,nums.length-1);
-    
+        m.merge_2(nums, 0, nums.length - 1);
+        
         for (int i = 0; i < temp.length; i++)
         {
-            System.out.print(temp[i]+" ");
+            System.out.print(temp[i] + " ");
         }
     }
     
@@ -71,7 +71,7 @@ public class MergeSort
                 temp[t++] = arr[j++];
             }
         }
-    
+        
         /***
          *
          * 比较完毕后的填充
@@ -100,39 +100,47 @@ public class MergeSort
     }
     
     
-    
-    public void merge_2(int[] nums, int left, int right) {
+    public void merge_2(int[] nums, int left, int right)
+    {
         int mid = left + ((right - left) >> 1);
-        if (left < right) {
+        if (left < right)
+        {
             merge_2(nums, left, mid);
             merge_2(nums, mid + 1, right);
             mergeSort_2(nums, left, mid, right);
         }
     }
     
-    public void mergeSort_2(int[] nums, int left, int mid, int right) {
+    public void mergeSort_2(int[] nums, int left, int mid, int right)
+    {
         int[] temparr = new int[right - left + 1];
         int index = 0;
         int temp1 = left, temp2 = mid + 1;
         
-        while (temp1 <= mid && temp2 <= right) {
-            if (nums[temp1] <= nums[temp2]) {
+        while (temp1 <= mid && temp2 <= right)
+        {
+            if (nums[temp1] <= nums[temp2])
+            {
                 temparr[index++] = nums[temp1++];
-            } else {
+            } else
+            {
                 //用来统计逆序对的个数
                 temparr[index++] = nums[temp2++];
             }
         }
         //把左边剩余的数移入数组
-        while (temp1 <= mid) {
+        while (temp1 <= mid)
+        {
             temparr[index++] = nums[temp1++];
         }
         //把右边剩余的数移入数组
-        while (temp2 <= right) {
+        while (temp2 <= right)
+        {
             temparr[index++] = nums[temp2++];
         }
         //把新数组中的数覆盖nums数组
-        for (int k = 0; k < temparr.length; k++) {
+        for (int k = 0; k < temparr.length; k++)
+        {
             nums[k + left] = temparr[k];
         }
     }
