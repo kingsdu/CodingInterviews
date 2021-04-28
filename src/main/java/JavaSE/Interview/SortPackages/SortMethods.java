@@ -232,64 +232,10 @@ public class SortMethods {
     }
 
 
-    /**
-     *
-     * 归并排序
-     *
-     * 归并排序分为两个部分：
-     * 1 分治 ：将一段数据不断分割到一个字段
-     * 2 归并：分割为都只剩下一个数字时，就1V1的比较一个数字，并将排序结果存入到临时数组中。
-     *
-     * https://www.cnblogs.com/chengxiao/p/6194356.html
-     *
-     */
-    /**分治*/
-    public static void mergeSort_sort(int []arr,int start,int end,int []temp){
-        if(end < start){
-            return;
-        }
-
-        if(start < end){
-            int mid = (start+end)/2;
-            mergeSort_sort(arr,start,mid,temp);//左边归并排序，使得左子序列有序
-            mergeSort_sort(arr,mid+1,end,temp);
-            mergeSort_merge(arr,start,mid,end,temp);//将两个有序子数组合并操作
-        }
-    }
+   
 
 
-    /**
-     * 归并
-     * 将两个已经有序的数组，提供逐一比较，归并至临时数组中。
-     *
-     */
-    public static void mergeSort_merge(int[] arr,int start,int mid,int end,int[] temp){
-        int i = start;
-        int j = mid+1;
-        int t = 0;
-        while (i<=mid && j<=end){
-            if(arr[i]<=arr[j]){
-                temp[t++] = arr[i++];
-            }else {
-                temp[t++] = arr[j++];
-            }
-        }
-
-        while(i<=mid){//将左边剩余元素填充进temp中
-            temp[t++] = arr[i++];
-        }
-
-        while(j<=end){//将右序列剩余元素填充进temp中
-            temp[t++] = arr[j++];
-        }
-
-        t = 0;
-        //将temp中的元素全部拷贝到原数组中
-        while(start <= end){
-            arr[start++] = temp[t++];
-        }
-    }
-
+  
 
 
 
