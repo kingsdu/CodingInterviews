@@ -55,6 +55,5 @@ public class Offer005_QueueByStack
 
         System.out.println(queueByStack.pop_1());
         System.out.println(queueByStack.pop_1());
-
     }
 }

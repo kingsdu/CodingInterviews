@@ -1,7 +1,5 @@
 package JavaSE.BLS.Interface;
 
-import JavaSE.BLS.Interface.Abstract.Dog;
-
 /**
  *
  * 要定义缉毒犬，

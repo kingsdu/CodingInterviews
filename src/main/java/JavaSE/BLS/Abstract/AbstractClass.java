@@ -3,9 +3,7 @@ package JavaSE.BLS.Abstract;
 
 /**
  *
- *
- *
- * 抽象类不能和final、private、static3个修饰符共存
+ * 抽象类不能和final、private、static 3个修饰符共存
  * 1、final：无法初始化
  * 2、private：加上私有无法覆盖，不允许
  * 3、static：静态数据是直接被类调用的，调用无意义。
