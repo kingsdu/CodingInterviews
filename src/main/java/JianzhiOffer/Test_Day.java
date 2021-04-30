@@ -1,90 +1,82 @@
 package JianzhiOffer;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 /**
- * 每日一练，自己写算法
+ * 输入一个链表，按链表从尾到头的顺序返回一个ArrayList。
+ * {67,0,24,58}
+ * [58,24,0,67]
  */
 public class Test_Day
 {
+    public static ArrayList<ListNode> list = new ArrayList();
+    static Stack<ListNode> stack = new Stack<>();
     
     public static void main(String[] args)
     {
-        int[] nums = {4, 5, 1, 6, 2, 7, 3, 8};
         Test_Day t = new Test_Day();
-        t.heapSort(nums);
+        
+        ListNode r1 = new ListNode(67);
+        ListNode r2 = new ListNode(0);
+        ListNode r3 = new ListNode(24);
+        ListNode r4 = new ListNode(58);
+        
+        r1.next = r2;
+        r2.next = r3;
+        r3.next = r4;
+        r4.next = null;
+    
+        ListNode listNode = t.printList3(r1);
+    
+        while (listNode!=null){
+            System.out.println(listNode.val);
+            listNode = listNode.next;
+        }
     }
     
     
-    /**
-     *
-     */
-    public void heapSort(int[] arr)
+    public void printList1(ListNode node)
     {
-        if (arr == null || arr.length == 0) return;
-        
-        int n = arr.length;
-        buildHeap(arr, n);
-        
-        for (int i = n - 1; i >= 0; i--)
+        if (node != null)
         {
-            swap(arr, i, 0);
-            heapify(arr, i, 0);//剪枝后需要从最后一位开始
+            printList1(node.next);
+            list.add(node);
         }
-        
     }
     
-    
-    /**
-     * 第一次，对所有的数据进行排序
-     *
-     * @param arr
-     * @param n
-     */
-    public void buildHeap(int[] arr, int n)
+    public void printList2(ListNode node)
     {
-        int last = n - 1;
-        int lastParent = (last - 1) >> 1;
-        for (int i = lastParent; i >= 0; i--)
+        while (node != null)
         {
-            heapify(arr, n, i);//从底到头的堆化
+            stack.push(node);
+            node = node.next;
         }
     }
     
-    
-    public void heapify(int[] arr, int n, int i)
+    public ListNode printList3(ListNode node)
     {
-        if (n < i)
+        ListNode pre = null, next = null;
+        while (node != null)
         {
-            return;
+            next = node.next;
+            node.next = pre;
+            pre = node;
+            node = next;
         }
-        
-        int child1 = i * 2 + 1;
-        int child2 = i * 2 + 2;
-        int max = i;
-        
-        if (arr[max] < arr[child1] && child1 < n)
-        {
-            max = child1;
-        }
-        
-        if (arr[max] < arr[child2] && child2 < n)
-        {
-            max = child2;
-        }
-        
-        if (max != i)
-        {
-            swap(arr, max, i);
-            heapify(arr, n, max);
-        }
+        return pre;
     }
     
-    
-    public void swap(int[] arr, int i, int j)
+    public static class ListNode
     {
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
+        public int val;
+        public ListNode next;
+        
+        public ListNode(int x)
+        {
+            val = x;
+            next = null;
+        }
     }
-    
     
 }

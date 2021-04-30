@@ -27,8 +27,6 @@ public class Offer001_FindArray
         int target = 11;
         int[][] arrayTar = {{1, 2, 8, 9}, {2, 4, 9, 12}, {4, 7, 10, 13}, {6, 8, 11, 15}};
         System.out.println(sl.Find_3(target, arrayTar));
-//        System.out.println(sl.Find_1(target, arrayTar));
-//        System.out.println(sl.Find_2(target, arrayTar));
     }
     
     
