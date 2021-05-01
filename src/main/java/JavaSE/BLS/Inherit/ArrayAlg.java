@@ -1,4 +1,4 @@
-package JavaSE.BLS.Success;
+package JavaSE.BLS.Inherit;
 
 public class ArrayAlg {
 

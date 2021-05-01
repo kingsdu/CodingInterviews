@@ -79,11 +79,10 @@ public class Offer037_GetNumberOfK
     }
     
     /**
-     *
      * 大佬算法，高级！
-     *
+     * <p>
      * 先用二分法找数字的右边界
-     *
+     * <p>
      * 在二分法找左边界，注意else
      *
      * @param array

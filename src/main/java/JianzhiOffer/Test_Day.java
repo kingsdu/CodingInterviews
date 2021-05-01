@@ -10,73 +10,72 @@ import java.util.Stack;
  */
 public class Test_Day
 {
-    public static ArrayList<ListNode> list = new ArrayList();
-    static Stack<ListNode> stack = new Stack<>();
-    
     public static void main(String[] args)
     {
+        int[] arr = {1, 2, 2, 2, 3, 4, 5, 6, 6, 7};
+        int k = 2;
         Test_Day t = new Test_Day();
+        int i = t.binarySerach(arr, 0, arr.length - 1, k);
+        System.out.println(i);
+    }
+    
+    
+    public int cal(int arr[], int left, int right, int k)
+    {
+        while (left <= right)
+        {
+            int mid = (right - left) / 2 + left;
+            if (arr[mid] <= k)
+            {
+                left = mid + 1;
+            } else
+            {
+                right = mid - 1;
+            }
+        }
+        int i = left;
         
-        ListNode r1 = new ListNode(67);
-        ListNode r2 = new ListNode(0);
-        ListNode r3 = new ListNode(24);
-        ListNode r4 = new ListNode(58);
+        if (i > 0 && arr[i] != k)
+        {
+            return -1;
+        }
         
-        r1.next = r2;
-        r2.next = r3;
-        r3.next = r4;
-        r4.next = null;
-    
-        ListNode listNode = t.printList3(r1);
-    
-        while (listNode!=null){
-            System.out.println(listNode.val);
-            listNode = listNode.next;
+        while (left <= right)
+        {
+            int mid = (right - left) / 2 + left;
+            if (arr[mid] < k)
+            {
+                left = mid + 1;
+            } else
+            {
+                right = mid - 1;
+            }
         }
+        int j = right;
+        return i - j - 1;
     }
     
     
-    public void printList1(ListNode node)
+    public int binarySerach(int arr[], int left, int right, int k)
     {
-        if (node != null)
+        while (left <= right)
         {
-            printList1(node.next);
-            list.add(node);
+            int mid = (right - left) / 2 + left;
+            if (arr[mid] == k)
+            {
+                return mid;
+            } else
+            {
+                if (arr[mid] < k)
+                {
+                    left = mid + 1;
+                } else if (arr[mid] > k)
+                {
+                    right = mid - 1;
+                }
+            }
         }
-    }
-    
-    public void printList2(ListNode node)
-    {
-        while (node != null)
-        {
-            stack.push(node);
-            node = node.next;
-        }
-    }
-    
-    public ListNode printList3(ListNode node)
-    {
-        ListNode pre = null, next = null;
-        while (node != null)
-        {
-            next = node.next;
-            node.next = pre;
-            pre = node;
-            node = next;
-        }
-        return pre;
-    }
-    
-    public static class ListNode
-    {
-        public int val;
-        public ListNode next;
-        
-        public ListNode(int x)
-        {
-            val = x;
-            next = null;
-        }
+        return -1;
     }
     
 }

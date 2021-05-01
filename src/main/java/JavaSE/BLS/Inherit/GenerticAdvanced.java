@@ -1,4 +1,4 @@
-package JavaSE.BLS.Success;
+package JavaSE.BLS.Inherit;
 
 import java.util.ArrayList;
 import java.util.Iterator;
