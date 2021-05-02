@@ -229,7 +229,7 @@ public class BinaryTree
      * 非递归方式实现二叉树后序遍历
      * <p>
      * 反向顺序实现：左右根 ——> 根右左
-     *
+     * DFS
      * @param root
      * @return
      */
@@ -259,6 +259,7 @@ public class BinaryTree
     
     /**
      * 层序遍历：逐层遍历
+     * BFS
      *
      * @param root
      * @return

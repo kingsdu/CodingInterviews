@@ -88,6 +88,8 @@ public class Offer039_IsBalancedTree
      *
      * 另一种写法，表示树上所有的节点高度都<=1
      *
+     * 逆向思维：树中所有的节点的高度差都<=1，即可
+     *
      * @param root
      * @return
      */
