@@ -1,4 +1,4 @@
-package JavaSE.BLS.Collection;
+package JavaSE.BLS.Collection.Compare;
 
 import java.util.Comparator;
 

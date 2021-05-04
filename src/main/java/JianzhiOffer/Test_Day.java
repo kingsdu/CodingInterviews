@@ -1,46 +1,52 @@
 package JianzhiOffer;
 
-import java.util.Stack;
-
 /**
- * 用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
+ * 大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0，第1项是1）。
+ * n≤39
+ * 0 1 1 2 3 5 8 13 21
+ * 输入 4，输出 3
  * <p>
- * 栈：先进后出
- * 队列：先进先出
- * 堆：队列优先，先进先出
- *
- *
- * 思路：
- * 1、一个栈作为入栈stackIn，一个作为出栈stackOut
- * 2、push时，直接将元素入栈至stackIn，pop时，先将stackIn的元素出栈至stackOut，在出栈stackOut
+ * <p>
+ * 斐波那契数列：这个数列从第3项开始，每一项都等于前两项之和。
+ * An = An-1 + An-2
  */
 public class Test_Day
 {
     public static void main(String[] args)
     {
-    
+        Test_Day t = new Test_Day();
+        int nums[] = {2,2,3,4,4,4,4,1,2,3};
+        System.out.println(t.minArray(nums));
     }
     
-    Stack<Integer> stackIn = new Stack<>();
-    Stack<Integer> stackOut = new Stack<>();
     
-    public Integer pop(){
-        if(stackIn.isEmpty() && stackOut.isEmpty()){
-            return null;
+    public int minArray(int[] numbers)
+    {
+        if (null == numbers || numbers.length == 0)
+        {
+            return 0;
         }
         
-        if(stackOut.isEmpty()){
-            while (!stackIn.isEmpty()){
-                stackOut.push(stackIn.pop());
+        int left = 0, right = numbers.length - 1;
+        while (left <= right)
+        {
+            int mid = (right - left) / 2 + left;
+            if (numbers[mid] == numbers[right])
+            {
+                return numbers[mid];
+            } else
+            {
+                if (numbers[mid] < numbers[right])
+                {
+                    right = mid;
+                } else
+                {
+                    left = mid + 1;
+                }
             }
         }
-        
-        return stackOut.pop();
+        return -1;
     }
     
-    public void push(int x){
-        stackIn.push(x);
-    }
     
-   
 }

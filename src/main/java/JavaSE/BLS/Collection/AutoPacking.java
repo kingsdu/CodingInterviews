@@ -1,4 +1,4 @@
-package JavaSE.BLS.String;
+package JavaSE.BLS.Collection;
 
 
 import java.util.HashMap;

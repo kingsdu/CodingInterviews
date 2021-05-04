@@ -1,7 +1,5 @@
 package JianzhiOffer;
 
-import java.util.ArrayList;
-
 /**
  *
  * 自己写的第一个和大神一样的算法
