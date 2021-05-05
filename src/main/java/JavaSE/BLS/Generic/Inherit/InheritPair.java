@@ -1,20 +1,20 @@
-package JavaSE.BLS.Inherit;
+package JavaSE.BLS.Generic.Inherit;
 
-public class Pair<T> {
-
-    public Pair() { first = null; second = null; }
-
-    public Pair(T first, T second) {
+public class InheritPair<T>
+{
+    private T first;
+    private T second;
+    
+    public InheritPair() { first = null; second = null; }
+    
+    public InheritPair(T first, T second) {
         this.first = first;
         this.second = second;
     }
-
+    
     public T getFirst() { return first; }
     public T getSecond() { return second; }
-
+    
     public void setFirst(T newValue) { first = newValue; }
     public void setSecond(T newValue) { second = newValue; }
-
-    private T first;
-    private T second;
 }

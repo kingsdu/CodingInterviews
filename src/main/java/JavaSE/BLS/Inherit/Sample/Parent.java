@@ -1,4 +1,4 @@
-package JavaSE.BLS.Inherit;
+package JavaSE.BLS.Inherit.Sample;
 
 public class Parent {
 

@@ -1,52 +1,27 @@
 package JianzhiOffer;
 
+import java.util.Random;
+
 /**
- * 大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0，第1项是1）。
- * n≤39
- * 0 1 1 2 3 5 8 13 21
- * 输入 4，输出 3
- * <p>
- * <p>
- * 斐波那契数列：这个数列从第3项开始，每一项都等于前两项之和。
- * An = An-1 + An-2
+ * 一只青蛙一次可以跳上1级台阶，也可以跳上2级。
+ * 求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。
  */
 public class Test_Day
 {
     public static void main(String[] args)
     {
-        Test_Day t = new Test_Day();
-        int nums[] = {2,2,3,4,4,4,4,1,2,3};
-        System.out.println(t.minArray(nums));
+        System.out.println(Fb(8));
     }
     
     
-    public int minArray(int[] numbers)
+    public static int Fb(int n)
     {
-        if (null == numbers || numbers.length == 0)
-        {
-            return 0;
+        boolean 是否选择自律 = true;
+        boolean 外界刺激诱惑挑战 = true;
+        while (是否选择自律 != 外界刺激诱惑挑战){
+            System.out.println("再次陷入失败轮回");
         }
-        
-        int left = 0, right = numbers.length - 1;
-        while (left <= right)
-        {
-            int mid = (right - left) / 2 + left;
-            if (numbers[mid] == numbers[right])
-            {
-                return numbers[mid];
-            } else
-            {
-                if (numbers[mid] < numbers[right])
-                {
-                    right = mid;
-                } else
-                {
-                    left = mid + 1;
-                }
-            }
-        }
-        return -1;
+       return -1;
     }
-    
     
 }

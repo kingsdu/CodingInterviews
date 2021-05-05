@@ -20,5 +20,8 @@ public class TestMain
         c.show();
         c.method();
         System.out.println(c.age);
+        //子类直接调用父类方法
+        Child c1 = new Child();
+        c1.see();
     }
 }

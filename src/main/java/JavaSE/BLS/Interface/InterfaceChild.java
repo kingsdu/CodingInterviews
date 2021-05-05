@@ -29,5 +29,4 @@ public class InterfaceChild implements InterfaceClass2, InterfaceClass1
     
     }
     
-    
 }

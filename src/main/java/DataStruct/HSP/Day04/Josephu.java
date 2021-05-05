@@ -73,13 +73,14 @@ public class Josephu
             //移动到第几个孩子，只是第一个孩子有效
             if (isFirst)
             {
+                //找到第一个孩子
                 for (int i = 0; i < child - 1; i++)
                 {
                     preNode = preNode.next;
                     curNode = curNode.next;
                 }
                 isFirst = false;
-                //改变指针指向
+                //数几下
                 for (int i = 0; i < number; i++)
                 {
                     preNode = preNode.next;
@@ -87,7 +88,7 @@ public class Josephu
                 }
             } else
             {
-                //改变指针指向
+                //数几下
                 for (int i = 0; i < number; i++)
                 {
                     preNode = preNode.next;
