@@ -1,4 +1,4 @@
-package JavaSE.Interview;
+package DataStruct;
 
 public class OperatorSout
 {

@@ -1,4 +1,4 @@
-package JavaSE.Interview.SortPackages;
+package DataStruct.SortPackages;
 
 public class SelectSort
 {

@@ -1,5 +1,10 @@
 package JavaSE.BLS.Generic.BrigeMethod;
 
+/**
+ *
+ * 通过查看 编译后的类 代码 ，可以知道当生成2个同名方法时，JVM会生成一个桥方法
+ *
+ */
 public class BridgeMethodChildPair extends BridgeMethodPair<Integer>
 {
     private Integer first;

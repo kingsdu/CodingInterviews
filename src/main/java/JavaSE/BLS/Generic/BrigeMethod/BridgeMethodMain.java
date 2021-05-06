@@ -2,8 +2,8 @@ package JavaSE.BLS.Generic.BrigeMethod;
 
 /**
  *
- *
- * 没搞懂，虽然有桥方法，但是似乎没用，数据set不进去，取不出来？？？
+ * 1、桥方法的合成是为了避免类型变量擦除所带来的多态灾难。
+ * 问题：没搞懂，虽然有桥方法，但是似乎没用，数据set不进去，取不出来？？？
  *
  */
 public class BridgeMethodMain

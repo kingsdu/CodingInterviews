@@ -23,9 +23,12 @@ public class PairClassMain
     
         //类型擦除后返回true
         System.out.println(mm.getClass() == mm1.getClass() ? true : false);
-    
+        
         //下面几点总的来说就是，不能将泛型实例化为某个类型，这个就违反了泛型的思想
         /**
+         *
+         * ClassPair<int> c = ArrayAlgInteger.minmax(ints);
+         *
          *
          * 运行时类型查询只适用于原始类型
          * 下面语句报错

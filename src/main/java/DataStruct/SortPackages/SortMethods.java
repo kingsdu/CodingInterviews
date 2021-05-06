@@ -1,4 +1,4 @@
-package JavaSE.Interview.SortPackages;
+package DataStruct.SortPackages;
 
 /**
  * 常用排序算法汇总
