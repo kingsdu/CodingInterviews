@@ -1,4 +1,4 @@
-package JavaSE.BLS.IO;
+package JavaSE.BLS.NIO;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
