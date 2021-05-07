@@ -1,4 +1,4 @@
-package JavaSE.BLS.Reflect;
+package JavaSE.BLS.Reflect.InheritReflect;
 
 public class Animal
 {
