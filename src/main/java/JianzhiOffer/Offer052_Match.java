@@ -12,7 +12,7 @@ public class Offer052_Match
     public static void main(String[] args)
     {
         String str = "aaa";
-        String pattern = "ab*ac*a";
+        String pattern = "ab*a*c*a";
         System.out.println(match_1(str, pattern));
     }
     
@@ -85,46 +85,188 @@ public class Offer052_Match
         return i == chars.length;
     }
     
+    /**
+     *
+     * K神的方法
+     *
+     * @param s
+     * @param p
+     * @return
+     */
+    public boolean match_2(String s, String p)
+    {
+        int m = s.length() + 1, n = p.length() + 1;
+        boolean[][] dp = new boolean[m][n];
+        dp[0][0] = true;
+        for (int j = 2; j < n; j += 2)
+            dp[0][j] = dp[0][j - 2] && p.charAt(j - 1) == '*';
+        for (int i = 1; i < m; i++)
+        {
+            for (int j = 1; j < n; j++)
+            {
+                dp[i][j] = p.charAt(j - 1) == '*' ?
+                        dp[i][j - 2] || dp[i - 1][j] && (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.') :
+                        dp[i - 1][j - 1] && (p.charAt(j - 1) == '.' || s.charAt(i - 1) == p.charAt(j - 1));
+            }
+        }
+        return dp[m - 1][n - 1];
+    }
     
+    
+    /**
+     *
+     * https://www.bilibili.com/video/BV13g4y1a7JV?from=search&seid=2803592586279083066
+     *
+     * 这个解法牛客网没通过
+     *
+     * @param str
+     * @param pattern
+     * @return
+     */
     public static boolean match_1(String str, String pattern)
     {
         int s = str.length();
         int p = pattern.length();
+        char[] chars = str.toCharArray();
+        char[] patternChar = pattern.toCharArray();
         boolean[][] dp = new boolean[s + 1][p + 1];//00 用于存放两个空字符串的结果 dp[i][j] 表示模式串前j个是否与字符串前i个匹配
-        for (int i = 0; i <= s; i++)
-        {//实际上模式串和字符串的起点为1(所以后面的下标都是i-1 j-1)
-            for (int j = 0; j <= p; j++)
+        dp[0][0] = true;
+        for (int i = 1; i < p + 1; i++)
+        {
+            if (patternChar[i - 1] == '*')
             {
-                if (j == 0)
+                dp[0][i] = dp[0][i - 2];
+            } else
+            {
+                dp[0][i] = false;
+            }
+        }
+        
+        for (int i = 1; i < s + 1; i++)
+        {
+            for (int j = 1; j < p + 1; j++)
+            {
+                int ii = i - 1, jj = j - 1;
+                if (patternChar[jj] == '.' || patternChar[jj] == chars[ii])
                 {
-                    dp[i][j] = (i == 0);//只有字符串和模式串都为空的时候才匹配，当模式串为空，字符串不为空则返回false
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else if (patternChar[jj] == '*') // 这个地方没理解
+                {
+                    if (chars[ii] == patternChar[jj - 1] || patternChar[jj - 1] == '*')
+                    {
+                        dp[i][j] = dp[i - 1][j] || dp[i][j - 2];
+                    } else
+                    {
+                        dp[i][j] = dp[i][j - 2];
+                    }
                 } else
                 {
-                    if (pattern.charAt(j - 1) != '*')
-                    {   //如果第j-1个字符不是*
-                        if (i > 0 && (str.charAt(i - 1) == pattern.charAt(j - 1) || pattern.charAt(j - 1) == '.'))
-                        {
-                            //正常匹配
-                            dp[i][j] = dp[i - 1][j - 1];
-                        }
-                    } else
-                    {   //如果第j个是* 那么分两种情况，有一种成立即可
-                        //case 1 可以直接忽略*前模式的那个元素（*代表出现0次 比如a* 这两个元素做空字符串）
-                        //那么dp[i][j]==true 只需满足 dp[i][j-2]==true即可
-                        if (j >= 2)
-                        {
-                            dp[i][j] = dp[i][j - 2];
-                        }
-                        //case 2 如果dp[i][j-2]不等于true那么要满足第j-1个字符(这个字符也可以为‘.’)与第i个字符匹配即可
-                        //下标多减1是因为dp是从1开始记录的
-                        if (i > 0 && j >= 2 && (str.charAt(i - 1) == pattern.charAt(j - 2) || pattern.charAt(j - 2) == '.'))
-                        {
-                            dp[i][j] |= dp[i - 1][j];//使用或等于 两种情况有一种符合就行
-                        }
-                    }
+                    dp[i][j] = false;
                 }
             }
         }
         return dp[str.length()][pattern.length()];
+    }
+    
+    
+    public static boolean isMatch(String s, String p)
+    {
+        return solve(s, p, 0, 0);
+    }
+    
+    /**
+     * 字符串匹配
+     *
+     * @param s      字符串1
+     * @param p      字符串2
+     * @param index1 字符串1的下标
+     * @param index2 字符串2的下标
+     * @return 当前s和p的匹配结果
+     */
+    private static boolean solve(String s, String p, int index1, int index2)
+    {
+        
+        // 递归终止条件1
+        if (index1 == s.length() && (index2 == p.length() || (index2 + 1 == p.length() - 1 && p.charAt(index2 + 1) == '*')))
+        {
+            return true;
+        }
+        
+        // 递归终止条件2
+        if (index1 == s.length() || p.length() == index2)
+        {
+            if (index1 == s.length())
+            {
+                return change(p, index2);
+            } else
+            {
+                return false;
+            }
+        }
+        
+        // p当前字符的下一个位置的字符时*
+        if (index2 + 1 < p.length() && p.charAt(index2 + 1) == '*')
+        {
+            if (judge(s.charAt(index1), p.charAt(index2)))
+            {
+                return solve(s, p, index1, index2 + 2) || solve(s, p, index1 + 1, index2);
+            } else
+            {
+                return solve(s, p, index1, index2 + 2);
+            }
+        }
+        
+        // 当前两个下标所指的字符匹配
+        if (judge(s.charAt(index1), p.charAt(index2)))
+        {
+            return solve(s, p, index1 + 1, index2 + 1);
+        }
+        
+        return false; // 当前的index1所指的字符与index2所指的字符不一致
+    }
+    
+    private static boolean change(String p, int index2)
+    {
+        while (index2 < p.length())
+        {
+            if (index2 + 1 < p.length() && p.charAt(index2 + 1) == '*')
+            {
+                index2 += 2;
+            } else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /**
+     * @param s1 字符1
+     * @param s2 字符2
+     * @return 两个字符是否匹配的结果
+     */
+    private static boolean judge(char s1, char s2)
+    {
+        if (s1 == s2 || s2 == '.')
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public static boolean match(char[] str, char[] pattern)
+    {
+        StringBuilder s1 = new StringBuilder();
+        StringBuilder s2 = new StringBuilder();
+        
+        for (char x : str)
+        {
+            s1.append(x);
+        }
+        for (char x : pattern)
+        {
+            s2.append(x);
+        }
+        return solve(s1.toString(), s2.toString(), 0, 0);
     }
 }

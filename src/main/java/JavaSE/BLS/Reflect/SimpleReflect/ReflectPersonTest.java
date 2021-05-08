@@ -9,13 +9,14 @@ import java.lang.reflect.Method;
 import java.util.Random;
 
 /**
+ * B站视频学习
  * 疑问：
  * 1、反射机制和面向对象的封装性是否矛盾？如何看待这两个技术？
  * 不矛盾。
  * 封装性本身有其逻辑，它会提供对应的方法，不建议调用私有的方法。封装是建议调用者调用什么
  * 反射解决的能不能调的问题。
  * <p>
- * 2、通过直接NEW的方式或反射的方式都可以调用，开发中究竟用哪个？
+ * 2、通过直接new的方式或反射的方式都可以调用，开发中究竟用哪个？
  * 从代码量上、可读性，正常情况下都是用new。
  * 反射的特点是动态性，当我们在编译时不确定需要new的类对象时，需要用反射。比如在tmall中的，通过前台页面传入的url，动态调用其中的方法。
  * Method m = this.getClass().getMethod(method, HttpServletRequest.class,
@@ -35,6 +36,16 @@ public class ReflectPersonTest
         System.out.println(p.toString());
     }
     
+    /**
+     *
+     * 反射的方式新建类
+     *
+     * @throws NoSuchMethodException
+     * @throws IllegalAccessException
+     * @throws InvocationTargetException
+     * @throws InstantiationException
+     * @throws NoSuchFieldException
+     */
     @Test
     public void newByReflect() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchFieldException
     {

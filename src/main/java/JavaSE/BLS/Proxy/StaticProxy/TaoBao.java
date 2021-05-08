@@ -2,12 +2,7 @@ package JavaSE.BLS.Proxy.StaticProxy;
 
 /**
  *
- *
- *
- * 淘宝是一个商家,代理金士顿U盘的销售
- *
- *
- *
+ * 淘宝是一个商家,代理金士顿U盘的销售,就是一个代理
  *
  */
 public class TaoBao implements UsbSell

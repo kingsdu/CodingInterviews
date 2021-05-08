@@ -1,4 +1,4 @@
-package JavaSE.BLS.ClassLoadSequence;
+package JavaSE.BLS.ClassLoadSequence.Simple;
 
 public class Parent
 {
