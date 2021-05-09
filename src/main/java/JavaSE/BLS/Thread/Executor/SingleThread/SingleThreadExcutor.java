@@ -1,8 +1,13 @@
-package JavaSE.BLS.Thread.SingleThreadExecutor;
+package JavaSE.BLS.Thread.Executor.SingleThread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ *
+ * 单线程线程池，此线程池保证所有任务的执行顺序按照提交的顺序执行
+ *
+ */
 public class SingleThreadExcutor
 {
     

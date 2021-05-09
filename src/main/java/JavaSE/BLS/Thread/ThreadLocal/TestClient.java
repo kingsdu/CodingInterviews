@@ -15,7 +15,7 @@ public class TestClient extends Thread
         {
             System.out.println("Thread name"+Thread.currentThread().getName() + "---sn:"+sn.getNextNum());
         }
-        sn.getThreadLocal().remove();
+        sn.getThreadLocal().remove();//防止不断创建导致的内存泄露
     }
     
 }

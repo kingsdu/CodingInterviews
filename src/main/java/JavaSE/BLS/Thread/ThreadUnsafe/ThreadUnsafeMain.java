@@ -12,7 +12,7 @@ public class ThreadUnsafeMain
          *
          * 当加上synchronized后，5个线程就逐个执行，恢复正常
          */
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 115; i++)
         {
             ThreadA a = new ThreadA(t);
             a.start();

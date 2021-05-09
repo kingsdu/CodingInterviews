@@ -16,7 +16,7 @@ public class ReentrantLockWork
      */
     final ReentrantLock lock = new ReentrantLock();
     public void get()
-    {
+    {//不同的锁对象，就会存在线程安全问题
 //        final ReentrantLock lock = new ReentrantLock();
         try
         {

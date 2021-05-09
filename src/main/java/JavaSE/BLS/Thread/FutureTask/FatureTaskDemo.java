@@ -5,7 +5,7 @@ import java.util.concurrent.FutureTask;
 
 /**
  *
- * 线程1执行完毕后才执行的线程2
+ * 每次执行后都可以返回执行结果
  *
  */
 public class FatureTaskDemo

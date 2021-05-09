@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread.FixThreadPool;
+package JavaSE.BLS.Thread.Executor.FixThreadPool;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -6,12 +6,15 @@ import java.util.concurrent.Executors;
 
 /**
  *
- * 一次执行5个线程
+ * newFixedThreadPool，是一个可重用固定线程数的线程池，以共享的无界队列来运行这些线程
  *
  */
 public class FixThreadPoolDemo
 {
-    
+    /**
+     * 一次执行5个线程
+     * @param args
+     */
     public static void main(String[] args)
     {
         ExecutorService pool = Executors.newFixedThreadPool(5);

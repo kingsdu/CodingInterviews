@@ -8,7 +8,7 @@ package JavaSE.BLS.Thread.ThreadLocal;
  */
 public class ThreadMain
 {
-    
+    //ThreadLocal本地副本变量
     private static ThreadLocal<Integer> seqNum = new ThreadLocal<Integer>()
     {
         public Integer initialValue()
