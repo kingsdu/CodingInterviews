@@ -19,6 +19,5 @@ public class CreateThread_Method2 implements Runnable{
         String name = cur.getName();
         System.out.println("线程名称:"+name);
         System.out.println("线程优先级:"+cur.getPriority());
-        
     }
 }
