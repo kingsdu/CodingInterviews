@@ -1,10 +1,11 @@
-package JavaSE.BLS.Thread.CompletableFuture;
+package JavaSE.BLS.Thread.FutureTask.CompletableFuture;
 
 import java.util.concurrent.CompletableFuture;
 
 /**
  *
- * 同时从新浪和网易查询证券代码，只要任意一个返回结果，就进行下一步查询价格，查询价格也同时从新浪和网易查询，只要任意一个返回结果，就完成操作：
+ * 同时从新浪和网易查询证券代码，只要任意一个返回结果，就进行下一步查询价格，查询价格也同时从新浪和网易查询，
+ * 只要任意一个返回结果，就完成操作：
  *
  */
 public class CompletableFutureDemo02

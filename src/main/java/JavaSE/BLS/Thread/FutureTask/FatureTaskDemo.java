@@ -15,7 +15,7 @@ public class FatureTaskDemo
         SonTask s1 = new SonTask("Thread son1");
         FutureTask<String> f1 = new FutureTask<>(s1);
         new Thread(f1).start();
-        System.out.println(f1.get());
+        System.out.println(f1.get());//阻塞式方法
     
         FutureTask<Integer> f2 = new FutureTask<>(new MyRun(),1212);
         new Thread(f2).start();

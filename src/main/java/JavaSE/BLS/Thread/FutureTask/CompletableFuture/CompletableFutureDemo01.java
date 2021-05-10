@@ -1,8 +1,11 @@
-package JavaSE.BLS.Thread.CompletableFuture;
+package JavaSE.BLS.Thread.FutureTask.CompletableFuture;
 
 import java.util.concurrent.CompletableFuture;
 
 /**
+ *
+ * Java 8开始引入了CompletableFuture，它针对Future做了改进，
+ * 可以传入回调对象，当异步任务完成或者发生异常时，自动调用回调对象的回调方法。
  *
  * 多个CompletableFuture可以串行执行，
  * 例如，定义两个CompletableFuture，
