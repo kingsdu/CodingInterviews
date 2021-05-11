@@ -7,9 +7,8 @@ public class TestMain
     {
         BinaryTree bit = new BinaryTree();
         Integer[] nodes = {3,9,20,null,null,15,7};
-        TreeNode[] root = bit.CreateBinaryTree(nodes);
+        BinaryTree.TreeNode[] root = bit.CreateBinaryTree(nodes);
         bit.HighOfTree(root[0]);
-
     }
     
 }

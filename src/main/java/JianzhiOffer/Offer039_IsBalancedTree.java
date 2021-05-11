@@ -1,13 +1,13 @@
 package JianzhiOffer;
 
 import DataStruct.MyOverride.Tree.BinaryTree;
-import DataStruct.MyOverride.Tree.TreeNode;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
- *
  * 输入一棵二叉树的根节点，判断该树是不是平衡二叉树。
  * 如果某二叉树中任意节点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。
- *
  */
 public class Offer039_IsBalancedTree
 {
@@ -18,7 +18,7 @@ public class Offer039_IsBalancedTree
         BinaryTree bi = new BinaryTree();
 //        Integer[] nodes = {3,9,20,null,null,15,7};
         Integer[] nodes = {1, 2, 2, 3, 3, null, null, 4, 4};
-        TreeNode[] roots = bi.CreateBinaryTree(nodes);
+        TreeNode[] roots = of.CreateBinaryTree(nodes);
         boolean balanced = of.isBalanced(roots[0]);
         System.out.println(balanced);
     }
@@ -85,9 +85,8 @@ public class Offer039_IsBalancedTree
     
     
     /**
-     *
      * 另一种写法，表示树上所有的节点高度都<=1
-     *
+     * <p>
      * 逆向思维：树中所有的节点的高度差都<=1，即可
      *
      * @param root
@@ -103,6 +102,70 @@ public class Offer039_IsBalancedTree
     {
         if (root == null) return 0;
         return Math.max(depth(root.left), depth(root.right)) + 1;
+    }
+    
+    
+    public TreeNode[] CreateBinaryTree(Integer[] array)
+    {
+        int size = array.length;
+        TreeNode[] root = new TreeNode[size];
+        for (int i = 0; i < array.length; i++)
+        {
+            if (array[i] == null)
+            {
+                root[i] = null;
+            } else
+            {
+                root[i] = new TreeNode(array[i]);
+            }
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root.length == 0)
+        {
+            return null;
+        }
+        queue.add(root[0]);
+        int i = 1;
+        while (i < size || !queue.isEmpty())
+        {
+            TreeNode curNode = queue.poll();
+            //判断当前节点为空则继续出栈
+            while (curNode == null)
+            {
+                curNode = queue.poll();
+                if (queue.isEmpty() && curNode == null)//最后一个元素出栈，栈是空，但是还有元素
+                {
+                    return root;
+                }
+            }
+            
+            if (i < size)
+            {
+                curNode.left = array[i] == null ? null : root[i];
+                queue.offer(curNode.left);
+                i++;
+            }
+            
+            if (i < size)
+            {
+                curNode.right = array[i] == null ? null : root[i];
+                queue.offer(curNode.right);
+                i++;
+            }
+        }
+        return root;
+    }
+    
+    public static class TreeNode
+    {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+        
+        public TreeNode(int val)
+        {
+            this.val = val;
+        }
     }
     
 }

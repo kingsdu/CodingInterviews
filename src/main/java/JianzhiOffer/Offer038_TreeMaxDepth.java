@@ -1,11 +1,9 @@
 package JianzhiOffer;
 
 
-import DataStruct.MyOverride.Tree.BinaryTree;
-import DataStruct.MyOverride.Tree.TreeNode;
-
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * 输入一棵二叉树的根节点，求该树的深度。
@@ -18,9 +16,8 @@ public class Offer038_TreeMaxDepth
     public static void main(String[] args)
     {
         Offer038_TreeMaxDepth of = new Offer038_TreeMaxDepth();
-        BinaryTree bi = new BinaryTree();
         Integer[] nodes = {3,9,20,null,null,15,7};
-        TreeNode[] roots = bi.CreateBinaryTree(nodes);
+        TreeNode[] roots = of.CreateBinaryTree(nodes);
         int i = of.maxDepth_3(roots[0]);
         System.out.println(i);
     }
@@ -89,6 +86,70 @@ public class Offer038_TreeMaxDepth
             res++;
         }
         return res;
+    }
+    
+    
+    public TreeNode[] CreateBinaryTree(Integer[] array)
+    {
+        int size = array.length;
+        TreeNode[] root = new TreeNode[size];
+        for (int i = 0; i < array.length; i++)
+        {
+            if (array[i] == null)
+            {
+                root[i] = null;
+            } else
+            {
+                root[i] = new TreeNode(array[i]);
+            }
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root.length == 0)
+        {
+            return null;
+        }
+        queue.add(root[0]);
+        int i = 1;
+        while (i < size || !queue.isEmpty())
+        {
+            TreeNode curNode = queue.poll();
+            //判断当前节点为空则继续出栈
+            while (curNode == null)
+            {
+                curNode = queue.poll();
+                if (queue.isEmpty() && curNode == null)//最后一个元素出栈，栈是空，但是还有元素
+                {
+                    return root;
+                }
+            }
+            
+            if (i < size)
+            {
+                curNode.left = array[i] == null ? null : root[i];
+                queue.offer(curNode.left);
+                i++;
+            }
+            
+            if (i < size)
+            {
+                curNode.right = array[i] == null ? null : root[i];
+                queue.offer(curNode.right);
+                i++;
+            }
+        }
+        return root;
+    }
+    
+    public static class TreeNode
+    {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+        
+        public TreeNode(int val)
+        {
+            this.val = val;
+        }
     }
     
 }

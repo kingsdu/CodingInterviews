@@ -230,6 +230,7 @@ public class BinaryTree
      * <p>
      * 反向顺序实现：左右根 ——> 根右左
      * DFS
+     *
      * @param root
      * @return
      */
@@ -268,7 +269,7 @@ public class BinaryTree
     {
         if (root == null) return null;
         LinkedList<Integer> linkedList = new LinkedList<>();
-        ConcurrentLinkedQueue<TreeNode> queue = new ConcurrentLinkedQueue();
+        LinkedList<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         
         while (!queue.isEmpty())
@@ -537,7 +538,6 @@ public class BinaryTree
      * 层序遍历，获取最后一个节点，
      * 获取后需要将最后一个节点和之前节点的联系切断（重点）
      *
-     *
      * @return
      */
     public TreeNode getDeepestTreeNode(TreeNode root)
@@ -557,7 +557,8 @@ public class BinaryTree
                 queue.add(tempNode.left);
             } else
             {
-                if(!queue.isEmpty()){
+                if (!queue.isEmpty())
+                {
                     preLeft = null;
                 }
             }
@@ -568,7 +569,8 @@ public class BinaryTree
                 queue.add(tempNode.right);
             } else
             {
-                if(!queue.isEmpty()){
+                if (!queue.isEmpty())
+                {
                     preRight = null;
                 }
             }
@@ -581,12 +583,24 @@ public class BinaryTree
         } else if (preRight != null)
         {
             preLeft.right = null;
-        }else if(preLeft != null && preRight!=null){
+        } else if (preLeft != null && preRight != null)
+        {
             preLeft.right = null;
         }
         
         return tempNode;
     }
     
-    
+    public static class TreeNode
+    {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+        
+        public TreeNode(int val)
+        {
+            this.val = val;
+        }
+        
+    }
 }
