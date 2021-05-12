@@ -26,6 +26,18 @@ public class Offer058_IsSymmetrical
         return true;
     }
     
+    /**
+     *
+     * 学习别人的思路1
+     *
+     * @param pRoot
+     * @return
+     */
+    public boolean isSymmetrical2(TreeNode pRoot)
+    {
+        return isSame(pRoot, pRoot);
+    }
+    
     public boolean isSame(TreeNode r1, TreeNode r2)
     {
         if (r1 == null && r2 == null) return true;
@@ -34,11 +46,13 @@ public class Offer058_IsSymmetrical
         
     }
     
-    public boolean isSymmetrical2(TreeNode pRoot)
-    {
-        return isSame(pRoot, pRoot);
-    }
-    
+    /**
+     *
+     * 学习别人的思路2
+     *
+     * @param pRoot
+     * @return
+     */
     public boolean isSymmetrical3(TreeNode pRoot)
     {
         return pRoot == null || jude(pRoot.left, pRoot.right);

@@ -3,6 +3,12 @@ package JavaSE.BLS.SystemShiftOperator;
 
 /**
  * 将十进制 转化为 二、八、十六 进制
+ *
+ * 关键点 ：
+ * 1、一个int 有 4个字节byte 每个字节有8位bit  ==  1byte = 8bit。所以ToHex_1中最多循环8次
+ * 2、ToHex_2中，当传入的数为0后，就不需要在继续循环了。
+ * 3、&15 ， 15 = 1111 ；任何数和1111 & 都是原数字。
+ *
  */
 public class FinalTrans
 {

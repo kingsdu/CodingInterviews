@@ -1,5 +1,7 @@
 package JianzhiOffer;
 
+import java.util.ArrayList;
+
 /**
  * <p>
  * 题目：
@@ -13,15 +15,22 @@ public class Test_Day
     
     public static void main(String[] args)
     {
-        System.out.println(outPutNumber(-10));
+        outPutNumber();
     }
     
-    public static int outPutNumber(int x){
-        int count = 0;
-        while (x != 0){
-            x &= (x-1);
-            count++;
+    public static void outPutNumber()
+    {
+        ArrayList<ArrayList<Integer>> lia = new ArrayList<>();
+        ArrayList<Integer> li = null;
+        for (int i = 0; i < 3; i++)
+        {
+            li = new ArrayList<>();
+            for (int j = 0; j <= i; j++)
+            {
+                li.add(j);
+            }
+            lia.add(li);
         }
-        return count;
+        System.out.println(lia);
     }
 }
