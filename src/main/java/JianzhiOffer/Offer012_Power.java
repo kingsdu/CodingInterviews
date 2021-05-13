@@ -12,7 +12,25 @@ package JianzhiOffer;
  */
 public class Offer012_Power
 {
+    public static void main(String[] args)
+    {
+        Offer012_Power power = new Offer012_Power();
+        int base = 2, exponent = 4;
+//        double a = Math.pow(base, exponent);
+//        double b = power.Power_1(base, exponent);
+        double c = power.power_2(base, exponent);
+//        System.out.println(a);
+//        System.out.println(b);
+        System.out.println(c);
+    }
     
+    /**
+     * 这个方法不会是面试的答案
+     *
+     * @param base
+     * @param exponent
+     * @return
+     */
     public double Power_1(double base, int exponent)
     {
         double result = 1.0;
@@ -34,19 +52,18 @@ public class Offer012_Power
     
     
     /**
-     *
      * 通过奇偶性，递归求值
-     *
+     * <p>
      * 当次方数为奇数时：
      * 求
-     *  2^7=2^3^2*2
-     *  2^3 = 2^1^2*2
-     *  2^1 = 2^0^2*2
-     *  2^0 = 1.0
-     *  递归返回
-     *
+     * 2^7 = 2^3^2*2
+     * 2^3 = 2^1^2*2
+     * 2^1 = 2^0^2*2
+     * 2^0 = 1.0
+     * 递归返回
+     * <p>
      * 当次方数为偶树时
-     *
+     * <p>
      * 遇上类似，不需要多乘一个2
      *
      * @return
@@ -57,7 +74,7 @@ public class Offer012_Power
         if (exponent == 0) return 1.0;
         
         double result = power_2Call(base, exponent / 2);
-        if (exponent%2==1)
+        if (exponent % 2 == 1)
         {
             return result * result * base;//无论什么exponent最后都会进个方法
         } else
@@ -79,17 +96,5 @@ public class Offer012_Power
         return power_2Call(base, exponent);
     }
     
-    
-    public static void main(String[] args)
-    {
-        Offer012_Power power = new Offer012_Power();
-        int base = 2, exponent = 4;
-//        double a = Math.pow(base, exponent);
-//        double b = power.Power_1(base, exponent);
-        double c = power.power_2(base,exponent);
-//        System.out.println(a);
-//        System.out.println(b);
-        System.out.println(c);
-    }
     
 }

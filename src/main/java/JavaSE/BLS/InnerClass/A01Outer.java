@@ -7,12 +7,13 @@ public class A01Outer
     class Inner
     {
         private String inStr = "inner";
+        
         public void print()
         {
             System.out.println(str);
         }
     }
-    
+
     public void fun()
     {
         Inner in = new Inner();
