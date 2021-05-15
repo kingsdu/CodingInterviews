@@ -15,7 +15,7 @@ public class PairMethodMain
     {
         String[] words = {"1", "2", "3", "4", "5"};
         Integer[] ints = {1, 2, 3, 4, 5};
-        
+
         MethodPair<String> mm = ArrayAlgT.minmax(words);
         System.out.println("min = " + mm.getFirst());
         System.out.println("max = " + mm.getSecond());

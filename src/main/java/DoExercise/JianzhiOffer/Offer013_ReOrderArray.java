@@ -1,6 +1,7 @@
 package DoExercise.JianzhiOffer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -114,6 +115,44 @@ public class Offer013_ReOrderArray
         return array;
     }
     
+    /**
+     *
+     * 自己后来写的方法
+     * 主要注意concat的使用
+     *
+     * @param arr
+     * @return
+     */
+    public static int[] reOrderArray_2(int arr[])
+    {
+        int arr1[] = new int[arr.length / 2 + 1];
+        int arr2[] = new int[arr.length / 2 + 1];
+        int index1 = 0, index2 = 0;
+        for (int i = 0; i < arr.length; i++)
+        {
+            if (arr[i] % 2 != 0)
+            {
+                arr1[index1++] = arr[i];
+            } else
+            {
+                arr2[index2++] = arr[i];
+            }
+        }
+        int t1 = arr1.length - 1;
+        while ((t1 > 0) && (arr1[t1] == 0)){t1--;}
+        int t2 = arr2.length - 1;
+        while ((t2 > 0) && (arr2[t2] == 0)){t2--;}
+        return concat(Arrays.copyOfRange(arr1, 0, t1+1), Arrays.copyOfRange(arr2, 0, t2+1));
+    }
+    
+    
+    public static int[] concat(int[] a, int[] b)
+    {
+        int[] c = new int[a.length + b.length];
+        System.arraycopy(a, 0, c, 0, a.length);
+        System.arraycopy(b, 0, c, a.length, b.length);
+        return c;
+    }
     
     public static void main(String[] args)
     {
