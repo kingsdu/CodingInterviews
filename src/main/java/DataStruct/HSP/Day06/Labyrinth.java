@@ -32,8 +32,12 @@ public class Labyrinth
             arr[i][arr[0].length-1] = 1;
         }
     
-        arr[3][1] = 1;
-        arr[3][2] = 1;
+//        arr[3][1] = 1;
+//        arr[3][2] = 1;
+        arr[2][1] = 1;
+        arr[2][2] = 1;
+        arr[1][2] = 1;
+
     }
     
     public static void main(String[] args)
