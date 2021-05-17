@@ -58,7 +58,6 @@ public class Offer064_MaxSlidingWindow
     
     
     /**
-     *
      * deque的first始终存的是最大值
      *
      * @param nums
@@ -67,12 +66,12 @@ public class Offer064_MaxSlidingWindow
      */
     public static int[] maxSlidingWindow2(int[] nums, int k)
     {
-        if (nums.length == 0 || k == 0) return new int[0];
+        if (nums.length == 0 || k == 0 || k < 1) return new int[0];
         Deque<Integer> deque = new LinkedList<>();
         int[] res = new int[nums.length - k + 1];
         for (int j = 0, i = 1 - k; j < nums.length; i++, j++)
         {
-            // 删除 deque 中对应的 nums[i-1]，让窗口往前移动，窗口范围始终保持在K个
+            //最大值已经要超出窗口范围了，故让窗口往后移动，窗口范围始终保持在K个
             if (i > 0 && deque.peekFirst() == nums[i - 1])
                 deque.removeFirst();
             // 保持 deque 递减
