@@ -1,4 +1,4 @@
-package DataStruct.HSP.Day05;
+package DoExercise.HSP.A004_Stack;
 
 /**
  * 栈实现综合计算器
@@ -13,10 +13,10 @@ package DataStruct.HSP.Day05;
  * 4、字符串遍历完毕后，在逐个对数字和符号栈进行出栈、计算，返回数字栈的最后一个元素。
  *
  */
-public class CalculatorStack
+public class CalculatorStackHSP
 {
-    public static MyStack numStack = new MyStack(100);
-    public static MyStack opeStack = new MyStack(100);
+    public static SimpleStackHSP numStack = new SimpleStackHSP(100);
+    public static SimpleStackHSP opeStack = new SimpleStackHSP(100);
     
     public static void main(String[] args)
     {
@@ -41,23 +41,19 @@ public class CalculatorStack
             ch = expression.substring(index, index + 1).charAt(0);
             if (opeStack.isOper(ch))
             {
-                if (opeStack.isEmpty())
+                if (!opeStack.isEmpty())
                 {
-                    opeStack.push(ch);
-                } else
-                {
-                    //如果当前的操作符的优先级小于或者等于栈中的操作符
-                    if(opeStack.priority(ch) <= opeStack.priority(opeStack.peek())){
+                    //当前的操作符的优先级 <= 栈中的操作符，立马栈中已存在的数据的计算结果
+                    if (opeStack.priority(ch) <= opeStack.priority(opeStack.peek()))
+                    {
                         int num1 = numStack.pop();
                         int num2 = numStack.pop();
                         int oper1 = opeStack.pop();
                         int res = numStack.cal(num1, num2, oper1);
                         numStack.push(res);
-                        opeStack.push(ch);
-                    }else {
-                        opeStack.push(ch);
                     }
                 }
+                opeStack.push(ch);
             } else
             {
                 keepNum += ch;//考虑多位数问题

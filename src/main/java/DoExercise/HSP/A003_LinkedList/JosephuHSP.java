@@ -1,4 +1,4 @@
-package DataStruct.HSP.Day04;
+package DoExercise.HSP.A003_LinkedList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import java.util.List;
  * 2、插入时，将 tail 指向新节点。
  * 3、将 tail 的 next = head。
  */
-public class Josephu
+public class JosephuHSP
 {
     
     public static ListNode head;

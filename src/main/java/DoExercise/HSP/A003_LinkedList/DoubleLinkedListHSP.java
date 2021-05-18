@@ -1,36 +1,37 @@
-package DataStruct.HSP.Day03;
+package DoExercise.HSP.A003_LinkedList;
 
 /**
- * 双端队列：可以在队头、队尾插入、删除
- *
+ * 双端链表：可以在队头、队尾插入、删除
+ * <p>
  * 最大的优势是删除时可以直接那 node.pre.next = node.next;
  */
-public class DoubleQueue
+public class DoubleLinkedListHSP
 {
+    
+    public static void main(String[] args)
+    {
+        DoubleLinkedListHSP dq = new DoubleLinkedListHSP(3);
+        dq.insertHead(new DoubleNode(null, 1, null));
+        dq.insertHead(new DoubleNode(null, 2, null));
+        dq.insertHead(new DoubleNode(null, 3, null));
+        dq.printListNode();
+    }
+    
+    
     public DoubleNode head;
     public int size;
     
-    public DoubleQueue(){
+    public DoubleLinkedListHSP()
+    {
         this.size = 0;
         this.head = null;
     }
     
-    public DoubleQueue(int size)
+    public DoubleLinkedListHSP(int size)
     {
         this.size = size;
         this.head = null;
     }
-    
-    
-    public static void main(String[] args)
-    {
-        DoubleQueue dq = new DoubleQueue();
-        dq.insertHead(new DoubleNode(null,1,null));
-        dq.insertHead(new DoubleNode(null,2,null));
-        dq.insertHead(new DoubleNode(null,3,null));
-        dq.printListNode();
-    }
-    
     
     public int getSize()
     {
@@ -109,7 +110,7 @@ public class DoubleQueue
         }
         // help GC
         final DoubleNode lastTmp = tmp;
-        lastTmp.val= null;
+        lastTmp.val = null;
         lastTmp.pre.next = null;
         if (lastTmp.next != null)
         {
@@ -122,15 +123,42 @@ public class DoubleQueue
     }
     
     
-    public void printListNode(){
-        if(isEmpty()){
+    public void printListNode()
+    {
+        if (isEmpty())
+        {
             return;
         }
         DoubleNode headTmp = this.head;
-        while (headTmp!=null){
-            System.out.print(headTmp.val+" ");
+        while (headTmp != null)
+        {
+            System.out.print(headTmp.val + " ");
             headTmp = headTmp.next;
         }
     }
     
+    
+    public static class DoubleNode
+    {
+        
+        public Integer val;
+        public DoubleNode pre;
+        public DoubleNode next;
+        
+        public DoubleNode()
+        {
+            this.val = null;
+            this.pre = null;
+            this.next = null;
+        }
+        
+        public DoubleNode(DoubleNode pre, int val, DoubleNode next)
+        {
+            this.pre = pre;
+            this.val = val;
+            this.next = next;
+        }
+    }
 }
+
+

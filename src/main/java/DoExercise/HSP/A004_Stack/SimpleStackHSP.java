@@ -1,27 +1,27 @@
-package DataStruct.HSP.Day05;
+package DoExercise.HSP.A004_Stack;
 
 import java.util.EmptyStackException;
 
 /**
  * 用数组实现一个基础的栈结构
  */
-public class MyStack
+public class SimpleStackHSP
 {
     public int[] stackObj;
     public int maxSize;
-    public int index;
+    public int count;
     
-    public MyStack(int size)
+    public SimpleStackHSP(int size)
     {
         this.maxSize = size;
         stackObj = new int[size];
-        index = -1;
+        count = -1;
     }
     
     
     public static void main(String[] args)
     {
-        MyStack myStack = new MyStack(10);
+        SimpleStackHSP myStack = new SimpleStackHSP(10);
         myStack.push(1);
         myStack.push(2);
         myStack.push(3);
@@ -33,12 +33,12 @@ public class MyStack
     
     public boolean isEmpty()
     {
-        return index == -1;
+        return count == -1;
     }
     
     public boolean isFull()
     {
-        return maxSize - 1 == index;
+        return maxSize - 1 == count;
     }
     
     public int peek()
@@ -47,7 +47,7 @@ public class MyStack
         {
             throw new EmptyStackException();
         }
-        return stackObj[index];
+        return stackObj[count];
     }
     
     public int pop()
@@ -57,26 +57,31 @@ public class MyStack
             throw new EmptyStackException();
         }
         int peek = peek();
-        index--;
+        stackObj[count] = 0;
+        count--;
         return peek;
     }
     
     
     public void push(int val)
     {
-        if(isFull()){
+        if (isFull())
+        {
             return;
         }
-        stackObj[++index] = val;
+        stackObj[++count] = val;
     }
     
     public int priority(int oper)
     {
-        if(oper == '*' || oper == '/'){
+        if (oper == '*' || oper == '/')
+        {
             return 1;
-        }else if(oper == '+' || oper == '-'){
+        } else if (oper == '+' || oper == '-')
+        {
             return 0;
-        }else {
+        } else
+        {
             return -1;
         }
     }

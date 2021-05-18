@@ -1,4 +1,4 @@
-package DataStruct.HSP.Day06;
+package DoExercise.HSP.A005_Recur;
 
 
 /**
@@ -31,9 +31,7 @@ public class Labyrinth
             arr[i][0] = 1;
             arr[i][arr[0].length-1] = 1;
         }
-    
-//        arr[3][1] = 1;
-//        arr[3][2] = 1;
+        
         arr[2][1] = 1;
         arr[2][2] = 1;
         arr[1][2] = 1;

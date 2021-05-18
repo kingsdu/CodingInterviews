@@ -1,5 +1,7 @@
-package DataStruct.HSP.Day02;
+package DoExercise.HSP.A002_Queue;
 
+
+import java.util.Scanner;
 
 /**
  *
@@ -22,14 +24,66 @@ package DataStruct.HSP.Day02;
  *
  *
  */
-public class ArrayQueue
+// 数组实现单向队列
+public class OneWayQueueHSP
 {
+    
+    /**
+     *
+     * 顺序数组实现队列
+     *
+     * @param args
+     */
+    public static void main(String[] args)
+    {
+        OneWayQueueHSP oneWayQueueHSP = new OneWayQueueHSP(10);
+        Scanner sc = new Scanner(System.in);
+        char key = ' ';//用户输入
+        boolean flag = true;
+        while (flag){
+            System.out.println("s(show): 显示队列");
+            System.out.println("e(exit): 退出程序");
+            System.out.println("a(add): 添加数据到队列");
+            System.out.println("g(get): 从队列取出数据");
+            System.out.println("h(head): 查看队列头的数据");
+
+            key = sc.next().charAt(0);
+
+            switch (key) {
+                case 's':
+                    oneWayQueueHSP.showQueue();
+                    break;
+                case 'a':
+                    System.out.println("输出一个数");
+                    int value = sc.nextInt();
+                    oneWayQueueHSP.addQueue(value);
+                    break;
+                case 'g': //取出数据
+                    try {
+                        int res = oneWayQueueHSP.getQueue();
+                        System.out.printf("取出的数据是%d\n", res);
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case 'e': //退出
+                    sc.close();
+                    flag = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
+    
     private int maxSize;
     private int front;
     private int rear;
-    private int[] arr;
+    private int[] arr;//数组
 
-    public ArrayQueue(int arraySize)
+    public OneWayQueueHSP(int arraySize)
     {
         maxSize = arraySize;
         arr = new int[maxSize];

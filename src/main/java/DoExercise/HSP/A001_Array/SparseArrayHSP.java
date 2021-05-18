@@ -1,4 +1,4 @@
-package DataStruct.HSP.Day01;
+package DoExercise.HSP.A001_Array;
 
 /**
  *
@@ -11,7 +11,7 @@ package DataStruct.HSP.Day01;
  *  具体见印象笔记
  *
  */
-public class Array
+public class SparseArrayHSP
 {
 
     /**
@@ -67,11 +67,14 @@ public class Array
     /**
      * 将普通数组转化为二维稀疏数组
      *
+     * 行 列 值
+     *
      * @return
      */
     public static int[][] getXSArray(int[][] tarArray, int[][] resArray)
     {
         int n=0;
+        //记录稀疏数组整个有多少行，多少列，多少个值
         resArray[0][0] = tarArray.length;
         resArray[0][1] = tarArray[0].length;
         resArray[0][2] = resArray.length;
@@ -82,9 +85,9 @@ public class Array
                 if (tarArray[i][j] != 0)
                 {
                     n++;
-                    resArray[n][0] = i;
-                    resArray[n][1] = j;
-                    resArray[n][2] = tarArray[i][j];
+                    resArray[n][0] = i;//行
+                    resArray[n][1] = j;//列
+                    resArray[n][2] = tarArray[i][j];//值
                 }
             }
         }

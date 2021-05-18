@@ -44,7 +44,7 @@ public class Offer065_RectExist
         return false;
     }
     
-    static boolean  dfs(char[][] board, char[] word, int i, int j, int k)
+    static boolean dfs(char[][] board, char[] word, int i, int j, int k)
     {
         if (i >= board.length || i < 0 || j >= board[0].length || j < 0 || board[i][j] != word[k]) return false;
         if (k == word.length - 1) return true;

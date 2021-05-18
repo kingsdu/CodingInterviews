@@ -1,14 +1,37 @@
-package DataStruct.HSP.Day03;
+package DoExercise.HSP.A003_LinkedList;
 
 /**
  * 链表：单链表
- *
+ * <p>
  * 实现基本操作：增删改查
+ *
+ * index下标从0开始
  */
 public class SingleLinkedListHSP
 {
-    public SingleNode head;
-    public int size;
+    
+    public static void main(String[] args)
+    {
+        SingleLinkedListHSP ls = new SingleLinkedListHSP();
+        ls.addFirst(1);
+        ls.addNode(2);
+        ls.addNodeIndex(3, 2);
+        ls.addNodeIndex(4, 3);
+        ls.addNodeReverse(5);
+        ls.addNodeReverse(6);
+        ls.removeLastNode();
+        ls.removeNodeIndex(4);
+        ls.editNodeIndex(1, 1);
+        ls.pollNodeElement(new SingleNode(1));
+        ls.pollNodeElement(new SingleNode(6));
+        ls.printLinkedList();
+        System.out.println(ls.containsElement(5) ? "有" : "没有");
+        System.out.println(ls.getNodeIndex(1));
+    }
+    
+    //单链表结构 包含 一个头部 和 链表的大小
+    public SingleNode head;//头部
+    public int size;//大小
     
     public SingleLinkedListHSP()
     {
@@ -36,10 +59,11 @@ public class SingleLinkedListHSP
         
         if (isEmpty())
         {
-            addFirst(value);
+            head = new SingleNode(value);
+            size++;
             return;
         }
-        SingleNode curNode = head;
+        SingleNode curNode = head;//头部不能变
         while (curNode.next != null)
         {
             curNode = curNode.next;
@@ -51,6 +75,8 @@ public class SingleLinkedListHSP
     
     
     /**
+     * 增加头节点
+     *
      * @param value
      */
     public void addFirst(int value)
@@ -66,14 +92,16 @@ public class SingleLinkedListHSP
     
     
     /**
-     * 逆序新增链表
+     * 逆序增加链表节点
      */
     public void addNodeReverse(int value)
     {
         SingleNode newNode = new SingleNode(value);
         if (isEmpty())
         {
-            addFirst(value);
+            head = new SingleNode(value);
+            size++;
+            return;
         }
         
         newNode.next = head;
@@ -81,37 +109,51 @@ public class SingleLinkedListHSP
         size++;
     }
     
+    
     /**
-     * @param index
+     * 要保证
+     * 1、
+     *
+     * @param value
+     * @param index 从0开始
      */
     public void addNodeIndex(int value, int index)
     {
-        if (index < 0)
+        if (index < 0 || index > getSize())
         {
             throw new IllegalArgumentException("index is error");
         }
+        SingleNode newNode = new SingleNode(value);
+        SingleNode curNode = this.head;
+        SingleNode preNode = curNode;
         
-        if (index == 0)
+        if (index == getSize())
         {
-            addNode(value);
-        }
-        
-        if (index > getSize())
+            while (curNode.next != null)
+            {
+                curNode = curNode.next;
+            }
+            curNode.next = newNode;
+            newNode.next = null;
+            size++;
+            return;
+        } else if (index == 0)
         {
-            addNode(value);
+            newNode.next = curNode;
+            head = newNode;
+            size++;
             return;
         }
         
-        SingleNode curNode = this.head;
         //链表从1开始计数
-        while ((index > 1) && (curNode.next.next != null))
+        while (index > 0 && curNode.next != null)
         {
             index--;
+            preNode = curNode;
             curNode = curNode.next;
         }
-        SingleNode newNode = new SingleNode(value);
-        newNode.next = curNode.next;
-        curNode.next = newNode;
+        preNode.next = newNode;
+        newNode.next = curNode;
         this.size++;
     }
     
@@ -121,7 +163,7 @@ public class SingleLinkedListHSP
      *
      * @return
      */
-    public int getLastNode()
+    public SingleNode getLastNode()
     {
         if (isEmpty())
         {
@@ -132,19 +174,19 @@ public class SingleLinkedListHSP
         {
             curNode = curNode.next;
         }
-        return curNode.val;
+        return curNode;
     }
     
     
     /**
      * 获取链表中指定位置的元素
      *
-     * @param index
+     * @param index 从0开始
      * @return
      */
-    public int getNodeIndex(int index)
+    public SingleNode getNodeIndex(int index)
     {
-        if (index < 1)
+        if (index < 0 || index > getSize() - 1)
         {
             throw new IllegalArgumentException("无效下标");
         }
@@ -153,17 +195,22 @@ public class SingleLinkedListHSP
             throw new IllegalArgumentException("链表为空");
         }
         
-        if(getSize() < index){
+        SingleNode curNode = head;
+        
+        if (index == getSize() - 1)
+        {
             return getLastNode();
+        } else if (index == 0)
+        {
+            return head;
         }
         
-        SingleNode curNode = head;
-        while ((index > 1) && (curNode.next != null))
+        while (index > 0 && curNode.next != null)
         {
             curNode = curNode.next;
             index--;
         }
-        return curNode.val;
+        return curNode;
     }
     
     
@@ -189,11 +236,25 @@ public class SingleLinkedListHSP
         size--;
     }
     
+    /**
+     * 删除头节点
+     */
+    public void removeFirstNode()
+    {
+        if (isEmpty())
+        {
+            throw new IllegalArgumentException("链表为空");
+        }
+        
+        SingleNode curNode = head;
+        head = head.next;
+        curNode.next = null;
+        size--;
+    }
     
     /**
      * 删除指定下标的链表的元素
      * <p>
-     *
      *
      * @param index
      */
@@ -203,7 +264,7 @@ public class SingleLinkedListHSP
         {
             throw new IllegalArgumentException("链表为空");
         }
-        if (index < 1)
+        if (index < 0 || index > getSize())
         {
             throw new IllegalArgumentException("无效下标");
         }
@@ -212,26 +273,31 @@ public class SingleLinkedListHSP
         {
             removeLastNode();
             return;
+        } else if (index == 0)
+        {
+            removeFirstNode();
+            return;
         }
         
         SingleNode curNode = head;
-        index--;//保证curNode的前置位
-        while ((index > 1) && (curNode.next.next != null))
+        SingleNode preNode = curNode;
+        while (index > 0 && curNode.next != null)
         {
-            index--;
+            preNode = curNode;
             curNode = curNode.next;
+            index--;
         }
-        curNode.next = curNode.next.next;
+        preNode.next = curNode.next;
         size--;
     }
     
     
     /**
-     * 删除链表中nodeElement元素
+     * 删除链表中nodeElement元素，并返回
      *
-     * @param nodeElement
+     * @param node
      */
-    public void removeNodeElement(int nodeElement)
+    public SingleNode pollNodeElement(SingleNode node)
     {
         if (isEmpty())
         {
@@ -240,25 +306,30 @@ public class SingleLinkedListHSP
         
         SingleNode curNode = head;
         //第一个元素特殊处理
-        if (curNode.val == nodeElement)
+        if (head.val == node.val)
         {
-            head = curNode.next;
+            head = head.next;
+            curNode.next = null;
             size--;
-            return;
+            return curNode;
         }
         
+        SingleNode preNode = curNode;
         while (curNode.next != null)
         {
-            if (curNode.next.val == nodeElement)
+            preNode = curNode;
+            if (curNode.val == node.val)
             {
-                curNode.next = curNode.next.next;
+                curNode = curNode.next;
+                preNode.next = curNode.next;
                 size--;
-                return;//移除一个，去掉后移除所有
+                return curNode;
             } else
             {
                 curNode = curNode.next;
             }
         }
+        return null;
     }
     
     
@@ -273,18 +344,23 @@ public class SingleLinkedListHSP
         {
             throw new IllegalArgumentException("链表为空");
         }
-        if (index < 1)
+        if (index < 0 || index > getSize())
         {
             throw new IllegalArgumentException("无效下标");
         }
         
-        if (getSize() < index)
+        if (index == getSize())
         {
             editLastNode(nodeValue);
+            return;
+        } else if (index == 0)
+        {
+            editFirstNode(nodeValue);
+            return;
         }
         
         SingleNode curNode = head;
-        while ((index > 1) && (curNode.next != null))
+        while (index > 0 && curNode.next != null)
         {
             index--;
             curNode = curNode.next;
@@ -294,7 +370,25 @@ public class SingleLinkedListHSP
     
     
     /**
+     * 编辑链表头部的节点值
+     *
+     * @param nodeValue
+     */
+    public void editFirstNode(int nodeValue)
+    {
+        if (isEmpty())
+        {
+            throw new IllegalArgumentException("链表为空");
+        }
+        
+        head.val = nodeValue;
+    }
+    
+    
+    /**
      * 编辑链表尾部的节点值
+     *
+     * @param nodeValue
      */
     public void editLastNode(int nodeValue)
     {
@@ -326,7 +420,8 @@ public class SingleLinkedListHSP
         
         SingleNode curNode = head;
         
-        if(curNode.val == value){
+        if (curNode.val == value)
+        {
             return true;
         }
         //从第二个元素起
@@ -355,6 +450,19 @@ public class SingleLinkedListHSP
             curNode = curNode.next;
         }
         
+    }
+    
+    
+    public static class SingleNode
+    {
+        public int val;
+        public SingleNode next;
+        
+        public SingleNode(int val)
+        {
+            this.val = val;
+            this.next = null;
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-package DataStruct.HSP.Day05;
+package DoExercise.HSP.A004_Stack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.Stack;
  * 计算部分：
  * 1、从左至右存入栈中，遇到符号就直接计算。
  */
-public class PolandNotation
+public class PolandNotationHSP
 {
     
     public static void main(String[] args)
