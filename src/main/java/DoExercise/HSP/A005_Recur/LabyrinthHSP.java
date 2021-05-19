@@ -15,7 +15,7 @@ package DoExercise.HSP.A005_Recur;
  *
  * 如上图所示表示迷宫，1表示墙，0表示通路，小球从X开始走到Y，问最短的路径是怎样的？
  */
-public class Labyrinth
+public class LabyrinthHSP
 {
     public static int[][] arr = new int[8][7];
     
@@ -34,13 +34,12 @@ public class Labyrinth
         
         arr[2][1] = 1;
         arr[2][2] = 1;
-        arr[1][2] = 1;
 
     }
     
     public static void main(String[] args)
     {
-        Labyrinth la = new Labyrinth();
+        LabyrinthHSP la = new LabyrinthHSP();
         la.printMatrixArr();
         la.setWay(1,1);
         System.out.println("---------------------------------------");
@@ -62,7 +61,7 @@ public class Labyrinth
             return true;
         }else {
             if(arr[i][j] == 0){
-                arr[i][j] = 2;
+                arr[i][j] = 2;//表示已经走过了
                 if(setWay(i+1,j)){
                     return true;
                 }else if(setWay(i,j+1)){
@@ -72,7 +71,7 @@ public class Labyrinth
                 }else if(setWay(i,j-1)){
                     return true;
                 }else {
-                    arr[i][j] = 3;
+                    arr[i][j] = 3;//无路可走
                     return false;
                 }
             }else {

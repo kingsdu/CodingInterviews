@@ -44,6 +44,7 @@ public class PolandNotationHSP
      *
      * @param expression
      * @return
+     * 3*(2*5-2+3)-9-1*2
      */
     public static List<String> toInfixExpressionList(List<String> expression)
     {

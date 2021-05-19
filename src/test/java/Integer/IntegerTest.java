@@ -61,4 +61,40 @@ public class IntegerTest
     {
         return userId.toLowerCase() == "admin";
     }
+    
+    
+    String str = new String("good");
+    char[] ch = {'a', 'b', 'c'};
+    
+    Integer a;
+    Integer b = a;
+    @Test
+    public void test0518()
+    {
+        System.out.println(a == b);
+    }
+    
+    public void change(String str, char ch[])
+    {
+        str = "test ok";
+        ch[0] = 'g';
+    }
+    
+    public static int val()
+    {
+        int num = 5;
+        try
+        {
+            num = num / 0;
+        } catch (Exception e)
+        {
+            num = 10;
+        } finally
+        {
+            num = 15;
+        }
+        return num;
+    }
+    
+
 }
