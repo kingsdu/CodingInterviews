@@ -1,4 +1,4 @@
-package DataStruct.SortPackages;
+package DoExercise.HSP.Find;
 
 import java.util.Arrays;
 

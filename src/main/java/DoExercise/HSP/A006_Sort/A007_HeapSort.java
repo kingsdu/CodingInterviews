@@ -1,7 +1,13 @@
-package DataStruct.SortPackages;
+package DoExercise.HSP.A006_Sort;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
+ *
+ * 堆排序：时间复杂度：o(n log n)  空间复杂度：o(1)  不稳定算法
+ *
  * https://www.bilibili.com/video/BV1Eb41147dK?from=search&seid=11591651876658355142
  *
  * heap
@@ -11,21 +17,40 @@ package DataStruct.SortPackages;
  * parent = (i-1)/2
  * child1 = 2 * i + 1
  * child2 = 2 * i + 2
+ *
+ *
+ * 99万个数字 耗时 1s
  */
-public class HeapSort
+public class A007_HeapSort
 {
     
     public static void main(String[] args)
     {
-        int[] tree = {2, 5, 3, 1, 10, 4};
-        int n = 6;
-        HeapSort h = new HeapSort();
-        h.heapSort(tree, n);
-        
-        for (int i = 0; i < tree.length; i++)
+//        int[] tree = {2, 5, 3, 1, 10, 4};
+//        heapSort(tree, tree.length);
+//
+//        for (int i = 0; i < tree.length; i++)
+//        {
+//            System.out.print(tree[i] + " ");
+//        }
+    
+        SimpleDateFormat startTime = new SimpleDateFormat("yyyy:MM:dd:HH:mm:ss");
+        System.out.println("排序开始时间：" + startTime.format(new Date()));
+        heapSort_1_test();
+        SimpleDateFormat endTime = new SimpleDateFormat("yyyy:MM:dd:HH:mm:ss");
+        System.out.println("排序结束时间：" + endTime.format(new Date()));
+    }
+    
+    public static void heapSort_1_test()
+    {
+        //测试80万个数据的排序
+        int[] treeTest = new int[9999999];
+        for (int index = 0; index < 9999999; index++)
         {
-            System.out.print(tree[i] + " ");
+            treeTest[index] = (int) (Math.random() * 9999999);
         }
+        //增量gap，并逐步缩小增量
+        heapSort(treeTest,treeTest.length);
     }
     
     
@@ -39,7 +64,7 @@ public class HeapSort
      * @param tree
      * @param n
      */
-    public void heapSort(int[] tree, int n)
+    public static void heapSort(int[] tree, int n)
     {
         //堆化
         buildHeap(tree, n);
@@ -60,7 +85,7 @@ public class HeapSort
      * @param tree
      * @param n
      */
-    public void buildHeap(int[] tree, int n)
+    public static void buildHeap(int[] tree, int n)
     {
         int lastNode = n - 1;
         int parent = (lastNode - 1) / 2;
@@ -75,7 +100,7 @@ public class HeapSort
      * @param n    共有多少个节点
      * @param i    对哪个节点做heapify操作
      */
-    public void heapify(int[] tree, int n, int i)
+    public static void heapify(int[] tree, int n, int i)
     {
         if (i > n)
         {
@@ -101,15 +126,25 @@ public class HeapSort
         }
     }
     
-    /**
-     *
-     * 大根堆
-     *
-     * @param tree
-     * @param n
-     * @param i
-     */
-//    public void headifyMin(int[] tree, int n, int i)
+    
+    public static void swap(int[] tree, int i, int j)
+    {
+        int tmp = tree[i];
+        tree[i] = tree[j];
+        tree[j] = tmp;
+    }
+    
+    
+    
+//    /**
+//     *
+//     * 大根堆
+//     *
+//     * @param tree
+//     * @param n
+//     * @param i
+//     */
+//    public static void headifyMin(int[] tree, int n, int i)
 //    {
 //        if (i > n)
 //        {
@@ -134,11 +169,5 @@ public class HeapSort
 //            headifyMin(tree, n, min);
 //        }
 //    }
-    
-    public void swap(int[] tree, int i, int j)
-    {
-        int tmp = tree[i];
-        tree[i] = tree[j];
-        tree[j] = tmp;
-    }
+
 }
