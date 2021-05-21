@@ -99,4 +99,40 @@ public class A006_QuickSort
         //增量gap，并逐步缩小增量
         quickSort(arrTest);
     }
+    
+    
+    /**
+     *
+     * 第二种快速排序的方法，不太理解
+     *
+     * @param a
+     * @param start
+     * @param end
+     */
+    private static void quickSort_2(int[] a, int start, int end)
+    {
+        if (start < end)
+        {
+            int p = quickSort_2_core(a, start, end);
+            quickSort_2(a, start, p - 1);
+            quickSort_2(a, p + 1, end);
+        }
+    }
+    
+    private static int quickSort_2_core(int[] a, int start, int end)
+    {
+        int x = a[end];//以x作为锚点
+        int i = start;
+        for (int j = start; j <= end - 1; j++)
+        {
+            if (a[j] >= x)
+            {
+                swap(a, i, j);
+                i++;//交换了几次
+            }
+        }//把最大的放到最后
+        swap(a, i, end);//把最大的放到i的位置
+        return i;
+    }
+    
 }
