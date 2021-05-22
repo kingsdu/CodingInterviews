@@ -1,7 +1,5 @@
 package JavaSE.BLS.Inherit.Sample;
 
-import JavaSE.BLS.Inherit.Sample.Parent;
-
 public class Child extends Parent
 {
 
