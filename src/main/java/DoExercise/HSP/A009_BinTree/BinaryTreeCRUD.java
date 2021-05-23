@@ -1,16 +1,28 @@
-package DataStruct.MyOverride.Tree;
+package DoExercise.HSP.A009_BinTree;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * 二叉树的操作
  * <p>
- * 1、遍历
+ * 1、根据数组创建二叉树
  * 2、增删改查
  */
-public class BinaryTree
+public class BinaryTreeCRUD
 {
+    
+    public static void main(String[] args)
+    {
+        BinaryTreeCRUD bit = new BinaryTreeCRUD();
+        Integer[] nodes = {3, 9, 20, null, null, 15, 7};
+        BinaryTreeCRUD.TreeNode[] root = bit.CreateBinaryTree(nodes);
+        bit.HighOfTree(root[0]);
+    }
+    
     
     List<Integer> resultList = new ArrayList<>();
     
@@ -122,191 +134,6 @@ public class BinaryTree
     
     
     /**
-     *  * 前序：0137849256：左右根
-     *  * 中序：7381904526：左根右
-     *  * 后序：7839415620：左右根
-     */
-    
-    /**
-     * 遍历方式实现前序遍历
-     *
-     * @param root
-     * @return
-     */
-    public void preOrderTreeRec(TreeNode root)
-    {
-        if (root != null)
-        {
-            resultList.add(root.val);
-            preOrderTreeRec(root.left);
-            preOrderTreeRec(root.right);
-        }
-    }
-    
-    
-    /**
-     * @param root
-     */
-    public void inOrderTreeRec(TreeNode root)
-    {
-        if (root != null)
-        {
-            inOrderTreeRec(root.left);
-            resultList.add(root.val);
-            inOrderTreeRec(root.right);
-        }
-    }
-    
-    /**
-     * @param root
-     */
-    public void postOrderTreeRec(TreeNode root)
-    {
-        if (root != null)
-        {
-            postOrderTreeRec(root.left);
-            postOrderTreeRec(root.right);
-            resultList.add(root.val);
-        }
-    }
-    
-    
-    /**
-     * 非递归方式实现二叉树前序遍历
-     *
-     * @param root
-     * @return
-     */
-    public List<Integer> preOrderTreeNonRec(TreeNode root)
-    {
-        List<Integer> list = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack();
-        
-        while (!stack.isEmpty() || root != null)
-        {
-            while (root != null)
-            {
-                //直接处理根节点，在遍历子树之前处理
-                list.add(root.val);
-                stack.push(root);
-                root = root.left;
-            }
-            root = stack.pop().right;
-        }
-        return list;
-    }
-    
-    
-    /**
-     * 非递归方式实现二叉树中序遍历
-     *
-     * @param root
-     * @return
-     */
-    public List<Integer> inOrderTreeNonRec(TreeNode root)
-    {
-        List<Integer> list = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack();
-        
-        while (!stack.isEmpty() || root != null)
-        {
-            if (root != null)
-            {
-                stack.push(root);
-                root = root.left;
-            } else
-            {
-                //移动到左节点后在处理
-                TreeNode tempNode = stack.pop();
-                list.add(tempNode.val);
-                root = tempNode.right;
-            }
-        }
-        return list;
-    }
-    
-    /**
-     * 非递归方式实现二叉树后序遍历
-     * <p>
-     * 反向顺序实现：左右根 ——> 根右左
-     * DFS
-     *
-     * @param root
-     * @return
-     */
-    public LinkedList<Integer> postOrderTreeNonRec(TreeNode root)
-    {
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        
-        while (!stack.isEmpty())
-        {
-            TreeNode tempNode = stack.pop();
-            linkedList.addFirst(tempNode.val);
-            
-            if (tempNode.left != null)
-            {
-                stack.push(tempNode.left);
-            }
-            if (tempNode.right != null)
-            {
-                stack.push(tempNode.right);
-            }
-        }
-        return linkedList;
-    }
-    
-    
-    /**
-     * 层序遍历：逐层遍历
-     * BFS
-     *
-     * @param root
-     * @return
-     */
-    public LinkedList<Integer> levelOrderTree(TreeNode root)
-    {
-        if (root == null) return null;
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        
-        while (!queue.isEmpty())
-        {
-            TreeNode tempNode = queue.poll();
-            linkedList.add(tempNode.val);
-            
-            if (tempNode.left != null)
-            {
-                queue.add(tempNode.left);
-            }
-            if (tempNode.right != null)
-            {
-                queue.add(tempNode.right);
-            }
-            
-        }
-        return linkedList;
-    }
-    
-    /**
-     * list！=null         首先判断是否有商店
-     * ！list.isEmpty()     没有判断商店是否存在，而是判断商店是否有东西
-     *
-     * @param arrayList
-     */
-    public void printResList(List<Integer> arrayList)
-    {
-        if (arrayList == null || arrayList.isEmpty()) return;
-        for (int num :
-                arrayList)
-        {
-            System.out.print(num + " ");
-        }
-    }
-    
-    /**
      * list！=null         首先判断是否有商店
      * ！list.isEmpty()     没有判断商店是否存在，而是判断商店是否有东西
      *
@@ -322,14 +149,6 @@ public class BinaryTree
             System.out.print(num + " ");
         }
     }
-    
-    
-    /**
-     *
-     * 增删改查
-     *
-     *
-     */
     
     
     /**
@@ -590,6 +409,7 @@ public class BinaryTree
         
         return tempNode;
     }
+    
     
     public static class TreeNode
     {

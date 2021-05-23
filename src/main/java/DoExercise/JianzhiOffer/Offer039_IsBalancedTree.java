@@ -1,7 +1,5 @@
 package DoExercise.JianzhiOffer;
 
-import DataStruct.MyOverride.Tree.BinaryTree;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -15,7 +13,6 @@ public class Offer039_IsBalancedTree
     public static void main(String[] args)
     {
         Offer039_IsBalancedTree of = new Offer039_IsBalancedTree();
-        BinaryTree bi = new BinaryTree();
 //        Integer[] nodes = {3,9,20,null,null,15,7};
         Integer[] nodes = {1, 2, 2, 3, 3, null, null, 4, 4};
         TreeNode[] roots = of.CreateBinaryTree(nodes);
