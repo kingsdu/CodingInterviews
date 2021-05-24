@@ -57,13 +57,3 @@ public class Test1
 }
 
 
-class SimInt
-{
-    int value;
-    
-    public SimInt(int value)
-    {
-        this.value = value;
-    }
-}
-

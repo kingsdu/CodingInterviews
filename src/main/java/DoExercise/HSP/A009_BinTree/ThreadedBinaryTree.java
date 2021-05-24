@@ -49,7 +49,7 @@ public class ThreadedBinaryTree
         {
             return;
         }
-    
+        
         threadedNodesInOrder(node.left);
         if (node.left == null)
         {
@@ -82,12 +82,12 @@ public class ThreadedBinaryTree
             }
             System.out.print(node.val + " ");
             
-            while (node.rightType == 1)
+            while (node.rightType == 1)//必须是1的才可以输出
             {
                 node = node.right;
                 System.out.print(node.val + " ");
             }
-            node = node.right;
+            node = node.right;//否则就继续向下遍历
         }
     }
     

@@ -1,9 +1,6 @@
 package DoExercise.HSP.A006_Sort;
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  *
  * 堆排序：时间复杂度：o(n log n)  空间复杂度：o(1)  不稳定算法
@@ -26,19 +23,19 @@ public class A007_HeapSort
     
     public static void main(String[] args)
     {
-//        int[] tree = {2, 5, 3, 1, 10, 4};
-//        heapSort(tree, tree.length);
+        int[] tree = {2, 5, 3, 1, 10, 4};
+        heapSort(tree, tree.length);
 //
 //        for (int i = 0; i < tree.length; i++)
 //        {
 //            System.out.print(tree[i] + " ");
 //        }
     
-        SimpleDateFormat startTime = new SimpleDateFormat("yyyy:MM:dd:HH:mm:ss");
-        System.out.println("排序开始时间：" + startTime.format(new Date()));
-        heapSort_1_test();
-        SimpleDateFormat endTime = new SimpleDateFormat("yyyy:MM:dd:HH:mm:ss");
-        System.out.println("排序结束时间：" + endTime.format(new Date()));
+//        SimpleDateFormat startTime = new SimpleDateFormat("yyyy:MM:dd:HH:mm:ss");
+//        System.out.println("排序开始时间：" + startTime.format(new Date()));
+//        heapSort_1_test();
+//        SimpleDateFormat endTime = new SimpleDateFormat("yyyy:MM:dd:HH:mm:ss");
+//        System.out.println("排序结束时间：" + endTime.format(new Date()));
     }
     
     public static void heapSort_1_test()
@@ -66,12 +63,12 @@ public class A007_HeapSort
      */
     public static void heapSort(int[] tree, int n)
     {
-        //堆化
+        //先整体堆化一次，可以获得有序的树
         buildHeap(tree, n);
         //交换最后一个节点和第一个节点，剪枝
         for (int i = n - 1; i >= 0; i--)
         {
-            swap(tree,i,0);
+            swap(tree,i,0);//最后一个节点 和 根节点交换
             //重写堆化
             heapify(tree,i,0);//剪枝后，需要从最后一位开始
         }

@@ -319,8 +319,6 @@ public class BinTreeThrough
     
     
     
-    
-    
     public static class BinTreeNode
     {
         BinTreeNode left;
