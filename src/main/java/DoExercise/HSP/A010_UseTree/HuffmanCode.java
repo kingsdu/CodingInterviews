@@ -5,11 +5,19 @@ import java.util.*;
 
 /**
  * 哈夫曼编码：
- * 1、统计每个编码出现的次数
- * 2、根据次数构建哈夫曼树
- * 3、识别需要编码的语句
- * 4、从根节点起，遍历树结构，找其中的字符，并记录遍历的路径码，形成压缩码
- * 5、解压
+ * 编码
+ * 1、统计次数
+ * 2、根据出现次数，生成哈夫曼树
+ * 3、获取每个字符的编码路径
+ * 4、将8位编码路径转化为byte
+ *
+ * 转码
+ * 1、byte转回8位二进制数
+ * 2、在Map中，根据8位二进制数，取出对应字符
+ *
+ * 值得注意的操作
+ * 1、byte 和 str 中二进制的互转
+ *
  */
 public class HuffmanCode
 {
@@ -26,7 +34,6 @@ public class HuffmanCode
 //        unZipFile(zipFile, dstFile);
 //        System.out.println("解压成功!");
         
-        
         String content = "i like like like java do you like a java";
         byte[] contentBytes = content.getBytes();
         System.out.println(contentBytes.length);
@@ -37,7 +44,7 @@ public class HuffmanCode
         byte[] sourceBytes = decode(huffmanCodes, huffmanCodesBytes);
         
         System.out.println("原来的字符串=" + new String(sourceBytes));
-        
+
 //        List<TreeNode> nodes = getNodes(contentBytes);
 //        System.out.println("nodes=" + nodes);
 //
@@ -102,10 +109,10 @@ public class HuffmanCode
      */
     private static byte[] huffmanZip(byte[] bytes)
     {
-        List<TreeNode> nodes = getNodes(bytes);
-        TreeNode huffmanTreeRoot = createHuffmanTree(nodes);
-        Map<Byte, String> huffmanCodes = getCodes(huffmanTreeRoot);
-        byte[] huffmanCodeBytes = zip(bytes, huffmanCodes);
+        List<TreeNode> nodes = getNodes(bytes);//统计字节码出现的次数
+        TreeNode huffmanTreeRoot = createHuffmanTree(nodes);//生成哈夫曼树
+        Map<Byte, String> huffmanCodes = getCodes(huffmanTreeRoot);//根据哈夫曼树，统计树中每个字符的编码
+        byte[] huffmanCodeBytes = zip(bytes, huffmanCodes);//根据编码
         return huffmanCodeBytes;
     }
     
@@ -125,10 +132,11 @@ public class HuffmanCode
         StringBuilder stringBuilder = new StringBuilder();
         for (byte b : bytes)
         {
-            stringBuilder.append(huffmanCodes.get(b));
+            stringBuilder.append(huffmanCodes.get(b));//获取对应字符的编码
         }
         
         int len;
+        //进行压缩，8个路径编码作为一位，存入byte中
         if (stringBuilder.length() % 8 == 0)
         {
             len = stringBuilder.length() / 8;
@@ -136,6 +144,7 @@ public class HuffmanCode
         {
             len = stringBuilder.length() / 8 + 1;
         }
+        
         byte[] huffmanCodeBytes = new byte[len];
         int index = 0;
         for (int i = 0; i < stringBuilder.length(); i += 8)
@@ -143,13 +152,12 @@ public class HuffmanCode
             String strByte;
             if (i + 8 > stringBuilder.length())
             {
-                strByte = stringBuilder.substring(i);
+                strByte = stringBuilder.substring(i);//截取最后一段
             } else
             {
                 strByte = stringBuilder.substring(i, i + 8);
             }
-            //将strByte 转成一个byte,放入到 huffmanCodeBytes
-            huffmanCodeBytes[index] = (byte) Integer.parseInt(strByte, 2);
+            huffmanCodeBytes[index] = (byte) Integer.parseInt(strByte, 2);//用2进制去解析第一个参数放入到 huffmanCodeBytes
             index++;
         }
         return huffmanCodeBytes;
@@ -160,6 +168,12 @@ public class HuffmanCode
     static StringBuilder stringBuilder = new StringBuilder();
     
     
+    /**
+     * 根据赫夫曼树，给各个字符规定编码,向左的路径为0，向右的路径为1。
+     *
+     * @param root
+     * @return
+     */
     private static Map<Byte, String> getCodes(TreeNode root)
     {
         if (root == null)
@@ -174,7 +188,7 @@ public class HuffmanCode
     
     private static void getCodes(TreeNode TreeNode, String code, StringBuilder stringBuilder)
     {
-        StringBuilder stringBuilder2 = new StringBuilder(stringBuilder);
+        StringBuilder stringBuilder2 = new StringBuilder(stringBuilder);//记编码
         stringBuilder2.append(code);
         if (TreeNode != null)
         {
@@ -189,6 +203,15 @@ public class HuffmanCode
         }
     }
     
+    
+    /**
+     * 根据权值越大，编码越小的原则
+     * 从叶子节点到根节点，出现次数由小至大
+     * 构建哈夫曼树
+     *
+     * @param nodes
+     * @return
+     */
     private static TreeNode createHuffmanTree(List<TreeNode> nodes)
     {
         while (nodes.size() > 1)
@@ -272,15 +295,21 @@ public class HuffmanCode
         }
     }
     
-    
+    /**
+     * 解码
+     *
+     * @param huffmanCodes
+     * @param huffmanBytes
+     * @return
+     */
     private static byte[] decode(Map<Byte, String> huffmanCodes, byte[] huffmanBytes)
     {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < huffmanBytes.length; i++)
         {
             byte b = huffmanBytes[i];
-            boolean flag = (i == huffmanBytes.length - 1);
-            stringBuilder.append(byteToBitString(!flag, b));
+            boolean flag = (i == huffmanBytes.length - 1);//表示是否是最后一个标志
+            stringBuilder.append(byteToBitString(!flag, b));//将一个byte转成一个二进制的str
         }
         
         Map<String, Byte> map = new HashMap<>();
@@ -290,7 +319,7 @@ public class HuffmanCode
         }
         
         List<Byte> list = new ArrayList<>();
-
+        
         for (int i = 0; i < stringBuilder.length(); )
         {
             int count = 1; // 小的计数器
@@ -300,7 +329,7 @@ public class HuffmanCode
             while (flag)
             {
                 String key = stringBuilder.substring(i, i + count);//循环匹配，先后找map中是否存在字符，存在就拿出来，否则就继续匹配
-                b = map.get(key);
+                b = map.get(key);//将1000类的路径码，转回对应字符
                 if (b == null)
                 {
                     count++;
@@ -322,7 +351,8 @@ public class HuffmanCode
     
     /**
      * 将一个byte 转成一个二进制的字符串, 如果看不懂，可以参考我讲的Java基础 二进制的原码，反码，补码
-     * @param b 传入的 byte
+     *
+     * @param b    传入的 byte
      * @param flag 标志是否需要补高位如果是true ，表示需要补高位，如果是false表示不补, 如果是最后一个字节，无需补高位
      * @return 是该b 对应的二进制的字符串，（注意是按补码返回）
      */
@@ -333,8 +363,9 @@ public class HuffmanCode
         {
             temp |= 256;
         }
-        String str = Integer.toBinaryString(temp);
-        if (flag)
+        String str = Integer.toBinaryString(temp);//byte 转 str
+        //huffmanCodeBytes[index] = (byte) Integer.parseInt(strByte, 2);//str转byte
+       if (flag)
         {
             return str.substring(str.length() - 8);
         } else

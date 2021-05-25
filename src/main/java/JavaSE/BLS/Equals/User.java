@@ -1,7 +1,5 @@
 package JavaSE.BLS.Equals;
 
-import org.apache.commons.lang3.StringUtils;
-
 public class User
 {
     private String id;
@@ -67,11 +65,7 @@ public class User
     
     private boolean equalsStr(String str1, String str2)
     {
-        if (StringUtils.isEmpty(str1) && StringUtils.isEmpty(str2))
-        {
-            return true;
-        }
-        if (!StringUtils.isEmpty(str1) && str1.equals(str2))
+        if (str1 != null && str2 != null )
         {
             return true;
         }
