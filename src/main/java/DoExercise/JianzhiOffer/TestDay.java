@@ -1,54 +1,80 @@
 package DoExercise.JianzhiOffer;
 
+import java.util.ArrayList;
+
 /**
- * 输入：s = "We are happy."
- * 输出："We%20are%20happy."
+ * 输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。
  */
 public class TestDay
 {
+    public static ListNode head;
+    
     public static void main(String[] args)
     {
-        String abc = "   ";
-        System.out.println(replaceSpace(abc));
+        addNodeOrder(1);
+        addNodeOrder(2);
+        addNodeOrder(3);
+        addNodeOrder(4);
+        addNodeOrder(5);
+        addNodeOrder(6);
+    
+        reversePrint(head);
     }
     
-    public static boolean findNumberIn2DArray(int[][] matrix, int target)
+    public static int[] reversePrint(ListNode head)
     {
-        if (null == matrix || matrix.length == 0)
+        ArrayList<Integer> tmp = new ArrayList<Integer>();
+        ListNode pre = null;
+        ListNode next = null;
+        while (head != null)
         {
-            return false;
+            next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
         }
         
-        int i = matrix.length - 1, j = 0;
-        while (i >= 0 && j < matrix[0].length)
+        while (pre != null)
         {
-            if (matrix[i][j] < target)
-            {
-                j++;
-            } else if (matrix[i][j] > target)
-            {
-                i--;
-            } else
-            {
-                return true;
-            }
+            tmp.add(pre.val);
+            pre = pre.next;
         }
-        return false;
+        
+        return  null;
     }
     
-    public static String replaceSpace(String s)
+    
+    public static void addNodeOrder(int value)
     {
-        StringBuilder ss = new StringBuilder();
-        for (Character c : s.toCharArray())
+        ListNode newNode = new ListNode(value);
+        ListNode curNode;
+        
+        if (head == null)
         {
-            if(c == ' '){
-                ss.append("%20");
-            }else {
-                ss.append(c);
-            }
+            head = newNode;
+            return;
         }
-        return ss.toString();
+        
+        curNode = head;
+        
+        while (curNode.next != null)
+        {
+            curNode = curNode.next;
+        }
+        
+        curNode.next = newNode;
     }
     
+    
+    public static class ListNode
+    {
+        int val;
+        ListNode next;
+        
+        ListNode(int x)
+        {
+            val = x;
+        }
+    }
     
 }
