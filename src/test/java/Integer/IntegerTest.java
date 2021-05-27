@@ -102,13 +102,59 @@ public class IntegerTest
     @Test
     public void test0522()
     {
-        List Listlist1 = new ArrayList();
-        Listlist1.add(0);
-        List Listlist2 = Listlist1;
-        System.out.println(Listlist1.get(0) instanceof Integer);
-        System.out.println(Listlist2.get(0) instanceof Integer);
-        
-        float d = 100;
+        int a = 100, b = 50, c = a-- - b, d = a-- - b;
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+        System.out.println(d);
     }
     
+    @Test
+    public void test0525()
+    {
+        int x = -5;
+        int y = -12;
+        System.out.println(y % x);
+    }
+    
+    @Test
+    public void test0526_1()
+    {
+        int i = 5;
+        int j = 10;
+        System.out.println(~j);
+        System.out.println(i + ~j);
+    }
+    
+    @Test
+    public void test0526_2()
+    {
+        Integer s = new Integer(9);
+        Integer t = new Integer(9);
+        Long u = new Long(9);
+
+//        System.out.println(s == u );//编译报错
+        
+        System.out.println(s.equals(t));
+        System.out.println(s.equals(9));
+        System.out.println(s.equals(new Integer(9)));
+    }
+    
+    @Test
+    public void test0526_3()
+    {
+        String lx = "LeXin";
+        String nb = lx;
+        lx = "Fenqile";
+        System.out.println(nb);
+    }
+    
+    @Test
+    public void test0526_4()
+    {
+        String str = "hello world";
+        str += 'a';
+        str += 100;
+        
+    }
 }

@@ -1,4 +1,4 @@
-package JavaSE.BLS.A001_InterView;
+package JavaSE.BLS.A001_InterView.Static;
 
 public class HasStatic
 {

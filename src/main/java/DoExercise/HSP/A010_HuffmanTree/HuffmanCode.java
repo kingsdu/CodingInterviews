@@ -1,4 +1,4 @@
-package DoExercise.HSP.A010_UseTree;
+package DoExercise.HSP.A010_HuffmanTree;
 
 import java.io.*;
 import java.util.*;
