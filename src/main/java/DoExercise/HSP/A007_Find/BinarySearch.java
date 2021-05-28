@@ -5,10 +5,9 @@ import java.util.Date;
 
 /**
  * 二分查找
- *
- *
+ * <p>
+ * <p>
  * 测试9999万个数据的排序:2s
- *
  */
 public class BinarySearch
 {
@@ -21,7 +20,7 @@ public class BinarySearch
         //使用Java自带的查找类，该类中如果找到了返回下标值，没找到返回插入下标：-（1+low）
 //        int i1 = Arrays.binarySearch(num, 13);
 //        System.out.println(i1);
-    
+        
         SimpleDateFormat startTime = new SimpleDateFormat("yyyy:MM:dd:HH:mm:ss");
         System.out.println("排序开始时间：" + startTime.format(new Date()));
         binarySearch_test();
@@ -43,9 +42,7 @@ public class BinarySearch
     
     
     /**
-     * 递归实现
-     * 二分查找算法默认一般返回数组下标索引
-     * 没找到返回-1
+     * 非递归实现
      *
      * @return
      */
@@ -60,12 +57,12 @@ public class BinarySearch
                 return mid;
             } else
             {
-                if (num[mid] < target)//target在mid右边
+                if (num[mid] < target)
                 {
-                    i = mid + 1;//下限增加
-                } else if (num[mid] > target)//target在mid左边
+                    i = mid + 1;
+                } else if (num[mid] > target)
                 {
-                    j = mid - 1;//上限减少
+                    j = mid - 1;
                 }
             }
         }
@@ -73,6 +70,27 @@ public class BinarySearch
     }
     
     
- 
-    
+    /**
+     * 递归
+     *
+     * @return
+     */
+    public static int binarySearch_2(int[] arr, int numKey, int start, int end)
+    {
+        int mid = (end - start) / 2 + start;
+        if (start > end)
+        {
+            return -1;
+        }
+        if (numKey < arr[mid])
+        {
+            return binarySearch_2(arr, numKey, start, mid - 1);
+        } else if (numKey > arr[mid])
+        {
+            return binarySearch_2(arr, numKey, mid + 1, end);
+        } else
+        {
+            return mid;
+        }
+    }
 }

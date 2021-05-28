@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class Graph
+/**
+ *
+ * 基于二维数组实现的图结构
+ *
+ */
+public class GraphArray
 {
     public static void main(String[] args)
     {
         int n = 8;  //结点的个数
         String vertex[] = {"A", "B", "C", "D", "E", "F", "G", "H"};
-        Graph graph = new Graph(n);
+        GraphArray graph = new GraphArray(n);
         for (String v : vertex)
         {
             graph.insertVertex(v);
@@ -38,7 +43,7 @@ public class Graph
     private int numOfEdges; //表示边的数目
     private boolean[] isVisited;//记录某个结点是否被访问
     
-    public Graph(int n)
+    public GraphArray(int n)
     {
         edges = new int[n][n];
         vertexList = new ArrayList<String>(n);
@@ -75,6 +80,14 @@ public class Graph
         return -1;
     }
     
+    /**
+     *
+     *
+     *
+     * @param v1 当前节点
+     * @param v2 节点列的下一个节点
+     * @return
+     */
     public int getNextNeighbor(int v1, int v2)
     {
         for (int j = v2 + 1; j < vertexList.size(); j++)

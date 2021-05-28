@@ -31,6 +31,7 @@ public class Offer004_ReConstructBinaryTree
         binaryTreeTra.tailOrder(binTreeNode);
     }
     
+
     
     public BinTreeNode reConstructBinaryTree(int[] pre, int[] in)
     {
