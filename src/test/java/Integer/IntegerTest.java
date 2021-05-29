@@ -157,4 +157,15 @@ public class IntegerTest
         str += 100;
         
     }
+    
+    @Test
+    public void test0528_1()
+    {
+        int x = 1, y = 2, z = 3;
+        y += z-- / ++x;
+        System.out.println(y);
+        String aa = new String("vv");
+        StringBuffer sb = new StringBuffer();
+        sb.append(aa);
+    }
 }
