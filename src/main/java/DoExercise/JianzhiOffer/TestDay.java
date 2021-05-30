@@ -1,6 +1,7 @@
 package DoExercise.JianzhiOffer;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 /**
  * 输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。
@@ -42,6 +43,24 @@ public class TestDay
             }
         }
         return root;
+    }
+    
+    Stack<Integer> s1 = new Stack<>();
+    Stack<Integer> s2 = new Stack<>();
+    
+    
+    public void appendTail(int value) {
+        s1.push(value);
+    }
+    
+    public int deleteHead() {
+        if(s2.isEmpty()){
+            
+            while(!s1.isEmpty()){
+                s2.push(s1.pop());
+            }
+        }
+        return s2.pop();
     }
     
     public static class TreeNode
