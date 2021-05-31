@@ -3,7 +3,9 @@ package Integer;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Properties;
 
 public class IntegerTest
 {
@@ -167,5 +169,11 @@ public class IntegerTest
         String aa = new String("vv");
         StringBuffer sb = new StringBuffer();
         sb.append(aa);
+    }
+    
+    @Test
+    public void test0530_1()
+    {
+    
     }
 }
