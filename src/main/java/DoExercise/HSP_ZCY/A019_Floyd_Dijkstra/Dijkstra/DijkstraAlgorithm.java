@@ -22,8 +22,15 @@ public class DijkstraAlgorithm
 //        //测试迪杰斯特拉算法
 //        graph.dsj(2);//C
 //        graph.showDijkstra();
-        
-        
+    
+    
+        /**
+         *
+         * https://www.bilibili.com/video/BV1q4411M7r9?from=search&seid=12047905912521142142
+         *
+         * 下面代码是确定某个点，到剩余所有顶点的最短路径，而非两个顶点间的最短路径，但是思路都是相同的
+         *
+         */
         char[] vertex = {'0', '1', '2', '3', '4', '5', '6', '7', '8'};
         //邻接矩阵
         int[][] matrix = new int[vertex.length][vertex.length];

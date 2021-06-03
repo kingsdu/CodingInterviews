@@ -76,6 +76,7 @@ public class VisitedVertex
     /**
      * 继续选择并返回新的访问顶点， 比如这里的G 完后，就是 A点作为新的访问顶点(注意不是出发顶点)
      *
+     * 找 already_arr 中最小的元素，作为新的起点
      * @return
      */
     public int updateArr()
