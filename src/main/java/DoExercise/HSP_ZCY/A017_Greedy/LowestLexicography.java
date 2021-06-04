@@ -9,6 +9,10 @@ import java.util.HashSet;
 /**
  * 给定一个由字符串组成的数组strs，必须把所有的字符串拼接起来，返回所有可能的拼接结果中，字典序最小的结果
  * 字典序：两个字符串放入到字典中，谁放在前面谁的字典序就小
+ *
+ * strs[] = b,a,e,f,c;
+ * ab < ba
+ * abc < cba
  */
 public class LowestLexicography
 {
@@ -42,7 +46,7 @@ public class LowestLexicography
     
     
     /**
-     * 暴力递归
+     * 暴力递归，得到所有的字符串组合
      *
      * @param strs 所有的字符串
      * @param use  已经被拼接过的字符串的下标
@@ -154,6 +158,7 @@ public class LowestLexicography
         {
             String[] arr1 = generateRandomStringArray(arrLen, strLen);
             String[] arr2 = copyStringArray(arr1);
+            lowestString1(arr1);
             if (!lowestString1(arr1).equals(lowestString2(arr2)))
             {
                 System.out.println("Oops!");

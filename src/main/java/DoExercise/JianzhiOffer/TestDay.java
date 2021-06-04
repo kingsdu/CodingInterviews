@@ -1,14 +1,8 @@
 package DoExercise.JianzhiOffer;
 
-import java.util.Arrays;
-import java.util.Stack;
-
 /**
- * 输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。
- * 假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
- * <p>
- * 前序遍历 preorder = [3,9,20,15,7]
- * 中序遍历 inorder = [9,3,15,20,7]
+ * 给定一个m x n 二维字符网格board 和一个字符串单词word 。如果word 存在于网格中，返回 true ；否则，返回 false 。
+ * 单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
  */
 public class TestDay
 {
@@ -16,63 +10,24 @@ public class TestDay
     
     public static void main(String[] args)
     {
-        int[] arr = {3, 9, 20, 15, 7};
-        int i = 1;
-        int[] ints = Arrays.copyOfRange(arr, 1, i + 1);
-        Arrays.stream(ints).forEach(e -> System.out.print(e + " "));
-        System.out.println();
-        int[] ints1 = Arrays.copyOfRange(arr, i + 1, arr.length);
-        Arrays.stream(ints1).forEach(e -> System.out.print(e + " "));
+
     }
     
- 
-    public TreeNode reConstructTree(int preorder[], int inorder[])
+    
+    public boolean exist(char[][] board, String word)
     {
-        if (preorder.length == 0 || inorder.length == 0)
-        {
-            return null;
-        }
-        TreeNode root = new TreeNode(preorder[0]);
-        for (int i = 0; i < inorder.length; i++)
-        {
-            if (inorder[i] == preorder[0])
-            {
-                root.left = reConstructTree(Arrays.copyOfRange(preorder, 1, i + 1), Arrays.copyOfRange(inorder, 0, i));
-                root.right = reConstructTree(Arrays.copyOfRange(preorder, i + 1, preorder.length), Arrays.copyOfRange(inorder, i + 1, inorder.length));
-                break;
-            }
-        }
-        return root;
+        return false;
     }
     
-    Stack<Integer> s1 = new Stack<>();
-    Stack<Integer> s2 = new Stack<>();
-    
-    
-    public void appendTail(int value) {
-        s1.push(value);
-    }
-    
-    public int deleteHead() {
-        if(s2.isEmpty()){
-            
-            while(!s1.isEmpty()){
-                s2.push(s1.pop());
-            }
-        }
-        return s2.pop();
-    }
-    
-    public static class TreeNode
+    public boolean dfs(char[][] board, char[] word, int i, int j, int k)
     {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        
-        TreeNode(int x)
-        {
-            val = x;
-        }
+        if (i < 0 || i > board.length - 1 || j < 0 || j > board[0].length || board[i][j] != word[k]) return false;
+        if (word.length - 1 == k) return true;
+        board[i][j] = ' ';
+        boolean res = dfs(board,word,i+1,j,k+1) || dfs(board,word,i-1,j,k+1) ||
+                dfs(board,word,i,j+1,k+1) || dfs(board,word,i,j-1,k+1);
+        board[i][j] = word[k];
+        return res;
     }
     
 }

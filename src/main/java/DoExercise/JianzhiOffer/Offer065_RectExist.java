@@ -15,9 +15,8 @@ public class Offer065_RectExist
     {
         char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'F'}};
         String word = "ABCCED";
-        System.out.println(exist3(board, word));
+        System.out.println(exist1(board, word));
     }
-    
     
     /**
      *
@@ -31,7 +30,7 @@ public class Offer065_RectExist
      * @param word
      * @return
      */
-    public static boolean exist3(char[][] board, String word)
+    public static boolean exist1(char[][] board, String word)
     {
         char[] words = word.toCharArray();
         for (int i = 0; i < board.length; i++)
@@ -55,105 +54,5 @@ public class Offer065_RectExist
         return res;
     }
     
-    
-    
-    /**
-     *
-     * 方法1：自己想的，把问题想的太简单了
-     *
-     * @param board
-     * @param word
-     * @return
-     */
-    public static boolean exist1(char[][] board, String word)
-    {
-        int row = 0, col = 0;
-        char[] chars = word.toCharArray();
-        int i = 0;
-        while ((row < board.length && col < board[0].length) && (i < chars.length))
-        {
-            System.out.println(board[row][col]);
-            System.out.println(chars[i]);
-            if (board[row][col] == chars[i])
-            {
-                col++;
-                i++;
-                continue;
-            } else
-            {
-                col--;
-                row++;
-                if (board[row][col] == chars[i])
-                {
-                    i++;
-                    continue;
-                } else
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    
-    
-    /**
-     *
-     * 方法2：自己想的，知道用递归，但是细节没把握好，看看上面的大神的思路，应该对你有提升
-     *
-     * @param board
-     * @param word
-     * @return
-     */
-    public static boolean exist2(char[][] board, String word)
-    {
-        int row = 0, col = 0, x = 0;
-        char[] chars = word.toCharArray();
-        for (int i = 0; i < chars.length; i++)
-        {
-        
-        }
-        return true;
-    }
-    
-    public static boolean setWay(int i, int j, int x, char chars[], char[][] board)
-    {
-        if (x >= chars.length)
-        {
-            return true;
-        } else
-        {
-            if (board[i][j] == chars[x])
-            {
-                x++;
-                return true;
-            } else
-            {
-                if (i < board.length && j < board[0].length)
-                {
-                    if (setWay(i + 1, j, x, chars, board))
-                    {
-                    
-                    } else if (setWay(i, j + 1, x, chars, board))
-                    {
-                    
-                    } else if (setWay(i - 1, x, j, chars, board))
-                    {
-                    
-                    } else if (setWay(i, j - 1, x, chars, board))
-                    {
-                    
-                    } else
-                    {
-                        return false;
-                    }
-                } else
-                {
-                    return false;
-                }
-            }
-        }
-        return false;
-    }
     
 }

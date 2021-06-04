@@ -16,10 +16,8 @@ import java.util.Stack;
  */
 public class Offer005_QueueByStack
 {
-    
     Stack<Integer> stackIn = new Stack<Integer>();
     Stack<Integer> stackOut = new Stack<Integer>();
-    
     
     public void push_1(int node)
     {
@@ -62,3 +60,4 @@ public class Offer005_QueueByStack
         System.out.println(queueByStack.pop_1());
     }
 }
+
