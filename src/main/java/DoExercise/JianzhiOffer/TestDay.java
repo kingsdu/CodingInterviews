@@ -10,24 +10,23 @@ public class TestDay
     
     public static void main(String[] args)
     {
-
+    
     }
     
     
-    public boolean exist(char[][] board, String word)
+    public int cuttingRope(int n)
     {
-        return false;
+        int dp[] = new int[n + 1];
+        dp[2] = 1;
+        for (int i = 3; i < n + 1; i++)
+        {
+            for (int j = 2; j < i; j++)
+            {
+                dp[i] = Math.max(dp[i], j * Math.max(dp[i - j], i - j));
+            }
+        }
+        return dp[n];
     }
     
-    public boolean dfs(char[][] board, char[] word, int i, int j, int k)
-    {
-        if (i < 0 || i > board.length - 1 || j < 0 || j > board[0].length || board[i][j] != word[k]) return false;
-        if (word.length - 1 == k) return true;
-        board[i][j] = ' ';
-        boolean res = dfs(board,word,i+1,j,k+1) || dfs(board,word,i-1,j,k+1) ||
-                dfs(board,word,i,j+1,k+1) || dfs(board,word,i,j-1,k+1);
-        board[i][j] = word[k];
-        return res;
-    }
     
 }

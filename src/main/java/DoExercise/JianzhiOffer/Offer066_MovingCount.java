@@ -34,6 +34,7 @@ public class Offer066_MovingCount
             return 0;
         }
         visited[i][j] = true;
+        //难点是此处调用下面方法的写法
         return 1 + dfs(i, j + 1, threshold, rows, cols, visited) + dfs(i + 1, j, threshold, rows, cols, visited);
     }
     
