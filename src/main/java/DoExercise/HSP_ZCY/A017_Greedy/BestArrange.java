@@ -24,6 +24,14 @@ public class BestArrange
         }
     }
     
+    /**
+     *
+     * 方法1：暴力递归
+     *
+     *
+     * @param programs
+     * @return
+     */
     public static int bestArrange1(Program[] programs)
     {
         if (programs == null || programs.length == 0)
@@ -33,9 +41,18 @@ public class BestArrange
         return process(programs, 0, 0);
     }
     
-    
+    /**
+     *
+     * 选择思路：每次都选择时间最短的会议，逐步进行。
+     *
+     * @param programs 所有备选的方案
+     * @param done  已经选择的数量
+     * @param timeLine  时间花费
+     * @return
+     */
     public static int process(Program[] programs, int done, int timeLine)
     {
+        //全部选完，结束方式1
         if (programs.length == 0)
         {
             return done;
@@ -50,7 +67,7 @@ public class BestArrange
                 max = Math.max(max, process(next, done + 1, programs[i].end));//返回完成的最大数
             }
         }
-        return max;//返回了，所以递归会结束
+        return max;//当安排会议的时间已经超限了，但是还有会议没安排，就通过方式2结束
     }
     
     /**
@@ -75,6 +92,15 @@ public class BestArrange
         return ans;
     }
     
+    
+    /**
+     *
+     * 方法2：对所有的会议记录进行排序，然后再按照每次先选择花费时间最短的会议，逐步累加到最后的会议。
+     *
+     *
+     * @param programs
+     * @return
+     */
     public static int bestArrange2(Program[] programs)
     {
         Arrays.sort(programs, new ProgramComparator());
