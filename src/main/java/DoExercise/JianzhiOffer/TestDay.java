@@ -13,29 +13,6 @@ public class TestDay
     
     }
     
-    
-    public int cuttingRope(int n)
-    {
-        int dp[] = new int[n + 1];
-        dp[2] = 1;
-        for (int i = 3; i < n + 1; i++)
-        {
-            for (int j = 2; j < i; j++)
-            {
-                dp[i] = Math.max(dp[i], j * Math.max(dp[i - j], i - j));
-            }
-        }
-        return dp[n];
-    }
-    
-    
-    public int hammingWeight(int n) {
-        int res = 0;
-        while (n != 0){
-            res += n&1;
-            n = n >> 1;
-        }
-        return res;
-    }
+ 
     
 }

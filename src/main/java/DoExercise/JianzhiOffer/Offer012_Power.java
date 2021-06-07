@@ -14,42 +14,75 @@ public class Offer012_Power
 {
     public static void main(String[] args)
     {
-        Offer012_Power power = new Offer012_Power();
         int base = 2, exponent = 4;
-//        double a = Math.pow(base, exponent);
-//        double b = power.Power_1(base, exponent);
-        double c = power.power_2(base, exponent);
-//        System.out.println(a);
-//        System.out.println(b);
+        double a = Math.pow(base, exponent);
+        double b = Power_1(base, exponent);
+        double c = power_2(base, exponent);
+        System.out.println(a);
+        System.out.println(b);
         System.out.println(c);
     }
     
     /**
-     * 这个方法不会是面试的答案
+     * K神的有效题解
      *
      * @param base
      * @param exponent
      * @return
      */
-    public double Power_1(double base, int exponent)
+    public static double power(double base, int exponent)
     {
-        double result = 1.0;
-        
-        if (base == 0) return 0.0;
-        if (exponent == 0) return 1;
-        
-        if (exponent < 0)
+        if (base == 0) return 0;
+        long b = exponent;//细节:当n=(-2)^31的时候，转成了正数(2)^31,超限了，所以此处要使用long
+        double res = 1.0;
+        if (b < 0)
         {
-            base = 1 / base;
+            exponent = 1 / exponent;
+            exponent = Math.abs(exponent);
         }
-        
-        for (int i = 0; i < Math.abs(exponent); i++)
+        while (b > 0)
         {
-            result *= base;
+            if ((b & 1) == 1)// b % 2 == 1
+            {
+                res *= exponent;
+            }
+            exponent *= exponent;
+            b = b >> 1;//最后一位是1
         }
-        return result;
+        return res;
     }
     
+    public double myPow(double x, int n)
+    {
+        if (x == 0) return 0;
+        long b = n;
+        double res = 1.0;
+        if (b < 0)
+        {
+            x = 1 / x;
+            b = -b;
+        }
+        while (b > 0)
+        {
+            if ((b & 1) == 1) res *= x;
+            x *= x;
+            b >>= 1;
+        }
+        return res;
+    }
+    
+    
+    public static double power_2(double base, int exponent)
+    {
+        //处理负数
+        if (base < 0)
+        {
+            base = 1 / base;
+            //n = -n可能会溢出，因为int表示范围[−2147483648,2147483647] ，因此当 n = -2147483648会报错，解决方法是把n存入long型变量，用long型变量计算
+            exponent = Math.abs(exponent);
+        }
+        return power_2Call(base, exponent);
+    }
     
     /**
      * 通过奇偶性，递归求值
@@ -68,7 +101,7 @@ public class Offer012_Power
      *
      * @return
      */
-    public double power_2Call(double base, int exponent)
+    public static double power_2Call(double base, int exponent)
     {
         //递归结束条件
         if (exponent == 0) return 1.0;
@@ -83,17 +116,31 @@ public class Offer012_Power
         }
     }
     
-    
-    public double power_2(double base, int exponent)
+    /**
+     * 这个方法不会是面试的答案
+     * letcode 超出时间限制
+     *
+     * @param base
+     * @param exponent
+     * @return
+     */
+    public static double Power_1(double base, int exponent)
     {
-        //处理负数
-        if (base < 0)
+        double result = 1.0;
+        
+        if (base == 0) return 0.0;
+        if (exponent == 0) return 1;
+        
+        if (exponent < 0)
         {
             base = 1 / base;
-            //n = -n可能会溢出，因为int表示范围[−2147483648,2147483647] ，因此当 n = -2147483648会报错，解决方法是把n存入long型变量，用long型变量计算
-            exponent = Math.abs(exponent);
         }
-        return power_2Call(base, exponent);
+        
+        for (int i = 0; i < Math.abs(exponent); i++)
+        {
+            result *= base;
+        }
+        return result;
     }
     
     

@@ -63,13 +63,13 @@ public class Offer011_NumberOf1
      */
     public static int numberOf1_2(int n)
     {
-        int count = 0;
+        int res = 0;
         while (n != 0)
         {
-            count++;
+            res++;
             n &= (n - 1);
         }
-        return count;
+        return res;
     }
     
     
