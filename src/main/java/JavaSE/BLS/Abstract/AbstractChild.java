@@ -1,5 +1,6 @@
 package JavaSE.BLS.Abstract;
 
+
 public class AbstractChild extends AbstractClass{
     
     
@@ -18,6 +19,7 @@ public class AbstractChild extends AbstractClass{
 
     }
     
+    @Override
     public void method(){
         System.out.println("456");
     }

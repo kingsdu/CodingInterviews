@@ -146,7 +146,7 @@ public class SparseArrayHSP
      * @return
      */
     public static int[][] recoverArray(int[][] XSArray){
-        int[][] rowArray = new int[XSArray[0][0]][XSArray[0][1]];
+        int[][] rowArray = new int[XSArray[0][0]][XSArray[0][1]];//其他位置默认是0
 
         for (int i = 1; i < XSArray.length; i++)
         {

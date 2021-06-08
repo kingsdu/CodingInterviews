@@ -7,7 +7,7 @@ package DoExercise.JianzhiOffer;
  * <p>
  * 例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但是与"aa.a"和"ab*a"均不匹配
  */
-public class Offer052_Match
+public class Offer052_MatchRegex
 {
     public static void main(String[] args)
     {

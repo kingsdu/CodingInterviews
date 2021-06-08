@@ -26,7 +26,6 @@ public class Offer066_MovingCount
         return dfs(0, 0, threshold, rows, cols, visited);
     }
     
-    
     public static int dfs(int i, int j, int threshold, int rows, int cols, boolean[][] visited)
     {
         if (i >= rows || j >= cols || calSum(i, j) > threshold || visited[i][j])

@@ -44,7 +44,6 @@ public class LowestLexicography
         return lowest;
     }
     
-    
     /**
      * 暴力递归，得到所有的字符串组合
      *
