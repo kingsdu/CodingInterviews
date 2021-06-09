@@ -1,6 +1,6 @@
 package JavaSE.BLS.Thread.CreateThread;
 
-public class InteruptedThread implements Runnable
+public class T02_InteruptedThread implements Runnable
 {
     
     
@@ -24,7 +24,7 @@ public class InteruptedThread implements Runnable
     
     public static void main(String[] args)
     {
-        Thread t = new Thread(new InteruptedThread(),"Interupted Thread");
+        Thread t = new Thread(new T02_InteruptedThread(),"Interupted Thread");
         System.out.println("starting thread...");
         t.start();
         try
