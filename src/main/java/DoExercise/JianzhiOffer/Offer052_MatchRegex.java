@@ -12,106 +12,39 @@ public class Offer052_MatchRegex
     public static void main(String[] args)
     {
         String str = "aaa";
-        String pattern = "ab*a*c*a";
-        System.out.println(match_1(str, pattern));
+        String pattern = "a*a*c*a";
+        System.out.println(match_2(str, pattern));
     }
     
-    public static boolean match(String str, String pattern)
-    {
-        if (str == null || pattern == null)
-        {
-            return false;
-        }
-        
-        char[] chars = str.toCharArray();
-        char[] patternChar = pattern.toCharArray();
-        int i = 0;
-        while (i < chars.length)
-        {
-            if (chars[i] != patternChar[i])
-            {
-                if (patternChar[i] == '.')
-                {
-                    i++;
-                    continue;
-                } else if (patternChar[i] == '*')
-                {
-                    char pre = ' ', next = ' ';
-                    if (i + 1 < patternChar.length)
-                    {
-                        next = patternChar[i + 1];
-                    }
-                    
-                    if (i - 1 >= 0)
-                    {
-                        pre = patternChar[i - 1];
-                    }
-                    
-                    if (pre == chars[i])
-                    {
-                        continue;
-                    } else if (chars[i] == next)
-                    {
-                        i++;
-                        continue;
-                    } else
-                    {
-                        return false;
-                    }
-                } else if (i < patternChar.length - 1 && patternChar[i + 1] == '*')
-                {
-                    char next = ' ';
-                    if (i + 2 < patternChar.length - 1)
-                    {
-                        next = patternChar[i + 2];
-                    }
-                    
-                    if (next == chars[i])
-                    {
-                        i++;
-                        continue;
-                    } else
-                    {
-                        return false;
-                    }
-                } else
-                {
-                    return false;
-                }
-            }
-            i++;
-        }
-        
-        return i == chars.length;
-    }
     
     /**
      *
-     * K神的方法
-     *
-     * @param s
-     * @param p
-     * @return
+     * 当 p[j - 1] = '*' 时， dp[i][j] 在当以下任一情况为true 时等于true ：
+     *      dp[i][j - 2]： 即将字符组合 p[j - 2] * 看作出现 0 次时，能否匹配；
+     *      dp[i - 1][j] 且 s[i - 1] = p[j - 2]: 即让字符 p[j - 2] 多出现 1 次时，能否匹配；
+     *      dp[i - 1][j] 且 p[j - 2] = '.': 即让字符 '.' 多出现 1 次时，能否匹配；
+     * 当 p[j - 1] != '*' 时， dp[i][j] 在当以下任一情况为 true 时等于 true：
+     *      dp[i - 1][j - 1] 且 s[i - 1] = p[j - 1]： 即让字符 p[j - 1] 多出现一次时，能否匹配；
+     *      dp[i - 1][j - 1] 且 p[j - 1] = '.'： 即将字符 . 看作字符 s[i - 1] 时，能否匹配；
      */
-    public boolean match_2(String s, String p)
+    public static boolean match_2(String s, String p)
     {
         int m = s.length() + 1, n = p.length() + 1;
         boolean[][] dp = new boolean[m][n];
         dp[0][0] = true;
         for (int j = 2; j < n; j += 2)
-            dp[0][j] = dp[0][j - 2] && p.charAt(j - 1) == '*';
+            dp[0][j] = dp[0][j - 2] && p.charAt(j - 1) == '*';//当p[j - 1] = '*' 且存在dp[i][j - 2]为 true，时为 true
         for (int i = 1; i < m; i++)
         {
             for (int j = 1; j < n; j++)
             {
                 dp[i][j] = p.charAt(j - 1) == '*' ?
                         dp[i][j - 2] || dp[i - 1][j] && (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.') :
-                        dp[i - 1][j - 1] && (p.charAt(j - 1) == '.' || s.charAt(i - 1) == p.charAt(j - 1));
+                        dp[i - 1][j - 1] && (p.charAt(j - 1) == '.' || s.charAt(i - 1) == p.charAt(j - 1));//p前面是. OR p前一个位置值 == s前一个位置值
             }
         }
         return dp[m - 1][n - 1];
     }
-    
     
     /**
      *
@@ -167,8 +100,34 @@ public class Offer052_MatchRegex
         }
         return dp[str.length()][pattern.length()];
     }
+  
     
     
+    public static boolean match(char[] str, char[] pattern)
+    {
+        StringBuilder s1 = new StringBuilder();
+        StringBuilder s2 = new StringBuilder();
+    
+        for (char x : str)
+        {
+            s1.append(x);
+        }
+        for (char x : pattern)
+        {
+            s2.append(x);
+        }
+        return solve(s1.toString(), s2.toString(), 0, 0);
+    }
+    
+    
+    /**
+     *
+     * 搜索的方法
+     *
+     * @param s
+     * @param p
+     * @return
+     */
     public static boolean isMatch(String s, String p)
     {
         return solve(s, p, 0, 0);
@@ -254,19 +213,5 @@ public class Offer052_MatchRegex
         return false;
     }
     
-    public static boolean match(char[] str, char[] pattern)
-    {
-        StringBuilder s1 = new StringBuilder();
-        StringBuilder s2 = new StringBuilder();
-        
-        for (char x : str)
-        {
-            s1.append(x);
-        }
-        for (char x : pattern)
-        {
-            s2.append(x);
-        }
-        return solve(s1.toString(), s2.toString(), 0, 0);
-    }
+
 }

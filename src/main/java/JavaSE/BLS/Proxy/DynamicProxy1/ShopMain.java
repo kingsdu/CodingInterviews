@@ -19,10 +19,10 @@ public class ShopMain
         InvocationHandler taobaoProxy = new MySellHandler(usbFactory);//传入谁，帮谁代理（动态的体现）
         //创建代理对象
         UsbSell proxy = (UsbSell) Proxy.newProxyInstance(
-                usbFactory.getClass().getClassLoader(),
+                usbFactory.getClass().getClassLoader(),//将proxy和需要代理的类建立联系
                 usbFactory.getClass().getInterfaces(),
                 taobaoProxy
         );
-        System.out.println(proxy.sell(75));
+        System.out.println(proxy.sell(75));//此时调用sell就是proxy帮助usbFactory代理执行了
     }
 }
