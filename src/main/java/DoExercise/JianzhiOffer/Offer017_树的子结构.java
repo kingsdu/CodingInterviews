@@ -9,7 +9,7 @@ package DoExercise.JianzhiOffer;
  * 输入：A = [3,4,5,1,2], B = [4,1]
  * 输出：true
  */
-public class Offer017_HasSubtree
+public class Offer017_树的子结构
 {
     
     public static void main(String[] args)
@@ -31,41 +31,37 @@ public class Offer017_HasSubtree
         System.out.println(isHasSubtree_1(root, target));
     }
     
+    
     /**
-     * 自己没思考出来，原因：
-     * （1）不理解母树 和 子树 应该以怎样的结果生成，最后看了解析是层序遍历。
-     * （2）母树 和 子树之间的关系是怎样的，怎样才算母树包含了子树。
      *
-     * 看了解析后有了思路：这个题要分为2步骤：
-     * 1、在母树中按照先序遍历的顺序寻找，是否存在子树的根节点
-     * 2、若存在，则母树和子树同步继续按照前序遍历的顺序遍历其节点，只要相等就继续遍历。
-     * 3、当子树遍历节点遍历完了，就返回TURE，否则就是FALSE
+     * A是B的子树需要满足3个条件：
+     * 1、AB不能同时为空
+     * 2、以节点A为根节点的子树包含树B
+     * 3、B是A的左子树结构 或者 B是A的右子树结构
      *
-     * 这个程序的思路是我想要达到的境界
-     *
-     * @param root1
-     * @param root2
+     * @param A
+     * @param B
      * @return
      */
-    public static boolean isHasSubtree_1(TreeNode root1, TreeNode root2)
+    public static boolean isHasSubtree_1(TreeNode A, TreeNode B)
     {
-        return (root1 != null && root2 != null) && (recur(root1, root2)
-                || isHasSubtree_1(root1.left, root2) || isHasSubtree_1(root1.right, root2));
+        return (A != null && B != null) && (recur(A, B)
+                || isHasSubtree_1(A.left, B) || isHasSubtree_1(A.right, B));
     }
     
     /**
-     * 在判断出母树某个节点 和 子树根节点相同的情况下
-     * 递归：前序遍历子树，母树的节点是否相等
+     * 以节点A为根节点的子树包含树B
      *
-     * @param root1
-     * @param root2
+     *
+     * @param A
+     * @param B
      * @return
      */
-    public static boolean recur(TreeNode root1, TreeNode root2)
+    public static boolean recur(TreeNode A, TreeNode B)
     {
-        if (root2 == null) return true;
-        if (root1 == null || root1.val != root2.val) return false;
-        return recur(root1.left, root2.left) && recur(root1.right, root2.right);
+        if (B == null) return true;
+        if (A == null || A.val != B.val) return false;
+        return recur(A.left, B.left) && recur(A.right, B.right);
     }
     
     /**

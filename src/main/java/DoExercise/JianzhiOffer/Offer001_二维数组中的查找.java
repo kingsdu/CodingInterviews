@@ -17,12 +17,12 @@ import java.util.Random;
  * target = 20，返回 false。
  */
 
-public class Offer001_FindArray
+public class Offer001_二维数组中的查找
 {
     
     public static void main(String[] args)
     {
-        Offer001_FindArray sl = new Offer001_FindArray();
+        Offer001_二维数组中的查找 sl = new Offer001_二维数组中的查找();
         //遍历法
         int target = 11;
         int[][] arrayTar = {{1, 2, 8, 9}, {2, 4, 9, 12}, {4, 7, 10, 13}, {6, 8, 11, 15}};
