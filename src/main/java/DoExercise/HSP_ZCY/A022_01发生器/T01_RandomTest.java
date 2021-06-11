@@ -7,12 +7,18 @@ package DoExercise.HSP_ZCY.A022_01发生器;
  *
  * Math.Random()函数学习
  *
- * 1 Math.Random()默认会返回一个[0,1)间的等概率的数
- *
- *
+ * 1  Math.Random()默认会返回一个[0,1)间的等概率的数，很牛叉
+ * 2 利用Math.Random()如何返回一个[0,8)等概率分布数字 ？
+ * 3 利用Math.Random()如何返回一个0~9等概率数字 ？
  */
 public class T01_RandomTest
 {
+    
+    public static void main(String[] args)
+    {
+        test02();
+    }
+    
     /**
      *
      * 返回0~9等概率数字
@@ -80,8 +86,5 @@ public class T01_RandomTest
         System.out.println((double) count / (double) testTimes);
     }
     
-    public static void main(String[] args)
-    {
-        test02();
-    }
+    
 }

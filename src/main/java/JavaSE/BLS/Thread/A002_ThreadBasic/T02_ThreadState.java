@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread.ThreadState;
+package JavaSE.BLS.Thread.A002_ThreadBasic;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.LockSupport;
@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Author: Du
  * @Date: 2021/6/9 17:59
  */
-public class T01_ThreadState
+public class T02_ThreadState
 {
     
     public static void main(String[] args) throws InterruptedException

@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread.ThreadState;
+package JavaSE.BLS.Thread.A002_ThreadBasic;
 
 import java.util.concurrent.TimeUnit;
 

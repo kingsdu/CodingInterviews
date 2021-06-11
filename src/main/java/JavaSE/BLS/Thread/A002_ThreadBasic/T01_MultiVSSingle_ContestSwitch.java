@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread.ThredTest;
+package JavaSE.BLS.Thread.A002_ThreadBasic;
 
 import java.text.DecimalFormat;
 import java.util.Random;

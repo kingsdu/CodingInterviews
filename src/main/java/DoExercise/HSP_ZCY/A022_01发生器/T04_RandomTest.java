@@ -56,7 +56,7 @@ public class T04_RandomTest
         int ans = 0;
         do
         {
-            ans = x();
+            ans = x();//必须要做出第一次和第二次不同的结果
         } while (ans == x());//如果第一次 == 第二次重做，所以能满足 01 和 10即可
         
         return ans;

@@ -3,9 +3,9 @@ package DoExercise.HSP_ZCY.A022_01发生器;
 /**
  * @Author: Du
  * @Date: 2021/6/10 15:12
- * <p>
- * <p>
- * 如何将 [0,1) 的等概率返回x，变为返回 x²，X³？
+ *
+ *  问题：如何将Math.Random()的 [0,1) 的等概率返回x，变为等概率返回 x²，X³？
+ *
  */
 public class T02_RandomTest
 {
@@ -92,6 +92,7 @@ public class T02_RandomTest
     
     
     /**
+     * Math.min表示的含义
      * 1-(1-x)²
      *
      * @return
