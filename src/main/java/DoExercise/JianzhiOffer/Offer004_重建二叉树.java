@@ -16,24 +16,23 @@ import java.util.Arrays;
  * 5、对子树分别使用同样的方法分解
  *
  */
-public class Offer004_ReConstructBinaryTree
+public class Offer004_重建二叉树
 {
     
     public static void main(String[] args)
     {
-        Offer004_ReConstructBinaryTree binaryTreeTra = new Offer004_ReConstructBinaryTree();
         int[] pre = {1, 2, 4, 7, 3, 5, 6, 8}, in = {4, 7, 2, 1, 5, 3, 8, 6};
-        BinTreeNode binTreeNode = binaryTreeTra.reConstructBinaryTree(pre, in);
-        binaryTreeTra.preOrder(binTreeNode);
+        BinTreeNode binTreeNode = reConstructBinaryTree(pre, in);
+        preOrder(binTreeNode);
         System.out.println();
-        binaryTreeTra.midOrder(binTreeNode);
+        midOrder(binTreeNode);
         System.out.println();
-        binaryTreeTra.tailOrder(binTreeNode);
+        tailOrder(binTreeNode);
     }
     
 
     
-    public BinTreeNode reConstructBinaryTree(int[] pre, int[] in)
+    public static  BinTreeNode reConstructBinaryTree(int[] pre, int[] in)
     {
         if (pre.length == 0 || in.length == 0)
         {
@@ -56,7 +55,7 @@ public class Offer004_ReConstructBinaryTree
     }
     
     
-    public void preOrder(BinTreeNode node)
+    public static void preOrder(BinTreeNode node)
     {
         if (node != null)
         {
@@ -66,7 +65,7 @@ public class Offer004_ReConstructBinaryTree
         }
     }
     
-    public void midOrder(BinTreeNode node)
+    public static void midOrder(BinTreeNode node)
     {
         if (node != null)
         {
@@ -76,7 +75,7 @@ public class Offer004_ReConstructBinaryTree
         }
     }
     
-    public void tailOrder(BinTreeNode node)
+    public static void tailOrder(BinTreeNode node)
     {
         if (node != null)
         {
@@ -87,7 +86,7 @@ public class Offer004_ReConstructBinaryTree
     }
     
     
-    public class BinTreeNode
+    public static class BinTreeNode
     {
         
         BinTreeNode left;

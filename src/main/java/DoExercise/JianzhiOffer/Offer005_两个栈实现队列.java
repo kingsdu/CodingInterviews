@@ -14,17 +14,17 @@ import java.util.Stack;
  * 1、一个栈作为入栈stackIn，一个作为出栈stackOut
  * 2、push时，直接将元素入栈至stackIn，pop时，先将stackIn的元素出栈至stackOut，在出栈stackOut
  */
-public class Offer005_QueueByStack
+public class Offer005_两个栈实现队列
 {
-    Stack<Integer> stackIn = new Stack<Integer>();
-    Stack<Integer> stackOut = new Stack<Integer>();
+    static Stack<Integer> stackIn = new Stack<Integer>();
+    static Stack<Integer> stackOut = new Stack<Integer>();
     
-    public void push_1(int node)
+    public static void push_1(int node)
     {
         stackIn.push(node);
     }
     
-    public int pop_1()
+    public static int pop_1()
     {
         if (stackIn.isEmpty() && stackOut.isEmpty())
         {
@@ -49,15 +49,14 @@ public class Offer005_QueueByStack
     
     public static void main(String[] args)
     {
-        Offer005_QueueByStack queueByStack = new Offer005_QueueByStack();
-        queueByStack.push_1(1);
-        queueByStack.push_1(2);
-        System.out.println(queueByStack.pop_1());
+        push_1(1);
+        push_1(2);
+        System.out.println(pop_1());
         
-        queueByStack.push_1(3);
+        push_1(3);
         
-        System.out.println(queueByStack.pop_1());
-        System.out.println(queueByStack.pop_1());
+        System.out.println(pop_1());
+        System.out.println(pop_1());
     }
 }
 

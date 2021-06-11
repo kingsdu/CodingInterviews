@@ -10,14 +10,14 @@ package DoExercise.JianzhiOffer;
  *
  * Stringbuffer和StringBuilder的区别
  */
-public class Offer002_ReplaceSpace
+public class Offer002_替换空格
 {
     
     
     public static void main(String[] args)
     {
         String str = "We Are Happy";
-        Offer002_ReplaceSpace rse = new Offer002_ReplaceSpace();
+        Offer002_替换空格 rse = new Offer002_替换空格();
         System.out.println(rse.replace_2(str));
     }
     
