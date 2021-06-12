@@ -1,5 +1,7 @@
 package DoExercise.JianzhiOffer;
 
+import java.util.Stack;
+
 public class TestDay
 {
     
@@ -11,26 +13,31 @@ public class TestDay
     
     }
     
-    public static boolean isSubStructure(TreeNode A, TreeNode B)
+    public static TreeNode mirrorTree(TreeNode root)
     {
-        return (A != null && B != null) && (recur(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B));
-    }
-    
-    public static boolean recur(TreeNode A, TreeNode B)
-    {
-        if (B == null)
-        {
-            return true;
-        }
+        if (root == null) return null;
+        Stack<TreeNode> stack = new Stack();
+        stack.add(root);
         
-        if (A == null || A.val != B.val)
+        while (!stack.isEmpty())
         {
-            return false;
+            TreeNode pop = stack.pop();
+            if (pop.left != null)
+            {
+                stack.push(pop.left);
+            }
+            
+            if (pop.right != null)
+            {
+                stack.push(pop.right);
+            }
+            
+            TreeNode tmp = pop.left;
+            pop.left = pop.right;
+            pop.right = tmp;
         }
-        
-        return recur(A.left, B.left) && recur(A.right, B.right);
+        return root;
     }
-    
     
     public static class TreeNode
     {

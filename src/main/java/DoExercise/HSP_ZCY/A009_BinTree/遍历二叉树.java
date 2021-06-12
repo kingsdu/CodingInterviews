@@ -17,7 +17,7 @@ import java.util.Stack;
  * 后序遍历：递归、非递归实现
  * 层序遍历
  */
-public class BinTreeThrough
+public class 遍历二叉树
 {
     
     public static void main(String[] args)
@@ -288,35 +288,35 @@ public class BinTreeThrough
     /**
      * 层序遍历：逐层遍历
      * BFS
+     * <p>
+     * Stack是数组，应该比linkedList更省空间
      *
      * @param root
      * @return
      */
-    public LinkedList<Integer> levelOrderTree(BinTreeNode root)
+    public ArrayList<Integer> levelOrderTree(BinTreeNode root)
     {
         if (root == null) return null;
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        LinkedList<BinTreeNode> queue = new LinkedList<>();
-        queue.add(root);
+        ArrayList<Integer> res = new ArrayList<>();
+        Stack<BinTreeNode> stack = new Stack<>();
+        stack.add(root);
         
-        while (!queue.isEmpty())
+        while (!stack.isEmpty())
         {
-            BinTreeNode tempNode = queue.poll();
-            linkedList.add(tempNode.val);
+            BinTreeNode tempNode = stack.pop();
+            res.add(tempNode.val);
             
             if (tempNode.left != null)
             {
-                queue.add(tempNode.left);
+                stack.add(tempNode.left);
             }
             if (tempNode.right != null)
             {
-                queue.add(tempNode.right);
+                stack.add(tempNode.right);
             }
-            
         }
-        return linkedList;
+        return res;
     }
-    
     
     
     public static class BinTreeNode
@@ -324,6 +324,7 @@ public class BinTreeThrough
         BinTreeNode left;
         BinTreeNode right;
         int val;
+        
         BinTreeNode(int val)
         {
             this.val = val;

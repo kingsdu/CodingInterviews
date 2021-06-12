@@ -8,7 +8,7 @@ import java.util.Stack;
  * 输入：root = [4,2,7,1,3,6,9]
  * 输出：[4,7,2,9,6,3,1]
  */
-public class Offer018_MirrorTree
+public class Offer018_镜像二叉树
 {
     //记录调用次数:结果outMirrorTree_1 和 outMirrorTree_3 都递归调用了15次
     private static int index = 0;
@@ -54,27 +54,6 @@ public class Offer018_MirrorTree
         root.right = temp;
         outMirrorTree_1(root.left);
         outMirrorTree_1(root.right);
-        return root;
-    }
-    
-    
-    /**
-     * outMirrorTree_2 == outMirrorTree_1
-     * 方法OK,自己写的
-     *
-     * @param root
-     * @return
-     */
-    public static TreeNode outMirrorTree_2(TreeNode root)
-    {
-        if (root != null)
-        {
-            TreeNode temp = root.left;
-            root.left = root.right;
-            root.right = temp;
-            outMirrorTree_2(root.left);
-            outMirrorTree_2(root.right);
-        }
         return root;
     }
     

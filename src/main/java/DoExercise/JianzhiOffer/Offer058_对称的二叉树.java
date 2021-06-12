@@ -4,27 +4,14 @@ package DoExercise.JianzhiOffer;
  * 请实现一个函数，用来判断一棵二叉树是不是对称的。
  * 注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。
  */
-public class Offer058_IsSymmetrical
+public class Offer058_对称的二叉树
 {
     
-    
-    /**
-     *
-     *
-     * 自己写的程序，没想清楚。。。。
-     * @param pRoot
-     * @return
-     */
-    public static boolean isSymmetrical1(TreeNode pRoot)
+    public static void main(String[] args)
     {
-        if (pRoot != null)
-        {
-            if (pRoot.left != pRoot.right) return false;
-            isSymmetrical1(pRoot.left);
-            isSymmetrical1(pRoot.right);
-        }
-        return true;
+    
     }
+    
     
     /**
      *
@@ -33,17 +20,16 @@ public class Offer058_IsSymmetrical
      * @param pRoot
      * @return
      */
-    public boolean isSymmetrical2(TreeNode pRoot)
+    public boolean isSymmetrical(TreeNode pRoot)
     {
-        return isSame(pRoot, pRoot);
+        return pRoot == null ? true : isSame(pRoot.left, pRoot.right);
     }
     
     public boolean isSame(TreeNode r1, TreeNode r2)
     {
         if (r1 == null && r2 == null) return true;
-        if (r1 == null || r2 == null) return false;
-        return r1.val == r2.val && isSame(r1.left, r2.right);
-        
+        if (r1 == null || r2 == null || r1.val != r2.val) return false;
+        return isSame(r1.left, r2.right) && isSame(r1.right, r2.left);
     }
     
     /**

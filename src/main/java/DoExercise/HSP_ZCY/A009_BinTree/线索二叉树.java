@@ -9,7 +9,7 @@ package DoExercise.HSP_ZCY.A009_BinTree;
  * (1)结点的插入和删除麻烦，且速度也较慢。
  * (2)线索子树不能共用。
  */
-public class ThreadedBinaryTree
+public class 线索二叉树
 {
     
     static ThreadedNode root;
