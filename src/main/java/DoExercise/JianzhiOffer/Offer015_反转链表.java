@@ -10,7 +10,7 @@ import java.util.Stack;
  * {1,2,3}
  * {3,2,1}
  */
-public class Offer015_ReverseList
+public class Offer015_反转链表
 {
     
     public static ListNode head;

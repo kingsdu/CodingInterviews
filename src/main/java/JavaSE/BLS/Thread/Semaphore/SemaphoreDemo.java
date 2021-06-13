@@ -2,6 +2,13 @@ package JavaSE.BLS.Thread.Semaphore;
 
 import java.util.concurrent.Semaphore;
 
+
+/**
+ *
+ * 计数的信号量，维护了一个许可集合，如果有必要，在许可前会阻塞每一个acquire()，直到release释放许可
+ *
+ *
+ */
 public class SemaphoreDemo
 {
     

@@ -14,13 +14,13 @@ package DoExercise.JianzhiOffer;
  * 为什么很多程序竞赛题目都要求答案对 1e9+7（1000000007） 取模？
  * https://www.zhihu.com/question/49374703
  */
-public class Offer007_Fibonacci
+public class Offer007_斐波拉契数列
 {
     
     
     public static void main(String[] args)
     {
-        Offer007_Fibonacci fibonacci = new Offer007_Fibonacci();
+        Offer007_斐波拉契数列 fibonacci = new Offer007_斐波拉契数列();
         System.out.println(fibonacci.FibonaciiNum_1(-4));
     }
     

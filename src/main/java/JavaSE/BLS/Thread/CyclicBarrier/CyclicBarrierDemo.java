@@ -4,6 +4,9 @@ import java.util.concurrent.CyclicBarrier;
 
 /**
  *
+ * CountDownLatch的重点是一个线程，是某一个线程在等待其他的N个线程，另外的N个线程在完成后，可以等待，也可以终止线程
+ * CyclicBarrier的重点是N个线程，N个线程之间任意一个没有完成，所有线程都必须等待
+ *
  * 有区别的是CyclicBarrier的计数器由自己控制，而CountDownLatch的计数器则由使用者来控制，
  * 在CyclicBarrier中线程调用await方法不仅会将自己阻塞还会将计数器减1，
  * 而在CountDownLatch中线程调用await方法只是将自己阻塞而不会减少计数器的值。

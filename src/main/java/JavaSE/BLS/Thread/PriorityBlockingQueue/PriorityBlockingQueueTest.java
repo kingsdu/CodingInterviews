@@ -2,6 +2,12 @@ package JavaSE.BLS.Thread.PriorityBlockingQueue;
 
 import java.util.concurrent.PriorityBlockingQueue;
 
+/**
+ *
+ * PriorityBlockingQueue不会阻塞生产者，只会在没有消费者的时候，阻塞消费者数据
+ * 所以生产者的速度不能 > 消费者 ，否则系统资源可能被消耗殆尽
+ *
+ */
 public class PriorityBlockingQueueTest
 {
     

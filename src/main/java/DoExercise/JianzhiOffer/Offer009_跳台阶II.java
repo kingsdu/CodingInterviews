@@ -6,13 +6,13 @@ package DoExercise.JianzhiOffer;
  * 一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
  *
  */
-public class Offer009_JumpFloorII
+public class Offer009_跳台阶II
 {
 
 
     public static void main(String[] args)
     {
-        Offer009_JumpFloorII jumpFloorII = new Offer009_JumpFloorII();
+        Offer009_跳台阶II jumpFloorII = new Offer009_跳台阶II();
         System.out.println(jumpFloorII.jumpFloorIIJump(3));
     }
 

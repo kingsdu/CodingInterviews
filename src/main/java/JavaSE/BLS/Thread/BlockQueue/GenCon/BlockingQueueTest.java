@@ -5,6 +5,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
+
+/**
+ *
+ * LinkedBlockingQueue默认是Integer.MAX_VALUE
+ * 如果生产者速度一旦大于消费者，也许没有等到队列阻塞满，系统的内存就被消耗殆尽了
+ *
+ *
+ */
 public class BlockingQueueTest
 {
     

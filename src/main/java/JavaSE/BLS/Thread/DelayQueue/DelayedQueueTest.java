@@ -2,6 +2,17 @@ package JavaSE.BLS.Thread.DelayQueue;
 
 import java.util.concurrent.DelayQueue;
 
+/**
+ *
+ * 支持延时获取元素的使用优先级队列的实现的无阻塞队列，队列中的元素必须实现Delayed和Comparable接口
+ *
+ * 在创建元素时可以指定多久才能从队列中重新获取当前元素，只有满足延时的队列中才能获取元素
+ *
+ * 可以用于
+ * 1 缓存系统的设计，时间到了清除缓存
+ * 2 定时任务的调度，到了某个时刻执行某个任务
+ *
+ */
 public class DelayedQueueTest
 {
     
