@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread.A00MSB.C01;
+package JavaSE.BLS.Thread.A00MSB.C01_ThreadFirst;
 
 //启动线程的三种方式 1：Thread 2: Runnable 3:Executors.newCachedThrad
 public class T02_HowToCreateThread

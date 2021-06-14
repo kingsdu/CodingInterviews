@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread.A00MSB.C03;
+package JavaSE.BLS.Thread.A00MSB.C03_Synchronized;
 
 import java.util.concurrent.TimeUnit;
 

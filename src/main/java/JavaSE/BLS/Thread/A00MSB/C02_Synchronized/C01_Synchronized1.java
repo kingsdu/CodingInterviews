@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread.A00MSB.C02;
+package JavaSE.BLS.Thread.A00MSB.C02_Synchronized;
 
 /**
  * @Author: Du

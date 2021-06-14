@@ -162,20 +162,20 @@ public class Code02_BitAddMinusMultiDiv
     系统最小值没法比转绝对值，分情况讨论
      */
     public static int divide(int a, int b)
-    {
+    {   // a b 都是 Integer.MIN_VALUE
         if (a == Integer.MIN_VALUE && b == Integer.MIN_VALUE)
         {
             return 1;
-        } else if (b == Integer.MIN_VALUE)
-        {//向下取整变为0
+        } else if (b == Integer.MIN_VALUE)//b 是 Integer.MIN_VALUE  a不是
+        {  //向下取整变为0
             return 0;
-        } else if (a == Integer.MIN_VALUE)
+        } else if (a == Integer.MIN_VALUE) //a 是Integer.MIN_VALUE  b不是
         {
-            if (b == negNum(1))
-            {//-1
+            if (b == negNum(1))//b=-1
+            {   //按照数学应该返回Integer.MAX_VALUE+1，但是程序中默认返回Integer.MAX_VALUE;
                 return Integer.MAX_VALUE;
-            } else
-            {   //补位
+            } else//b是除-1的其他数
+            {   //补位运算
                 //(a+1)/b = c
                 //a-(b *c) = d
                 //d/b = e
@@ -183,7 +183,7 @@ public class Code02_BitAddMinusMultiDiv
                 int c = div(add(a, 1), b);//(a+1)
                 return add(c, div(minus(a, multi(c, b)), b));
             }
-        } else
+        } else// a b 都不是 Integer.MIN_VALUE
         {
             return div(a, b);
         }

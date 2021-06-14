@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread.A00MSB.C01;
+package JavaSE.BLS.Thread.A00MSB.C01_ThreadFirst;
 
 
 //主线程运行中的状态

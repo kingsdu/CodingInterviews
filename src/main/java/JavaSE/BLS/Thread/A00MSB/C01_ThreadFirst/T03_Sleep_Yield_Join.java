@@ -1,4 +1,4 @@
-package JavaSE.BLS.Thread.A00MSB.C01;
+package JavaSE.BLS.Thread.A00MSB.C01_ThreadFirst;
 
 //sleep yield join
 public class T03_Sleep_Yield_Join
