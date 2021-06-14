@@ -21,11 +21,9 @@ public class Code01_ReverseList
     public static Node reverseLinkedList(Node head)
     {
         Node pre = null;
-        Node next = null;
-        
         while (head != null)
         {
-            next = head.next;
+            Node next = head.next;
             head.next = pre;
             pre = head;
             head = next;
@@ -37,6 +35,8 @@ public class Code01_ReverseList
     /**
      *
      * 双端链表反转
+     * 理解 双端链表的逻辑结构
+     *
      *
      * @param head
      * @return
@@ -44,12 +44,11 @@ public class Code01_ReverseList
     public static DoubleNode reverseDoubleList(DoubleNode head)
     {
         DoubleNode pre = null;
-        DoubleNode next = null;
         while (head != null)
         {
-            next = head.next;
+            DoubleNode next = head.next;
             head.next = pre;
-            head.last = next;
+            head.last = next;//就多了这一步
             pre = head;
             head = next;
         }

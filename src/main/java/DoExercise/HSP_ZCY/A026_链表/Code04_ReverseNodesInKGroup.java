@@ -14,6 +14,37 @@ public class Code04_ReverseNodesInKGroup
     {
         public int val;
         public ListNode next;
+        
+        public ListNode(int val){
+            this.val = val;
+        }
+    }
+    
+    public static void main(String[] args)
+    {
+        ListNode l1 = new ListNode(1);
+        ListNode l2 = new ListNode(2);
+        ListNode l3 = new ListNode(3);
+        ListNode l4 = new ListNode(4);
+        ListNode l5 = new ListNode(5);
+        ListNode l6 = new ListNode(6);
+        ListNode l7 = new ListNode(7);
+        ListNode l8 = new ListNode(8);
+    
+        l1.next = l2;
+        l2.next = l3;
+        l3.next = l4;
+        l4.next = l5;
+        l5.next = l6;
+        l6.next = l7;
+        l7.next = l8;
+    
+        ListNode listNode = reverseKGroup(l1, 3);
+        while (listNode != null){
+            System.out.print(listNode.val+" ");
+            listNode = listNode.next;
+        }
+    
     }
     
     public static ListNode reverseKGroup(ListNode head, int k)
@@ -25,7 +56,7 @@ public class Code04_ReverseNodesInKGroup
             return head;
         }
         // 第一组凑齐了！
-        head = end;
+        head = end;//此处head就是最终的返回头，不能在动
         reverse(start, end);
         // 上一组的结尾节点
         ListNode lastEnd = start;
@@ -38,7 +69,7 @@ public class Code04_ReverseNodesInKGroup
                 return head;
             }
             reverse(start, end);
-            lastEnd.next = end;
+            lastEnd.next = end;//细节操作，让1指向6
             lastEnd = start;
         }
         return head;
@@ -60,10 +91,9 @@ public class Code04_ReverseNodesInKGroup
         end = end.next;
         ListNode pre = null;
         ListNode cur = start;
-        ListNode next = null;
         while (cur != end)
         {
-            next = cur.next;
+            ListNode next = cur.next;
             cur.next = pre;
             pre = cur;
             cur = next;

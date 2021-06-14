@@ -4,117 +4,79 @@ public class TestDay
 {
     public static void main(String[] args)
     {
+ 
+        t04();
     
     }
     
-    //基于双端链表实现队列
-    public static class MyQueue<V>
+    private static void t06()
     {
-        private Node<V> head;
-        private Node<V> tail;
-        private int size;
-        
-        public MyQueue()
-        {
-            head = null;
-            tail = null;
-            size = 0;
-        }
-        
-        public void offer(V Node)
-        {
-            Node<V> cur = new Node<>(Node);
-            if (head == null)
-            {
-                head = cur;
-                tail = cur;
-            } else
-            {
-                tail.next = cur;
-                tail = cur;
-            }
-            size++;
-        }
-        
-        public V poll()
-        {
-            V ans = null;
-            if (head == null)
-            {
-                tail = null;
-            } else
-            {
-                ans = head.value;
-                head = head.next;
-                size--;
-            }
-            return ans;
-        }
-        
-        public V peek()
-        {
-            V ans = null;
-            if (head != null)
-            {
-                ans = head.value;
-            }
-            return ans;
-        }
-        
+        System.out.println(Integer.toBinaryString(7 ^ 4));
     }
     
-    
-    //基于单链表实现栈
-    public static class MyStack<V>
+    private static void t04()
     {
-        private Node<V> head;
-        int size;
-        
-        public void push(V node)
-        {
-            Node<V> cur = new Node<>(node);
-            if (head != null)
-            {
-                cur.next = head;
-            }
-            head = cur;
-            size++;
-        }
-        
-        public V poll()
-        {
-            V ans = null;
-            if (head != null)
-            {
-                ans = head.value;
-                head = head.next;
-                size--;
-            }
-            return ans;
-        }
-        
-        public V peek()
-        {
-            V ans = null;
-            if (head != null)
-            {
-                ans = head.value;
-            }
-            return ans;
-        }
+        boolean a = true;
+        boolean b = false;
+        System.out.println(a ^ b);//true
+        a = false;
+        b = true;
+        System.out.println(a ^ b);//true
+        a = false;
+        b = false;
+        System.out.println(a ^ b);//false
+        a = true;
+        b = true;
+        System.out.println(a ^ b);//false
     }
     
-    
-    public static class Node<V>
+    private static void t05()
     {
-        public V value;
-        public Node<V> next;
-        
-        public Node(V v)
-        {
-            value = v;
-            next = null;
-        }
+        boolean a = true;
+        boolean b = false;
+        System.out.println(a | b);
+        a = false;
+        b = true;
+        System.out.println(a & b);
+        a = false;
+        b = false;
+        System.out.println(a & b);
+        a = true;
+        b = true;
+        System.out.println(a & b);
     }
     
+    
+    
+    private static void t03()
+    {
+        System.out.println(Integer.toBinaryString(-4));
+        System.out.println(Integer.toBinaryString(~-4));
+        System.out.println(Integer.toBinaryString(~-4+1));
+        System.out.println(Integer.toBinaryString(4));
+    }
+    
+    
+    private static void t01()
+    {
+        System.out.println(170 % 64);
+        System.out.println(170 & 63);
+        System.out.println(1 << 42);
+        System.out.println(Math.pow(2, 10));
+    }
+    
+    
+    
+    private static void t02()
+    {
+        System.out.println(Integer.toBinaryString(-2>>1));
+        System.out.println(Integer.toBinaryString(2>>1));
+        
+        System.out.println(Integer.MIN_VALUE / -1);
+        System.out.println(Integer.MIN_VALUE);
+        System.out.println(Integer.MAX_VALUE);
+        
+        System.out.println(4 / -2);
+        
+    }
 }

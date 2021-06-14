@@ -26,7 +26,7 @@ public class Code06_MergeTwoSortedLinkedList
         ListNode head = head1.val <= head2.val ? head1 : head2;//确定头，最后返回的头
         ListNode cur1 = head.next;//cur1标识头的下个节点
         ListNode cur2 = head == head1 ? head2 : head1;//cur2标识不是头的当前节点
-        ListNode pre = head;//操作的节点
+        ListNode pre = head;//返回的头，不能在动
         while (cur1 != null && cur2 != null)
         {
             //比较节点，谁小pre.next 指向谁，谁向后移动

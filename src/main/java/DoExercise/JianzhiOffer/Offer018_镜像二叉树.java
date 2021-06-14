@@ -49,6 +49,7 @@ public class Offer018_镜像二叉树
         {
             return null;
         }
+        //树的每个节点都会有左子树和右子树，所以可以放心的用左子树和右子树的节点交换
         TreeNode temp = root.left;
         root.left = root.right;
         root.right = temp;

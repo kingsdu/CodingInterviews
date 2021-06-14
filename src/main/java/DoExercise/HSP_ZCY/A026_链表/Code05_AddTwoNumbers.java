@@ -33,7 +33,7 @@ public class Code05_AddTwoNumbers
             this.next = next;
         }
     }
-    
+    //细节注意：1、last当前有效节点；2、进位处理
     public static ListNode addTwoNumbers(ListNode head1, ListNode head2)
     {
         int len1 = listLength(head1);
