@@ -1,4 +1,4 @@
-package DoExercise.HSP_ZCY.A017_Greedy;
+package DoExercise.HSP_ZCY.A017_贪心;
 
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package DoExercise.HSP_ZCY.A020_Horse;
+package DoExercise.HSP_ZCY.A020_马踏棋盘;
 
 import java.awt.*;
 import java.util.ArrayList;

@@ -1,6 +1,8 @@
 package JavaSE.BLS.Collection.Compare;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class StudentMain
 {
@@ -24,9 +26,9 @@ public class StudentMain
             System.out.println(s.getAge());
         }
         
-//        List<Student> list = new ArrayList<>();
-//        list.add(s1);
-//        list.add(s2);
+        List<Student> list = new ArrayList<>();
+        list.add(s1);
+        list.add(s2);
 //        list.add(s3);
 //
 //        Collections.sort(list);

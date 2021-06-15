@@ -16,6 +16,8 @@ public class ArrayListTest
         arrayListTest(synchronizedList(new ArrayList<>()));
     }
     
+
+    
     private static List<Integer> synchronizedList(ArrayList<Integer> list)
     {
         return Collections.synchronizedList(list);
