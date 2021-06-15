@@ -3,6 +3,11 @@ package JavaSE.BLS.Thread.A00MSB.C07_Reentrantlock;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 
+
+/*
+可以暂停某个线程，然后可以在让其继续
+
+ */
 public class T13_TestLockSupport
 {
     public static void main(String[] args)
@@ -14,8 +19,17 @@ public class T13_TestLockSupport
                 System.out.println(i);
                 if (i == 5)
                 {
-                    LockSupport.park();
+                    LockSupport.park();//当线程运行到5时，停住线程
+//                    try
+//                    {
+//                        TimeUnit.SECONDS.sleep(2);
+//                    } catch (InterruptedException e)
+//                    {
+//                        e.printStackTrace();
+//                    }
+//                    System.out.println("暂停2s，现在继续运行");
                 }
+                
                 try
                 {
                     TimeUnit.SECONDS.sleep(1);
@@ -25,7 +39,8 @@ public class T13_TestLockSupport
                 }
             }
         });
+        LockSupport.unpark(t);//可以在用之前调用
         t.start();
-        LockSupport.unpark(t);
+        //LockSupport.unpark(t);//可以在用之前调用
     }
 }

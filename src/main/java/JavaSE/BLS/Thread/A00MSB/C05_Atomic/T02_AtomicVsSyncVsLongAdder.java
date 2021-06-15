@@ -7,9 +7,9 @@ import java.util.concurrent.atomic.LongAdder;
 /**
  *
  * 不同的线程数量得到的结果不一定
- *
+ * 100000个线程并发
+ * synchronized重量锁，最慢
  * Atomic不加锁，所以较快
- *
  * LongAdder中使用了分段锁
  *
  */
@@ -31,15 +31,10 @@ public class T02_AtomicVsSyncVsLongAdder
                         for (int k = 0; k < 100000; k++) count1.incrementAndGet();
                     });
         }
-        
         long start = System.currentTimeMillis();
-        
         for (Thread t : threads) t.start();
-        
         for (Thread t : threads) t.join();
-        
         long end = System.currentTimeMillis();
-        
         System.out.println("Atomic: " + count1.get() + " time " + (end - start));
         //-----------------------------------------------------------
         Object lock = new Object();

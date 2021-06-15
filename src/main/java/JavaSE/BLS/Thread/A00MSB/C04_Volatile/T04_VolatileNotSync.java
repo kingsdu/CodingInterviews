@@ -10,20 +10,17 @@ import java.util.List;
 public class T04_VolatileNotSync {
 	volatile int count = 0;
 	void m() {
-		for(int i=0; i<10000; i++) count++;//只有可见性但是没有原子性
+		//29581 因为Volatile只有可见性但是没有原子性，所以无法返回10000
+		for(int i=0; i<10000; i++) count++;
 	}
 	
 	public static void main(String[] args) {
 		T04_VolatileNotSync t = new T04_VolatileNotSync();
-		
 		List<Thread> threads = new ArrayList<Thread>();
-		
 		for(int i=0; i<10; i++) {
 			threads.add(new Thread(t::m, "thread-"+i));
 		}
-		
 		threads.forEach((o)->o.start());
-		
 		threads.forEach((o)->{
 			try {
 				o.join();
@@ -31,10 +28,7 @@ public class T04_VolatileNotSync {
 				e.printStackTrace();
 			}
 		});
-		
 		System.out.println(t.count);
-		
-		
 	}
 	
 }

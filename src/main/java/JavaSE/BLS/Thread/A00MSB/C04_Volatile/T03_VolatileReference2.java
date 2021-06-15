@@ -5,7 +5,6 @@ package JavaSE.BLS.Thread.A00MSB.C04_Volatile;
  */
 public class T03_VolatileReference2
 {
-
     private static class Data {
         int a, b;
 
@@ -14,9 +13,7 @@ public class T03_VolatileReference2
             this.b = b;
         }
     }
-
     volatile static Data data;
-
     public static void main(String[] args) {
         Thread writer = new Thread(()->{
             for (int i = 0; i < 10000; i++) {
