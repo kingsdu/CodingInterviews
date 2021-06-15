@@ -6,16 +6,25 @@ import java.util.HashSet;
  * @Author: Du
  * @Date: 2021/6/14 15:29
  *
- * 位图可以收集数字，并判断数字是否存在，可以极大压缩空间
+ * 位图可以极大压缩空间
+ * 功能方面：
+ * 位图可以收集数字，并判断数字是否存在
  *
+ * 程序功能：如何将数字存在一个long[]里面
+ *
+ * 程序注意点
  * 1 左移时必须用1L
  * 2 num & 63 == num % 64，该方法只适用于 被除数是 2的次幂（2 4 8 16 32 64）
+ *
+ * bit[num >> 6] |= (1L << (num & 63))
+ * bit[num >> 6] &= ~(1L << (num & 63))
+ * bit[num >> 6] & (1L << (num & 63)) != 0
  */
 public class Code01_BitMap1
 {
     public static class BitMap {
         
-        private long[] bits;
+        private long[] bits;//[0,63][64,127][128,191].........
         
         public BitMap(int max) {
             bits = new long[(max + 64) >> 6];//有多少位数
@@ -30,8 +39,8 @@ public class Code01_BitMap1
         //170为例子
         public void delete(int num) {
             // 001(41个0)
-            //~110(41个1)
-            //&110(41个1)
+            //~000(41个0)
+            //&000(41个0)
             //上述过程等于消除170在bit[3]中的标记
             bits[num >> 6] &= ~(1L << (num & 63));//将存入bit[i]中对应的64个空间中对应num的位置置为0
         }

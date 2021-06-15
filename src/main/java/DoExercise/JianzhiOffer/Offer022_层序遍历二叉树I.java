@@ -5,15 +5,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- *
- *
  * 从上往下打印出二叉树的每个节点，同层节点从左至右打印。
- *
- *
  */
-public class Offer022_PrintFromTopToBottom
+public class Offer022_层序遍历二叉树I
 {
-    
     
     public static void main(String[] args)
     {
@@ -26,47 +21,48 @@ public class Offer022_PrintFromTopToBottom
         TreeNode r4 = new TreeNode(7);
         r2.right = r4;
         r2.left = r3;
-
-        Offer022_PrintFromTopToBottom of = new Offer022_PrintFromTopToBottom();
-        ArrayList<Integer> arrayList = of.PrintFromTopToBottom(root);
-    
+        
+        ArrayList<Integer> arrayList = PrintFromTopToBottom(root);
+        
         for (int x :
                 arrayList)
         {
-            System.out.print(x+" ");
+            System.out.print(x + " ");
         }
     }
     
-    public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
+    public static ArrayList<Integer> PrintFromTopToBottom(TreeNode root)
+    {
+        if (null == root) return null;
         Queue<TreeNode> queue = new LinkedList<>();
         ArrayList<Integer> aList = new ArrayList<>();
+        queue.add(root);
         
-        if(null == root || root.equals("")){
-            return aList;
-        }
-        queue.offer(root);
-        
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty())
+        {
             TreeNode poll = queue.poll();
             aList.add(poll.val);
-            if(null != poll.left){
-                queue.offer(poll.left);
+            if (null != poll.left)
+            {
+                queue.add(poll.left);
             }
-            
-            if(null != poll.right){
-                queue.offer(poll.right);
+            if (null != poll.right)
+            {
+                queue.add(poll.right);
             }
         }
         return aList;
     }
-  
     
-    public static class TreeNode {
+    
+    public static class TreeNode
+    {
         int val = 0;
         TreeNode left = null;
         TreeNode right = null;
         
-        public TreeNode(int val) {
+        public TreeNode(int val)
+        {
             this.val = val;
         }
     }

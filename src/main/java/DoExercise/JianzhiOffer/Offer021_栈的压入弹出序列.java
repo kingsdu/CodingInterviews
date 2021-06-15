@@ -13,6 +13,8 @@ public class Offer021_栈的压入弹出序列
         System.out.println(validateStackSequences(pushed, popped) == true ? "true" : "false");
     }
     
+   
+    
     /**
      * 这个代码不用看，肯定不达标
      * <p>

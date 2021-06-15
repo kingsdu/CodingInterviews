@@ -134,7 +134,7 @@ public class Code02_BitAddMinusMultiDiv
         {   //当x突破了y
             if ((x >> i) >= y)//y左移可能会突破符号位，所以这里选择x右移
             {
-                res |= (1 << i);//找到对应位置上是1
+                res |= (1 << i);//找到对应位置上是1，确定最后有1的位置
                 x = minus(x, y << i);
             }
         }
@@ -175,13 +175,13 @@ public class Code02_BitAddMinusMultiDiv
             {   //按照数学应该返回Integer.MAX_VALUE+1，但是程序中默认返回Integer.MAX_VALUE;
                 return Integer.MAX_VALUE;
             } else//b是除-1的其他数
-            {   //补位运算
-                //(a+1)/b = c
-                //a-(b *c) = d
-                //d/b = e
-                //c+e = 结果
-                int c = div(add(a, 1), b);//(a+1)
-                return add(c, div(minus(a, multi(c, b)), b));
+            {   //补位运算  -10(Integer.MIN_VALUE) / 2
+                //(a+1) / b = c   1   (-10 + 1)/2 = -4
+                //a - (b *c) = d  2   -10 - (-4 * 2) = -2
+                //d / b = e       3   -2/2 = -1
+                //c + e = res     4   -1-4 = -5
+                int c = div(add(a, 1), b);//(a+1)/b   1
+                return add(c, div(minus(a, multi(c, b)), b));// 2 3 4
             }
         } else// a b 都不是 Integer.MIN_VALUE
         {
