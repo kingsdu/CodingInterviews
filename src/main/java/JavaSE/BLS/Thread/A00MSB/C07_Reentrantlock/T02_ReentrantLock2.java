@@ -6,7 +6,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * reentrantlock用于替代synchronized
+ * Reentrantlock用于替代synchronized
  * <p>
  * 使用reentrantlock可以完成同样的功能
  * 需要注意的是，必须要必须要必须要手动释放锁（重要的事情说三遍）
@@ -25,7 +25,7 @@ public class T02_ReentrantLock2
             {
                 TimeUnit.SECONDS.sleep(1);
                 System.out.println(i);
-				if (i == 2) m2();//synchronized是可重入锁
+				if (i == 2) m2();//Reentrantlock是可重入锁
             }
         } catch (InterruptedException e)
         {
@@ -59,6 +59,5 @@ public class T02_ReentrantLock2
         {
             e.printStackTrace();
         }
-      //  new Thread(rl::m2).start();
     }
 }

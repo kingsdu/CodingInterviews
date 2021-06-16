@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * reentrantlock和synchronized区别
- * 使用reentrantlock可以进行“尝试锁定”tryLock，这样无法锁定，或者在指定时间内无法锁定，线程可以决定是否继续等待
+ * 使用reentrantlock可以进行tryLock(尝试锁定)，如果这样无法锁定，或者在指定时间内无法锁定，线程可以决定是否继续等待
  */
 public class T03_ReentrantLock3
 {

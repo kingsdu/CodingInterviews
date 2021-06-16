@@ -9,7 +9,7 @@ package JavaSE.BLS.Thread.A00MSB.C11_JavaRef;
 
 import java.lang.ref.SoftReference;
 
-//软引用非常适合缓存使用，这种内存不是必须的，需要新的空间就可以把软引用的数据清掉，否则就留着
+//软引用非常适合缓存使用，软引用指向的内存不是必须的，需要新的空间就可以把软引用的数据清掉，否则就留着
 //当有对象被软引用指向，系统内存不够用就会回收，不够用就不会回收
 //设置运行参数 -Xms20M -Xmx30M
 public class T02_SoftReference

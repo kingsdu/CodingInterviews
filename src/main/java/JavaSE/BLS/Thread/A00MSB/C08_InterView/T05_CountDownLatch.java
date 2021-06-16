@@ -45,16 +45,15 @@ public class T05_CountDownLatch
             {
                 try
                 {
-                    latch.await();
-                    //也可以指定等待时间
-                    //latch.await(5000, TimeUnit.MILLISECONDS);
+                    latch.await();//先让t2的1234 wait
+                    //latch.await(5000, TimeUnit.MILLISECONDS);//也可以指定等待时间
                 } catch (InterruptedException e)
                 {
                     e.printStackTrace();
                 }
             }
             System.out.println("t2 结束");
-            latch.countDown();
+            latch.countDown();//打开门栓5
             
         }, "t2").start();
         
@@ -76,11 +75,11 @@ public class T05_CountDownLatch
                 
                 if (c.size() == 5)
                 {
-                    // 打开门闩，让t2得以执行
-                    latch.countDown();
+                   
+                    latch.countDown();//打开门闩，让t2的1234执行
                     try
                     {
-                        latch.await();
+                        latch.await();//关上门栓 5 让t2保证能获得执行权
                     } catch (InterruptedException e)
                     {
                         e.printStackTrace();
@@ -88,11 +87,11 @@ public class T05_CountDownLatch
                 }
                 
                 //这个地方必须sleep，不等待的话可能在放开栅栏后t1还能继续强到线程，或者用2个门栓
-//				try {
-//					TimeUnit.SECONDS.sleep(1);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
+				try {
+					TimeUnit.SECONDS.sleep(1);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
             }
             
         }, "t1").start();

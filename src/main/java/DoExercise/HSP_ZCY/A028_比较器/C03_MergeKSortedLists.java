@@ -56,6 +56,7 @@ public class C03_MergeKSortedLists
         {
             return null;
         }
+        //单独进行一步的原因是要得到返回值的头节点
         ListNode head = priorityQueue.poll();//整体的头部，返回的结果
         ListNode pre = head;//1 - 3 - 4
         if (pre.next != null)//第一个链表的头已经处理完毕

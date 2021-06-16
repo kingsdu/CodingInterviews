@@ -4,31 +4,24 @@ import java.util.Random;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.TimeUnit;
 
+/*
+
+1 Person类实现Runnable 接口，实现run方法
+2 hug()方法限制了只有新郎新娘可以继续执行线程，其他的线程结束注册
+
+ */
 public class T09_TestPhaser2
 {
     static Random r = new Random();
     static MarriagePhaser phaser = new MarriagePhaser();
     
-    
-    static void milliSleep(int milli)
-    {
-        try
-        {
-            TimeUnit.MILLISECONDS.sleep(milli);
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
     public static void main(String[] args)
     {
-        
         phaser.bulkRegister(7);
-        //共7个人
+        //加上 新郎新娘 共7个人
         for (int i = 0; i < 5; i++)
         {
-            new Thread(new Person("p" + i)).start();
+            new Thread(new Person("p" + i)).start();//这个直接在Person实现run方法
         }
         new Thread(new Person("新郎")).start();
         new Thread(new Person("新娘")).start();
@@ -113,6 +106,18 @@ public class T09_TestPhaser2
             eat();
             leave();
             hug();
+        }
+    }
+    
+    
+    static void milliSleep(int milli)
+    {
+        try
+        {
+            TimeUnit.MILLISECONDS.sleep(milli);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
         }
     }
 }

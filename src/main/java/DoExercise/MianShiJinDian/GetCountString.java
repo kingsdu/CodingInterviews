@@ -1,4 +1,4 @@
-package JavaSE.Book.InterviewGoldBook;
+package DoExercise.MianShiJinDian;
 
 /**
  * 字符串的统计字符串

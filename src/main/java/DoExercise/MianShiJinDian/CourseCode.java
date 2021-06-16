@@ -1,4 +1,4 @@
-package JavaSE.Book.InterviewGoldBook;
+package DoExercise.MianShiJinDian;
 
 /**
  * 大型企业面试讲解

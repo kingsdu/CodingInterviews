@@ -20,14 +20,6 @@ public class T13_TestLockSupport
                 if (i == 5)
                 {
                     LockSupport.park();//当线程运行到5时，停住线程
-//                    try
-//                    {
-//                        TimeUnit.SECONDS.sleep(2);
-//                    } catch (InterruptedException e)
-//                    {
-//                        e.printStackTrace();
-//                    }
-//                    System.out.println("暂停2s，现在继续运行");
                 }
                 
                 try
@@ -39,8 +31,7 @@ public class T13_TestLockSupport
                 }
             }
         });
-        LockSupport.unpark(t);//可以在用之前调用
         t.start();
-        //LockSupport.unpark(t);//可以在用之前调用
+        LockSupport.unpark(t);//可以在用之前调用
     }
 }

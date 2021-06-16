@@ -14,15 +14,13 @@ import java.util.Queue;
  * 第二层按照从右到左的顺序打印，
  * 第三行再按照从左到右的顺序打印，
  * 其他行以此类推。
- *
+ * <p>
  * 注意这题判断奇偶，以及如何使用LinkedList特性的方式！！！
  * 注意这题判断奇偶，以及如何使用LinkedList特性的方式！！！
  * 注意这题判断奇偶，以及如何使用LinkedList特性的方式！！！
  */
 public class Offer022_层序遍历二叉树III
 {
-    
-    
     public List<List<Integer>> levelOrder(TreeNode root)
     {
         Queue<TreeNode> queue = new LinkedList<>();

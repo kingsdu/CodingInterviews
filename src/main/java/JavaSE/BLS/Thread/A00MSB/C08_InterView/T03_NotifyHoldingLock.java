@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class T03_NotifyHoldingLock
 {
-    
     volatile List lists = new ArrayList();
     
     public void add(Object o)

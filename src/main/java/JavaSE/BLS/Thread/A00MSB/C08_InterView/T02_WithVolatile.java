@@ -21,7 +21,7 @@ public class T02_WithVolatile
     
     //添加volatile，使t2能够得到通知
     //volatile List lists = new LinkedList();
-    volatile List lists = Collections.synchronizedList(new LinkedList<>());//同步容器
+    volatile List lists = Collections.synchronizedList(new LinkedList<>());//同步容器，同时用volatile修饰，使其值改变时能够得到通知
     
     public void add(Object o)
     {

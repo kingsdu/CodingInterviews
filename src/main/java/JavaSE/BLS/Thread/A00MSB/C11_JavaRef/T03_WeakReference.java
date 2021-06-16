@@ -28,6 +28,6 @@ public class T03_WeakReference
         tl.set(new M());
         //因为ThreadLocalMap是一直都存在的，且ThreadLocalMap中只有key是弱引用，但是value是强引用，所以value的值还存在，且因为key为null了，value不会被回收
         //所以使用ThreadLocal，里面对象不用了，一定要将里面对象移除，否则还是会有内存泄漏
-        tl.remove();//remove掉 ThreadLocalMap中对应的key值
+        tl.remove();//remove掉 ThreadLocalMap中对应的Entry<key,map>删除
     }
 }

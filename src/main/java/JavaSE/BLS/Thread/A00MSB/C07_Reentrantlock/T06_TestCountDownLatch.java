@@ -7,7 +7,7 @@ public class T06_TestCountDownLatch
     public static void main(String[] args)
     {
         usingJoin();
-        usingCountDownLatch();
+//        usingCountDownLatch();
     }
     
     private static void usingCountDownLatch()
@@ -21,6 +21,7 @@ public class T06_TestCountDownLatch
             {
                 int result = 0;
                 for (int j = 0; j < 10000; j++) result += j;
+                System.out.println(result);
                 latch.countDown();//开1个门栓
             });
         }
@@ -53,6 +54,7 @@ public class T06_TestCountDownLatch
             {
                 int result = 0;
                 for (int j = 0; j < 10000; j++) result += j;
+                System.out.println(result);
             });
         }
         

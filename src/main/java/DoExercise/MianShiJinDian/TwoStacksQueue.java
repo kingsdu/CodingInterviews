@@ -1,4 +1,4 @@
-package JavaSE.Book.InterviewGoldBook;
+package DoExercise.MianShiJinDian;
 
 import java.util.Stack;
 

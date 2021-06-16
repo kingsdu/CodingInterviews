@@ -1,4 +1,4 @@
-package JavaSE.Book.InterviewGoldBook;
+package DoExercise.MianShiJinDian;
 
 /**
  * 给定的三个字符串str,from,to，

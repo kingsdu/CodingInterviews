@@ -8,7 +8,7 @@ public class T07_TestCyclicBarrier
 {
     public static void main(String[] args)
     {
-        CyclicBarrier barrier = new CyclicBarrier(20, () -> System.out.println("满人"));
+        CyclicBarrier barrier = new CyclicBarrier(20, () -> System.out.println("到20满人，等一下一批"));
         for (int i = 0; i < 100; i++)
         {
             new Thread(() ->

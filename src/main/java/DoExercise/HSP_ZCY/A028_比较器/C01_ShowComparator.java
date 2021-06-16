@@ -24,7 +24,6 @@ public class C01_ShowComparator
     // 谁id大，谁放前！
     public static class IdComparator implements Comparator<Student>
     {
-        
         // 如果返回负数，认为第一个参数应该排在前面
         // 如果返回正数，认为第二个参数应该排在前面
         // 如果返回0，认为谁放前面无所谓

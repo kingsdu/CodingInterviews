@@ -1,4 +1,4 @@
-package JavaSE.Book.InterviewGoldBook;
+package DoExercise.MianShiJinDian;
 
 /**
  * 两个链表 head1 head2 打印两个链表公共部分

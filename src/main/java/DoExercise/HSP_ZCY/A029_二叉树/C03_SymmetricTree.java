@@ -30,7 +30,7 @@ public class C03_SymmetricTree
         {
             return true;
         }
-        //对于某一个树来说：我的左要 = 你的右  我的右 要= 你的左
+        //对于某一个树来说：我的左要= 你的右  我的右 要= 你的左
         return h1.val == h2.val && isMirror(h1.left, h2.right) && isMirror(h1.right, h2.left);
     }
 }

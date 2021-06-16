@@ -8,7 +8,6 @@ public class C02_ShowComparator
     
     public static class MyComparator implements Comparator<Integer>
     {
-        
         // 负，第一个参数在前
         // 正，第二个参数在前
         // 0, 谁放前都行
