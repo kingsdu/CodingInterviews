@@ -18,7 +18,7 @@ public class Offer024_二叉树中和为某一值的路径I
     public static void main(String[] args)
     {
         Integer[] array = {5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1};
-        List<List<Integer>> lists = pathSum(CreateBinaryTree(array), 22);
+        List<List<Integer>> lists = pathSum(Offer000_Common.deserializeTreeNode(array), 22);
         for (List<Integer> l : lists)
         {
             for (int x : l)
@@ -33,13 +33,13 @@ public class Offer024_二叉树中和为某一值的路径I
     static LinkedList<List<Integer>> res = new LinkedList<>();
     static LinkedList<Integer> list = new LinkedList();
     
-    public static List<List<Integer>> pathSum(TreeNode root, int target)
+    public static List<List<Integer>> pathSum(Offer000_Common.TreeNode root, int target)
     {
         recur(root, target);
         return res;
     }
     
-    public static void recur(TreeNode root, int target)
+    public static void recur(Offer000_Common.TreeNode root, int target)
     {
         if (root == null) return;//target < 0这个条件不能加，因为要保证二叉树的完全遍历，要保证同等全
         list.add(root.val);
@@ -54,7 +54,7 @@ public class Offer024_二叉树中和为某一值的路径I
     }
     
     //==================方法2：不使用全局变量==================
-    public static List<List<Integer>> pathSum1(TreeNode root, int sum)
+    public static List<List<Integer>> pathSum1(Offer000_Common.TreeNode root, int sum)
     {
         List<List<Integer>> ans = new ArrayList<>();
         if (root == null)
@@ -66,7 +66,7 @@ public class Offer024_二叉树中和为某一值的路径I
         return ans;
     }
     
-    public static void process(TreeNode x, List<Integer> path, int preSum, int sum, List<List<Integer>> ans)
+    public static void process(Offer000_Common.TreeNode x, List<Integer> path, int preSum, int sum, List<List<Integer>> ans)
     {
         if (x.left == null && x.right == null)
         {
@@ -100,73 +100,6 @@ public class Offer024_二叉树中和为某一值的路径I
             ans.add(num);
         }
         return ans;
-    }
-    
-    
-    //========================================================================================================
-    
-    public static TreeNode CreateBinaryTree(Integer[] array)
-    {
-        int size = array.length;
-        TreeNode[] root = new TreeNode[size];
-        for (int i = 0; i < array.length; i++)
-        {
-            if (array[i] == null)
-            {
-                root[i] = null;
-            } else
-            {
-                root[i] = new TreeNode(array[i]);
-            }
-        }
-        Queue<TreeNode> queue = new LinkedList<>();
-        if (root.length == 0)
-        {
-            return null;
-        }
-        queue.add(root[0]);
-        int i = 1;
-        while (i < size || !queue.isEmpty())
-        {
-            TreeNode curNode = queue.poll();
-            //判断当前节点为空则继续出栈
-            while (curNode == null)
-            {
-                curNode = queue.poll();
-                if (queue.isEmpty() && curNode == null)//最后一个元素出栈，栈是空，但是还有元素
-                {
-                    return root[0];
-                }
-            }
-            
-            if (i < size)
-            {
-                curNode.left = array[i] == null ? null : root[i];
-                queue.offer(curNode.left);
-                i++;
-            }
-            
-            if (i < size)
-            {
-                curNode.right = array[i] == null ? null : root[i];
-                queue.offer(curNode.right);
-                i++;
-            }
-        }
-        return root[0];
-    }
-    
-    
-    public static class TreeNode
-    {
-        int val = 0;
-        TreeNode left = null;
-        TreeNode right = null;
-        
-        public TreeNode(int val)
-        {
-            this.val = val;
-        }
     }
     
 }

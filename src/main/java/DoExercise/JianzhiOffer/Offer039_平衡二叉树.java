@@ -1,8 +1,5 @@
 package DoExercise.JianzhiOffer;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * 输入一棵二叉树的根节点，判断该树是不是平衡二叉树。
  * 如果某二叉树中任意节点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。
@@ -13,21 +10,51 @@ public class Offer039_平衡二叉树
     public static void main(String[] args)
     {
         Integer[] nodes = {1, 2, 2, 3, 3, null, null, 4, 4};
-        TreeNode[] roots = CreateBinaryTree(nodes);
-        boolean balanced = isBalanced(roots[0]);
+        Offer000_Common.TreeNode roots = Offer000_Common.deserializeTreeNode(nodes);
+        boolean balanced = isBalanced(roots);
         System.out.println(balanced);
     }
     
+    //==============================左程云讲的方法=========================================
+    public static boolean isBalanced_ZCY(Offer000_Common.TreeNode root)
+    {
+        return process(root).isBalanced;
+    }
+    
+    public static Info process(Offer000_Common.TreeNode root)
+    {
+        if (root == null) return new Info(true, 0);//初始isBalanced是true
+        Info leftInfo = process(root.left);
+        Info rightInfo = process(root.right);
+        int height = Math.max(leftInfo.height, rightInfo.height) + 1;
+        boolean isBalanced = leftInfo.isBalanced && rightInfo.isBalanced
+                && Math.abs(leftInfo.height - rightInfo.height) < 2;
+        return new Info(isBalanced, height);
+    }
+    
+    //将需要计算的信息存放在一个Info中
+    public static class Info
+    {
+        public boolean isBalanced;
+        public int height;
+        
+        public Info(boolean i, int h)
+        {
+            isBalanced = i;
+            height = h;
+        }
+    }
+    
+    //==================================K神的方法=====================================
     static boolean flag = true;
     
-    public static boolean isBalanced(TreeNode root)
+    public static boolean isBalanced(Offer000_Common.TreeNode root)
     {
         maxDepth(root);
         return flag;
     }
     
-    
-    public static int maxDepth(TreeNode root)
+    public static int maxDepth(Offer000_Common.TreeNode root)
     {
         int leftTree, rightTree;
         if (root == null)
@@ -37,12 +64,10 @@ public class Offer039_平衡二叉树
         {
             leftTree = maxDepth(root.left);
             rightTree = maxDepth(root.right);
-            
             if (Math.abs(leftTree - rightTree) > 1)
             {
                 flag = false;
             }
-            
             if (leftTree < rightTree)
             {
                 return rightTree + 1;
@@ -53,19 +78,13 @@ public class Offer039_平衡二叉树
         }
     }
     
-    
-    /**
-     * 和上面的程序是一个意思，但是别人写的可读性就比我的好很多
-     *
-     * @param root
-     * @return
-     */
-    public static boolean isBalanced_2(TreeNode root)
+    //=======================================================================================================
+    public static boolean isBalanced_2(Offer000_Common.TreeNode root)
     {
         return recur(root) != -1;
     }
     
-    private static int recur(TreeNode root)
+    private static int recur(Offer000_Common.TreeNode root)
     {
         if (root == null) return 0;
         
@@ -78,89 +97,19 @@ public class Offer039_平衡二叉树
         return Math.abs(left - right) < 2 ? Math.max(left, right) + 1 : -1;
     }
     
-    
-    /**
-     * 另一种写法，表示树上所有的节点高度都<=1
-     * <p>
-     * 逆向思维：树中所有的节点的高度差都<=1，即可
-     *
-     * @param root
-     * @return
-     */
-    public static boolean isBalanced_3(TreeNode root)
+    //===============================================================================================
+    public static boolean isBalanced_3(Offer000_Common.TreeNode root)
     {
         if (root == null) return true;
         return Math.abs(depth(root.left) - depth(root.right)) <= 1 && isBalanced_3(root.left) && isBalanced_3(root.right);
     }
     
-    private static int depth(TreeNode root)
+    private static int depth(Offer000_Common.TreeNode root)
     {
         if (root == null) return 0;
         return Math.max(depth(root.left), depth(root.right)) + 1;
     }
     
     
-    public static TreeNode[] CreateBinaryTree(Integer[] array)
-    {
-        int size = array.length;
-        TreeNode[] root = new TreeNode[size];
-        for (int i = 0; i < array.length; i++)
-        {
-            if (array[i] == null)
-            {
-                root[i] = null;
-            } else
-            {
-                root[i] = new TreeNode(array[i]);
-            }
-        }
-        Queue<TreeNode> queue = new LinkedList<>();
-        if (root.length == 0)
-        {
-            return null;
-        }
-        queue.add(root[0]);
-        int i = 1;
-        while (i < size || !queue.isEmpty())
-        {
-            TreeNode curNode = queue.poll();
-            //判断当前节点为空则继续出栈
-            while (curNode == null)
-            {
-                curNode = queue.poll();
-                if (queue.isEmpty() && curNode == null)//最后一个元素出栈，栈是空，但是还有元素
-                {
-                    return root;
-                }
-            }
-            
-            if (i < size)
-            {
-                curNode.left = array[i] == null ? null : root[i];
-                queue.offer(curNode.left);
-                i++;
-            }
-            
-            if (i < size)
-            {
-                curNode.right = array[i] == null ? null : root[i];
-                queue.offer(curNode.right);
-                i++;
-            }
-        }
-        return root;
-    }
-    
-    public static class TreeNode
-    {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
-        
-        public TreeNode(int val)
-        {
-            this.val = val;
-        }
-    }
     
 }

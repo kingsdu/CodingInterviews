@@ -4,16 +4,31 @@ public class TestDay
 {
     public static void main(String[] args)
     {
-        boolean a = false;
-        boolean b = true;
-        System.out.println(a | b);
     }
     
     
+
+    private static void t02()
+    {
+        String[] vals = {null, null};
+        if (null == vals[0])
+        {
+            System.out.println(true);
+        }
+    }
+    
+    private static void t01()
+    {
+        Integer a = null;
+        Integer b = 1;
+        if (null instanceof Integer)
+        {
+            System.out.println(true);
+        }
+    }
     
     
-    
-    public class TreeNode
+    public static class TreeNode
     {
         int val;
         TreeNode left;
