@@ -1,6 +1,6 @@
 package JavaSE.MSB.Thread.A03_Volatile;
 
-import JavaSE.MSB.Thread.A01.SleepHelper;
+import JavaSE.MSB.Thread.A01_Fun.SleepHelper;
 
 /**
  * @Author: Du

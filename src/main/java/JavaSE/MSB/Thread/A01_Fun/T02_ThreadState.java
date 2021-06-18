@@ -1,4 +1,4 @@
-package JavaSE.MSB.Thread.A01;
+package JavaSE.MSB.Thread.A01_Fun;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.LockSupport;

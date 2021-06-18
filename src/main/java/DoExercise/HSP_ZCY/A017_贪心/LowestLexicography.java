@@ -1,15 +1,12 @@
 package DoExercise.HSP_ZCY.A017_贪心;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * 给定一个由字符串组成的数组strs，必须把所有的字符串拼接起来，返回所有可能的拼接结果中，字典序最小的结果
  * 字典序：两个字符串放入到字典中，谁放在前面谁的字典序就小
- *
+ * <p>
  * strs[] = b,a,e,f,c;
  * ab < ba
  * abc < cba
@@ -71,10 +68,34 @@ public class LowestLexicography
         }
     }
     
+    static String[] c;
+    static List<String> res = new ArrayList<>();
+    
+    public static void process1(int x)
+    {
+        if (x == c.length - 1)
+        {
+            res.add(String.valueOf(c));      // 添加排列方案
+            return;
+        }
+        for (int i = x; i < c.length; i++)
+        {
+            swap(i, x);
+            process1(x + 1);
+            swap(i, x);
+        }
+    }
+    
+    
+    static void swap(int a, int b)
+    {
+        String tmp = c[a];
+        c[a] = c[b];
+        c[b] = tmp;
+    }
+    
     /**
-     *
      * 方法2：利用排序的传递性，加入a+b < b+a 则a+b 放在 b+a前面
-     *
      */
     public static class MyComparator implements Comparator<String>
     {
@@ -101,7 +122,6 @@ public class LowestLexicography
     }
     
     /**
-     *
      * @param strLen
      * @return
      */
@@ -117,7 +137,6 @@ public class LowestLexicography
     }
     
     /**
-     *
      * @param arrLen
      * @param strLen
      * @return
@@ -133,8 +152,6 @@ public class LowestLexicography
     }
     
     /**
-     *
-     *
      * @param arr
      * @return
      */
@@ -150,20 +167,22 @@ public class LowestLexicography
     
     public static void main(String[] args)
     {
-        int arrLen = 6;
-        int strLen = 5;
-        int testTimes = 100000;
-        for (int i = 0; i < testTimes; i++)
-        {
-            String[] arr1 = generateRandomStringArray(arrLen, strLen);
-            String[] arr2 = copyStringArray(arr1);
-            lowestString1(arr1);
-            if (!lowestString1(arr1).equals(lowestString2(arr2)))
-            {
-                System.out.println("Oops!");
-            }
-        }
-        System.out.println("finish!");
+//        int arrLen = 6;
+//        int strLen = 5;
+//        int testTimes = 100000;
+//        for (int i = 0; i < testTimes; i++)
+//        {
+//            String[] arr1 = generateRandomStringArray(arrLen, strLen);
+//            String[] arr2 = copyStringArray(arr1);
+//            lowestString1(arr1);
+//            if (!lowestString1(arr1).equals(lowestString2(arr2)))
+//            {
+//                System.out.println("Oops!");
+//            }
+//        }
+//        System.out.println("finish!");
+        process1(0);
+        res.stream().forEach(e -> System.out.print(e+" "));
     }
     
 }

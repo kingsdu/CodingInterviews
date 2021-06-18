@@ -1,6 +1,6 @@
 package JavaSE.MSB.Thread.A02_Thread_Stop;
 
-import JavaSE.MSB.Thread.A01.SleepHelper;
+import JavaSE.MSB.Thread.A01_Fun.SleepHelper;
 
 /**
  * @Author: Du

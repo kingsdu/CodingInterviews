@@ -1,7 +1,7 @@
 package JavaSE.MSB.Thread.C13_Interview2;
 
 
-public class T03_00_CAS
+public class T03_00_Volatile_CAS
 {
     enum ReadyToRun {T1, T2}//用枚举防止取其他的值
 

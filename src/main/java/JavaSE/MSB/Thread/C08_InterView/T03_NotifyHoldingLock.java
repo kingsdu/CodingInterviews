@@ -54,7 +54,7 @@ public class T03_NotifyHoldingLock
         
         try
         {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(100);
         } catch (InterruptedException e1)
         {
             e1.printStackTrace();
@@ -75,7 +75,7 @@ public class T03_NotifyHoldingLock
                     }
                     try
                     {
-                        TimeUnit.SECONDS.sleep(1);//并sleep t1保证t2先拿到锁，但是没用。因为notify不释放锁
+                        TimeUnit.MILLISECONDS.sleep(100);//并sleep t1保证t2先拿到锁，但是没用。因为notify不释放锁
                     } catch (InterruptedException e)
                     {
                         e.printStackTrace();

@@ -59,7 +59,7 @@ public class T05_CountDownLatch
         
         try
         {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(100);
         } catch (InterruptedException e1)
         {
             e1.printStackTrace();
@@ -75,7 +75,6 @@ public class T05_CountDownLatch
                 
                 if (c.size() == 5)
                 {
-                   
                     latch.countDown();//打开门闩，让t2的1234执行
                     try
                     {
@@ -88,7 +87,7 @@ public class T05_CountDownLatch
                 
                 //这个地方必须sleep，不等待的话可能在放开栅栏后t1还能继续强到线程，或者用2个门栓
 				try {
-					TimeUnit.SECONDS.sleep(1);
+                    TimeUnit.MILLISECONDS.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

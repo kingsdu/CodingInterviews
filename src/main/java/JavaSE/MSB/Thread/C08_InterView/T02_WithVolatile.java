@@ -44,7 +44,7 @@ public class T02_WithVolatile
                 System.out.println("add " + i);
 				//必须要sleep，没用sleep不行
 				try {
-					TimeUnit.SECONDS.sleep(1);
+                    TimeUnit.MILLISECONDS.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.LockSupport;
 
-//TODO park unpark
-
+//不用sleep版本
 public class T07_LockSupport_WithoutSleep
 {
-    
     volatile List lists = new ArrayList();
     
     public void add(Object o)
@@ -26,7 +24,6 @@ public class T07_LockSupport_WithoutSleep
     public static void main(String[] args)
     {
         T07_LockSupport_WithoutSleep c = new T07_LockSupport_WithoutSleep();
-        
         t1 = new Thread(() ->
         {
             System.out.println("t1启动");

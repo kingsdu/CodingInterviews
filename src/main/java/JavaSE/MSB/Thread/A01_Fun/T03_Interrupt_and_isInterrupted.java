@@ -1,15 +1,15 @@
-package JavaSE.MSB.Thread.A01;
+package JavaSE.MSB.Thread.A01_Fun;
 
 /**
  * @Author: Du
- * @Date: 2021/6/10 17:38
+ * @Date: 2021/6/10 17:33
  *
- *
- * interrupted重置并查询
- *
+ * 停止线程的一种方式
  */
-public class T04_Interrupt_and_interrupted
+public class T03_Interrupt_and_isInterrupted
 {
+    
+    
     public static void main(String[] args)
     {
         t1();
@@ -21,10 +21,11 @@ public class T04_Interrupt_and_interrupted
         {
             for (; ; )
             {
-                if (Thread.interrupted())//重置标志位
+                if (Thread.currentThread().isInterrupted())
                 {
                     System.out.println("Thread is interrupted");
-                    System.out.println(Thread.interrupted());//查询
+                    System.out.println(Thread.currentThread().isInterrupted());
+                    break;
                 }
             }
         });
@@ -34,7 +35,6 @@ public class T04_Interrupt_and_interrupted
         SleepHelper.sleepSeconds(2);
         
         t.interrupt();
-    
-        System.out.println(t.interrupted());//false，这个静态方法访问的是主线程，所以是false
     }
+    
 }

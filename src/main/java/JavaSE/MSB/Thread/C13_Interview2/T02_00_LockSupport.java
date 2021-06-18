@@ -17,26 +17,22 @@ public class T02_00_LockSupport
         
         t1 = new Thread(() ->
         {
-            
             for (char c : aI)
             {
                 System.out.print(c);
                 LockSupport.unpark(t2); //叫醒T2
                 LockSupport.park(); //T1阻塞
             }
-            
         }, "t1");
         
         t2 = new Thread(() ->
         {
-            
             for (char c : aC)
             {
                 LockSupport.park(); //t2阻塞
                 System.out.print(c);
                 LockSupport.unpark(t1); //叫醒t1
             }
-            
         }, "t2");
         
         t1.start();

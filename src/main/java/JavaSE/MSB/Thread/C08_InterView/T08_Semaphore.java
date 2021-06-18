@@ -63,7 +63,6 @@ public class T08_Semaphore
             {
                 e.printStackTrace();
             }
-            
         }, "t1");
         
         t2 = new Thread(() ->

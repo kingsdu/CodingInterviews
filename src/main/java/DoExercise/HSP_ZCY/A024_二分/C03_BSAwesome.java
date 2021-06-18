@@ -9,7 +9,7 @@ package DoExercise.HSP_ZCY.A024_二分;
  *
  * 表明二分不一定是有序才行，只要保证求取的数的一侧一定有数字，就可以二分
  */
-public class C02_BSAwesome
+public class C03_BSAwesome
 {
     
     public static void main(String[] args)

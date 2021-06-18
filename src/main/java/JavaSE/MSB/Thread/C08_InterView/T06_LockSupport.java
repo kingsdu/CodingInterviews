@@ -34,10 +34,10 @@ public class T06_LockSupport
             System.out.println("t2 结束");
         }, "t2");
         t2.start();
-        
+        //需要sleep，否则t1可能继续持有锁，t2还是无法执行
         try
         {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(100);
         } catch (InterruptedException e1)
         {
             e1.printStackTrace();
@@ -56,10 +56,10 @@ public class T06_LockSupport
                     LockSupport.unpark(t2);
                 }
                 
-                //sleep时可以
+                //需要sleep，否则t1可能继续持有锁，t2还是无法执行
                 try
                 {
-                    TimeUnit.SECONDS.sleep(1);
+                    TimeUnit.MILLISECONDS.sleep(100);
                 } catch (InterruptedException e)
                 {
                     e.printStackTrace();

@@ -68,7 +68,7 @@ public class T09_MyContainer1<T>
         
         try
         {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.MILLISECONDS.sleep(200);
         } catch (InterruptedException e)
         {
             e.printStackTrace();
