@@ -16,7 +16,7 @@ public class T01_RandomTest
     
     public static void main(String[] args)
     {
-        test02();
+        test03();
     }
     
     /**
@@ -58,7 +58,6 @@ public class T01_RandomTest
                 count++;
             }
         }
-        
         System.out.println((double) count / (double) testTimes);
     }
     
@@ -71,7 +70,6 @@ public class T01_RandomTest
      */
     private static void test01()
     {
-        //Math.random(); -> double -> [0，1)
         int testTimes = 100000;
         int count = 0;
         
@@ -82,7 +80,6 @@ public class T01_RandomTest
                 count++;
             }
         }
-        
         System.out.println((double) count / (double) testTimes);
     }
     

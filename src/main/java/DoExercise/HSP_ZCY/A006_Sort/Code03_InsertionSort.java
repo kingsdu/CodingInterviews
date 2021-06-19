@@ -8,12 +8,7 @@ public class Code03_InsertionSort {
 		if (arr == null || arr.length < 2) {
 			return;
 		}
-		// 0~0 有序的
-		// 0~i 想有序
-		for (int i = 1; i < arr.length; i++) { // 0 ~ i 做到有序
-			
-			// arr[i]往前看，一直交换到合适的位置停止
-			// ...(<=)  ?       <- i
+		for (int i = 1; i < arr.length; i++) {
 			for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
 				swap(arr, j, j + 1);
 			}

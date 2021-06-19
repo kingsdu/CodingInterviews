@@ -232,4 +232,13 @@ public class Offer000_Common
         }
         return true;
     }
+    
+    public static void printfBinaryNum(int num)
+    {
+        for (int i = 31; i >= 0; i--)
+        {
+            System.out.print((num & (1 << i)) == 0 ? "0" : "1");
+        }
+        System.out.println();
+    }
 }

@@ -1,6 +1,7 @@
 package JavaSE.MSB.Thread.C04_Volatile;
 
-import java.util.concurrent.TimeUnit;
+import JavaSE.MSB.Thread.C00_Common.SleepHelper;
+
 /**
  * volatile 关键字，使一个变量在多个线程间可见
  * A B线程都用到一个变量，java默认是A线程中保留一份copy，这样如果B线程修改了该变量，则A线程未必知道
@@ -17,31 +18,27 @@ import java.util.concurrent.TimeUnit;
  *
  * volatile并不能保证多个线程共同修改running变量时所带来的不一致问题，也就是说volatile不能替代synchronized
  */
-public class T01_HelloVolatile {
-	volatile boolean running = true; //对比一下有无volatile的情况下，整个程序运行结果的区别
-//  boolean running = true;
-	
-	void m() {
-		System.out.println("m start");
-		while(running) {
-		}
-		System.out.println("m end!");
-	}
-	
-	public static void main(String[] args) {
-		T01_HelloVolatile t = new T01_HelloVolatile();
-		
-		new Thread(t::m, "t1").start();
-
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		t.running = false;
-	}
-	
+public class T01_HelloVolatile
+{
+    private static boolean running = true;//每个线程单独具备一个running
+//    private static volatile boolean running = true;//可以用volatile修饰running所有线程都可见
+    
+    
+    public static void main(String[] args)
+    {
+        new Thread(T01_HelloVolatile::m, "t1").start();//注意这个写法
+        SleepHelper.sleepSeconds(1);
+        running = false;
+    }
+    
+    private static void m()
+    {
+        System.out.println("m start");
+        while (running)
+        {  //println里面触发synchronized，synchronized会触发本地缓存和主内存之间的数据，进行刷新和同步，所以会执行主线程的running = false;
+            //System.out.println("Hello");
+        }
+        System.out.println("m end!");
+    }
+    
 }
-
-

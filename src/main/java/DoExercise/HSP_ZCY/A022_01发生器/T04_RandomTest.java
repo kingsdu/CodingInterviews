@@ -37,7 +37,7 @@ public class T04_RandomTest
     
     /**
      * x会以固定概率的0 1出现，概率不等
-     *
+     * 下面0的概率是0.84，剩下是1的概率
      * @return
      */
     public static int x()

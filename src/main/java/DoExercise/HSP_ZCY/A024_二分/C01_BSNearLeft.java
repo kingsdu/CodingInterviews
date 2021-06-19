@@ -1,7 +1,5 @@
 package DoExercise.HSP_ZCY.A024_二分;
 
-import DoExercise.HSP_ZCY.A023_对数器.DuiShuQi;
-
 import java.util.Arrays;
 
 /**
@@ -9,31 +7,36 @@ import java.util.Arrays;
  * @Date: 2021/6/11 11:54
  * 
  * 
- * 查找数组中，>=value的最左位置
+ * 查找数组中，>=value 的最左位置
  */
 public class C01_BSNearLeft
 {
     public static void main(String[] args)
     {
-        int maxLen = 10;
-        int maxValue = 100;
-        int testTimes = 10000;
         
-        boolean succeed = true;
-    
-        for (int i = 0; i < testTimes; i++)
-        {
-            int[] arr = DuiShuQi.lenRandomValueRandom(maxLen, maxValue);
-            Arrays.sort(arr);
-            int value = (int)((maxValue + 1) * Math.random()) - (int)((maxValue) * Math.random());
-            
-            if(bianLi(arr,value) != mostLeftIndex(arr,value)){
-                System.out.println(value);
-                succeed = false;
-                break;
-            }
-        }
-        System.out.println(succeed ? "Nice!":"No!");
+        int[] arr = new int[]{7,3,6,0,8,2};
+        Arrays.sort(arr);
+        System.out.println(mostLeftIndex(arr, 6));
+
+//        int maxLen = 10;
+//        int maxValue = 100;
+//        int testTimes = 10000;
+//
+//        boolean succeed = true;
+//
+//        for (int i = 0; i < testTimes; i++)
+//        {
+//            int[] arr = DuiShuQi.lenRandomValueRandom(maxLen, maxValue);
+//            Arrays.sort(arr);
+//            int value = (int)((maxValue + 1) * Math.random()) - (int)((maxValue) * Math.random());
+//            int i1 = mostLeftIndex(arr, value);
+//            if(bianLi(arr,value) != mostLeftIndex(arr,value)){
+//                System.out.println(value);
+//                succeed = false;
+//                break;
+//            }
+//        }
+//        System.out.println(succeed ? "Nice!":"No!");
         
     }
     
@@ -49,7 +52,8 @@ public class C01_BSNearLeft
         int ans = -1;
         while (L <= R)
         {
-            int mid = (L + R) >> 1;
+            int mid = L + ((R - L) >> 1);
+            //当大于和等于时，数字依旧会向左移动，所以就会得到value左边第1个位置的数字
             if (arr[mid] >= num)
             {
                 ans = mid;
@@ -62,7 +66,6 @@ public class C01_BSNearLeft
         return ans;
     }
     
-    
     public static int bianLi(int[] arr, int num){
         for (int i = 0; i < arr.length; i++)
         {
@@ -72,8 +75,4 @@ public class C01_BSNearLeft
         }
         return -1;
     }
-    
-    
-    
-    
 }

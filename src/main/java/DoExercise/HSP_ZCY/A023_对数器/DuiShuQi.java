@@ -21,11 +21,13 @@ public class DuiShuQi
         int maxLen = 10;
         int maxValue = 100;
         int testTimes = 10000;
+        System.out.println("start");
         for (int i = 0; i < testTimes; i++)
         {
-            int[] arr = lenRandomValueRandom(maxLen, maxValue);
-            int[] tmp = copyArray(arr);
+            int[] arr = lenRandomValueRandom(maxLen, maxValue);//得到随机数组
+            int[] tmp = copyArray(arr);//复制数组
             insertSort(arr);
+            selectSort(arr);
             if (!isSorted(arr))
             {
                 for (int j = 0; j < tmp.length; j++)
@@ -36,16 +38,10 @@ public class DuiShuQi
                 System.out.println("排序有误");
             }
         }
+        System.out.println("end!");
     }
     
-    /**
-     * 测试数组是否有序
-     * 一直递增才是有序的
-     * 后面的数一定比前面的数字小
-     *
-     * @param arr
-     * @return
-     */
+    
     public static boolean isSorted(int[] arr)
     {
         if (arr == null || arr.length < 2)
@@ -55,7 +51,7 @@ public class DuiShuQi
         int max = arr[0];
         for (int i = 1; i < arr.length; i++)
         {
-            if (max > arr[i])
+            if (max > arr[i])//一直递增才是有序的，后面的数一定比前面的数字小
             {
                 return false;
             }
@@ -81,18 +77,13 @@ public class DuiShuQi
     }
     
     
-    /**
-     * @param maxLen   返回数组长度在[0,maxLen]随机分布
-     * @param maxValue 返回数组值在[0,maxValue]随机分布
-     * @return
-     */
     public static int[] lenRandomValueRandom(int maxLen, int maxValue)
     {
-        int len = (int) (Math.random() * maxLen);
+        int len = (int) (Math.random() * maxLen);//数组长度在[0,maxLen]随机分布
         int[] ans = new int[len];
         for (int i = 0; i < len; i++)
         {
-            ans[i] = (int) (Math.random() * maxValue);
+            ans[i] = (int) (Math.random() * maxValue);//数组值在[0,maxValue]随机分布
         }
         return ans;
     }

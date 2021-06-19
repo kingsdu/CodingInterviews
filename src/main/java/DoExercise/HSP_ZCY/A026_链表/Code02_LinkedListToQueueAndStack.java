@@ -94,28 +94,24 @@ public class Code02_LinkedListToQueueAndStack
         
     }
     
-    //单指针实现栈
+    //单链表实现栈
     public static class MyStack<V>
     {
         private Node<V> head;
         private int size;
-        
         public MyStack()
         {
             head = null;
             size = 0;
         }
-        
         public boolean isEmpty()
         {
             return size == 0;
         }
-        
         public int size()
         {
             return size;
         }
-        
         public void push(V value)
         {
             Node<V> cur = new Node<>(value);
@@ -126,7 +122,6 @@ public class Code02_LinkedListToQueueAndStack
             head = cur;//更新head位置
             size++;
         }
-        
         public V pop()
         {
             V ans = null;
@@ -138,12 +133,10 @@ public class Code02_LinkedListToQueueAndStack
             }
             return ans;
         }
-        
         public V peek()
         {
             return head != null ? head.value : null;
         }
-        
     }
     
     public static void testQueue()

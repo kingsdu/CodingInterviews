@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * 方法1
  * 分析下面这个程序，能完成这个功能吗？
  * <p>
- * 问题：在放入和拿出对象的容器需要是同步容器
+ * 下面程序存在问题：在放入和拿出对象的容器需要是同步容器
  */
 public class T01_WithoutVolatile
 {

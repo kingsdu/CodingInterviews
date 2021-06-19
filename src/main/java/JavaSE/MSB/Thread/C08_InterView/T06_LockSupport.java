@@ -65,7 +65,6 @@ public class T06_LockSupport
                     e.printStackTrace();
                 }
             }
-            
         }, "t1");
         
         t1.start();

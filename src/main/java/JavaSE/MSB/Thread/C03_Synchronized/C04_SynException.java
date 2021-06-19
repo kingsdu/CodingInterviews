@@ -42,7 +42,6 @@ public class C04_SynException
             try
             {
                 TimeUnit.SECONDS.sleep(1);
-                
             } catch (InterruptedException e)
             {
                 e.printStackTrace();

@@ -1,13 +1,15 @@
 package JavaSE.MSB.Thread.C01_ThreadFirst;
 
-//sleep yield join
+//sleep
+//yield：当前线程退出，释放CPU资源，所有线程在重新在同一起跑线抢夺资源
+//join：某个线程join，意味着某个线程具有优先执行权
 public class T03_Sleep_Yield_Join
 {
     public static void main(String[] args)
     {
 //        testSleep();
-        testYield();
-//        testJoin();
+//        testYield();
+        testJoin();
     }
     
     static void testSleep()

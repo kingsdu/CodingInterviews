@@ -18,8 +18,6 @@ import java.util.Queue;
  */
 public class Offer022_层序遍历二叉树II
 {
-    
-    
     public static void main(String[] args)
     {
         TreeNode root = new TreeNode(3);//大树根节点

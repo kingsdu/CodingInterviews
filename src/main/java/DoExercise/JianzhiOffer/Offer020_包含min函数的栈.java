@@ -18,7 +18,6 @@ import java.util.Stack;
 public class Offer020_包含min函数的栈
 {
     Stack<Integer> stack, sMin;
-    
     public Offer020_包含min函数的栈()
     {
         stack = new Stack<>();

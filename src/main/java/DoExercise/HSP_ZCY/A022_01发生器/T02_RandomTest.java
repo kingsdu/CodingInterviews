@@ -13,7 +13,7 @@ public class T02_RandomTest
     
     public static void main(String[] args)
     {
-        test06();
+        test04();
     }
     
     

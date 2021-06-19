@@ -3,16 +3,25 @@ package DoExercise.HSP_ZCY.A024_二分;
 /**
  * @Author: Du
  * @Date: 2021/6/12 11:59
- *
- *
- * 求局部最小使用二分：求一个存在局部最小数字数列中的一个局部最小数。相邻的数字一定不相等。
- *
- * 表明二分不一定是有序才行，只要保证求取的数的一侧一定有数字，就可以二分
+ * <p>
+ * <p>
+ * 求局部最小使用二分：求一个存在局部最小数字数列中的一个局部最小数。
+ * <p>
+ * 序列的相邻的数字一定不相等。
+ * <p>
+ * 表明二分不一定是有序才行，只要保证求取的数的一侧一定有数字，就可以二分。
  */
 public class C03_BSAwesome
 {
-    
     public static void main(String[] args)
+    {
+        int[] arr = new int[]{4,3,4,1,0,1,2,3,2,5};
+        printArray(arr);
+        System.out.println(arr[oneMinIndex(arr)]);
+//        mainTest();
+    }
+    
+    private static void mainTest()
     {
         int maxLen = 10;
         int maxValue = 20;
@@ -35,10 +44,7 @@ public class C03_BSAwesome
     
     public static int oneMinIndex(int[] arr)
     {
-        if (arr == null || arr.length == 0)
-        {
-            return -1;
-        }
+        if (arr == null || arr.length == 0) return -1;
         int N = arr.length;
         //1个数、2个数字的情况
         if (N == 1) return 0;
@@ -49,17 +55,14 @@ public class C03_BSAwesome
         int R = N - 1;
         while (L < R - 1) // 保证LR范围内一定有三个数字，如果<三个数字直接比较L和R，返回小的。 否则使用L<R 在3 2 3 2 3的情况会出错。
         {
-            int mid = (L + R) >> 1;
+            int mid = L + ((R - L) >> 1);
             //mid是局部最小
             if (arr[mid] < arr[mid - 1] && arr[mid] < arr[mid + 1])
             {
                 return mid;
             } else
             {
-                // 1 左 > cur cur > 右
-                // 2 左 < cur cur < 右
-                // 3 左 < cur cur > 右
-                if (arr[mid] > arr[mid - 1])
+                if (arr[mid] > arr[mid - 1])//找局部最小，所以向小的那边移动
                 {
                     R = mid - 1;
                 } else
@@ -85,7 +88,6 @@ public class C03_BSAwesome
                 {
                     ans[i] = (int) (Math.random() * maxValue);
                 } while (ans[i] == ans[i - 1]);//保证相邻不相等
-                
             }
         }
         return ans;

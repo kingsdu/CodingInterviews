@@ -8,10 +8,8 @@ import java.util.concurrent.TimeUnit;
  *
  * 可重入锁举例
  *
- * 一个同步方法可以调用另外一个同步方法，一个线程已经拥有某个对象的锁，再次申请的时候仍然会得到该对象的锁.
- * 也就是说synchronized获得的锁是可重入的
  * 这里是继承中有可能发生的情形，子类调用父类的同步方法
- *
+ * 父类和子类时同一把锁
  *
  */
 public class C03_SynLock
@@ -31,7 +29,7 @@ public class C03_SynLock
     
     public static void main(String[] args)
     {
-        new C03_SynLock().m();
+        new C03_SynLock_child().m();
     }
 }
 
