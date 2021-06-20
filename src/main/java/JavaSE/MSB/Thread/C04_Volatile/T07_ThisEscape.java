@@ -8,6 +8,8 @@ import java.io.IOException;
  *
  * This的中间状态溢出（可能发生）
  *
+ * 在构造方法中执行的赋值语句可能会造成this溢出
+ *
  */
 public class T07_ThisEscape
 {
@@ -16,7 +18,7 @@ public class T07_ThisEscape
     
     public T07_ThisEscape(){
         new Thread(()->{
-            System.out.println(this.num);//有可能输出中间状态值0
+            System.out.println(this.num);//有可能输出中间状态值0，所以这个赋值方法不要放在构造方法中
         }).start();
     }
     

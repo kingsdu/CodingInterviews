@@ -13,7 +13,7 @@ package DoExercise.JianzhiOffer;
  * <p>
  * 例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。
  */
-public class Offer067_CuttingRope1
+public class Offer067_减绳子1
 {
     
     public static void main(String[] args)

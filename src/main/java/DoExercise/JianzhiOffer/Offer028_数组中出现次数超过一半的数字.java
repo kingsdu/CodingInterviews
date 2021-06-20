@@ -11,26 +11,40 @@ import java.util.stream.IntStream;
  * <p>
  * 输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]
  * 输出: 2
+ * <p>
+ * https://leetcode-cn.com/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/
  */
-public class Offer028_MajorityElement
+public class Offer028_数组中出现次数超过一半的数字
 {
     
     public static void main(String[] args)
     {
         int[] nums = {1, 4, 3, 6, 5, 2, 2, 2, 2, 2, 2};
-        Offer028_MajorityElement of = new Offer028_MajorityElement();
-        int i = of.majorityElement_2(nums);
+        int i = majorityElement_1(nums);
         System.out.println(i);
     }
     
+    public static int majorityElement_1(int[] nums)
+    {
+        int x = 0, votes = 0, count = 0;
+        for (int num : nums)
+        {
+            if (votes == 0) x = num;
+            votes += num == x ? 1 : -1;
+        }
+        
+//        return x;
+        //上面已经计算出结果，下面可以加验证
+        for (int num : nums)
+        {
+            if (num == x) count++;
+        }
+        return count > nums.length / 2 ? x : 0;
+    }
     
-    /**
-     * 自己想的使用map的键值对，程序通过，但是这应该不是面试的答案
-     *
-     * @param nums
-     * @return
-     */
-    public int majorityElement_1(int[] nums)
+    
+    //O(n2)的时间复杂度
+    public static int majorityElement_3(int[] nums)
     {
         Map<Integer, Integer> resMap = new HashMap<>();
         int mid = nums.length >> 1;
@@ -56,53 +70,11 @@ public class Offer028_MajorityElement
         return 0;
     }
     
-    
-    /**
-     * 排序法
-     *
-     * @param nums
-     * @return
-     */
-    public int majorityElement_2(int[] nums)
+    //O(n2)的时间复杂度
+    public static int majorityElement_2(int[] nums)
     {
         Arrays.sort(nums);
         int i = nums[nums.length >> 1];//中间这个数字一定是超过一半的数
         return IntStream.of(nums).filter(k -> k == i).count() > nums.length / 2 ? i : 0;
     }
-    
-    
-    /**
-     * 摩尔投票法
-     *
-     * @param nums
-     * @return
-     */
-    public int majorityElement_3(int[] nums)
-    {
-        int win = 0, count = 0, vote = 0;
-        
-        for (int num :
-                nums)
-        {
-            if (vote == 0)
-            {
-                win = num;
-            } else
-            {
-                //vote = vote + (num == win ? 1 : -1);
-                vote += num == win ? 1 : -1;
-            }
-        }
-        //是否是存在大于一半的数
-        for (int num :
-                nums)
-        {
-            if (num == win)
-            {
-                count++;
-            }
-        }
-        return count > nums.length >> 1 ? win : 0;
-    }
-    
 }

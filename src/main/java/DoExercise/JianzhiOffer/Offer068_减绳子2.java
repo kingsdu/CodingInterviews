@@ -16,7 +16,7 @@ package DoExercise.JianzhiOffer;
  * https://www.bilibili.com/video/BV19a411A7ku?from=search&seid=13274648377156939323
  * https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof/solution/mian-shi-ti-14-ii-jian-sheng-zi-iitan-xin-er-fen-f/
  */
-public class Offer068_CuttingRope2
+public class Offer068_减绳子2
 {
     public static void main(String[] args)
     {

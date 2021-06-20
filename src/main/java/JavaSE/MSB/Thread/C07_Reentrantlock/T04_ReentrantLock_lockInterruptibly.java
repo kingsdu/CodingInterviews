@@ -42,11 +42,14 @@ public class T04_ReentrantLock_lockInterruptibly
                 
                 //可以对interrupt()方法做出响应，可以打断t1的锁，但是打断后会直接执行catch部分的代码，后t1又会重新拿到执行权继续执行
                 lock.lockInterruptibly();
+                
                 System.out.println("t2 start");
                 TimeUnit.SECONDS.sleep(2);
                 System.out.println("t2 end");
             } catch (InterruptedException e)
             {
+                if (t1.isInterrupted())
+                    System.out.println("t2 interrupted!");
                 System.out.println("t2 interrupted!");
             } finally
             {

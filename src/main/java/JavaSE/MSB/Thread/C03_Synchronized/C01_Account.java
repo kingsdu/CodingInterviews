@@ -38,7 +38,7 @@ public class C01_Account
     }
     
     //可重入
-    public synchronized double getBalance(String name)//加锁 synchronized 可以解决
+    public double getBalance(String name)//加锁 synchronized 可以解决
     {
         System.out.println(++a);
         return this.balance;

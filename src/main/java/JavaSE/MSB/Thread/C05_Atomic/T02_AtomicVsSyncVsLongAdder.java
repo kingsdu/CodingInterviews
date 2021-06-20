@@ -1,6 +1,5 @@
 package JavaSE.MSB.Thread.C05_Atomic;
 
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAdder;
 
@@ -88,18 +87,6 @@ public class T02_AtomicVsSyncVsLongAdder
         end = System.currentTimeMillis();
         
         System.out.println("LongAdder: " + count1.longValue() + " time " + (end - start));
-        
-    }
-    
-    static void microSleep(int m)
-    {
-        try
-        {
-            TimeUnit.MICROSECONDS.sleep(m);
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
     }
     
 }

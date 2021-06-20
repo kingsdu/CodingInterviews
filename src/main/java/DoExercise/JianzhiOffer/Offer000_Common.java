@@ -11,13 +11,19 @@ public class Offer000_Common
     
     public static void main(String[] args)
     {
-        Integer[] array = new Integer[]{1, 2, 3, null, null, 4, 5};
-        TreeNode treeNode = deserializeTreeNode(array);
-        ArrayList<Integer> list = serializeTreeNode(treeNode);
-        Integer[] integers = list.toArray(new Integer[list.size()]);
-        Arrays.stream(integers).forEach(e -> System.out.print(e + " "));
-        treeNode = deserializeTreeNode(integers);
-        printTreeNode(treeNode);
+    }
+    
+    public static void randomTM(int N){
+        int TM1 = 0;
+        int TM2 = 0;
+        int TM3 = 0;
+        do
+        {
+            TM1 = (int) (Math.random() * N);
+            TM2 = (int) (Math.random() * N);
+            TM3 = (int) (Math.random() * N);
+        }while (TM1 == TM2 || TM2 == TM3 || TM1 == TM3);
+        System.out.println("今天要刷的三道题:"+TM1+";"+TM2+";"+TM3);
     }
     
     //反序列化二叉树
@@ -240,5 +246,13 @@ public class Offer000_Common
             System.out.print((num & (1 << i)) == 0 ? "0" : "1");
         }
         System.out.println();
+    }
+    
+    public static void swap(int[] arr, int i, int j)
+    {
+        if(i == j) return;
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
     }
 }

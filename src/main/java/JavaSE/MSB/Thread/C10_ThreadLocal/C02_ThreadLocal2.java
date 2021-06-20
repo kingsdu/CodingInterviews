@@ -42,6 +42,7 @@ public class C02_ThreadLocal2
             tl.set(new Person());
             System.out.println("t2 " + tl.get().name);//t2 zhangsan
         }).start();
+        tl.remove();
     }
     
     static class Person
