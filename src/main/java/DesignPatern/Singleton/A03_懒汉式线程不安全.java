@@ -4,17 +4,16 @@ package DesignPatern.Singleton;
  * lazy loading
  * 也称懒汉式
  * 虽然达到了按需初始化的目的，但却带来线程不安全的问题
- * 可以通过synchronized解决，但也带来效率下降
  */
-public class Mgr04
+public class A03_懒汉式线程不安全
 {
-    private static Mgr04 INSTANCE;
+    private static A03_懒汉式线程不安全 INSTANCE;
     
-    private Mgr04()
+    private A03_懒汉式线程不安全()
     {
     }
     
-    public static synchronized Mgr04 getInstance()
+    public static A03_懒汉式线程不安全 getInstance()
     {
         if (INSTANCE == null)
         {
@@ -25,11 +24,10 @@ public class Mgr04
             {
                 e.printStackTrace();
             }
-            INSTANCE = new Mgr04();
+            INSTANCE = new A03_懒汉式线程不安全();
         }
         return INSTANCE;
     }
-    
     public void m()
     {
         System.out.println("m");
@@ -37,9 +35,11 @@ public class Mgr04
     
     public static void main(String[] args)
     {
+        //多线程会有问题
         for (int i = 0; i < 100; i++)
         {
-            new Thread(() -> System.out.println(Mgr04.getInstance().hashCode())
+            new Thread(() ->
+                    System.out.println(A03_懒汉式线程不安全.getInstance().hashCode())
             ).start();
         }
     }

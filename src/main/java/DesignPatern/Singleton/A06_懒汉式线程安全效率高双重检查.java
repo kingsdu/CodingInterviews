@@ -6,23 +6,24 @@ package DesignPatern.Singleton;
  * 虽然达到了按需初始化的目的，但却带来线程不安全的问题
  * 可以通过synchronized解决，但也带来效率下降
  */
-public class Mgr06 {
-    private static volatile Mgr06 INSTANCE; //JIT
+public class A06_懒汉式线程安全效率高双重检查
+{
+    private static volatile A06_懒汉式线程安全效率高双重检查 INSTANCE; //JIT
 
-    private Mgr06() {
+    private A06_懒汉式线程安全效率高双重检查() {
     }
 
-    public static Mgr06 getInstance() {
+    public static A06_懒汉式线程安全效率高双重检查 getInstance() {
         if (INSTANCE == null) {
             //双重检查
-            synchronized (Mgr06.class) {
+            synchronized (A06_懒汉式线程安全效率高双重检查.class) {
                 if(INSTANCE == null) {
                     try {
                         Thread.sleep(1);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    INSTANCE = new Mgr06();
+                    INSTANCE = new A06_懒汉式线程安全效率高双重检查();
                 }
             }
         }
@@ -36,7 +37,7 @@ public class Mgr06 {
     public static void main(String[] args) {
         for(int i=0; i<100; i++) {
             new Thread(()->{
-                System.out.println(Mgr06.getInstance().hashCode());
+                System.out.println(A06_懒汉式线程安全效率高双重检查.getInstance().hashCode());
             }).start();
         }
     }

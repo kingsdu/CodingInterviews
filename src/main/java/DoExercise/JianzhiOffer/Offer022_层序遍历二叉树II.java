@@ -10,11 +10,14 @@ import java.util.Queue;
  * @Date: 2021/6/15 10:02
  * 从上往下打印出二叉树的每个节点，同层节点从左至右打印。
  * 要求一层节点放在一个ArrayList中
- * https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/
+ *
  * <p>
  * 有2个细节要注意
  * 1 因为题目要求对树的节点进行分层存储，所以int i = queue.size()，固定了每一层的节点个数，详细见for循环的执行顺序
  * 2 new了一个List<Integer> list，所以对应的List<List<Integer>> res，不能写成List<ArrayList<Integer>> res
+ *
+ *
+ * https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/
  */
 public class Offer022_层序遍历二叉树II
 {
@@ -30,7 +33,7 @@ public class Offer022_层序遍历二叉树II
         r2.right = r4;
         r2.left = r3;
     
-        List<List<Integer>> lists = levelOrder_reverse(root);
+        List<List<Integer>> lists = levelOrder(root);
     
         for (List<Integer> x :
                 lists)
@@ -77,7 +80,7 @@ public class Offer022_层序遍历二叉树II
                 if (node.left != null) queue.add(node.left);
                 if (node.right != null) queue.add(node.right);
             }
-            res.addFirst(list);
+            res.addFirst(list);//注意这个方法可以这样用，不是此题的解答
         }
         return res;
     }

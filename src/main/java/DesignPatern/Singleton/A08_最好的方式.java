@@ -5,7 +5,7 @@ package DesignPatern.Singleton;
  *
  * 枚举类不会被反序列化，因为枚举类没有构造方法
  */
-public enum Mgr08
+public enum A08_最好的方式
 {
     
     INSTANCE;
@@ -20,7 +20,7 @@ public enum Mgr08
         {
             new Thread(() ->
             {
-                System.out.println(Mgr08.INSTANCE.hashCode());
+                System.out.println(A08_最好的方式.INSTANCE.hashCode());
             }).start();
         }
     }

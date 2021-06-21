@@ -6,20 +6,20 @@ package DesignPatern.Singleton;
  * 虽然达到了按需初始化的目的，但却带来线程不安全的问题
  * 可以通过synchronized解决，但也带来效率下降
  */
-public class Mgr05
+public class A05_懒汉式效率高线程不安全
 {
-    private static Mgr05 INSTANCE;
+    private static A05_懒汉式效率高线程不安全 INSTANCE;
     
-    private Mgr05()
+    private A05_懒汉式效率高线程不安全()
     {
     }
     
-    public static Mgr05 getInstance()
+    public static A05_懒汉式效率高线程不安全 getInstance()
     {
         if (INSTANCE == null)
         {
             //妄图通过减小同步代码块的方式提高效率，然后线程也不安全
-            synchronized (Mgr05.class)
+            synchronized (A05_懒汉式效率高线程不安全.class)
             {
                 try
                 {
@@ -28,7 +28,7 @@ public class Mgr05
                 {
                     e.printStackTrace();
                 }
-                INSTANCE = new Mgr05();
+                INSTANCE = new A05_懒汉式效率高线程不安全();
             }
         }
         return INSTANCE;
@@ -45,7 +45,7 @@ public class Mgr05
         {
             new Thread(() ->
             {
-                System.out.println(Mgr05.getInstance().hashCode());
+                System.out.println(A05_懒汉式效率高线程不安全.getInstance().hashCode());
             }).start();
         }
     }

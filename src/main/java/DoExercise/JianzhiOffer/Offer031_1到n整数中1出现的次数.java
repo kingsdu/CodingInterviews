@@ -17,14 +17,13 @@ package DoExercise.JianzhiOffer;
  * 我自己用到的方法是，找出每个位子上1的个数，然后遍历累加。
  *
  */
-public class Offer031_CountDigitOne
+public class Offer031_1到n整数中1出现的次数
 {
     
     
     public static void main(String[] args)
     {
-        Offer031_CountDigitOne of = new Offer031_CountDigitOne();
-        int i = of.countDigitOne_1(13);
+        int i = countDigitOne_2(13);
         System.out.println(i);
     }
     
@@ -37,7 +36,7 @@ public class Offer031_CountDigitOne
      * @param n
      * @return
      */
-    public int countDigitOne_1(int n)
+    public static int countDigitOne_1(int n)
     {
         if (n <= 0)
         {
@@ -59,7 +58,7 @@ public class Offer031_CountDigitOne
      * @param n
      * @return
      */
-    public int calOne(int n)
+    public static int calOne(int n)
     {
         int count = 0;
         while (n > 0)
@@ -83,7 +82,7 @@ public class Offer031_CountDigitOne
      * @param n
      * @return
      */
-    public int countDigitOne_2(int n) {
+    public static int countDigitOne_2(int n) {
         int digit = 1, res = 0;
         int high = n / 10, cur = n % 10, low = 0;
         while(high != 0 || cur != 0) {

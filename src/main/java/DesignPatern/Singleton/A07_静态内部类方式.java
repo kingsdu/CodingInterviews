@@ -5,20 +5,20 @@ package DesignPatern.Singleton;
  * JVM保证单例
  * 加载外部类时不会加载内部类，这样可以实现懒加载
  */
-public class Mgr07
+public class A07_静态内部类方式
 {
     
-    private Mgr07()
+    private A07_静态内部类方式()
     {
     }
     
     //调用getInstance才会初始化
     private static class Mgr07Holder
     {
-        private final static Mgr07 INSTANCE = new Mgr07();
+        private final static A07_静态内部类方式 INSTANCE = new A07_静态内部类方式();
     }
     
-    public static Mgr07 getInstance()
+    public static A07_静态内部类方式 getInstance()
     {
         return Mgr07Holder.INSTANCE;
     }
@@ -34,7 +34,7 @@ public class Mgr07
         {
             new Thread(() ->
             {
-                System.out.println(Mgr07.getInstance().hashCode());
+                System.out.println(A07_静态内部类方式.getInstance().hashCode());
             }).start();
         }
     }

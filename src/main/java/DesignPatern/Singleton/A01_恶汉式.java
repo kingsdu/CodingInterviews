@@ -8,12 +8,13 @@ package DesignPatern.Singleton;
  * Class.forName("")
  * （话说你不用的，你装载它干啥）
  */
-public class Mgr01 {//JVM保证只能初始化一次，所以线程安全
-    private static final Mgr01 INSTANCE = new Mgr01();
+public class A01_恶汉式
+{//JVM保证只能初始化一次，所以线程安全
+    private static final A01_恶汉式 INSTANCE = new A01_恶汉式();
 
-    private Mgr01() {};
+    private A01_恶汉式() {};
 
-    public static Mgr01 getInstance() {
+    public static A01_恶汉式 getInstance() {
         return INSTANCE;
     }
 
@@ -22,8 +23,8 @@ public class Mgr01 {//JVM保证只能初始化一次，所以线程安全
     }
 
     public static void main(String[] args) {
-        Mgr01 m1 = Mgr01.getInstance();
-        Mgr01 m2 = Mgr01.getInstance();
+        A01_恶汉式 m1 = A01_恶汉式.getInstance();
+        A01_恶汉式 m2 = A01_恶汉式.getInstance();
         System.out.println(m1 == m2);
     }
 }
