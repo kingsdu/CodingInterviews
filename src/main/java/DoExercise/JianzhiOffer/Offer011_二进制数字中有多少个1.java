@@ -14,7 +14,7 @@ package DoExercise.JianzhiOffer;
  *
  * https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/
  */
-public class Offer011_数字中有多少个1
+public class Offer011_二进制数字中有多少个1
 {
     public static void main(String[] args)
     {

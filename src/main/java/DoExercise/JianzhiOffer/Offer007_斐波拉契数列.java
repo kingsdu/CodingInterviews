@@ -13,6 +13,8 @@ package DoExercise.JianzhiOffer;
  * <p>
  * 为什么很多程序竞赛题目都要求答案对 1e9+7（1000000007） 取模？
  * https://www.zhihu.com/question/49374703
+ * <p>
+ * https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/
  */
 public class Offer007_斐波拉契数列
 {
@@ -20,8 +22,7 @@ public class Offer007_斐波拉契数列
     
     public static void main(String[] args)
     {
-        Offer007_斐波拉契数列 fibonacci = new Offer007_斐波拉契数列();
-        System.out.println(fibonacci.FibonaciiNum_1(-4));
+        System.out.println(FibonaciiNum_1(5));
     }
     
     /**
@@ -30,10 +31,11 @@ public class Offer007_斐波拉契数列
      * @param n
      * @return
      */
-    public int FibonaciiNum_1(int n)
+    public static int FibonaciiNum_1(int n)
     {
-        if(n == 0 || n == 1) return n;
+        if (n == 0 || n == 1) return n;
         int[] dp = new int[n + 1];
+//        dp[0] = 0;//可以不写，因为初始化就是0
         dp[1] = 1;
         for (int i = 2; i <= n; i++)
         {
@@ -46,13 +48,12 @@ public class Offer007_斐波拉契数列
     
     
     /**
-     *
-     * 和上面思路一样
+     * 动态规划一般可以改成下面的模式
      *
      * @param n
      * @return
      */
-    public int FibonaciiNum_3(int n)
+    public static int FibonaciiNum_3(int n)
     {
         int a = 0, b = 1, sum;
         for (int i = 0; i < n; i++)
@@ -72,10 +73,8 @@ public class Offer007_斐波拉契数列
      * @param num
      * @return
      */
-    public int FibonaciiNum_2(int num)
+    public static int FibonaciiNum_2(int num)
     {
-        assert (num >= 0);//断言
-        
         if (num == 0 || num == 1)
         {
             return num;

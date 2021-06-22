@@ -16,29 +16,34 @@ package DoExercise.JianzhiOffer;
  * 2.最小数一定位于第二个序列的开头
  * 3.前序列的值都>=后序列的值（重点）
  * {123456}旋转后{456123}
+ *
+ * https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
  */
-public class Offer006_RotateArray
+public class Offer006_旋转数组的最小数字
 {
-    
-    public static int findNum_1(int[] array)
+    public static void main(String[] args)
     {
-        int low = 0, high = array.length - 1, mid = 0;
-        
-        while (low < high)
+        int[] arrays = {1, 2, 0, 1, 2};
+        System.out.println(findNum_1(arrays));
+    }
+    
+    public static int findNum_1(int[] numbers)
+    {
+        int l = 0, r = numbers.length - 1;
+        while (l < r)
         {
-            mid = low + (high - low) / 2;//防止(low+high)溢出,也可写成mid = low + ((high-low) >> 1)
-            if (array[mid] > array[high])//说明最小的数据一定在mid右边
+            int m = l + ((r - l) >> 1);
+            if (numbers[m] < numbers[r])//表明mid位置处于
             {
-                low = mid + 1;
-            } else if (array[mid] == array[high])//说明存在重复数据
+                r = m;
+            } else if (numbers[m] > numbers[r])
             {
-                high = high - 1;
-            } else if (array[mid] < array[high])
-            {
-                high = mid;
+                l = m + 1;
+            }else {
+                r--;
             }
         }
-        return array[low];
+        return numbers[l];
     }
     
     
@@ -62,13 +67,4 @@ public class Offer006_RotateArray
         }
         return numbers[i];
     }
-    
-    
-    public static void main(String[] args)
-    {
-        int[] arrays = {1, 2, 0, 1, 2};
-        System.out.println(findNum_1(arrays));
-    }
-    
-    
 }

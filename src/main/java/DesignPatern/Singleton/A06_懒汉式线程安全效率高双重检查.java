@@ -14,7 +14,7 @@ public class A06_懒汉式线程安全效率高双重检查
     }
 
     public static A06_懒汉式线程安全效率高双重检查 getInstance() {
-        if (INSTANCE == null) {
+        if (INSTANCE == null) {//这次检查可以大幅度减少锁的使用率
             //双重检查
             synchronized (A06_懒汉式线程安全效率高双重检查.class) {
                 if(INSTANCE == null) {

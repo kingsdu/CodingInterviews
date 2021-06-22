@@ -18,6 +18,9 @@ public class A01_Main
             else if (o1.weight>o2.weight) return 1;
             else return 0;
         });
+        //采取不同的策略
+        sorter.sort(a,new A03_CatHeightComparator());
+        sorter.sort(a,new A03_CatWeightComparator());
         System.out.println(Arrays.toString(a));
     }
 }

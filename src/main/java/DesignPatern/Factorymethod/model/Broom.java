@@ -1,4 +1,6 @@
-package DesignPatern.Factorymethod;
+package DesignPatern.Factorymethod.model;
+
+import DesignPatern.Factorymethod.Moveable;
 
 public class Broom implements Moveable
 {
