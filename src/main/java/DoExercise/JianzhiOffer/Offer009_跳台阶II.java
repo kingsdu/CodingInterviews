@@ -4,7 +4,7 @@ package DoExercise.JianzhiOffer;
 /**
  * 一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
  * <p>
- * https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/solution/mian-shi-ti-10-ii-qing-wa-tiao-tai-jie-wen-ti-dong/
+ * https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/
  * <p>
  * 这个题考虑动态规划，但是要明白方法1的意思
  */

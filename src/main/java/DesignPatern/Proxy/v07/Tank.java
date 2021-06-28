@@ -34,17 +34,17 @@ public class Tank implements Movable
     
     public static void main(String[] args)
     {
-    
-//        Tank t = new Tank();
-//        TankTimeProxy ttp = new TankTimeProxy(t);
-//        TankLogProxy tlp = new TankLogProxy(ttp);
-//        tlp.move();
 
-        new TankLogProxy(
-                new TankTimeProxy(
-                        new Tank()
-                )
-        ).move();
+        Tank t = new Tank();
+        TankTimeProxy ttp = new TankTimeProxy(t);
+        TankLogProxy tlp = new TankLogProxy(ttp);
+        tlp.move();
+        
+//        new TankLogProxy(
+//                new TankTimeProxy(
+//                        new Tank()
+//                )
+//        ).move();
     }
 }
 

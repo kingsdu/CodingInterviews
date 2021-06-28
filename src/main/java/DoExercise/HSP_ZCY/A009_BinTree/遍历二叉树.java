@@ -1,5 +1,7 @@
 package DoExercise.HSP_ZCY.A009_BinTree;
 
+import DoExercise.JianzhiOffer.Offer000_Common;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,29 +24,13 @@ public class 遍历二叉树
     
     public static void main(String[] args)
     {
-        BinTreeNode[] nodes = new BinTreeNode[10];
-        
-        for (int i = 0; i < 10; i++)
-        {
-            nodes[i] = new BinTreeNode(i);
-        }
-        
-        for (int i = 0; i < 10; i++)
-        {
-            if (i * 2 + 1 < 10)
-            {
-                nodes[i].left = nodes[i * 2 + 1];
-            }
-            if (i * 2 + 2 < 10)
-            {
-                nodes[i].right = nodes[i * 2 + 2];
-            }
-        }
-        preOrder(nodes[0]);
+        Integer[] arr = {1, 2, 3, 4, 5, 6, 7};
+        Offer000_Common.TreeNode root = Offer000_Common.deserializeTreeNode(arr);
+        preOrder(root);
         System.out.println();
 //        preorderRe(nodes[0]);
 //        System.out.println();
-        inorderTraversal(nodes[0]);
+        preorderTraversal(root);
 //        midorderRe(nodes[0]);
 //        System.out.println();
 //        midOrder(nodes[0]);
@@ -59,7 +45,7 @@ public class 遍历二叉树
      *
      * @param node
      */
-    public static void preorderRe(BinTreeNode node)
+    public static void preorderRe(Offer000_Common.TreeNode node)
     {
         if (node != null)
         {
@@ -75,9 +61,9 @@ public class 遍历二叉树
      *
      * @param node
      */
-    public static void preOrder(BinTreeNode node)
+    public static void preOrder(Offer000_Common.TreeNode node)
     {
-        Stack<BinTreeNode> stack = new Stack<>();
+        Stack<Offer000_Common.TreeNode> stack = new Stack<>();
         
         while (node != null || !stack.isEmpty())
         {
@@ -102,12 +88,12 @@ public class 遍历二叉树
      * @param root
      * @return
      */
-    public static List<Integer> preorderTraversal(BinTreeNode root)
+    public static List<Integer> preorderTraversal(Offer000_Common.TreeNode root)
     {
         List<Integer> list = new ArrayList<>();
         if (root == null)
             return list;
-        Stack<BinTreeNode> stack = new Stack<>();
+        Stack<Offer000_Common.TreeNode> stack = new Stack<>();
         while (!stack.isEmpty() || root != null)
         {
             while (root != null)
@@ -115,6 +101,7 @@ public class 遍历二叉树
                 //区别，先存根节点，在遍历左边是否有节点
                 list.add(root.val);
                 stack.push(root);
+                System.out.print(root.val + " ");
                 root = root.left;
             }
             root = stack.pop().right;
@@ -127,7 +114,7 @@ public class 遍历二叉树
      *
      * @param node
      */
-    public static void midorderRe(BinTreeNode node)
+    public static void midorderRe(Offer000_Common.TreeNode node)
     {
         if (node != null)
         {
@@ -143,9 +130,9 @@ public class 遍历二叉树
      *
      * @param node
      */
-    public static void midOrder(BinTreeNode node)
+    public static void midOrder(Offer000_Common.TreeNode node)
     {
-        Stack<BinTreeNode> stack = new Stack<>();
+        Stack<Offer000_Common.TreeNode> stack = new Stack<>();
         while (node != null || !stack.isEmpty())
         {
             while (node != null)
@@ -169,22 +156,21 @@ public class 遍历二叉树
      * @param root
      * @return
      */
-    public static List<Integer> inorderTraversal(BinTreeNode root)
+    public static List<Integer> inorderTraversal(Offer000_Common.TreeNode root)
     {
         List<Integer> list = new ArrayList<>();
-        if (root == null)
-            return list;
-        Stack<BinTreeNode> stack = new Stack<>();
-        while (root != null || !stack.isEmpty())
+        LinkedList<Offer000_Common.TreeNode> linked = new LinkedList<>();
+        if (root == null) return list;
+        while (root != null || !linked.isEmpty())
         {
-            if (root != null)
+            while (root != null)
             {
-                //区别，先看左边是否有节点
-                stack.push(root);
+                linked.addFirst(root);
                 root = root.left;
-            } else
+            }
+            if (!linked.isEmpty())
             {
-                BinTreeNode temp = stack.pop();
+                Offer000_Common.TreeNode temp = linked.poll();
                 list.add(temp.val);
                 root = temp.right;
             }
@@ -203,7 +189,7 @@ public class 遍历二叉树
      *
      * @param node
      */
-    public static void bacorderRe(BinTreeNode node)
+    public static void bacorderRe(Offer000_Common.TreeNode node)
     {
         if (node != null)
         {
@@ -219,11 +205,11 @@ public class 遍历二叉树
      *
      * @param node
      */
-    public static void bacOrder(BinTreeNode node)
+    public static void bacOrder(Offer000_Common.TreeNode node)
     {   //后序遍历非递归实现
         int left = 1;//在辅助栈里表示左节点
         int right = 2;//在辅助栈里表示右节点
-        Stack<BinTreeNode> stack = new Stack<BinTreeNode>();
+        Stack<Offer000_Common.TreeNode> stack = new Stack<Offer000_Common.TreeNode>();
         Stack<Integer> stack2 = new Stack<Integer>();//辅助栈，用来判断子节点返回父节点时处于左节点还是右节点。
         
         while (node != null || !stack.empty())
@@ -262,16 +248,16 @@ public class 遍历二叉树
      * @param root
      * @return
      */
-    public static List<Integer> postorderTraversal(BinTreeNode root)
+    public static List<Integer> postorderTraversal(Offer000_Common.TreeNode root)
     {
         LinkedList<Integer> list = new LinkedList<>();
         if (root == null)
             return list;
-        Stack<BinTreeNode> stack = new Stack<>();
+        Stack<Offer000_Common.TreeNode> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty())
         {
-            BinTreeNode temp = stack.pop();
+            Offer000_Common.TreeNode temp = stack.pop();
             list.addFirst(temp.val);
             if (temp.left != null)
             {
@@ -294,16 +280,16 @@ public class 遍历二叉树
      * @param root
      * @return
      */
-    public ArrayList<Integer> levelOrderTree(BinTreeNode root)
+    public ArrayList<Integer> levelOrderTree(Offer000_Common.TreeNode root)
     {
         if (root == null) return null;
         ArrayList<Integer> res = new ArrayList<>();
-        Stack<BinTreeNode> stack = new Stack<>();
+        Stack<Offer000_Common.TreeNode> stack = new Stack<>();
         stack.add(root);
         
         while (!stack.isEmpty())
         {
-            BinTreeNode tempNode = stack.pop();
+            Offer000_Common.TreeNode tempNode = stack.pop();
             res.add(tempNode.val);
             
             if (tempNode.left != null)
@@ -318,17 +304,5 @@ public class 遍历二叉树
         return res;
     }
     
-    
-    public static class BinTreeNode
-    {
-        BinTreeNode left;
-        BinTreeNode right;
-        int val;
-        
-        BinTreeNode(int val)
-        {
-            this.val = val;
-        }
-    }
     
 }

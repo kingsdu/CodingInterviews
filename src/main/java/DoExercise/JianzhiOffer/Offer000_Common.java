@@ -153,6 +153,17 @@ public class Offer000_Common
     }
     
     
+    public static class TreeLinkNode {
+        int val;
+        TreeLinkNode left = null;
+        TreeLinkNode right = null;
+        TreeLinkNode next = null;
+        
+        TreeLinkNode(int val) {
+            this.val = val;
+        }
+    }
+    
     public static void printTreeNode(TreeNode node)
     {
         if (node == null)

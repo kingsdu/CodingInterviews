@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * 给定一个二叉树其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。
  * 注意，树中的结点不仅包含左右子结点，同时包含指向父结点的next指针。
  *
- * 问题：第一遍没读懂：同时包含指向父结点的next指针。
+ * https://www.nowcoder.com/practice/9023a0c988684a53960365b889ceaf5e?tpId=13&&tqId=11210&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
  *
  * 思路:
  * 1、找到根节点，中序遍历并按顺序存入到数组中，遍历数组，找到节点的下一个节点
@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class Offer057_GetNext
 {
     static ArrayList<TreeLinkNode> ss = new ArrayList<>();
-    
     
     public static void main(String[] args)
     {

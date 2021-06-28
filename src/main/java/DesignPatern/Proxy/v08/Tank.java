@@ -55,6 +55,7 @@ public class Tank implements Movable
     }
 }
 
+//调用被代理对象时如何处理
 class LogHander implements InvocationHandler
 {
     

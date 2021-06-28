@@ -1,12 +1,10 @@
 package DesignPatern.Proxy.v10;
 
 
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 问题：我想记录坦克的移动时间
@@ -22,68 +20,80 @@ import java.util.Random;
  * （毕竟日志记录，时间计算是很多方法都需要的东西），这时该怎么做呢？
  * 分离代理行为与被代理对象
  * 使用jdk的动态代理
- *
+ * <p>
  * v09: 横切代码与业务逻辑代码分离 AOP
  * v10: 通过反射观察生成的代理对象
  * jdk反射生成代理必须面向接口，这是由Proxy的内部实现决定的
  */
-public class Tank implements Movable {
-
+public class Tank implements Movable
+{
+    
     /**
      * 模拟坦克移动了一段儿时间
      */
     @Override
-    public void move() {
+    public void move()
+    {
         System.out.println("Tank moving claclacla...");
-        try {
-            Thread.sleep(new Random().nextInt(10000));
-        } catch (InterruptedException e) {
+        try
+        {
+            Thread.sleep(TimeUnit.SECONDS.toSeconds(1));
+        } catch (InterruptedException e)
+        {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
+    
+    public static void main(String[] args)
+    {
         Tank tank = new Tank();
-
-        System.getProperties().put("jdk.proxy.ProxyGenerator.saveGeneratedFiles","true");
-
-        Movable m = (Movable)Proxy.newProxyInstance(Tank.class.getClassLoader(),
-                new Class[]{Movable.class}, //tank.class.getInterfaces()
-                new TimeProxy(tank)
+        System.getProperties().put("jdk.proxy.ProxyGenerator.saveGeneratedFiles", "true");
+        TimeProxy timeProxy = new TimeProxy(tank);
+        Movable m = (Movable) Proxy.newProxyInstance(
+                Tank.class.getClassLoader(),
+                Tank.class.getInterfaces(),
+                //new Class[]{Movable.class}, //tank.class.getInterfaces()
+                timeProxy
         );
-
+        
         m.move();
-
+        
     }
 }
 
-class TimeProxy implements InvocationHandler {
+class TimeProxy implements InvocationHandler
+{
     Movable m;
-
-    public TimeProxy(Movable m) {
+    
+    public TimeProxy(Movable m)
+    {
         this.m = m;
     }
-
-    public void before() {
+    
+    public void before()
+    {
         System.out.println("method start..");
     }
-
-    public void after() {
+    
+    public void after()
+    {
         System.out.println("method stop..");
     }
-
+    
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable
+    {
         //Arrays.stream(proxy.getClass().getMethods()).map(Method::getName).forEach(System.out::println);
-
+        
         before();
         Object o = method.invoke(m, args);
         after();
         return o;
     }
-
+    
 }
 
-interface Movable {
+interface Movable
+{
     void move();
 }
