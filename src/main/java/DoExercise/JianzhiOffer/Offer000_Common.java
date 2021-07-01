@@ -139,7 +139,7 @@ public class Offer000_Common
         return root;
     }
     
-    
+    //树结点信息
     public static class TreeNode
     {
         public int val;
@@ -152,7 +152,7 @@ public class Offer000_Common
         }
     }
     
-    
+    //
     public static class TreeLinkNode {
         int val;
         TreeLinkNode left = null;
@@ -163,6 +163,14 @@ public class Offer000_Common
             this.val = val;
         }
     }
+    
+    //单链表结点信息
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
+    
     
     public static void printTreeNode(TreeNode node)
     {

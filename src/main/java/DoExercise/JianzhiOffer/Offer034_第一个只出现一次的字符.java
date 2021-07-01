@@ -23,23 +23,22 @@ import java.util.Map;
  * <p>
  * 难度：简单但是我没想出来
  */
-public class Offer034_FirstUniqChar
+public class Offer034_第一个只出现一次的字符
 {
     
     
     public static void main(String[] args)
     {
         String s = "abaccdeffab";
-        Offer034_FirstUniqChar of = new Offer034_FirstUniqChar();
-        char c1 = of.firstUniqChar_1(s);
+        char c1 = firstUniqChar_1(s);
         System.out.println(c1);
-        char c2 = of.firstUniqChar_2(s);
+        char c2 = firstUniqChar_2(s);
         System.out.println(c2);
-        char c3 = of.firstUniqChar_3(s);
+        char c3 = firstUniqChar_3(s);
         System.out.println(c3);
-        char c4 = of.firstUniqChar_4(s);
+        char c4 = firstUniqChar_4(s);
         System.out.println(c4);
-        char c5 = of.firstUniqChar_5(s);
+        char c5 = firstUniqChar_5(s);
         System.out.println(c5);
     }
     
@@ -53,7 +52,7 @@ public class Offer034_FirstUniqChar
      * @param s
      * @return
      */
-    public char firstUniqChar_1(String s)
+    public static char firstUniqChar_1(String s)
     {
         if (s == null || s.length() == 0) return ' ';
         char[] charArr = new char[26];
@@ -85,7 +84,7 @@ public class Offer034_FirstUniqChar
      * @param s
      * @return
      */
-    public char firstUniqChar_2(String s)
+    public static char firstUniqChar_2(String s)
     {
         if (s == null || s.length() == 0) return ' ';
         
@@ -95,7 +94,6 @@ public class Offer034_FirstUniqChar
         for (char c :
                 chars)
         {
-            //只要出现2次及以上，则value为false
             map.put(c, !map.containsKey(c));
         }
         
@@ -120,7 +118,7 @@ public class Offer034_FirstUniqChar
      * @param s
      * @return
      */
-    public char firstUniqChar_3(String s)
+    public static char firstUniqChar_3(String s)
     {
         if (s == null || s.length() == 0) return ' ';
         
@@ -154,7 +152,7 @@ public class Offer034_FirstUniqChar
      * @param s
      * @return
      */
-    public char firstUniqChar_4(String s)
+    public static char firstUniqChar_4(String s)
     {
         if (s == null || s.length() == 0) return ' ';
         
@@ -181,14 +179,12 @@ public class Offer034_FirstUniqChar
      *
      * 没找到都返回-1
      *
-     * 赖皮方法。。。
-     *
      * 知识：indexOf 、 lastIndexOf
      * 当没找到时都会返回-1；
      * @param str
      * @return
      */
-    public char firstUniqChar_5(String str)
+    public static char firstUniqChar_5(String str)
     {
         int m = -1;
         for (int i = 0; i < str.length(); i++)
@@ -197,7 +193,7 @@ public class Offer034_FirstUniqChar
             if (str.indexOf(str.charAt(i)) == str.lastIndexOf(str.charAt(i)))
             {
                 m = i;
-                break;//可能有多组，只取第一个
+                break;
             }
         }
         return str.charAt(m);

@@ -17,14 +17,13 @@ public class Offer008_跳台阶I
         int n = 0;
         System.out.println(jumpWOW1(n));
         System.out.println(jumpWOW2(n));
-        
     }
     
     
     /**
      * 思路：青蛙每一次向上跳跃只有2种选择，跳1格 或者跳2格
      * 若是跳1格，则青蛙此时处于n-1级台阶，若是跳2格，则青蛙此时处于n-2级台阶
-     * 所以，对于第n个台阶的跳法总是依赖于 n-1 和  n-2的跳法总数之和
+     * 所以，对于第n个台阶的跳法总是依赖于 n-1 和  n-2  的跳法总数之和
      * 递推公式f(n)=f(n-1)+f(n-2):就是斐波那契数列求和
      *
      * @param target

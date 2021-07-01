@@ -1,7 +1,7 @@
 package DoExercise.JianzhiOffer;
 
 import java.util.ArrayList;
-import java.util.Stack;
+import java.util.LinkedList;
 
 /**
  * 输入一个链表，按链表从尾到头的顺序返回一个ArrayList。
@@ -11,6 +11,9 @@ import java.util.Stack;
  * 1、递归法：node != null 递归，递归到最后回溯时逐个将数字存到数组
  * 2、Stack类实现：存、取
  * 3、每插入新元素时，改变链表元素的前后指向
+ *
+ *
+ * https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/
  */
 public class Offer003_从头到尾打印链表
 {
@@ -51,24 +54,23 @@ public class Offer003_从头到尾打印链表
     
     
     /**
-     * 通过Java自带的Stack类实现
+     * 辅助栈
      *
      * @param node
      * @return
      */
     public static ArrayList<Integer> printListFormToHead_2(Node node)
     {
-        Stack<Integer> stackInt = new Stack<>();
-        
+        LinkedList<Integer> linkedList = new LinkedList<>();
         while (node != null)
         {
-            stackInt.push(node.val);
+            linkedList.addFirst(node.val);
             node = node.next;
         }
         
-        while (!stackInt.isEmpty())
+        while (!linkedList.isEmpty())
         {
-            resList.add(stackInt.pop());
+            resList.add(linkedList.pop());
         }
         
         return resList;
@@ -87,14 +89,6 @@ public class Offer003_从头到尾打印链表
         Node pre = null;
         Node next = null;
         
-        /**
-         *
-         * 1 存储node.next，因为后面会改变node的指向，存起来保证node能正序向后
-         * 2 改变node的指向，实现从逆序
-         * 3 将改变后的node作为下一个节点的pre
-         * 4 node 向后移动一位
-         *
-         */
         while (node != null)
         {
             next = node.next;
