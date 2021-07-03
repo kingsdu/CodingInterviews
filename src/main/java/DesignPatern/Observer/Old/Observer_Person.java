@@ -1,4 +1,4 @@
-package DesignPatern;
+package DesignPatern.Observer.Old;
 
 /**
  * 观察者设计模式

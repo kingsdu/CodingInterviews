@@ -1,4 +1,4 @@
-package DesignPatern;
+package DesignPatern.Observer.Old;
 
 public class Observer_Laoli implements Observer_Person{
 

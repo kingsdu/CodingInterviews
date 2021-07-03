@@ -17,7 +17,6 @@ public class Servlet_Main
         chain.doFilter(request, response);
         System.out.println(request.str);
         System.out.println(response.str);
-        
     }
 }
 
@@ -34,7 +33,6 @@ class HTMLFilter implements Filter
         request.str = request.str.replaceAll("<", "[").replaceAll(">", "]") + "HTMLFilter()";
         chain.doFilter(request, response);
         response.str += "--HTMLFilter()";
-        
     }
 }
 

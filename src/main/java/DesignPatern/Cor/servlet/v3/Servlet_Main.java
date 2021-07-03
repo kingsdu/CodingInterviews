@@ -8,7 +8,7 @@ public class Servlet_Main
     public static void main(String[] args)
     {
         Request request = new Request();
-        request.str = "大家好:)，<script>，欢迎访问 mashibing.com ，大家都是996 ";
+        request.str = "大家好:<script>，欢迎访问996 ";
         Response response = new Response();
         response.str = "response";
         
@@ -17,23 +17,6 @@ public class Servlet_Main
         chain.doFilter(request, response, chain);
         System.out.println(request.str);
         System.out.println(response.str);
-    }
-}
-
-interface Filter
-{
-    boolean doFilter(Request request, Response response, FilterChain chain);
-}
-
-class HTMLFilter implements Filter
-{
-    @Override
-    public boolean doFilter(Request request, Response response, FilterChain chain)
-    {
-        request.str = request.str.replaceAll("<", "[").replaceAll(">", "]") + "HTMLFilter()";
-        chain.doFilter(request, response, chain);
-        response.str += "--HTMLFilter()";
-        return true;
     }
 }
 
@@ -46,13 +29,29 @@ class Response
 {
     String str;
 }
+interface Filter
+{
+    boolean doFilter(Request request, Response response, FilterChain chain);
+}
+
+class HTMLFilter implements Filter
+{
+    @Override
+    public boolean doFilter(Request request, Response response, FilterChain chain)
+    {
+        request.str = request.str.replaceAll("<", "[").replaceAll(">", "]") + "HTMLFilter()1";
+        chain.doFilter(request, response, chain);
+        response.str += "--HTMLFilter()";
+        return true;
+    }
+}
 
 class SensitiveFilter implements Filter
 {
     @Override
     public boolean doFilter(Request request, Response response, FilterChain chain)
     {
-        request.str = request.str.replaceAll("996", "955") + " SensitiveFilter()";
+        request.str = request.str.replaceAll("996", "955") + " SensitiveFilter()2";
         chain.doFilter(request, response, chain);
         response.str += "--SensitiveFilter()";
         return true;

@@ -32,6 +32,12 @@ public class Offer009_跳台阶II
         return b;
     }
     
+    public int jumpFloor(int target) {
+         if(target == 0 || target == 1 || target == 2) return target;
+         return 0;
+    }
+    
+    
     public static int numWays2(int n)
     {
         if (n == 0 || n == 1 || n == 2) return n;

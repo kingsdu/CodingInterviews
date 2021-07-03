@@ -1,13 +1,9 @@
 package DoExercise.JianzhiOffer;
 
 /**
- * 输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
- * <p>
- * 输入：A = [1,2,3], B = [3,1]
- * 输出：false
- * <p>
- * 输入：A = [3,4,5,1,2], B = [4,1]
- * 输出：true
+ *
+ * https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/
+ *
  */
 public class Offer017_树的子结构
 {
