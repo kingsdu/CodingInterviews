@@ -1,5 +1,11 @@
 package DoExercise.HSP_ZCY.A027_位图;
 
+/**
+ * 相关题目
+ * https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/
+ *
+ *
+ */
 public class Code03_EvenTimesOddTimes
 {
     
@@ -13,6 +19,7 @@ public class Code03_EvenTimesOddTimes
         }
         System.out.println(eor);//异或运算无所谓顺序，剩下的最后一定是一个奇数次的数
     }
+    
     // arr中，有两种数，出现奇数次
     //1 异或求出a ^ b
     //2 所以 a ^ b的最后一个1一定不相同，所以可以将其分为两类：最后一位是1和最后一位不是1
@@ -46,7 +53,7 @@ public class Code03_EvenTimesOddTimes
     {
         int[] arr1 = {3, 3, 2, 3, 1, 1, 1, 3, 1, 1, 1};
         printOddTimesNum1(arr1);
-
+        
         int[] arr2 = {4, 3, 4, 2, 2, 2, 4, 1, 1, 1, 3, 3, 1, 1, 1, 4, 2, 2};
         printOddTimesNum2(arr2);
         
@@ -78,8 +85,6 @@ public class Code03_EvenTimesOddTimes
             System.out.println(result);
         }
     }
-    
-    
     
     
 }

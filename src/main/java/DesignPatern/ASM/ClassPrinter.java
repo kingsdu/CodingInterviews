@@ -33,7 +33,6 @@ public class ClassPrinter extends ClassVisitor {
 
     @Override
     public void visitEnd() {
-
         System.out.println("}");
     }
 

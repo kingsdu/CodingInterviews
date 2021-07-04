@@ -13,7 +13,8 @@ public class Offer000_Common
     {
     }
     
-    public static void randomTM(int N){
+    public static void randomTM(int N)
+    {
         int TM1 = 0;
         int TM2 = 0;
         int TM3 = 0;
@@ -22,8 +23,8 @@ public class Offer000_Common
             TM1 = (int) (Math.random() * N);
             TM2 = (int) (Math.random() * N);
             TM3 = (int) (Math.random() * N);
-        }while (TM1 == TM2 || TM2 == TM3 || TM1 == TM3);
-        System.out.println("今天要刷的三道题:"+TM1+";"+TM2+";"+TM3);
+        } while (TM1 == TM2 || TM2 == TM3 || TM1 == TM3);
+        System.out.println("今天要刷的三道题:" + TM1 + ";" + TM2 + ";" + TM3);
     }
     
     //反序列化二叉树
@@ -153,22 +154,29 @@ public class Offer000_Common
     }
     
     //
-    public static class TreeLinkNode {
+    public static class TreeLinkNode
+    {
         int val;
         TreeLinkNode left = null;
         TreeLinkNode right = null;
         TreeLinkNode next = null;
         
-        TreeLinkNode(int val) {
+        TreeLinkNode(int val)
+        {
             this.val = val;
         }
     }
     
     //单链表结点信息
-    public class ListNode {
+    public class ListNode
+    {
         int val;
         ListNode next;
-        ListNode(int x) { val = x; }
+        
+        ListNode(int x)
+        {
+            val = x;
+        }
     }
     
     
@@ -269,7 +277,7 @@ public class Offer000_Common
     
     public static void swap(int[] arr, int i, int j)
     {
-        if(i == j) return;
+        if (i == j) return;
         arr[i] = arr[i] ^ arr[j];
         arr[j] = arr[i] ^ arr[j];
         arr[i] = arr[i] ^ arr[j];
