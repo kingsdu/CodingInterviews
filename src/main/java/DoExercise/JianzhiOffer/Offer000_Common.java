@@ -27,7 +27,12 @@ public class Offer000_Common
         System.out.println("今天要刷的三道题:" + TM1 + ";" + TM2 + ";" + TM3);
     }
     
-    //反序列化二叉树
+    /**
+     * 反序列化二叉树
+     *
+     * @param array
+     * @return
+     */
     public static TreeNode deserializeTreeNode(Integer[] array)
     {
         int size = array.length;
@@ -153,27 +158,59 @@ public class Offer000_Common
         }
     }
     
-    //
+    
     public static class TreeLinkNode
     {
-        int val;
-        TreeLinkNode left = null;
-        TreeLinkNode right = null;
-        TreeLinkNode next = null;
+        public int val;
+        public TreeLinkNode left = null;
+        public TreeLinkNode right = null;
+        public TreeLinkNode next = null;
         
-        TreeLinkNode(int val)
+        public TreeLinkNode(int val)
         {
             this.val = val;
         }
     }
     
     //单链表结点信息
-    public class ListNode
+    public static class ListNode
     {
-        int val;
-        ListNode next;
+        public int val;
+        public ListNode next;
         
-        ListNode(int x)
+        public ListNode(int x)
+        {
+            val = x;
+        }
+    }
+    
+    /**
+     * 将int[]数组 转化为 ListNode
+     *
+     * @param arr
+     * @return
+     */
+    public static ListNode deserialize_ListNode(int[] arr)
+    {
+        if (arr.length == 0 || arr == null) return null;
+        ListNode head = new ListNode(arr[0]);
+        ListNode cur = head;
+        for (int i = 1; i < arr.length; i++)
+        {
+            cur.next = new ListNode(arr[i]);
+            cur = cur.next;
+        }
+        return head;
+    }
+    
+    //双端链表
+    public static class DoubleListNode
+    {
+        public int val;
+        public DoubleListNode next;
+        public DoubleListNode pre;
+        
+        public DoubleListNode(int x)
         {
             val = x;
         }
@@ -199,6 +236,15 @@ public class Offer000_Common
             ans.add(num);
         }
         return ans;
+    }
+    
+    public static void printListNode(ListNode head)
+    {
+        while (head != null)
+        {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
     }
     
     // for test

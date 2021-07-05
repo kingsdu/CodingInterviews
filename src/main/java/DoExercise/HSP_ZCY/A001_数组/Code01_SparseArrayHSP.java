@@ -1,4 +1,4 @@
-package DoExercise.HSP_ZCY.A001_Array;
+package DoExercise.HSP_ZCY.A001_数组;
 
 /**
  *
@@ -11,7 +11,7 @@ package DoExercise.HSP_ZCY.A001_Array;
  *  具体见印象笔记
  *
  */
-public class SparseArrayHSP
+public class Code01_SparseArrayHSP
 {
 
     /**

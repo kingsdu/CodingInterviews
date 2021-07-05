@@ -5,13 +5,13 @@ import java.util.EmptyStackException;
 /**
  * 用数组实现一个基础的栈结构
  */
-public class SimpleStackHSP
+public class Code03_SimpleStackHSP
 {
     public int[] stackObj;
     public int maxSize;
     public int count;
     
-    public SimpleStackHSP(int size)
+    public Code03_SimpleStackHSP(int size)
     {
         this.maxSize = size;
         stackObj = new int[size];
@@ -21,7 +21,7 @@ public class SimpleStackHSP
     
     public static void main(String[] args)
     {
-        SimpleStackHSP myStack = new SimpleStackHSP(10);
+        Code03_SimpleStackHSP myStack = new Code03_SimpleStackHSP(10);
         myStack.push(1);
         myStack.push(2);
         myStack.push(3);

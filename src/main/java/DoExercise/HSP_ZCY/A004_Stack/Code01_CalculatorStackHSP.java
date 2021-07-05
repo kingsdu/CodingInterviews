@@ -13,10 +13,10 @@ package DoExercise.HSP_ZCY.A004_Stack;
  * 4、字符串遍历完毕后，在逐个对数字和符号栈进行出栈、计算，返回数字栈的最后一个元素。
  *
  */
-public class CalculatorStackHSP
+public class Code01_CalculatorStackHSP
 {
-    public static SimpleStackHSP numStack = new SimpleStackHSP(100);
-    public static SimpleStackHSP opeStack = new SimpleStackHSP(100);
+    public static Code03_SimpleStackHSP numStack = new Code03_SimpleStackHSP(100);
+    public static Code03_SimpleStackHSP opeStack = new Code03_SimpleStackHSP(100);
     
     public static void main(String[] args)
     {

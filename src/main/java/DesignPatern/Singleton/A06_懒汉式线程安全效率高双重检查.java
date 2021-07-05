@@ -8,6 +8,7 @@ package DesignPatern.Singleton;
  */
 public class A06_懒汉式线程安全效率高双重检查
 {
+    //必须要加volatile，涉及Java的指令重排
     private static volatile A06_懒汉式线程安全效率高双重检查 INSTANCE; //JIT
 
     private A06_懒汉式线程安全效率高双重检查() {

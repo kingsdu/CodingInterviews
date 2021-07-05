@@ -20,7 +20,7 @@ import java.util.Stack;
  * 计算部分：
  * 1、从左至右存入栈中，遇到符号就直接计算。
  */
-public class PolandNotationHSP
+public class Code02_PolandNotationHSP
 {
     
     public static void main(String[] args)
