@@ -4,7 +4,7 @@ package DoExercise.JianzhiOffer;
 /**
  * https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/
  */
-public class Offer035_数组中的逆序对
+public class Offer035_数组中的逆序对I
 {
     
     public static void main(String[] args)
@@ -38,38 +38,32 @@ public class Offer035_数组中的逆序对
      * 左侧子数组当前元素 > 右侧子数组当前元素 时
      * 左侧子数组当前元素至末尾元素 和 右侧子数组的当前元素 构成了若干个 逆序对
      *
-     * @param nums
+     * @param arr
      * @param left
      * @param mid
      * @param right
      */
-    public static void mergeSort_3(int[] nums, int left, int mid, int right)
+    public static void mergeSort_3(int[] arr, int left, int mid, int right)
     {
         int[] temArr = new int[right - left + 1];
         int index = 0;
-        int temp1 = left, temp2 = mid + 1;
-        while (temp1 <= mid && temp2 <= right)
+        int i = left, j = mid + 1;
+        while (i <= mid && j <= right)
         {
-            if (nums[temp1] <= nums[temp2])
+            if (arr[i] <= arr[j])
             {
-                temArr[index++] = nums[temp1++];
+                temArr[index++] = arr[i++];
             } else
             {
-                temArr[index++] = nums[temp2++];
-                count += (mid - temp1 + 1);
+                temArr[index++] = arr[j++];
+                count += mid - i + 1;
             }
         }
-        while (temp1 <= mid)
-        {
-            temArr[index++] = nums[temp1++];
-        }
-        while (temp2 <= right)
-        {
-            temArr[index++] = nums[temp2++];
-        }
+        while (i <= mid) temArr[index++] = arr[i++];
+        while (j <= right) temArr[index++] = arr[j++];
         for (int k = 0; k < temArr.length; k++)
         {
-            nums[k + left] = temArr[k];
+            arr[k + left] = temArr[k];
         }
     }
 }

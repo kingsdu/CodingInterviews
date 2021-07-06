@@ -58,7 +58,7 @@ public class Offer029_最小的k个数
         {
             while (i < j && arr[j] >= arr[l]) j--;
             while (i < j && arr[i] <= arr[l]) i++;
-            Offer000_Common.swap(arr, i, j);
+            if (i < j) Offer000_Common.swap(arr, i, j);
         }
         Offer000_Common.swap(arr, i, l);
         quickSort(arr, l, i - 1);
@@ -75,8 +75,7 @@ public class Offer029_最小的k个数
         }
         
         Queue<Integer> pq = new PriorityQueue<>((v1, v2) -> v2 - v1);
-        for (int num :
-                arr)
+        for (int num : arr)
         {
             if (pq.size() < k)
             {
@@ -90,8 +89,7 @@ public class Offer029_最小的k个数
         
         int[] res = new int[pq.size()];
         int idx = 0;
-        for (int num :
-                pq)
+        for (int num : pq)
         {
             res[idx++] = num;
         }
@@ -114,8 +112,7 @@ public class Offer029_最小的k个数
         
         TreeMap<Integer, Integer> map = new TreeMap<>();
         int cnt = 0;
-        for (int num :
-                input)
+        for (int num : input)
         {
             if (cnt < k)
             {
@@ -154,8 +151,7 @@ public class Offer029_最小的k个数
     }
     
     
-    
-    //方法不推荐
+    //方法使用的内存较大
     public static int[] getLeastNumbers_4(int[] input, int k)
     {
         if (k < 0 || input.length == 0)

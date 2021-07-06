@@ -26,11 +26,11 @@ public class C01_DFS_Method
     
     public static void main(String[] args)
     {
-        str1 = new String[]{"a", "b", "c", "d"};
+        str1 = new String[]{"a", "b", "b"};
         dfs1("");
         result1.stream().forEach(e -> System.out.print(e + " "));
         System.out.println();
-        str2 = new String[]{"a", "b", "c", "d"};
+        str2 = new String[]{"a", "b", "b"};
         dfs2(0);
         result2.stream().forEach(e -> System.out.print(e + " "));
     }
@@ -57,19 +57,19 @@ public class C01_DFS_Method
     }
     
     
-    public static void dfs2(int path)
+    public static void dfs2(int x)
     {
-        if (path == str2.length - 1)
+        if (x == str2.length - 1)
         {
             result2.add(StringUtils.join(str2));
             return;
         }
         
-        for (int i = path; i < str2.length; i++)
+        for (int i = x; i < str2.length; i++)
         {
-            swap(i, path);
-            dfs2(path + 1);
-            swap(i, path);
+            swap(i, x);
+            dfs2(x + 1);
+            swap(i, x);
         }
     }
     

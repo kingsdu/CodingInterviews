@@ -1,6 +1,8 @@
 package DoExercise.HSP_ZCY.A030_归并排序快速排序;
 
 
+import java.util.Arrays;
+
 //归并排序
 public class Code02_MergeSort
 {
@@ -34,112 +36,56 @@ public class Code02_MergeSort
         int i = 0;
         int p1 = L;
         int p2 = M + 1;
-        //两个部分都没越界时，从小到大将p1 p2 位置的数copy到help数组中
-        while (p1 <= M && p2 <= R)
-        {
-            help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
-        }
-        // 要么p1越界，要么p2越界，不可能出现：共同越界
-        // p2越界
-        while (p1 <= M)
-        {
-            help[i++] = arr[p1++];
-        }
-        //p1越界
-        while (p2 <= R)
-        {
-            help[i++] = arr[p2++];
-        }
-        //合并数组到arr
-        for (i = 0; i < help.length; i++)
-        {
-            arr[L + i] = help[i];
-        }
+        while (p1 <= M && p2 <= R) help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
+        while (p1 <= M) help[i++] = arr[p1++];
+        while (p2 <= R) help[i++] = arr[p2++];
+        for (i = 0; i < help.length; i++) arr[L + i] = help[i];
     }
     
     //非递归版本1(NlogN)
-    public static void mergeSort2(int[] arr)
+    public static void mergeSort_NoRecur(int[] arr)
     {
-        if (arr == null || arr.length < 2)
-        {
-            return;
-        }
-        int step = 1;//步长
+        if (arr == null || arr.length < 2)  return;
         int N = arr.length;
+        int step = 1;
         while (step < N)
         {
             int L = 0;
             while (L < N)
             {
-                int M = 0;
-                if (N - L >= step)//step能凑齐
-                {
-                    M = L + step - 1;//从前向后,取出step长的范围数
-                } else
-                {
-                    M = N - 1;
-                }
-                if (M == N - 1)//校验M是否越界
-                {
-                    break;
-                }
-                int R = 0;
-                if (N - 1 - M >= step)//从M开始,计算右组的数字
-                {
-                    R = M + step;
-                } else
-                {
-                    R = N - 1;
-                }
-                //合并
+                int M = L + step - 1;
+                if (M >= N) break;
+                int R = Math.min(M + step, N - 1);//右组
                 merge(arr, L, M, R);
-                if (R == N - 1)
-                {
-                    break;
-                } else
-                {
-                    L = R + 1;//下一个左组
-                }
+                L = R + 1;
             }
-            if (step > N / 2)//防止溢出
-            {
-                break;
-            }
-            step *= 2;
+            if (step > N / 2) break;//防止溢出
+            step <<= 1;
         }
     }
     
     
     // 非递归方法实现2
-	public static void mergeSort3(int[] arr)
-	{
-		if (arr == null || arr.length < 2)
-		{
-			return;
-		}
-		int N = arr.length;
-		int mergeSize = 1;
-		while (mergeSize < N)
-		{
-			int L = 0;
-			while (L < N)
-			{
-				if (mergeSize >= N - L)
-				{
-					break;
-				}
-				int M = L + mergeSize - 1;
-				int R = M + Math.min(mergeSize, N - M - 1);
-				merge(arr, L, M, R);
-				L = R + 1;
-			}
-			if (mergeSize > N / 2)
-			{
-				break;
-			}
-			mergeSize <<= 1;
-		}
-	}
+    public static void mergeSort3(int[] arr)
+    {
+        if (arr == null || arr.length < 2) return;
+        int N = arr.length;
+        int step = 1;
+        while (step < N)
+        {
+            int L = 0;
+            while (L < N)
+            {
+                if (step >= N - L) break;
+                int M = L + step - 1;
+                int R = M + Math.min(step, N - M - 1);
+                merge(arr, L, M, R);
+                L = R + 1;
+            }
+            if (step > N / 2) break;
+            step <<= 1;
+        }
+    }
     
     // for test
     public static int[] generateRandomArray(int maxSize, int maxValue)
@@ -209,25 +155,29 @@ public class Code02_MergeSort
     // for test
     public static void main(String[] args)
     {
-        int testTime = 500000;
-        int maxSize = 100;
-        int maxValue = 100;
-        System.out.println("测试开始");
-        for (int i = 0; i < testTime; i++)
-        {
-            int[] arr1 = generateRandomArray(maxSize, maxValue);
-            int[] arr2 = copyArray(arr1);
-            mergeSort1(arr1);
-            mergeSort2(arr2);
-            if (!isEqual(arr1, arr2))
-            {
-                System.out.println("出错了！");
-                printArray(arr1);
-                printArray(arr2);
-                break;
-            }
-        }
-        System.out.println("测试结束");
+        int[] nums1 = {6, 3, 5, 4, 2, 1};
+        mergeSort_NoRecur(nums1);
+        Arrays.stream(nums1).forEach(e -> System.out.print(e + " "));
+        
+//        int testTime = 500000;
+//        int maxSize = 100;
+//        int maxValue = 100;
+//        System.out.println("测试开始");
+//        for (int i = 0; i < testTime; i++)
+//        {
+//            int[] arr1 = generateRandomArray(maxSize, maxValue);
+//            int[] arr2 = copyArray(arr1);
+//            mergeSort1(arr1);
+//            mergeSort_NoRecur(arr2);
+//            if (!isEqual(arr1, arr2))
+//            {
+//                System.out.println("出错了！");
+//                printArray(arr1);
+//                printArray(arr2);
+//                break;
+//            }
+//        }
+//        System.out.println("测试结束");
     }
     
 }

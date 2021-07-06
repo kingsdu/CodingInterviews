@@ -16,14 +16,14 @@ package DoExercise.JianzhiOffer;
  * 2.最小数一定位于第二个序列的开头
  * 3.前序列的值都>=后序列的值（重点）
  * {123456}旋转后{456123}
- *
+ * <p>
  * https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
  */
 public class Offer006_旋转数组的最小数字
 {
     public static void main(String[] args)
     {
-        int[] arrays = {1, 2, 0, 1, 2};
+        int[] arrays = {2, 2, 2, 0, 1};
         System.out.println(findNum_1(arrays));
     }
     
@@ -39,7 +39,8 @@ public class Offer006_旋转数组的最小数字
             } else if (numbers[m] > numbers[r])
             {
                 l = m + 1;
-            }else {
+            } else
+            {
                 r--;
             }
         }
