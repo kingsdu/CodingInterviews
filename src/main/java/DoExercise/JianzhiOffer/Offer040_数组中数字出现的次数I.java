@@ -28,7 +28,7 @@ public class Offer040_数组中数字出现的次数I
      */
     public static int[] singleNumber_2(int nums[])
     {
-        int x = 0, y, n = 0, m = 1;
+        int x = 0, y, n = 0, m;
         for (int num : nums) n ^= num;
         m = n & (~n + 1);
         for (int num : nums)

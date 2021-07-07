@@ -4,59 +4,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。
- * <p>
- * 输入：target = 9
- * 输出：[[2,3,4],[4,5]]
- * <p>
- * 输入：target = 15
- * 输出：[[1,2,3,4,5],[4,5,6],[7,8]
+ *
+ * https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/
+ *
+ *
  */
-public class Offer041_FindContinuousSequence
+public class Offer041_和为s的两个数字II
 {
-    
     
     public static void main(String[] args)
     {
-        Offer041_FindContinuousSequence of = new Offer041_FindContinuousSequence();
-        /*
         int sum = 9;
-        ArrayList<ArrayList<Integer>> arrayLists = of.findContinuousSequence_1(sum);
-        for (ArrayList<Integer> number :
-                arrayLists)
+        int[][] arr = findContinuousSequence_2(sum);
+    
+        for (int[] ints : arr)
         {
-            for (int x :
-                    number)
+            for (int anInt : ints)
             {
-                System.out.print(x + " ");
+                System.out.print(anInt+" ");
             }
-            System.out.println();
         }
-        */
         
-        int sum = 9;
-        int[][] continuousSequence_2 = of.findContinuousSequence_2(sum);
-        System.out.println(continuousSequence_2.length);
     }
     
-    
-    /**
-     * 使用窗口算法。
-     * 我理解了这个算法：（1）当窗口不满足要求时，下标向右扩大边界；（2）当窗口满足这个条件时，下标向左缩小边界。
-     * 但是程序还是没写出来。
-     * 问题
-     * 1、没有考虑初始状态，int i = 1, j = 2, total = 3;因为题目以及确定了数字的范围最少2个数字，前2个数字一定是 1和2
-     *
-     * @param sum
-     * @return
-     */
-    public ArrayList<ArrayList<Integer>> findContinuousSequence_1(int sum)
+    public static ArrayList<ArrayList<Integer>> findContinuousSequence_1(int sum)
     {
         ArrayList list = new ArrayList();
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         int i = 1, j = 2, total = 3;
         while (i < j)
-        {   //当数字相等时，根据下标，记录下标内的数字
+        {
             if (total == sum)
             {
                 for (int k = i; k <= j; k++)
@@ -66,12 +43,12 @@ public class Offer041_FindContinuousSequence
                 res.add(list);
                 list = new ArrayList<>();
             }
-            //如果窗口内的数字 >= 目标数，代表窗口需要左移动（缩小），移出窗口的数字需要剪掉
+            
             if (total >= sum)
             {
                 total -= i;
                 i++;
-            } else //窗口内数字小于目标树，代表窗口需要右移动（扩大），移入窗口的数字需要加上
+            } else
             {
                 j++;
                 total += j;
@@ -87,7 +64,7 @@ public class Offer041_FindContinuousSequence
      * @param target
      * @return
      */
-    public int[][] findContinuousSequence_2(int target)
+    public static int[][] findContinuousSequence_2(int target)
     {
         int i = 1, j = 2, sum = 3;
         List<int[]> res = new ArrayList<>();//list可以传一个数组对象
@@ -106,7 +83,7 @@ public class Offer041_FindContinuousSequence
             
             if (sum < target)
             {
-                ++j;
+                j++;
                 sum += j;
             } else
             {

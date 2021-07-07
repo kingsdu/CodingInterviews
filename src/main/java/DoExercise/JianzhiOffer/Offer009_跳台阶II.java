@@ -4,9 +4,8 @@ package DoExercise.JianzhiOffer;
 /**
  * 一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
  * <p>
- * https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/
+ * https://www.nowcoder.com/practice/22243d016f6b47f2a6928b4313c85387?tpId=13&tags=&title=&difficulty=0&judgeStatus=0&rp=1
  * <p>
- * 这个题考虑动态规划，但是要明白方法1的意思
  */
 public class Offer009_跳台阶II
 {
@@ -14,41 +13,28 @@ public class Offer009_跳台阶II
     
     public static void main(String[] args)
     {
-        System.out.println(numWays1(10));
-        System.out.println(numWays2(10));
+        System.out.println(jumpFloorII(3));
     }
     
-    //该方法比后面的方法节省空间
-    //注意这种 a b sum相互串联的方式
-    public static int numWays1(int n)
+    
+    public static int jumpFloorII(int target)
     {
-        int a = 1, b = 1;
-        for (int i = 1; i < n; i++)
-        {
-            int sum = (a + b) % 1000000007;//n = (n-2 + n-1) % 1000_000_007
-            a = b;//n-2
-            b = sum;//n-1
-        }
-        return b;
-    }
-    
-    public int jumpFloor(int target) {
-         if(target == 0 || target == 1 || target == 2) return target;
-         return 0;
-    }
-    
-    
-    public static int numWays2(int n)
-    {
-        if (n == 0 || n == 1 || n == 2) return n;
-        int[] dp = new int[n + 1];
+        int[] dp = new int[target + 1];
         dp[1] = 1;
-        dp[2] = 2;
-        for (int i = 3; i <= n; i++)
+        for (int i = 2; i <= target; i++)
         {
-            dp[i] = (dp[i - 1] + dp[i - 2]) % 1000_000_007;
+            dp[i] = 2 * dp[i - 1];
         }
-        return dp[n];
+        return dp[target];
     }
     
+    public static int jumpFloorII1(int target)
+    {
+        int ans = 1;
+        for (int i = 2; i <= target; i++)
+        {
+            ans = 2 * ans;
+        }
+        return ans;
+    }
 }

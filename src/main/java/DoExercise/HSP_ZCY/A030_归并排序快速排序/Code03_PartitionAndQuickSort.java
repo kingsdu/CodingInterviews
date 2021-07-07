@@ -27,7 +27,16 @@ public class Code03_PartitionAndQuickSort
         {
             System.out.print(arr1[i] + " ");
         }
+        System.out.println();
+        int[] arr2 = {7, 1, 3, 5, 4, 5, 1, 4, 2, 4, 2, 5, 6, 4};
+        quickSort1(arr2);
+        for (int i = 0; i < arr2.length; i++)
+        {
+            System.out.print(arr2[i] + " ");
+        }
 
+        
+        
 //        int testTime = 500000;
 //        int maxSize = 100;
 //        int maxValue = 100;
@@ -107,19 +116,13 @@ public class Code03_PartitionAndQuickSort
     
     public static void quickSort1(int[] arr)
     {
-        if (arr == null || arr.length < 2)
-        {
-            return;
-        }
+        if (arr == null || arr.length < 2) return;
         process(arr, 0, arr.length - 1);
     }
     
     public static void process(int[] arr, int L, int R)
     {
-        if (L >= R)
-        {
-            return;
-        }
+        if (L >= R) return;
         int[] equalE = partition(arr, L, R);
         process(arr, L, equalE[0] - 1);
         process(arr, equalE[1] + 1, R);

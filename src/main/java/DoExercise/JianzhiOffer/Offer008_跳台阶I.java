@@ -5,7 +5,7 @@ package DoExercise.JianzhiOffer;
  * 一只青蛙一次可以跳上1级台阶，也可以跳上2级。
  * 求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。
  *
- * https://www.nowcoder.com/practice/8c82a5b80378478f9484d87d1c5f12a4?tpId=13&&tqId=11161&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+ * https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/
  *
  */
 public class Offer008_跳台阶I
@@ -15,10 +15,24 @@ public class Offer008_跳台阶I
     public static void main(String[] args)
     {
         int n = 0;
+        System.out.println(jumpWOW(n));
         System.out.println(jumpWOW1(n));
         System.out.println(jumpWOW2(n));
     }
     
+    //该方法比后面的方法节省空间
+    //注意这种 a b sum相互串联的方式
+    public static int jumpWOW(int n)
+    {
+        int a = 1, b = 1;
+        for (int i = 1; i < n; i++)
+        {
+            int sum = (a + b) % 1000000007;//n = (n-2 + n-1) % 1000_000_007
+            a = b;//n-2
+            b = sum;//n-1
+        }
+        return b;
+    }
     
     /**
      * 思路：青蛙每一次向上跳跃只有2种选择，跳1格 或者跳2格
