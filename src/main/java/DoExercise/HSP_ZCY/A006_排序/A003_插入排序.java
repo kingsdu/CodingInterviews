@@ -14,7 +14,7 @@ import java.util.Date;
  * 排序开始时间：2021:05:20:10:34:16
  * 排序结束时间：2021:05:20:10:34:18
  */
-public class A003_InsertionSort
+public class A003_插入排序
 {
     
     public static void main(String[] args)

@@ -15,7 +15,7 @@ import java.util.Date;
  * 排序开始时间：2021:05:20:10:35:31
  * 排序结束时间：2021:05:20:10:35:50
  */
-public class A001_BubbleSort
+public class A001_冒泡排序
 {
     
     public static void main(String[] args)

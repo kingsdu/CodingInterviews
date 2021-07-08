@@ -25,7 +25,7 @@ import java.util.Date;
  * 排序开始时间：2021:05:20:10:36:48
  * 排序结束时间：2021:05:20:10:36:49
  */
-public class A004_ShellSort
+public class A004_希尔排序
 {
     public static void main(String[] args)
     {

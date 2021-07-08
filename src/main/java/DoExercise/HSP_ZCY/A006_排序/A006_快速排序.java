@@ -8,7 +8,7 @@ import DoExercise.JianzhiOffer.Offer000_Common;
  *
  * 99万个数字 耗时 1s
  */
-public class A006_QuickSort
+public class A006_快速排序
 {
     
     public static void main(String[] args)

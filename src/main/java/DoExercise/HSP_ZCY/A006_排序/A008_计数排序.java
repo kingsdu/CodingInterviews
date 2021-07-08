@@ -14,7 +14,7 @@ import java.util.Date;
  *
  *
  */
-public class A008_CountSort
+public class A008_计数排序
 {
     
     public static void main(String[] args)

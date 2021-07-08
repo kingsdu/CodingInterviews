@@ -11,7 +11,7 @@ import java.util.Date;
  * 排序结束时间：2021:05:20:10:32:34
  *
  */
-public class A002_SelectSort
+public class A002_选择排序
 {
     
     public static void main(String[] args)

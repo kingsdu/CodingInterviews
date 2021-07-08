@@ -13,7 +13,7 @@ import java.util.Arrays;
  * <p>
  * 99万个数字 耗时 1s
  */
-public class A005_MergeSort
+public class A005_归并排序
 {
     
     public static void main(String[] args)

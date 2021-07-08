@@ -25,7 +25,7 @@ import java.util.Date;
  * 排序开始时间：2021:05:20:11:48:01
  * 排序结束时间：2021:05:20:11:48:06
  */
-public class A009_BucketSort
+public class A009_桶排序
 {
     
     public static void main(String[] args)
