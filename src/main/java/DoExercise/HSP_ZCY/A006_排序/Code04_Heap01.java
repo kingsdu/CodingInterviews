@@ -5,6 +5,9 @@ import DoExercise.JianzhiOffer.Offer000_Common;
 /**
  * @Author: Du
  * @Date: 2021/7/8 11:15
+ * <p>
+ * N个数，每个数的复杂度都是logN
+ * O(N*logN)
  */
 public class Code04_Heap01
 {
@@ -12,13 +15,13 @@ public class Code04_Heap01
     public static class MyMaxHeap
     {
         private int[] heap;
-        private final int limit;
+        private final int maxSize;
         private int heapSize;
         
-        public MyMaxHeap(int limit)
+        public MyMaxHeap(int maxSize)
         {
-            heap = new int[limit];
-            this.limit = limit;
+            heap = new int[maxSize];
+            this.maxSize = maxSize;
             heapSize = 0;
         }
         
@@ -29,21 +32,19 @@ public class Code04_Heap01
         
         public boolean isFull()
         {
-            return heapSize == limit;
+            return heapSize == maxSize;
         }
         
         public void push(int value)
         {
-            if (heapSize == limit)
-            {
-                throw new RuntimeException("heap is full");
-            }
+            if (heapSize == maxSize) throw new RuntimeException("heap is full");
             heap[heapSize] = value;
             heapInsert(heap, heapSize++);//调整大根堆的操作复杂度时logN
         }
         
         public int pop()
         {
+            if (heapSize == 0) throw new RuntimeException("heap is empty");
             int ans = heap[0];
             Offer000_Common.swap(heap, 0, --heapSize);
             heapify(heap, 0, heapSize);
@@ -53,7 +54,7 @@ public class Code04_Heap01
         //插入数据保证大根堆
         private void heapInsert(int[] arr, int index)
         {
-            while (arr[index] > arr[(index - 1) / 2])//如果index结点比其父类的值大，交换
+            while (arr[index] > arr[(index - 1) / 2])
             {
                 Offer000_Common.swap(arr, index, (index - 1) / 2);
                 index = (index - 1) / 2;
@@ -66,12 +67,15 @@ public class Code04_Heap01
             int left = index * 2 + 1;
             while (left < heapSize)
             {
-                int largest = left + 1 < heapSize && arr[left + 1] > arr[left] ? left + 1 : left;//子结点中值较大的
-                largest = arr[largest] > arr[index] ? largest : index;//子中较大的和父类比较
-                if (largest == index) break;
-                Offer000_Common.swap(arr, largest, index);
-                index = largest;
-                left = index * 2 + 1;
+                int right = left + 1;
+                int largest = right < heapSize && arr[right] > arr[left] ? right : left;
+                largest = arr[largest] > arr[index] ? largest : index;
+                if (largest != index)
+                {
+                    Offer000_Common.swap(arr, largest, index);
+                    index = largest;
+                    left = index * 2 + 1;
+                }
             }
         }
         

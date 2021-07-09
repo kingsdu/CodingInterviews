@@ -26,8 +26,9 @@ public class A007_堆排序
     
     public static void main(String[] args)
     {
-        int[] tree = {10, 9, 8, 7, 1, 5, 4, 3, 2, 6};
-        heapSort(tree, tree.length);
+        int[] tree = {1, 2, 10, 4, 1, 4, 3, 3};
+        //heapSort(tree, tree.length);
+        buildHeap(tree,tree.length);
         Arrays.stream(tree).forEach(e -> System.out.print(e + " "));
 
 //        SimpleDateFormat startTime = new SimpleDateFormat("yyyy:MM:dd:HH:mm:ss");
@@ -85,7 +86,7 @@ public class A007_堆排序
         int parent = (lastNode - 1) / 2;
         for (int i = parent; i >= 0; i--)
         {
-            heapify(tree, n, i);//第一次堆化，从最后一个节点的父节点开始
+            heapify(tree, n, i);
         }
     }
     
@@ -111,7 +112,7 @@ public class A007_堆排序
         }
         if (max != i)
         {
-            Offer000_Common.swap(tree, max, i);
+            Offer000_Common.swap(tree, i, max);
             heapify(tree, n, max);
         }
     }

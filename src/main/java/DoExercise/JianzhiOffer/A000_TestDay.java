@@ -11,6 +11,7 @@ package DoExercise.JianzhiOffer;
 //0706:要刷的三道题:6;27;29
 //0707:要刷的三道题:9;40;8
 //0708:要刷的三道题:0;11;17
+//0709:堆排序 + 数字翻译字符串
 public class A000_TestDay
 {
     
@@ -18,9 +19,6 @@ public class A000_TestDay
     {
         A000_TestDay a = new A000_TestDay();
         int[] arr = {1, 2, 10, 4, 1, 4, 3, 3};
-        
     }
-    
-    
     
 }
