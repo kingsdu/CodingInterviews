@@ -5,6 +5,13 @@ import java.util.Arrays;
 
 /**
  * https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/submissions/
+ * <p>
+ * <p>
+ * 1 如何才能实现题目要求？
+ * 将数组中的数字排成最小数需要将每个数字按照字典序从小到大排序
+ * 2 如何实现字典序？
+ * （1）若拼接字符串 x + y > y + x ,则 x > y
+ * （2）若 x + y < y + x ,则 x < y
  */
 public class Offer032_把数组排成最小的数
 {
@@ -12,83 +19,44 @@ public class Offer032_把数组排成最小的数
     public static void main(String[] args)
     {
         int[] nums = {3, 30, 34, 5, 9};
-        String s = minNumber_2(nums);
+        String s = minNumber(nums);
         System.out.println(s);
     }
     
-    /**
-     * 方法2
-     * <p>
-     * 若拼接字符串 x + y > y + xx+y>y+x ，则 xx “大于” yy ；
-     * 反之，若 x + y < y + xx+y<y+x ，则 xx “小于” yy ；
-     */
-    
-    public static String minNumber_2(int[] nums)
+    public static String minNumber(int[] nums)
     {
-        if (nums.length == 0)
-        {
-            return null;
-        }
-        
+        if (nums.length == 0) return null;
         String[] str = new String[nums.length];
-        
-        for (int i = 0; i < nums.length; i++)
-        {
-            str[i] = String.valueOf(nums[i]);
-        }
-        
+        for (int i = 0; i < nums.length; i++) str[i] = String.valueOf(nums[i]);
         quickSort(str, 0, str.length - 1);//需要-1，因为str从j开始移动
-        
         StringBuilder res = new StringBuilder();
-        for (String s : str)
-            res.append(s);
+        for (String s : str) res.append(s);
         return res.toString();
     }
     
-    private static void quickSort(String[] arr, int left, int right)
+    private static void quickSort(String[] arr, int l, int r)
     {
-        if (left >= right)
+        if (l >= r) return;
+        int i = l, j = r;
+        while (i < j)
         {
-            return;
-        } else
-        {
-            int index = partition(arr, left, right);
-            quickSort(arr, left, index - 1);
-            quickSort(arr, index + 1, right);
+            while (i < j && (arr[j] + arr[l]).compareTo(arr[l] + arr[j]) >= 0) j--;
+            while (i < j && (arr[i] + arr[l]).compareTo(arr[l] + arr[i]) <= 0) i++;
+            if (i < j)
+            {
+                swap(arr, i, j);
+            }
         }
-        
+        swap(arr, i, l);
+        quickSort(arr, l, i - 1);
+        quickSort(arr, i + 1, r);
     }
     
-    
-    private static int partition(String[] arr, int left, int right)
+    private static void swap(String[] arr, int i, int j)
     {
-        int i = left, j = right;
-        String base = arr[i];
-        
-        while (true)
-        {
-            while ((arr[j] + base).compareTo(base + arr[j]) >= 0 && i < j)
-            {
-                j--;
-            }
-            while ((arr[i] + base).compareTo(base + arr[i]) <= 0 && i < j)
-            {
-                i++;
-            }
-            
-            if (i >= j)
-            {
-                break;
-            }
-            
-            String tmp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = tmp;
-        }
-        
-        arr[left] = arr[i];
-        arr[i] = base;
-        return i;
+        String temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
     
     
@@ -98,7 +66,7 @@ public class Offer032_把数组排成最小的数
      * @param nums
      * @return
      */
-    public static String minNumber_3(int[] nums)
+    public static String minNumber1(int[] nums)
     {
         String[] str = new String[nums.length];
         for (int i = 0; i < nums.length; i++)

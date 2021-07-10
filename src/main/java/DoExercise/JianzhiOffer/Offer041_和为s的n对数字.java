@@ -9,7 +9,7 @@ import java.util.List;
  *
  *
  */
-public class Offer041_和为s的两个数字II
+public class Offer041_和为s的n对数字
 {
     
     public static void main(String[] args)

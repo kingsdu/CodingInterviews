@@ -12,13 +12,17 @@ package DoExercise.JianzhiOffer;
 //0707:要刷的三道题:9;40;8
 //0708:要刷的三道题:0;11;17
 //0709:堆排序 + 数字翻译字符串
+//0710:10;6;1
 public class A000_TestDay
 {
     
     public static void main(String[] args)
     {
         A000_TestDay a = new A000_TestDay();
-        int[] arr = {1, 2, 10, 4, 1, 4, 3, 3};
+        int[] arr = {3, 4, 5, 1, 2};
+        //System.out.println(a.maxValue(grid));
     }
+    
+    
     
 }
