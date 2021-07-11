@@ -21,7 +21,7 @@ public class Offer079_0到n一1中缺失的数字
         int i = 0, j = nums.length - 1;
         while (i <= j)
         {
-            int m = (i + j) / 2;
+            int m = i + ((j - i) >> 1);
             if (nums[m] == m) i = m + 1;
             else j = m - 1;
         }

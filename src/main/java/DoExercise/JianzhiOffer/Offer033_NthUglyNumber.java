@@ -13,6 +13,9 @@ package DoExercise.JianzhiOffer;
  * <p>
  * 1 是丑数。
  * n 不超过1690。
+ *
+ *
+ *
  */
 public class Offer033_NthUglyNumber
 {

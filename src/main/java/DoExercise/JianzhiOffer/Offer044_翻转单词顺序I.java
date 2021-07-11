@@ -17,7 +17,6 @@ public class Offer044_翻转单词顺序I
     }
     
     /**
-     *
      * 大小指针
      *
      * @param s
@@ -31,7 +30,7 @@ public class Offer044_翻转单词顺序I
         while (i >= 0)
         {
             while (i >= 0 && s.charAt(i) != ' ') i--;
-            res.append(s.substring(i + 1, j + 1) + " ");
+            res.append(s, i + 1, j + 1).append(" ");
             while (i >= 0 && s.charAt(i) == ' ') i--;
             j = i;
         }
