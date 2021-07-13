@@ -14,6 +14,9 @@ import java.util.Map;
  * 考点：
  * 1、拆分链表
  * 2、Hash表的应用
+ *
+ * https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/
+ *
  */
 public class Offer025_复杂链表的复制
 {
@@ -139,7 +142,6 @@ public class Offer025_复杂链表的复制
         public int label;
         RandomListNode next = null;
         RandomListNode random = null;
-        
         RandomListNode(int label)
         {
             this.label = label;

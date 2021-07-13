@@ -4,13 +4,11 @@ import java.util.HashMap;
 
 public class Code11_CopyListWithRandom
 {
-    
     public static class Node
     {
         public int value;
         public Node next;
         public Node rand;
-        
         public Node(int data)
         {
             this.value = data;
@@ -53,7 +51,7 @@ public class Code11_CopyListWithRandom
         }
         cur = head;
         Node curCopy = null;
-        while (cur != null)
+        while (cur != null)//增加节点，并更新rand节点指向
         {
             next = cur.next.next;
             curCopy = cur.next;
@@ -62,7 +60,7 @@ public class Code11_CopyListWithRandom
         }
         Node res = head.next;
         cur = head;
-        while (cur != null)
+        while (cur != null)//拆开
         {
             next = cur.next.next;
             curCopy = cur.next;
@@ -127,7 +125,6 @@ public class Code11_CopyListWithRandom
         printRandLinkedList(res2);
         printRandLinkedList(head);
         System.out.println("=========================");
-        
     }
     
 }
